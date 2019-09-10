@@ -2,13 +2,14 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Beban_terikat extends CI_Controller {
     
     public function index()
     {
-        $this->load->view('acc/dashboard_v');
+        
     }
     
 }
-;
-/* End of file  index.php */
+
+/* End of file  Beban_terikat.php */
+
