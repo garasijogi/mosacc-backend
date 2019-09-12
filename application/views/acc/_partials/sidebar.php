@@ -1,10 +1,12 @@
 <div id="sidenav">
 
-	<h4>Mosacc</h4>
+	<div class="logo">
+		<h4>Mosacc</h4>
+	</div>
 
 	<ul class="collapsible">
 		<li>
-			<div class="collapsible-header">Penerimaan</div>
+			<div class="collapsible-header"><span><i class="material-icons">assignment</i></span>Penerimaan</div>
 			<div class="collapsible-body">
 				<ul>
 					<li><a href="penerimaan-terikat.html">Penerimaan Terikat</a></li>
@@ -13,7 +15,7 @@
 			</div>
 		</li>
 		<li>
-			<div class="collapsible-header">Pengeluaran</div>
+			<div class="collapsible-header"><span><i class="material-icons">equalizer</i></span>Pengeluaran</div>
 			<div class="collapsible-body">
 				<ul>
 					<li><a href="pembelian.html">Pembelian</a></li>
@@ -23,7 +25,7 @@
 			</div>
 		</li>
 		<li>
-			<div class="collapsible-header">Penyesuaian</div>
+			<div class="collapsible-header"><span><i class="material-icons">cached</i></span>Penyesuaian</div>
 			<div class="collapsible-body">
 				<ul>
 					<li><a href="penyesuaian-perlengkapan.html">Penyesuaian Perlengkapan</a></li>
@@ -32,7 +34,7 @@
 			</div>
 		</li>
 		<li>
-			<div class="collapsible-header">Laporan</div>
+			<div class="collapsible-header"><span><i class="material-icons">class</i></span>Laporan</div>
 			<div class="collapsible-body">
 				<ul>
 					<li><a href="laporan-keuangan.html">Laporan Keuangan</a></li>
