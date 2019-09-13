@@ -1,0 +1,75 @@
+.wrapper-sidenav {
+	position: fixed !important;
+	z-index: 117000000;
+}
+
+
+.container {
+	z-index: 1;
+}
+
+/* css bayuwkontol */
+#sidenav {
+	height: 100vh;
+	background-color: #555;
+	overflow: hidden;
+	width: 60px;
+	position: absolute;
+	transition: 0.5s;
+	z-index: 99;
+	color: #fff;
+}
+
+#sidenav .logo {
+	top: 20px !important;
+}
+
+#sidenav .logo h4 {
+	margin-top: 15px !important;
+	margin-left: 80px !important;
+	font-size: 2.1rem;
+}
+
+#sidenav:hover {
+	width: 250px;
+}
+
+#sidenav a {
+	text-decoration: none;
+	display: block;
+	color: white;
+	background-color: #555;
+	padding-left: 30px;
+	padding: 20px;
+}
+
+#sidenav a:hover {
+	background-color: teal;
+}
+
+#sidenav .collapsible-header:hover {
+	padding-left: -10px;
+}
+
+#sidenav .collapsible-header i {
+	padding-left: -10px;
+}
+
+.nav-wrapper {
+	padding: 0 30px;
+	padding-left: 80px;
+	z-index: 1;
+}
+
+.content {
+	margin: 0;
+	padding-left: 60px;
+}
+
+.content form {
+	overflow: hidden;
+}
+
+.content .table {
+	overflow-y: scroll;
+}
