@@ -23,56 +23,56 @@
     <!-- form input -->
     <div class="row">
 
-        <form class="col s12">
+        <form action="<?php echo base_url('acc/form_input_pembelian/proses'); ?>" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s6">
-                    <input disabled id="kd_akun" type="text" value="<?php echo $kd_akun;?>" />
+                    <input name="kd_akun" readonly id="kd_akun" type="text" value="<?php echo $kd_akun;?>" />
                     <label for="kd_akun">Kode Akun</label> 
                 </div>
                 <div class="input-field col s6">
-                    <input id="tanggal" type="text" />
+                    <input name="tanggal" id="tanggal" type="text" class="datepicker"/>
                     <label for="tanggal">Tanggal</label> 
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s4">
-                    <input id="jenis" type="text" />
+                    <input name="jenis" id="jenis" type="text" />
                     <label for="jenis">Jenis</label> 
                 </div>
                 <div class="input-field col s4">
-                    <input id="merek" type="text" />
+                    <input name="merek" id="merek" type="text" />
                     <label for="merek">Merek</label> 
                 </div>
                 <div class="input-field col s4">
-                    <input id="nomor_seri" type="text" />
+                    <input name="nomor_seri" id="nomor_seri" type="text" />
                     <label for="nomor_seri">Nomor Seri</label> 
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="jumlah" type="text" />
+                    <input name="jumlah" id="jumlah" type="number" />
                     <label for="jumlah">Jumlah</label> 
                 </div>
                 <div class="input-field col s6">
-                    <input id="keterangan" type="text" />
+                    <textarea name="keterangan" id="keterangan" type="text" class="materialize-textarea"></textarea>
                     <label for="keterangan">Keterangan</label> 
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s5">
-                    <input id="harga_satuan" type="text" />
+                    <input name="harga_satuan" id="harga_satuan" type="number" />
                     <label for="harga_satuan">Harga Satuan</label> 
                 </div>
                 <div class="input-field col s5">
-                    <input id="total_harga" type="text" />
+                    <input name="total_harga" id="total_harga" type="number" />
                     <label for="total_harga">Total Harga</label> 
                 </div>
 
                 <div class="input-field col s2">
-                    <button class="btn waves-effect green waves-light" type="submit" name="action">Submit <i class="material-icons right">send</i></button>
+                    <button class="btn waves-effect green waves-light" type="submit" >Submit <i class="material-icons right">send</i></button>
                 </div>
             </div>
         </form>

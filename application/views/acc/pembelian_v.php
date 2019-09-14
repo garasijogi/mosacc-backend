@@ -22,7 +22,7 @@
     
 <section class="container">
     <div class="row">
-        <a href="<?php echo base_url('acc/form_input');?>?kd_akun=21100">Pembelian Perlengkapan</a>
+        <a href="<?php echo base_url('acc/form_input_pembelian');?>?kd_akun=21100">Pembelian Perlengkapan</a>
         <a href="#">Pembelian Peralatan</a>
         <a href="#">Pembelian Kendaraan</a>
     </div>
