@@ -23,8 +23,7 @@ $(document).ready(function () {
 });
 
 // Date Picker
+
 $(document).ready(function () {
-    $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd'
-    });
+    $('.datepicker').datepicker();
 });
