@@ -19,8 +19,8 @@
 				<div class="collapsible-header"><span><i class="material-icons">equalizer</i></span>Pengeluaran</div>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="pembelian.html">Pembelian</a></li>
-						<li><a href="beban-beban.html">Beban-beban</a></li>
+						<li><a href="<?php echo base_url('acc/pembelian'); ?>">Pembelian</a></li>
+						<li><a href="<?php echo base_url('acc/beban'); ?>">Beban-beban</a></li>
 						<li><a href="renovasi-dan-pembangunan.html">Renovasi dan Pembangunan</a></li>
 					</ul>
 				</div>
