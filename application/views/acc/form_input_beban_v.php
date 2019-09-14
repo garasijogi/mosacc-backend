@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- head -->
     <?php $this->load->view("acc/_partials/head");?>
     <!-- /head -->
 </head>
+
 <body>
 
-<div class="container-fluid">
+<div class="wrapper">
     <?php $this->load->view("acc/_partials/sidebar"); ?>
 </div>
 
-<div>
-    <!-- navbar&&sidebar -->
+    <div>
+        <!-- navbar&&sidebar -->
         
-    <?php $this->load->view("acc/_partials/navbar"); ?>
-    <!-- /navbar&&sidebar -->
-</div>
-
-<!-- content -->
-<div class="container">
-    <!-- form input -->
+        <?php $this->load->view("acc/_partials/navbar"); ?>
+        <!-- /navbar&&sidebar -->
+    </div>
+    
+<section class="container">
     <div class="row">
-
         <form action="<?php echo base_url('acc/form_input_pembelian/proses'); ?>" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s6">
@@ -76,41 +75,13 @@
                 </div>
             </div>
         </form>
-
     </div>
-    <!-- /form input -->
+</section>
 
-    <div class="divider"></div>
-
-    <div class="row">
-        <div class="col s12">
-            <table id="view_data" class="display" style="width: 100%" />
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Jenis</th>
-                        <th>Merek</th>
-                        <th>Jumlah</th>
-                        <th>Harga</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tfoot>
-                	<tr>
-                	    <th>Tanggal</th>
-                		<th>Jenis</th>
-                		<th>Merek</th>
-                		<th>Jumlah</th>
-                		<th>Harga</th>
-                		<th></th>
-                	</tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-</div>
-<!-- content -->
-
+<!-- Javascript -->
 <?php $this->load->view("acc/_partials/js"); ?>
+<!-- /Javascript -->
+
 </body>
+
 </html>
