@@ -10,7 +10,7 @@
 				<div class="collapsible-header"><span><i class="material-icons">assignment</i></span>Penerimaan</div>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="penerimaan-terikat.html">Penerimaan Terikat</a></li>
+						<li><a href="<?php echo base_url('acc/penerimaan_terikat'); ?>">Penerimaan Terikat</a></li>
 						<li><a href="penerimaan-tidak-terikat.html">Penerimaan Tidak Terikat</a></li>
 					</ul>
 				</div>
