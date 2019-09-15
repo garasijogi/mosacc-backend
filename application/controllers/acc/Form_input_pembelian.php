@@ -1,18 +1,18 @@
 <?php 
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Form_input_pembelian extends CI_Controller {
+
+    public $table = "tr21_pembelian_pending";
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('form_pembelian_m');
+        $this->load->model('form_input_pengeluaran_m');
     }
     
     public function index()
     {
         $data['kd_akun'] = $this->input->get('kd_akun');
-        $data['transaksi'] = $this->form_pembelian_m->getSatuJenisAkun($data['kd_akun']);
+        $data['transaksi'] = $this->form_input_pengeluaran_m->getSatuJenisAkun($data['kd_akun'], $this->table);
         $this->load->view('acc/form_input_pembelian_v', $data);
     }
     
@@ -21,7 +21,7 @@ class Form_input_pembelian extends CI_Controller {
         //buat format tanggal
         $kd_temp = date("Ymd").$this->input->post('kd_akun');       
         //kueri ambil jumlah row yang sama
-        $cari = $this->db->query("SELECT * FROM tr201_pembelian_pending WHERE idtr LIKE '$kd_temp%%%'");
+        $cari = $this->db->query("SELECT * FROM $this->table WHERE idtr LIKE '$kd_temp%%%'");
         //ambil jumlah row
         $hasil = $cari->num_rows();
         //generate id
@@ -43,7 +43,7 @@ class Form_input_pembelian extends CI_Controller {
             'total_harga' => $this->input->post('total_harga')
         );
 
-        $this->form_pembelian_m->save($data);
+        $this->form_input_pengeluaran_m->save($data, $this->table);
 
         $ke_halaman = 'acc/form_input_pembelian?kd_akun='.$data['kd_akun'];
 
