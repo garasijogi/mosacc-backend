@@ -26,8 +26,8 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/1.jpg'); ?>">
-                        <span class="card-title">Peribadatan</span>
+                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-peribadatan.jpg'); ?>" width="400" height="270">
+                        <span class="card-title card-title-text">Peribadatan</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#rutin1"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
@@ -39,7 +39,7 @@
                                 <h4>Peribadatan</h4>
                                 <ul>
                                     <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_kotak_jumat'); ?>">Infaq Kotak Jumat</a></li>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_phbi'); ?>">Infaq PHBI</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_PHBI'); ?>">Infaq PHBI</a></li>
                                     <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_pengajian'); ?>">Infaq Pengajian</a></li>
                                     <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_ramadhan'); ?>">Infaq Ramadhan</a></li>
                                 </ul>
@@ -52,8 +52,8 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/1.jpg'); ?>">
-                        <span class="card-title">Pendidikan</span>
+                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-pendidikan.jpg'); ?>" width="400" height="270">
+                        <span class="card-title card-title-text">Pendidikan</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin2"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
@@ -64,16 +64,8 @@
                             <div class="modal-content">
                                 <h4>Pendidikan</h4>
                                 <ul>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_dari_donatur'); ?>">Infaq dari Donatur</a></li>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_phbi'); ?>">Infaq Kotak Dana Operasional</a></li>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_pengajian'); ?>">Zakat Fitrah</a></li>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_ramadhan'); ?>">Fidyah</a></li>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_ramadhan'); ?>">Infaq untuk Baksos</a></li>
-                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_ramadhan'); ?>">Wakaf</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_tpa_dan_tahfidz'); ?>">Infaq TPA dan Tahfidz</a></li>
                                 </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
                             </div>
                         </div>
                     </div>
@@ -83,8 +75,8 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/1.jpg'); ?>">
-                        <span class="card-title">Penyaluran Ziswaf</span>
+                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-zakat.png'); ?>" width="400" height="270">
+                        <span class="card-title card-title-text">Penyaluran Ziswaf</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
@@ -94,10 +86,15 @@
                         <div id="rutin3" class="modal">
                             <div class="modal-content">
                                 <h4>Penyaluran ZISWAF</h4>
-                                <p>A bunch of text</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                                <ul>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_dari_donatur'); ?>">Infaq dari Donatur</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_kotak_dana_operasional'); ?>">Infaq Kotak Dana Operasional</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_kotak_dana_sosial'); ?>">Infaq Kotak Dana Sosial</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/zakat_fitrah'); ?>">Zakat Fitrah</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/fidyah'); ?>">Fidyah</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/infaq_untuk_baksos'); ?>">Infaq untuk Baksos</a></li>
+                                    <li><a href="<?php echo base_url('acc/penerimaan_terikat/waqaf'); ?>">Wakaf</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
