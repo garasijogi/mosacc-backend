@@ -6,7 +6,7 @@ class Renovasi_dan_pembangunan extends CI_Controller {
     
     public function index()
     {
-        
+        $this->load->view('acc/renovasi_dan_pembangunan_v');
     }
     
 }

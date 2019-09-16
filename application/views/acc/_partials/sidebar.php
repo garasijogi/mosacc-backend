@@ -21,7 +21,7 @@
 					<ul>
 						<li><a href="<?php echo base_url('acc/pembelian'); ?>">Pembelian</a></li>
 						<li><a href="<?php echo base_url('acc/beban'); ?>">Beban-beban</a></li>
-						<li><a href="renovasi-dan-pembangunan.html">Renovasi dan Pembangunan</a></li>
+						<li><a href="<?php echo base_url('acc/renovasi_dan_pembangunan'); ?>">Renovasi dan Pembangunan</a></li>
 					</ul>
 				</div>
 			</li>
