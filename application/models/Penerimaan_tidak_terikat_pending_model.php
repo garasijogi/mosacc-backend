@@ -2,16 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Penerimaan_terikat_pending_model extends CI_Model {
+class Penerimaan_tidak_terikat_pending_model extends CI_Model {
 
   function count($idtr){
     $this->db->like('idtr', $idtr);
-    return $this->db->count_all_results('tr12_penerimaan_terikat_pending');
+    return $this->db->count_all_results('tr11_penerimaan_tidak_terikat_pending');
   }
 
   function get($kode)
   {
-    $result = $this->db->get_where('tr12_penerimaan_terikat_pending', array('kd_akun'=>$kode));
+    $result = $this->db->get_where('tr11_penerimaan_tidak_terikat_pending', array('kd_akun'=>$kode));
     return $result;
   }
 
@@ -25,7 +25,7 @@ class Penerimaan_terikat_pending_model extends CI_Model {
       'keterangan' => $keterangan,
       'nama_pemberi' => $nama_pemberi
     );
-    $this->db->insert('tr12_penerimaan_terikat_pending', $data);
+    $this->db->insert('tr11_penerimaan_tidak_terikat_pending', $data);
   }
 
   // function update_tr($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah, $email, $password)

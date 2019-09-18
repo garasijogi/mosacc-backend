@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Sep 2019 pada 14.40
+-- Waktu pembuatan: 18 Sep 2019 pada 20.14
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 5.6.36
 
@@ -56,6 +56,29 @@ INSERT INTO `books` (`ID`, `name`, `price`, `author`, `rating`, `publisher`) VAL
 (12, 'Green Earth', '7.99', 'Ashleigh Turner', 4, 'Yellowhouse'),
 (13, 'Music Of The Ages', '3.83', 'James King', 3, 'Universe Co'),
 (14, 'Ancient Tea', '3.99', 'Jess Red', 8, 'Yellowhouse');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tr11_penerimaan_tidak_terikat_pending`
+--
+
+CREATE TABLE `tr11_penerimaan_tidak_terikat_pending` (
+  `idtr` varchar(16) NOT NULL,
+  `kd_akun` varchar(5) NOT NULL,
+  `tanggal` date NOT NULL,
+  `nominal` double NOT NULL,
+  `nama_pemberi` varchar(256) NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tr11_penerimaan_tidak_terikat_pending`
+--
+
+INSERT INTO `tr11_penerimaan_tidak_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
+('2019091111200001', '11200', '2019-09-11', 258000, ' ', 'jacks knighto queens knight and kings knighto'),
+('2019091611110001', '11110', '2019-09-16', 250000, 'Jack', 'Peminjaman peralatan sound');
 
 -- --------------------------------------------------------
 
@@ -160,6 +183,12 @@ INSERT INTO `tr22_beban_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `kete
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeks untuk tabel `tr11_penerimaan_tidak_terikat_pending`
+--
+ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
+  ADD PRIMARY KEY (`idtr`);
 
 --
 -- Indeks untuk tabel `tr12_penerimaan_terikat_pending`
