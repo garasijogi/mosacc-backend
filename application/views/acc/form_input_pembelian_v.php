@@ -84,7 +84,7 @@
 
     <div class="row">
         <div class="col s12">
-            <table id="view_data" class="display" style="width: 100%" />
+            <table id="view_data" class="display" style="width: 100%" >
                 <thead>
                     <tr>
                         <th>Tanggal</th>
@@ -95,6 +95,22 @@
                         <th></th>
                     </tr>
                 </thead>
+                <tbody>
+                    <?php 
+                    foreach ($transaksi->result() as $col) :
+                        ?>
+                    <tr>
+                        <td><?php echo $col->tanggal; ?></td>
+                        <td><?php echo $col->jenis; ?></td>
+                        <td><?php echo $col->merek; ?></td>
+                        <td><?php echo $col->jumlah; ?></td>
+                        <td><?php echo $col->total_harga; ?></td>
+                        <td></td>
+                    </tr>
+                    <?php
+                    endforeach;
+                    ?>
+                </tbody>
                 <tfoot>
                 	<tr>
                 	    <th>Tanggal</th>
@@ -108,9 +124,12 @@
             </table>
         </div>
     </div>
+    
 </div>
 <!-- content -->
 
+<!-- Javascript -->
 <?php $this->load->view("acc/_partials/js"); ?>
+<!-- /Javascript -->
 </body>
 </html>

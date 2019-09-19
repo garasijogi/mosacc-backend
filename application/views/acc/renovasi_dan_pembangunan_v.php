@@ -22,9 +22,10 @@
     
 <section class="container">
     <div class="row">
-        <a href="<?php echo base_url('acc/form_input_pembelian');?>?kd_akun=21100">Pembelian Perlengkapan</a>
-        <a href="<?php echo base_url('acc/form_input_pembelian');?>?kd_akun=21200">Pembelian Peralatan</a>
-        <a href="<?php echo base_url('acc/form_input_pembelian');?>?kd_akun=21300">Pembelian Kendaraan</a>
+        <h2>Beban Tidak Terikat</h2>
+        <h6>Beban Operasional</h6>
+        <a href="<?php echo base_url('acc/form_input_renov_bangun');?>?kd_akun=23100">Pembelian Material</a>
+        <a href="<?php echo base_url('acc/form_input_renov_bangun');?>?kd_akun=23200">Upah Tukang</a>
     </div>
 </section>
 
