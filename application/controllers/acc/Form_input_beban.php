@@ -32,6 +32,18 @@ class Form_input_beban extends CI_Controller {
         // masukkan increment ke id_barang
         $idtr = $kd_temp . str_pad($hasil2, 3, '0', STR_PAD_LEFT);
 
+        // $lastRecord = $this->db->query("SELECT idtr FROM $this->table WHERE idtr=(SELECT max(idtr) FROM $this->table)")->result();
+        // foreach($lastRecord as $key => $v){
+        //     $lastRecord = $v->idtr;
+        // }
+        
+        // if($idtr == $lastrecord){
+        //     echo "sama";
+        // }else{
+        //     echo "beda";
+        // }
+
+
         $data = array(
             'idtr' => $idtr,
             'kd_akun' => $this->input->post('kd_akun'),
