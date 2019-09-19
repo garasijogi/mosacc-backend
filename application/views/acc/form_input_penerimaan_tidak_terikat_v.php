@@ -36,7 +36,7 @@
                         <label for="kd_akun_PTT">Kode Akun</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="tanggal_PTT" id="tanggal_PTT" type="date">
+                        <input name="tanggal_PTT" id="tanggal_PTT" type="text" class="datepicker">
                         <label for="tanggal_PTT">Tanggal</label>
                     </div>
                 </div>
