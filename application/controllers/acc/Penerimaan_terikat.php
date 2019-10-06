@@ -7,6 +7,9 @@ class Penerimaan_terikat extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    if ($this->session->userdata('status') == NULL) {
+      redirect('homepage');
+    }
     $this->load->model('penerimaan_terikat_pending_model');
   }
 
@@ -20,6 +23,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_kotak_jumat()
   {
     $data['controller'] = 'infaq_kotak_jumat';
+    $data['submenu'] = 'peribadatan';
     $data['kd_akun'] = 12610;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -29,6 +33,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_PHBI()
   {
     $data['controller'] = 'infaq_PHBI';
+    $data['submenu'] = 'peribadatan';
     $data['kd_akun'] = 12620;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -38,6 +43,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_pengajian()
   {
     $data['controller'] = 'infaq_pengajian';
+    $data['submenu'] = 'peribadatan';
     $data['kd_akun'] = 12630;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -47,6 +53,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_ramadhan()
   {
     $data['controller'] = 'infaq_ramadhan';
+    $data['submenu'] = 'peribadatan';
     $data['kd_akun'] = 12640;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -57,6 +64,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_tpa_dan_tahfidz()
   {
     $data['controller'] = 'infaq_tpa_dan_tahfidz';
+    $data['submenu'] = 'pendidikan';
     $data['kd_akun'] = 12700;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -67,6 +75,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_dari_donatur()
   {
     $data['controller'] = 'infaq_dari_donatur';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12810;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -76,6 +85,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_kotak_dana_operasional()
   {
     $data['controller'] = 'infaq_kotak_dana_operasional';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12820;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -85,6 +95,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_kotak_dana_sosial()
   {
     $data['controller'] = 'infaq_kotak_dana_sosial';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12830;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -94,6 +105,7 @@ class Penerimaan_terikat extends CI_Controller
   function zakat_fitrah()
   {
     $data['controller'] = 'zakat_fitrah';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12840;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -103,6 +115,7 @@ class Penerimaan_terikat extends CI_Controller
   function fidyah()
   {
     $data['controller'] = 'fidyah';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12850;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -112,6 +125,7 @@ class Penerimaan_terikat extends CI_Controller
   function infaq_untuk_baksos()
   {
     $data['controller'] = 'infaq_untuk_baksos';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12860;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
@@ -121,6 +135,7 @@ class Penerimaan_terikat extends CI_Controller
   function waqaf()
   {
     $data['controller'] = 'waqaf';
+    $data['submenu'] = 'ZISWAF';
     $data['kd_akun'] = 12870;
     $kd_akun = $data['kd_akun'];
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);

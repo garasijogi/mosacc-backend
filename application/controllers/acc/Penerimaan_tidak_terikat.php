@@ -7,6 +7,9 @@ class Penerimaan_tidak_terikat extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    if ($this->session->userdata('status') == NULL) {
+      redirect('homepage');
+    }
     $this->load->model('penerimaan_tidak_terikat_pending_model');
   }
 
@@ -19,6 +22,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
   function infaq_peminjaman_peralatan()
   {
     $data['controller'] = 'infaq_peminjaman_peralatan';
+    $data['submenu'] = 'pendapatan sewa';
     $data['kd_akun'] = 11110;
     $kd_akun = $data['kd_akun'];
     $data['PTT'] = $this->penerimaan_tidak_terikat_pending_model->get($kd_akun);
@@ -28,6 +32,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
   function infaq_pemakaian_ruangan()
   {
     $data['controller'] = 'infaq_pemakaian_ruangan';
+    $data['submenu'] = 'pendapatan sewa';
     $data['kd_akun'] = 11120;
     $kd_akun = $data['kd_akun'];
     $data['PTT'] = $this->penerimaan_tidak_terikat_pending_model->get($kd_akun);
@@ -38,6 +43,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
   function pendapatan_parkir()
   {
     $data['controller'] = 'pendapatan_parkir';
+    $data['submenu'] = 'pendapatan parkir';
     $data['kd_akun'] = 11200;
     $kd_akun = $data['kd_akun'];
     $data['PTT'] = $this->penerimaan_tidak_terikat_pending_model->get($kd_akun);
@@ -48,6 +54,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
   function infaq_pengurusan_jenazah()
   {
     $data['controller'] = 'infaq_pengurusan_jenazah';
+    $data['submenu'] = 'infaq pengurusan jenazah';
     $data['kd_akun'] = 11300;
     $kd_akun = $data['kd_akun'];
     $data['PTT'] = $this->penerimaan_tidak_terikat_pending_model->get($kd_akun);
@@ -57,6 +64,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
   function pendapatan_non_halal()
   {
     $data['controller'] = 'pendapatan_non_halal';
+    $data['submenu'] = 'pendapatan non halal';
     $data['kd_akun'] = 11400;
     $kd_akun = $data['kd_akun'];
     $data['PTT'] = $this->penerimaan_tidak_terikat_pending_model->get($kd_akun);
@@ -66,6 +74,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
   function pendapatan_lainnya()
   {
     $data['controller'] = 'pendapatan_lainnya';
+    $data['submenu'] = 'pendapatan lainnya';
     $data['kd_akun'] = 11500;
     $kd_akun = $data['kd_akun'];
     $data['PTT'] = $this->penerimaan_tidak_terikat_pending_model->get($kd_akun);

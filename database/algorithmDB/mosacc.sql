@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Sep 2019 pada 20.14
+-- Waktu pembuatan: 06 Okt 2019 pada 13.25
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 5.6.36
 
@@ -21,41 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `mosacc`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `books`
---
-
-CREATE TABLE `books` (
-  `ID` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `publisher` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `books`
---
-
-INSERT INTO `books` (`ID`, `name`, `price`, `author`, `rating`, `publisher`) VALUES
-(1, 'Harry Potter And The Order Of The Phoenix', '10.99', 'J.K. Rowling', 9, 'Bloomsbury'),
-(2, 'Harry Potter And The Goblet Of Fire', '6.99', 'J.K Rowling', 8, 'Bloomsbury'),
-(3, 'Lord Of The Rings: The Fellowship Of The Ring', '8.99', 'J. R. R. Tolkien', 8, 'George Allen & Unwin'),
-(4, 'Lord Of The Rings: The Two Towers', '4.55', 'J. R. R. Tolkien', 8, 'George Allen & Unwin'),
-(5, 'Lord Of The Rings: The Return Of The King', '7.99', 'J. R. R. Tolkien', 9, 'George Allen & Unwin'),
-(6, 'End of Watch: A Novel', '5.00', 'Stephen King', 7, 'Scribner'),
-(7, 'Truly Madly Guilty', '4.55', 'Liane Moriarty', 6, 'Flatiron Books'),
-(8, 'All There Was', '3.99', 'John Davidson', 3, 'Newton'),
-(9, 'Mystery In The Eye', '8.44', 'E.L. Joseph', 8, 'Red Books'),
-(10, 'Neo Lights', '12.99', 'George Nord', 8, 'Heltower'),
-(11, 'Universe: History', '13.99', 'Albert Shoon', 4, 'Easy Books'),
-(12, 'Green Earth', '7.99', 'Ashleigh Turner', 4, 'Yellowhouse'),
-(13, 'Music Of The Ages', '3.83', 'James King', 3, 'Universe Co'),
-(14, 'Ancient Tea', '3.99', 'Jess Red', 8, 'Yellowhouse');
 
 -- --------------------------------------------------------
 
@@ -110,7 +75,8 @@ INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `no
 ('2019091312850003', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
 ('2019091312850004', '12850', '2019-09-13', 2555, 'jajangmantap', 'sdftds'),
 ('2019091912610001', '12610', '2019-09-19', 250, ' ', 'hauuu'),
-('2019092112850001', '12850', '2019-09-21', 3423, 'jajang', 'ergdsg');
+('2019092112850001', '12850', '2019-09-21', 3423, 'jajang', 'ergdsg'),
+('2019091512630001', '12630', '2019-09-15', 212323, ' ', 'KKKAD');
 
 -- --------------------------------------------------------
 
@@ -172,29 +138,61 @@ CREATE TABLE `tr22_beban_pending` (
 INSERT INTO `tr22_beban_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
 ('2019091522111001', '22111', '2019-09-10', 12321321, 'sadsadsadsad'),
 ('2019091522111002', '22111', '2019-09-10', 12321321, 'sadsadsadsad'),
-('2019091522115001', '22115', '2019-09-08', 2312312, 'efsdfsdf');
+('2019091522115001', '22115', '2019-09-08', 2312312, 'efsdfsdf'),
+('2019091722111001', '22111', '2019-09-17', 21313213, 'ewrfesfaegr'),
+('2019091722111002', '22111', '2019-09-25', 213213131, 'asfdcdwsvadc'),
+('2019091722111003', '22111', '2019-09-25', 2147483647, 'dsgvfsbd'),
+('2019091922231001', '22231', '2019-09-16', 32423432, 'dfdsfsd');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tr23_renov_bangun_pending`
+--
+
+CREATE TABLE `tr23_renov_bangun_pending` (
+  `idtr` varchar(16) DEFAULT NULL,
+  `kd_akun` varchar(5) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `nominal` float DEFAULT NULL,
+  `keterangan` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tr23_renov_bangun_pending`
+--
+
+INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
+('2019091523100001', '23100', '2019-09-15', 123214000, 'qwewqdsadfsa'),
+('2019091523100002', '23100', '2019-09-15', 123214000, 'qwewqdsadfsa'),
+('2019091523100003', '23100', '2019-09-23', 21321300000, 'wqewqdsads'),
+('2019091523100004', '23100', '2019-09-27', 2132130, 'asdsacxsac'),
+('2019091523100005', '23100', '2019-09-26', 21321300, 'adsadsa'),
+('2019091523100006', '23100', '2019-09-17', 3424320, 'sdfgsdfsd');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `NIP` varchar(25) NOT NULL,
+  `nama_user` varchar(256) NOT NULL,
+  `jenis_user` enum('accountant','manager') NOT NULL,
+  `password` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
+('258', 'Bima', 'accountant', 'bimamantappulak');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `books`
---
-ALTER TABLE `books`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeks untuk tabel `tr11_penerimaan_tidak_terikat_pending`
---
-ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
-  ADD PRIMARY KEY (`idtr`);
-
---
--- Indeks untuk tabel `tr12_penerimaan_terikat_pending`
---
-ALTER TABLE `tr12_penerimaan_terikat_pending`
-  ADD PRIMARY KEY (`idtr`);
 
 --
 -- Indeks untuk tabel `tr21_pembelian_pending`
@@ -209,14 +207,10 @@ ALTER TABLE `tr22_beban_pending`
   ADD PRIMARY KEY (`idtr`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indeks untuk tabel `user`
 --
-
---
--- AUTO_INCREMENT untuk tabel `books`
---
-ALTER TABLE `books`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`NIP`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

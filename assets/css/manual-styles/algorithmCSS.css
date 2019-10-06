@@ -1,3 +1,31 @@
 .card-title-text {
-    text-shadow: 2px 2px 4px #000000;
+	text-shadow: 2px 2px 4px #000000;
+}
+
+/* homepage */
+.card1:hover {
+	-moz-box-shadow: 0 0 50px blue;
+	-webkit-box-shadow: 0 0 50px blue;
+	box-shadow: 0 0 50px blue;
+}
+
+.card2:hover {
+	-moz-box-shadow: 0 0 50px blue;
+	-webkit-box-shadow: 0 0 50px blue;
+	box-shadow: 0 0 50px blue;
+}
+
+#rcorners1 {
+	border-radius: 25px;
+}
+
+.bg-mosque {
+	background: url('assets/images/mosque-vector.png') no-repeat center center fixed !important;
+	object-fit: cover !important;
+	margin:auto !important;
+	height: 600px !important;
+}
+
+.overflow-hidden {
+	overflow: hidden;
 }
