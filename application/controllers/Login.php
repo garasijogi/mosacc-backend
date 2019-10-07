@@ -23,19 +23,15 @@ class Login extends CI_Controller
 
   function login_user()
   {
-
-    $username = $this->input->post('username');
     $password = $this->input->post('password');
     $jenis_user = $this->input->get('jenis_user');
-    $jenis_user_tested = $this->input->post('jenis_user');
     $status = 'online';
     $data['user'] = $this->user_model->get_user();
     $masuk = 0;
     foreach ($data['user']->result() as $user) :
-      if ($user->NIP == $username && $user->password == $password && $user->jenis_user == $jenis_user_tested) {
+      if ($user->password == $password && $user->jenis_user == $jenis_user) {
         $masuk = 1;
         $arraydata = array(
-          'nip' => $user->NIP,
           'jenis_user' => $user->jenis_user,
           'nama_user' => $user->nama_user,
           'status' => $status
@@ -44,11 +40,17 @@ class Login extends CI_Controller
       }
     endforeach;
 
-    if ($masuk == 1 && $jenis_user_tested == 'accountant') {
+    if ($masuk == 1 && $jenis_user == 'akuntan') {
       redirect('acc/dashboard');
-    } else {
-      // redirect('welcome/login');
-      redirect('login?jenis_user=' . $jenis_user_tested . '&&masuk=0');
+    }
+    if ($masuk == 1 && $jenis_user == 'manajer') {
+      redirect('mgr/dashboard');
+    } 
+    if ($masuk == 0 && $jenis_user == 'akuntan') {
+      redirect('homepage?masuk=0&&jenis_user=akuntan');
+    }
+    if ($masuk == 0 && $jenis_user == 'manajer') {
+      redirect('homepage?masuk=0&&jenis_user=manajer');
     }
   }
 

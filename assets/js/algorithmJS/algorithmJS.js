@@ -12,6 +12,13 @@ function showPass() {
 	} else {
 		x.type = "password";
 	}
+
+	var y = document.getElementById("password2");
+	if (y.type === "password") {
+		y.type = "text";
+	} else {
+		y.type = "password";
+	}
 }
 
 function modalSucesssRegister() {
@@ -20,3 +27,25 @@ function modalSucesssRegister() {
 		$('#modal1').modal('open');
 	});
 }
+
+//modal salah password
+function modalSalahPasswordAkuntan() {
+	$(document).ready(function () {
+		$('#login-akuntan').modal();
+		$('#login-akuntan').modal('open');
+	});
+}
+function modalSalahPasswordManajer() {
+	$(document).ready(function () {
+		$('#login-manajer').modal();
+		$('#login-manajer').modal('open');
+	});
+}
+
+//submit login akuntan dan manajer
+$("#login-akuntan-btn").click(function () {
+	$("#form-login-akuntan").submit();
+});
+$("#login-manajer-btn").click(function () {
+	$("#form-login-manajer").submit();
+});

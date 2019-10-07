@@ -4,15 +4,15 @@
 
 /* homepage */
 .card1:hover {
-	-moz-box-shadow: 0 0 50px blue;
-	-webkit-box-shadow: 0 0 50px blue;
-	box-shadow: 0 0 50px blue;
+	-moz-box-shadow: 0 0 50px grey;
+	-webkit-box-shadow: 0 0 50px grey;
+	box-shadow: 0 0 50px grey;
 }
 
 .card2:hover {
-	-moz-box-shadow: 0 0 50px blue;
-	-webkit-box-shadow: 0 0 50px blue;
-	box-shadow: 0 0 50px blue;
+	-moz-box-shadow: 0 0 50px grey;
+	-webkit-box-shadow: 0 0 50px grey;
+	box-shadow: 0 0 50px grey;
 }
 
 #rcorners1 {
@@ -29,3 +29,23 @@
 .overflow-hidden {
 	overflow: hidden;
 }
+
+.modal {
+	position: fixed;
+	left: 0;
+	right: 0;
+	background-color: #fafafa;
+	padding: 0;
+	max-height: 70%;
+	width: 40%;
+	margin: auto;
+	overflow-y: auto;
+	border-radius: 20px;
+	will-change: top, opacity;
+	max-height: 900px !important;
+  }
+  
+  .modal:focus {
+	outline: none;
+  }
+  
