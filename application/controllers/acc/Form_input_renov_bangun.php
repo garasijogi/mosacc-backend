@@ -14,6 +14,7 @@ class Form_input_renov_bangun extends CI_Controller {
     public function index()
     {
         $data['kd_akun'] = $this->input->get('kd_akun');
+        $data['judul'] = $this->form_input_pengeluaran_m->getNamaAkun($this->input->get('kd_akun'));
         $data['transaksi'] = $this->form_input_pengeluaran_m->getSatuJenisAkun($data['kd_akun'], $this->table);
         $this->load->view('acc/form_input_renov_bangun_v', $data);
     }

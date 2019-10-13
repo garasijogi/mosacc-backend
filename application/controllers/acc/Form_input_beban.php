@@ -6,19 +6,19 @@ class Form_input_beban extends CI_Controller {
 
     public $table = "tr22_beban_pending";
 
-    function __construct(){
+    function __construct() {
         parent::__construct();
         $this->load->model('form_input_pengeluaran_m');
     }
     
-    public function index()
-    {
+    public function index() {
         $data['kd_akun'] = $this->input->get('kd_akun');
+        $data['judul'] = $this->form_input_pengeluaran_m->getNamaAkun($this->input->get('kd_akun'));
         $data['transaksi'] = $this->form_input_pengeluaran_m->getSatuJenisAkun($data['kd_akun'], $this->table);
         $this->load->view('acc/form_input_beban_v', $data);
     }
     
-    public function proses(){
+    public function proses() {
         //membuat id
         $tanggal = $this->input->post('tanggal');
         $tgl_temp = explode("-", $tanggal);
