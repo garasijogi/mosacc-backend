@@ -138,7 +138,7 @@
 					</table>
 				</div>
 			</div>
-			<!-- /tabel -->			
+			<!-- /tabel -->
 		</section>
 		<!-- /content -->
 

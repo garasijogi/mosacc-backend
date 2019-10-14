@@ -28,3 +28,8 @@ $(document).ready(function () {
         format: 'yyyy-mm-dd'
     });
 });
+
+// Tabs Initiation
+$(document).ready(function () {
+    $('.tabs').tabs();
+});
