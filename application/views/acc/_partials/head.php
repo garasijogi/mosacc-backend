@@ -9,7 +9,9 @@
     <link href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/manual-styles/styles.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/manual-styles/algorithmCSS.css'); ?>">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/manual-styles/ryu.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/material-icons/material-icons.css'); ?>">
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mosacc</title>
 </head>

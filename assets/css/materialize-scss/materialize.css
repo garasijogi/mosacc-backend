@@ -6530,17 +6530,28 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
+.row {
+  margin-bottom: 0px !important; }
+
+.wrapper-sidenav {
+  position: fixed !important;
+  z-index: 117000000; }
+
 #sidenav {
   height: 100vh;
   background-color: #555;
   overflow: hidden;
-  width: 50px;
+  width: 60px;
   position: absolute;
   transition: 0.5s;
   z-index: 99;
   color: #fff; }
-  #sidenav h4 {
-    margin: 10px !important; }
+  #sidenav .logo {
+    top: 20px !important; }
+    #sidenav .logo h4 {
+      margin-top: 15px !important;
+      margin-left: 80px !important;
+      font-size: 2.1rem; }
   #sidenav:hover {
     width: 250px; }
   #sidenav a {
@@ -6552,6 +6563,10 @@ input[type=range]::-ms-thumb {
     padding: 20px; }
   #sidenav a:hover {
     background-color: teal; }
+  #sidenav .collapsible-header:hover {
+    padding-left: -10px; }
+  #sidenav .collapsible-header i {
+    padding-left: -10px; }
 
 .nav-wrapper {
   padding: 0 30px;
@@ -6560,4 +6575,179 @@ input[type=range]::-ms-thumb {
 
 .content {
   margin: 0;
-  padding-left: 50px; }
+  padding-left: 60px;
+  position: relative; }
+  .content form {
+    margin-bottom: 30px !important; }
+  .content .collapsible-body {
+    position: absolute; }
+
+.card a p {
+  color: #000; }
+
+.card .card-title {
+  text-shadow: #222 2px 1.5px; }
+
+.modal .modal-content ul li {
+  color: #555 !important;
+  height: 35px;
+  transition: 0.1s; }
+  .modal .modal-content ul li:hover {
+    color: #fff !important;
+    background-color: teal; }
+
+.chart-wrapper {
+  padding-left: 60px;
+  padding-bottom: 30px; }
+  .chart-wrapper #myChart {
+    height: 500px; }
+
+.breadcrumb-wrapper {
+  position: relative;
+  margin-left: 24px;
+  height: 50px; }
+  .breadcrumb-wrapper .breadcrumb {
+    display: flex !important;
+    color: teal !important;
+    align-items: center; }
+    .breadcrumb-wrapper .breadcrumb::before {
+      color: teal !important; }
+    .breadcrumb-wrapper .breadcrumb:last-child {
+      font-weight: bolder !important;
+      color: #006767 !important; }
+
+#landing-page-content {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../background.jpg");
+  background-size: cover; }
+  #landing-page-content .sidenav-trigger i {
+    color: #fff; }
+  #landing-page-content .landing-content {
+    text-align: center; }
+    #landing-page-content .landing-content .landing-header {
+      height: 160px;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #fff; }
+      #landing-page-content .landing-content .landing-header .landing-header-components {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%); }
+    #landing-page-content .landing-content a {
+      color: #5f5f5f; }
+    #landing-page-content .landing-content .landing-card-manager {
+      position: relative;
+      display: inline-block;
+      width: 400px;
+      height: 250px;
+      border-radius: 15px;
+      background-color: salmon;
+      margin: 20px; }
+      #landing-page-content .landing-content .landing-card-manager h4 {
+        margin: 0; }
+    #landing-page-content .landing-content .landind-card-accounting {
+      position: relative;
+      display: inline-block;
+      width: 400px;
+      height: 250px;
+      border-radius: 15px;
+      background-color: snow;
+      margin: 20px; }
+      #landing-page-content .landing-content .landind-card-accounting h4 {
+        margin: 0; }
+    #landing-page-content .landing-content #login-manajer {
+      border-radius: 20px; }
+      #landing-page-content .landing-content #login-manajer .modal-content {
+        color: #5f5f5f;
+        padding: 15px; }
+    #landing-page-content .landing-content #login-akuntan {
+      border-radius: 20px; }
+      #landing-page-content .landing-content #login-akuntan .modal-content {
+        padding: 15px; }
+    #landing-page-content .landing-content .modal-footer a {
+      font-size: 1.5rem;
+      color: #555; }
+
+.profil-wrapper {
+  position: relative;
+  margin: 20px;
+  height: 100vh; }
+  .profil-wrapper header {
+    position: relative;
+    background-color: #f4f4f4;
+    color: #666; }
+    .profil-wrapper header img {
+      position: relative;
+      width: 100px;
+      height: auto; }
+    .profil-wrapper header h4 {
+      position: relative;
+      display: inline;
+      margin: 0 15px; }
+  .profil-wrapper .profil-nav {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 90vh; }
+    .profil-wrapper .profil-nav ul {
+      position: relative;
+      display: inline-block;
+      margin: 0; }
+      .profil-wrapper .profil-nav ul a {
+        top: 0 !important;
+        height: 50px;
+        width: 200px;
+        align-items: center;
+        display: flex;
+        color: #aaa;
+        padding: 10px 15px;
+        border-left: 5px solid #fff; }
+        .profil-wrapper .profil-nav ul a:hover {
+          color: teal;
+          border-left: 5px solid teal; }
+      .profil-wrapper .profil-nav ul .profil-nav-active {
+        color: teal;
+        border-left: 5px solid teal; }
+  .profil-wrapper .profil-content {
+    position: absolute;
+    display: inline-block;
+    margin-top: 0px;
+    height: 100vh;
+    right: 0; }
+    .profil-wrapper .profil-content .profil-contents-wrapper {
+      position: relative;
+      margin: 5px 2px 50px 5px;
+      padding: 0 8px;
+      width: 48vw;
+      border-bottom: 2px solid #aaa; }
+      .profil-wrapper .profil-content .profil-contents-wrapper .head-content {
+        padding-left: 0 !important;
+        text-align: center;
+        margin-bottom: 20px; }
+        .profil-wrapper .profil-content .profil-contents-wrapper .head-content h4,
+        .profil-wrapper .profil-content .profil-contents-wrapper .head-content h5 {
+          margin: 5px 5px 5px 0;
+          color: #666; }
+      .profil-wrapper .profil-content .profil-contents-wrapper .header {
+        background-color: #f4f4f4;
+        color: #666;
+        height: 30px;
+        margin: 15px 0 35px -11.50px !important;
+        align-items: center; }
+        .profil-wrapper .profil-content .profil-contents-wrapper .header h5 {
+          margin: 0; }
+        .profil-wrapper .profil-content .profil-contents-wrapper .header h6 {
+          font-style: italic;
+          margin: 10px 10px; }
+      .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti {
+        color: #aaa;
+        border-bottom: 1px solid #d9d9d9;
+        margin: 5px 0 10px 0; }
+      .profil-wrapper .profil-content .profil-contents-wrapper .profil-nilai {
+        font-weight: bold;
+        margin-bottom: 35px; }
