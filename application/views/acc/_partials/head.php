@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables/jquery.dataTables.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/manual-styles/styles.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/manual-styles/algorithmCSS.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/manual-styles/ryu.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/material-icons/material-icons.css'); ?>">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

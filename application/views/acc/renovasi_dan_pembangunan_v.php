@@ -15,7 +15,6 @@
 
 		<div>
 			<!-- navbar&&sidebar -->
-
 			<?php $this->load->view("acc/_partials/navbar"); ?>
 			<!-- /navbar&&sidebar -->
 		</div>

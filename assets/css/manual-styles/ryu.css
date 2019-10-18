@@ -1,0 +1,81 @@
+a.card-status {
+    height: 300px !important;
+    padding: 0px !important;
+}
+
+.tab.col.card-tab{
+    width: 175px;
+}
+
+body{
+    overflow:scroll;
+}
+
+.card-container{
+    margin-top: 6%;
+    padding-left: 10%;
+}
+
+.card-container.border-left{
+    border-left: 1px solid;
+}
+
+.card-judul {
+    padding: 0px;
+    text-align: left;
+    font-size: 90%;
+    font-weight: bold;
+
+}
+
+.card-nominal{
+	text-align: left;
+    padding: 0px;
+    font-size: 170%;
+
+}
+
+.card-lastChange{
+	text-align: left;
+    padding: 0px;
+    margin: 0px;
+    font-size: 70%;
+    line-height: 175%;
+}
+
+.dashChart{
+    height: 100%;
+    width: 100%;
+}
+
+.dashchart-innerContainer {
+    padding: 1.5% !important;
+}
+
+.dashChart-container {
+    padding: 2%;
+    height: max-content;
+    /* overflow: auto; */
+}
+
+/* padding margin 0 */
+.pm-0{
+    padding: 0px;
+    margin: 0px;
+}
+
+.tab-content{
+    height: 300px;
+}
+
+.tabs-content.carousel.carousel-item{
+    height:200%;
+}
+
+.tabs.tabs-cardContainer{
+    height: 75px;
+}
+
+.carousel{
+    height: 1000px !important;
+}

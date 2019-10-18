@@ -31,5 +31,39 @@ $(document).ready(function () {
 
 // Tabs Initiation
 $(document).ready(function () {
-    $('.tabs').tabs();
+    $('.tabs').tabs({
+        swipeable: true,
+        responsiveThreshold: 1920
+    });
+});
+
+// Dashboard Chart -------------------------------------
+// label buat di axis X
+// console.log(bulan);
+// //buat menggambar garis di graphnya
+// console.log(sales_order);
+
+var ctx = $('#dChart');
+var dChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [21,22],
+        datasets: [
+            {
+                data: [20, 10],
+                label: "Sales Order",
+                borderColor: "#ffff00",
+                backgroundColor: "#9b8400",
+                fill: true
+            }
+        ]
+    },
+    options: {
+        responsive: false
+    }
+});
+
+//initialization
+$(document).ready(function () {
+    $('select').formSelect();
 });
