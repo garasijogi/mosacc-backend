@@ -38,8 +38,8 @@
 				<div class="collapsible-header"><span><i class="material-icons">class</i></span>Laporan</div>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="laporan-keuangan.html">Laporan Keuangan</a></li>
-						<li><a href="buku-besar-utama.html">Buku Besar Utama</a></li>
+						<li><a href="<?php echo base_url('acc/laporan_keuangan'); ?>">Laporan Keuangan</a></li>
+						<li><a href="<?php echo base_url('acc/buku_besar_utama'); ?>">Buku Besar Utama</a></li>
 					</ul>
 				</div>
 			</li>
