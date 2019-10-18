@@ -98,7 +98,7 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
+                    <h6 class="bold-font"><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
                     <table>
                         <tr>
                             <th>Tanggal</th>
