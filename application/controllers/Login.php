@@ -57,7 +57,6 @@ class Login extends CI_Controller
   function log_out()
   {
     $arraydata = array(
-      'nip',
       'jenis_user',
       'nama_user',
       'status'

@@ -9,8 +9,8 @@ class Beban extends CI_Controller
         parent::__construct();
         if ($this->session->userdata('status') == NULL) {
             redirect('homepage');
-        } 
-            $this->load->model('form_input_pengeluaran_m');
+        }
+        $this->load->model('form_input_pengeluaran_m');
     }
 
     public function index()

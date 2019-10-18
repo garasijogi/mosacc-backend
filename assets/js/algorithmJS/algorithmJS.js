@@ -35,6 +35,7 @@ function modalSalahPasswordAkuntan() {
 		$('#login-akuntan').modal('open');
 	});
 }
+
 function modalSalahPasswordManajer() {
 	$(document).ready(function () {
 		$('#login-manajer').modal();
@@ -48,4 +49,135 @@ $("#login-akuntan-btn").click(function () {
 });
 $("#login-manajer-btn").click(function () {
 	$("#form-login-manajer").submit();
+});
+
+//select materialize
+$(document).ready(function () {
+	$('select').formSelect();
+});
+
+//print
+//table arus kas
+$(document).ready(function () {
+	var title = $("#title-print").text();
+	var table = $('#table-arus-kas').DataTable({
+		dom: 'Bfrtip',
+		"paging": false,
+		"ordering": false,
+		"info": false,
+		"filter": false,
+		buttons: [{
+				extend: 'excel',
+				title: title
+			},
+			{
+				extend: 'pdf',
+				filename: 'mosacc-exported',
+				title: title,
+				customize: function (doc) {
+					// doc.styles.title = {
+					// 	color: 'black',
+					// 	fontSize: '20',
+					// 	alignment: 'center'
+					// }
+					// doc.styles.tableHeader = {
+					// 	color: 'red',
+					// 	background: 'blue',
+					// 	alignment: 'left'
+					// }
+					// doc.styles.tableBodyEven = {
+					// 	background: 'yellow',
+					// 	alignment: 'left'
+					// }
+					// doc.styles.tableBodyOdd = {
+					// 	background: 'blue',
+					// 	alignment: 'left'
+					// }
+					// doc.styles.tableFooter = {
+					// 	background: 'blue',
+					// 	alignment: 'left'
+					// }
+					// doc.styles['td:nth-child(1)'] = {
+					// 	background: 'blue',
+					// 	alignment: 'left'
+					// width: '1000px',
+					// 'max-width': '100px'
+					// }
+				}
+			}
+		],
+		table: {
+			// headers are automatically repeated if the table spans over multiple pages
+			// you can declare how many rows should be treated as headers
+			headerRows: 1,
+			widths: ['*', 'auto', 100, '*'],
+
+			body: [
+				['First', 'Second', 'Third', 'The last one'],
+				['Value 1', 'Value 2', 'Value 3', 'Value 4'],
+				[{
+					text: 'Bold value',
+					bold: true
+				}, 'Val 2', 'Val 3', 'Val 4']
+			]
+		}
+	});
+
+
+
+	$("#export-pdf").on("click", function () {
+		table.button('.buttons-pdf').trigger();
+	});
+	$("#export-excel").on("click", function () {
+		table.button('.buttons-excel').trigger();
+	});
+});
+
+//table jurnal umum
+$(document).ready(function () {
+	var title = $("#title-print").text();
+	var table = $('#table-jurnal-umum').DataTable({
+		dom: 'Bfrtip',
+		"paging": false,
+		"info": false,
+		"filter": false,
+		buttons: [{
+				extend: 'excel',
+				title: title,
+				customize: function (xlsx) {
+					var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+					// jQuery selector to add a border
+					$('row c', sheet).attr('s', '25');
+				}
+			},
+			{
+				extend: 'pdf',
+				filename: 'mosacc-exported',
+				title: title
+			}
+		],
+		table: {
+			headerRows: 1,
+			widths: ['*', 'auto', 100, '*'],
+
+			body: [
+				['First', 'Second', 'Third', 'The last one'],
+				['Value 1', 'Value 2', 'Value 3', 'Value 4'],
+				[{
+					text: 'Bold value',
+					bold: true
+				}, 'Val 2', 'Val 3', 'Val 4']
+			]
+		}
+	});
+
+
+
+	$("#export-pdf").on("click", function () {
+		table.button('.buttons-pdf').trigger();
+	});
+	$("#export-excel").on("click", function () {
+		table.button('.buttons-excel').trigger();
+	});
 });

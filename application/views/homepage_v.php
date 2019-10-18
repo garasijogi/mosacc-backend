@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 center teal-text">
-                <h6>Choose your position :</h6>
+                <h6>Pilih posisi anda :</h6>
             </div>
         </div>
         <div class="row center">
@@ -58,7 +58,7 @@
             <h4>Akuntan</h4>
             <form action="<?php echo base_url('login/login_user?jenis_user=akuntan'); ?>" method="post" id="form-login-akuntan">
                 <div class="input-field col s3">
-                    <input id="password" type="password" name="password" class="validate" required>
+                    <input id="password" type="password" name="password" required autofocus>
                     <label for="password">Masukkan Password</label>
                 </div>
                 <label>
@@ -86,7 +86,7 @@
             <h4>Manajer</h4>
             <form action="<?php echo base_url('login/login_user?jenis_user=manajer'); ?>" method="post" id="form-login-manajer">
                 <div class="input-field col s3">
-                    <input id="password2" type="password" class="validate" required>
+                    <input id="password2" type="password" autofocus required>
                     <label for="password2">Masukkan Password</label>
                 </div>
                 <label>

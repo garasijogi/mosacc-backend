@@ -22,7 +22,7 @@
 .bg-mosque {
 	background: url('assets/images/mosque-vector.png') no-repeat center center fixed !important;
 	object-fit: cover !important;
-	margin:auto !important;
+	margin: auto !important;
 	height: 600px !important;
 }
 
@@ -43,9 +43,29 @@
 	border-radius: 20px;
 	will-change: top, opacity;
 	max-height: 900px !important;
-  }
-  
-  .modal:focus {
+}
+
+.modal:focus {
 	outline: none;
-  }
-  
+}
+
+.no-shadows {
+	box-shadow: none !important;
+}
+
+div.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	padding-top: 1px;
+	background-color: white;
+}
+
+.table-borderless {
+	border-bottom: 0px !important;
+	border-collapse: unset !important;
+}
+
+.font-bold {
+	font-weight: bold !important;
+}
