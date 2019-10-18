@@ -1,14 +1,19 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
-class Form_input_pembelian extends CI_Controller {
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+class Form_input_pembelian extends CI_Controller
+{
 
     public $table = "tr21_pembelian_pending";
 
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
+        if ($this->session->userdata('status') == NULL) {
+            redirect('homepage');
+        }
         $this->load->model('form_input_pengeluaran_m');
     }
-    
+
     public function index()
     {
         $data['kd_akun'] = $this->input->get('kd_akun');
@@ -16,11 +21,12 @@ class Form_input_pembelian extends CI_Controller {
         $data['transaksi'] = $this->form_input_pengeluaran_m->getSatuJenisAkun($data['kd_akun'], $this->table);
         $this->load->view('acc/form_input_pembelian_v', $data);
     }
-    
-    public function proses(){
+
+    public function proses()
+    {
         //membuat id
         //buat format tanggal
-        $kd_temp = date("Ymd").$this->input->post('kd_akun');       
+        $kd_temp = date("Ymd") . $this->input->post('kd_akun');
         //kueri ambil jumlah row yang sama
         $cari = $this->db->query("SELECT * FROM $this->table WHERE idtr LIKE '$kd_temp%%%'");
         //ambil jumlah row
@@ -46,11 +52,10 @@ class Form_input_pembelian extends CI_Controller {
 
         $this->form_input_pengeluaran_m->save($data, $this->table);
 
-        $ke_halaman = 'acc/form_input_pembelian?kd_akun='.$data['kd_akun'];
+        $ke_halaman = 'acc/form_input_pembelian?kd_akun=' . $data['kd_akun'];
 
-        redirect($ke_halaman,'refresh');
+        redirect($ke_halaman, 'refresh');
     }
 }
 
 /* End of file  Form_input.php */
-

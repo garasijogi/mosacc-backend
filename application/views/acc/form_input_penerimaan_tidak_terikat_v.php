@@ -20,6 +20,16 @@
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- breadcrumb -->
+    <div class="content">
+        <div class="col s12 breadcrumb-wrapper valign-wrapper">
+            <a href="<?php echo base_url('acc/penerimaan_tidak_terikat'); ?>" class="breadcrumb">Penerimaan Tidak Terikat</a>
+            <a href="<?php echo base_url('acc/penerimaan_tidak_terikat'); ?>" class="breadcrumb"><?php echo ucwords($submenu); ?></a>
+            <a href="<?php echo base_url('acc/penerimaan_tidak_terikat/'.$controller); ?>" class="breadcrumb"><?php echo ucwords(str_replace("_", " ", $controller)); ?></a>
+        </div>
+    </div>
+    <!-- breadcrumb -->
+
     <!-- content -->
     <div class="container">
         <div class="row">

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
     
@@ -11,7 +11,6 @@ class Dashboard extends CI_Controller {
         // $this->load->model('dashboard_m');
     }
     
-
     public function index()
     {
         // echo $this->dashboard_m->getDate();
@@ -20,7 +19,5 @@ class Dashboard extends CI_Controller {
         // $data['controller'] = 'Dashboard';
         $this->load->view('acc/dashboard_v.php');
     }
-    
-}
-;
+};
 /* End of file  index.php */
