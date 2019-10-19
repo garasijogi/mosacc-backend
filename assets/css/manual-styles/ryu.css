@@ -3,10 +3,6 @@ a.card-status {
     padding: 0px !important;
 }
 
-.tab.col.card-tab{
-    width: 175px;
-}
-
 body{
     overflow:scroll;
 }
@@ -32,7 +28,6 @@ body{
 	text-align: left;
     padding: 0px;
     font-size: 170%;
-
 }
 
 .card-lastChange{
@@ -43,13 +38,17 @@ body{
     line-height: 175%;
 }
 
+.carousel {
+	height: 600px !important;
+}
+
 .dashChart{
     height: 100%;
     width: 100%;
 }
 
 .dashchart-innerContainer {
-    padding: 1.5% !important;
+    padding: 4% !important;
 }
 
 .dashChart-container {
@@ -76,6 +75,6 @@ body{
     height: 75px;
 }
 
-.carousel{
-    height: 1000px !important;
+.tab.col.card-tab {
+	width: 175px;
 }
