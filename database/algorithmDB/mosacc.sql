@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Okt 2019 pada 12.31
+-- Waktu pembuatan: 20 Okt 2019 pada 09.44
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 5.6.36
 
@@ -44,10 +44,10 @@ CREATE TABLE `rules` (
 INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
 ('11110', 'Pendapatan Sewa', 'Infaq Peminjaman Peralatan', 'Kas', 'Infaq Peminjaman Peralatan'),
 ('11120', 'Pendapatan Sewa', 'Infaq Pemakaian Ruangan', 'Kas', 'Infaq Pemakaian Ruangan'),
-('11200', 'Pendapatan Parkir', 'Pendapatan Parkir', 'Kas\r\n', 'Pendapatan Parkir\r\n'),
-('11300', 'Infaq Pengurusan Jenazah', 'Infaq Pengurusan Jenazah', 'Kas\r\n', 'Infaq Pengurusan Jenazah'),
+('11200', 'Pendapatan Parkir', 'Pendapatan Parkir', 'Kas', 'Pendapatan Parkir\r\n'),
+('11300', 'Infaq Pengurusan Jenazah', 'Infaq Pengurusan Jenazah', 'Kas', 'Infaq Pengurusan Jenazah'),
 ('11400', 'Pendapatan Non-Halal', 'Pendapatan Non-Halal', 'Kas\r\n', 'Pendapatan Non-Halal'),
-('11500', 'Pendapatan Lainnya', 'Pendapatan Lainnya', 'Kas\r\n', 'Pendapatan Lainnya'),
+('11500', 'Pendapatan Lainnya', 'Pendapatan Lainnya', 'Kas', 'Pendapatan Lainnya'),
 ('12610', 'Peribadatan', 'Infaq Kotak Jumat', 'Kas', 'Infaq Kotak Jumat'),
 ('12620', 'Peribadatan', 'Infaq Perayaan Hari Besar Islam', 'Kas', 'Infaq Perayaan Hari Besar Islam'),
 ('12630', 'Peribadatan', 'Infaq Pengajian', 'Kas', 'Infaq Pengajian'),
@@ -113,7 +113,8 @@ CREATE TABLE `tr11_penerimaan_tidak_terikat_pending` (
 
 INSERT INTO `tr11_penerimaan_tidak_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
 ('2019091611110001', '11110', '2019-09-16', 250000, 'Jack', 'Peminjaman peralatan sound'),
-('2019101511120001', '11120', '2019-10-15', 378000, 'Hideyoshi', 'kampang');
+('2019100211120001', '11120', '2019-10-02', 4000000, 'Hideyoshi', 'test ruangan'),
+('2019100311300001', '11300', '2019-10-03', 2000000, 'Hideyoshi', 'mantap');
 
 -- --------------------------------------------------------
 
@@ -136,21 +137,7 @@ CREATE TABLE `tr12_penerimaan_terikat_pending` (
 --
 
 INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019090912610001', '12610', '2019-09-09', 4000000, ' ', 'Jumat minggu 1'),
-('2019091012610001', '12610', '2019-09-10', 213123, ' ', 'qweqweqwe'),
-('2019091012620001', '12620', '2019-09-10', 2400, '', 'jajajaja'),
-('2019091212610001', '12610', '2019-09-12', 2100, '', 'apa aja'),
-('2019091212700001', '12700', '2019-09-12', 25566, 'jajang', 'gasgsg'),
-('2019091212700002', '12700', '2019-09-12', 244, 'sher', 'tdsatgsd'),
-('2019091212700003', '12700', '2019-09-12', 344, 'ahah', 'gdsg'),
-('2019091312850001', '12850', '2019-09-13', 3535532, 'jajanghaa', 'gaga'),
-('2019091312850002', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
-('2019091312850003', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
-('2019091312850004', '12850', '2019-09-13', 2555, 'jajangmantap', 'sdftds'),
-('2019091512630001', '12630', '2019-09-15', 212323, ' ', 'KKKAD'),
-('2019091912610001', '12610', '2019-09-19', 250, ' ', 'hauuu'),
-('2019092112850001', '12850', '2019-09-21', 3423, 'jajang', 'ergdsg'),
-('2019101612640001', '12640', '2019-10-16', 670000, ' ', 'hiyahiyahiya');
+('2019091012610001', '12610', '2019-09-10', 213123, ' ', 'qweqweqwe');
 
 -- --------------------------------------------------------
 
@@ -177,8 +164,7 @@ CREATE TABLE `tr21_pembelian_pending` (
 --
 
 INSERT INTO `tr21_pembelian_pending` (`idtr`, `kd_akun`, `tanggal`, `jenis`, `merek`, `nomor_seri`, `jumlah`, `keterangan`, `harga_satuan`, `total_harga`) VALUES
-('2019101721100001', '21100', '2019-10-01', 'Mobil', 'Honda', 'Jazz 220', 1, 'Untuk kebutuhan acara studi banding', 400000000, 400000000),
-('2019101721100002', '21100', '2019-10-02', 'Motor', 'Suzuki', 'Korakora', 2, 'mantap lah', 20000000, 40000000);
+('2019101721100001', '21100', '2019-10-01', 'Mobil', 'Honda', 'Jazz 220', 1, 'Untuk kebutuhan acara studi banding', 5000000, 5000000);
 
 -- --------------------------------------------------------
 
