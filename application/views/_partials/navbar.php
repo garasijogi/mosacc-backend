@@ -1,3 +1,4 @@
+<!-- navbar -->
 <div class="navbar-fixed">
 	<nav id="navigation">
 		<div class="nav-wrapper">

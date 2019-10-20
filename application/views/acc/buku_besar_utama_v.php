@@ -19,16 +19,20 @@
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <div class="content">
 
         <div class="row">
-
-            <div class="col s12 m4">
+            <div class="col s12 m1"></div>
+            <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-sewa.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-jurnal-umum.png'); ?>" width="400" height="250">
                         <span class="card-title card-title-text">Jurnal Umum</span>
-                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/jurnal_umum'); ?>"><i class="material-icons">menu_open</i></a>
+                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/jurnal_umum'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient
@@ -37,12 +41,12 @@
                 </div>
             </div>
 
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-parkir.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-buku-besar.jpg'); ?>" width="400" height="250">
                         <span class="card-title card-title-text">Buku Besar</span>
-                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/buku_besar'); ?>"><i class="material-icons">menu_open</i></a>
+                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/buku_besar'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient
@@ -51,12 +55,12 @@
                 </div>
             </div>
 
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-infaq-pengurusan-jenazah.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-neraca-saldo.jpg'); ?>" width="400" height="250">
                         <span class="card-title card-title-text">Neraca Saldo</span>
-                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/neraca_saldo'); ?>"><i class="material-icons">menu_open</i></a>
+                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/neraca_saldo'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient

@@ -19,11 +19,15 @@ $this->load->view("acc/_partials/head"); ?>
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <!-- content -->
     <div class="container">
         <div class="sticky">
             <div class="row center">
-                <h5><b>Jurnal Umum</b></h5>
+                <h5><b>Buku Besar</b></h5>
             </div>
             <!-- laporan nav -->
             <?php $this->load->view('acc/_partials/laporan-nav.php'); ?>
@@ -31,7 +35,7 @@ $this->load->view("acc/_partials/head"); ?>
         </div>
 
         <!-- view -->
-        <div class="row center">
+        <div class="row center" id="printed">
             <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6> <br>
 
             <!-- DEBIT -->
@@ -51,14 +55,14 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
                     <table>
-                        <tr>
-                            <th style="width:25%">Tanggal</th>
-                            <th style="width:30%">Transaksi</th>
-                            <th style="width:10%">Debit</th>
-                            <th style="width:10%">Kredit</th>
-                            <th style="width:25%">Jumlah</th>
+                        <tr class="teal white-text">
+                            <th style="width:20%">Tanggal</th>
+                            <th style="width:20%">Transaksi</th>
+                            <th style="width:20%">Debit</th>
+                            <th style="width:20%">Kredit</th>
+                            <th style="width:20%">Jumlah</th>
                         </tr>
                         <?php for ($i = 0; $i < count($contain_DPT); $i++) {
                                     foreach ($contain_DPT[$i]->result() as $cdpt) :
@@ -66,9 +70,9 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                         <td></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
@@ -98,14 +102,14 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6 class="bold-font"><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
                     <table>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Transaksi</th>
-                            <th>Debit</th>
-                            <th>Kredit</th>
-                            <th>Jumlah</th>
+                        <tr class="teal white-text">
+                            <th style="width:20%">Tanggal</th>
+                            <th style="width:20%">Transaksi</th>
+                            <th style="width:20%">Debit</th>
+                            <th style="width:20%">Kredit</th>
+                            <th style="width:20%">Jumlah</th>
                         </tr>
                         <?php for ($i = 0; $i < count($contain_DPTT); $i++) {
                                     foreach ($contain_DPT[$i]->result() as $cdpt) :
@@ -113,9 +117,9 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                         <td></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
@@ -146,14 +150,14 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6><?php echo $nama_sub . " (" . $xkdk . ")"; ?></h6>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $xkdk . ")"; ?></h6>
                     <table>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Transaksi</th>
-                            <th>Debit</th>
-                            <th>Kredit</th>
-                            <th>Jumlah</th>
+                        <tr class="teal white-text">
+                            <th style="width:20%">Tanggal</th>
+                            <th style="width:20%">Transaksi</th>
+                            <th style="width:20%">Debit</th>
+                            <th style="width:20%">Kredit</th>
+                            <th style="width:20%">Jumlah</th>
                         </tr>
                         <?php for ($i = 0; $i < count($contain_KP); $i++) {
                                     foreach ($contain_KP[$i]->result() as $cdpt) :
@@ -161,9 +165,9 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->total_harga, 2, ',', '.'); ?></td>
                                         <td></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->total_harga, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
@@ -193,14 +197,14 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6><?php echo $nama_sub . " (" . $xkdk . ")"; ?></h6>
+                    <h6 class='font-bold'><?php echo $nama_sub . " (" . $xkdk . ")"; ?></h6>
                     <table>
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>Transaksi</th>
-                            <th>Debit</th>
-                            <th>Kredit</th>
-                            <th>Jumlah</th>
+                        <tr class="teal white-text">
+                            <th style="width:20%">Tanggal</th>
+                            <th style="width:20%">Transaksi</th>
+                            <th style="width:20%">Debit</th>
+                            <th style="width:20%">Kredit</th>
+                            <th style="width:20%">Jumlah</th>
                         </tr>
                         <?php for ($i = 0; $i < count($contain_KB); $i++) {
                                     foreach ($contain_KB[$i]->result() as $cdpt) :
@@ -208,9 +212,9 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                         <td></td>
-                                        <td><?php echo $cdpt->nominal; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
@@ -228,62 +232,6 @@ $this->load->view("acc/_partials/head"); ?>
         </div>
         <!-- view -->
 
-        <!-- print -->
-        <div class="row" style="display: none">
-            <h6 class="center" id="title-print"><b>Masjid Al-Ishlah <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
-            <table id='table-jurnal-umum' class="table-borderless centered">
-                <thead>
-                    <tr>
-                        <th style="width:20%">Tanggal</th>
-                        <th style="width:15%">Transaksi</th>
-                        <th style="width:20%">Debit</th>
-                        <th style="width:20%">Kredit</th>
-                        <th style="width:25%">Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php for ($h = 0; $h < 4; $h++) {
-                        if ($h == 0) {
-                            $contain = $contain_DPT;
-                        } elseif ($h == 1) {
-                            $contain = $contain_DPTT;
-                        } elseif ($h == 2) {
-                            $contain = $contain_KP;
-                        } elseif ($h == 3) {
-                            $contain = $contain_KB;
-                        }
-                        for ($i = 0; $i < count($contain_DPT); $i++) {
-                            foreach ($contain[$i]->result() as $cdpt) :
-                                ?>
-                                <tr>
-                                    <td><?php echo date_generator($cdpt->tanggal)  ?></td>
-                                    <?php foreach ($rules->result() as $r) :
-                                                    if ($r->kd_akun == $cdpt->kd_akun) :
-                                                        ?>
-                                            <td><?php echo $cdpt->keterangan; ?></td>
-                                            <td><?php echo $r->debit . "<br><br>"; ?></td>
-                                            <td><?php echo "<br><br>" . $r->kredit; ?></td>
-                                            <?php if ($h == 2) { ?>
-                                                <td><?php echo "-Rp " . number_format($cdpt->total_harga, 2, ',', '.');  ?></td>
-                                            <?php } elseif ($h == 3) { ?>
-                                                <td><?php echo "-Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
-
-                                            <?php } else { ?>
-                                                <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
-                                            <?php } ?>
-                                </tr>
-
-                        <?php endif;
-                                    endforeach; ?>
-            <?php
-                    endforeach;
-                }
-            } ?>
-
-                </tbody>
-            </table>
-        </div>
-        <!-- print -->
 
     </div>
     <!-- content -->

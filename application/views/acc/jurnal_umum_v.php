@@ -19,6 +19,10 @@ $this->load->view("acc/_partials/head"); ?>
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <!-- content -->
     <div class="container">
         <div class="sticky">
@@ -31,11 +35,11 @@ $this->load->view("acc/_partials/head"); ?>
         </div>
 
         <!-- view -->
-        <div class="row">
+        <div class="row" id="printed">
             <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
             <table id='table-jurnal-umum-v' class="">
                 <thead>
-                    <tr>
+                    <tr class="teal white-text">
                         <th style="width:20%">Tanggal</th>
                         <th style="width:15%">Transaksi</th>
                         <th style="width:20%">Debit</th>

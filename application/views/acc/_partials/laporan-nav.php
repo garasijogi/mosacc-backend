@@ -1,3 +1,4 @@
+<br>
 <div class="row">
     <div class="divider black"></div>
 </div>
@@ -7,9 +8,9 @@
             <ul class="left hide-on-med-and-down">
                 <li><a class="black-text dropdown-trigger" href="#!" data-target="tahun_DD">Tahun<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="black-text dropdown-trigger" href="#!" data-target="bulan_DD">Bulan<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="black-text" href="#!" data-target="dropdown1"><i class="material-icons left">print</i>Print</a></li>
+                <li><a id="print-button" class="black-text"><i class="material-icons left">print</i>Print</a></li>
                 <li><a id="export-pdf" class="black-text" href="#"><i class="material-icons left">picture_as_pdf</i>Simpan PDF</a></li>
-                <li><a id="export-excel" class="black-text" href="#!" data-target="dropdown1"><i class="material-icons left">insert_drive_file</i>Simpan Excel</a></li>
+                <li><a id="export-excel" class="black-text" href="#!"><i class="material-icons left">insert_drive_file</i>Simpan Excel</a></li>
             </ul>
             <ul id="tahun_DD" class="dropdown-content">
                 <li><a href="">2018</a></li>

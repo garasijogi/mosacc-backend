@@ -64,6 +64,48 @@ class Rules_model extends CI_Model
     return $result;
   }
 
+  function letak_kas($nama_menu_kp, $nama_sub_kp, $nominal_sub_kp, $nama_menu_kb, $nama_sub_kb, $nominal_sub_kb, $nama_menu, $nama_sub, $nominal_sub, $nama_menu_dptt, $nama_sub_dptt, $nominal_sub_dptt)
+  {
+    // Menentukan letak kas
+    $total_kredit = 0;
+    $total_debit = 0;
+    for ($h = 0; $h < 4; $h++) {
+      if ($h == 0) {
+        $nama_menu_simpan = $nama_menu_kp;
+        $nama_sub_simpan = $nama_sub_kp;
+        $nominal_sub_simpan = $nominal_sub_kp;
+      } elseif ($h == 1) {
+        $nama_menu_simpan = $nama_menu_kb;
+        $nama_sub_simpan = $nama_sub_kb;
+        $nominal_sub_simpan = $nominal_sub_kb;
+      } elseif ($h == 2) {
+        $nama_menu_simpan = $nama_menu;
+        $nama_sub_simpan = $nama_sub;
+        $nominal_sub_simpan = $nominal_sub;
+      } elseif ($h == 3) {
+        $nama_menu_simpan = $nama_menu_dptt;
+        $nama_sub_simpan = $nama_sub_dptt;
+        $nominal_sub_simpan = $nominal_sub_dptt;
+      }
+      for ($x = 0; $x < count($nama_menu_simpan); $x++) {
+
+        for ($y = 0; $y < count($nama_sub_simpan[$x]); $y++) {
+          if ($h == 0 || $h == 1) :
+            $total_debit = $total_debit + $nominal_sub_simpan[$x][$y];
+          endif;
+          if ($h == 2 || $h == 3) :
+            $total_kredit = $total_kredit + $nominal_sub_simpan[$x][$y];
+          endif;
+        }
+      }
+    }
+    return $total_kredit - $total_debit;
+  }
+
+  function aset_neto_tidak_terikat(){
+    
+  }
+
 
   // ------------------------------------------------------------------------
 

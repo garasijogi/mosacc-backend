@@ -20,12 +20,16 @@
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <!-- breadcrumb -->
     <div class="content">
         <div class="col s12 breadcrumb-wrapper valign-wrapper">
             <a href="<?php echo base_url('acc/penerimaan_tidak_terikat'); ?>" class="breadcrumb">Penerimaan Tidak Terikat</a>
             <a href="<?php echo base_url('acc/penerimaan_tidak_terikat'); ?>" class="breadcrumb"><?php echo ucwords($submenu); ?></a>
-            <a href="<?php echo base_url('acc/penerimaan_tidak_terikat/'.$controller); ?>" class="breadcrumb"><?php echo ucwords(str_replace("_", " ", $controller)); ?></a>
+            <a href="<?php echo base_url('acc/penerimaan_tidak_terikat/' . $controller); ?>" class="breadcrumb"><?php echo ucwords(str_replace("_", " ", $controller)); ?></a>
         </div>
     </div>
     <!-- breadcrumb -->
@@ -33,7 +37,7 @@
     <!-- content -->
     <div class="container">
         <div class="row">
-            <h4 class="center"><?php echo ucwords(str_replace("_", " ", $controller));?></h4>
+            <h4 class="center"><?php echo ucwords(str_replace("_", " ", $controller)); ?></h4>
         </div>
         <!-- form input -->
         <div class="row">
@@ -52,7 +56,7 @@
                 </div>
 
                 <!-- Form tanpa nama pemberi -->
-                <?php if ($kd_akun == 11200 || $kd_akun == 11500 ) { ?>
+                <?php if ($kd_akun == 11200 || $kd_akun == 11500) { ?>
                     <div class="row">
                         <div class="input-field col s6">
                             <input name="nama_pemberi_PTT" id="nama_pemberi_PTT" type="text" value=" " hidden>
