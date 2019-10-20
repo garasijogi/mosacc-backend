@@ -142,7 +142,7 @@
                 </tr>
                 <tr>
                     <th colspan="2">Jumlah Aset Neto</th>
-                    <th class="tr-border-top"><?php echo "Rp " . number_format(($asetneto_t +  $asetneto_t_blnlalu) - ($asetneto_tt + $asetneto_tt_blnlalu), 2, ',', '.'); ?></th>
+                    <th class="tr-border-top"><?php echo "Rp " . number_format(($asetneto_t +  $asetneto_t_blnlalu) + ($asetneto_tt + $asetneto_tt_blnlalu), 2, ',', '.'); ?></th>
                 </tr>
             </table>
         </div>

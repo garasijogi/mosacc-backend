@@ -1213,8 +1213,62 @@ class Laporan_keuangan extends CI_Controller
         }
       }
     }
+    //nominal kas
+    $data['nominal_kas_awalbln'] = 0;
+    $data['nominal_kas'] = $this->rules_model->letak_kas($data['nama_menu_kp'], $data['nama_sub_kp'], $data['nominal_sub_kp'], $data['nama_menu_kb'], $data['nama_sub_kb'], $data['nominal_sub_kb'], $data['nama_menu'], $data['nama_sub'], $data['nominal_sub'], $data['nama_menu_dptt'], $data['nama_sub_dptt'], $data['nominal_sub_dptt']);
 
+    //aset neto tidak terikat bulan ini
+    $data['asetneto_tt'] = 0;
+    for ($i = 0; $i < count($data['contain_DPTT']); $i++) {
+      foreach ($data['contain_DPTT'][$i]->result() as $record) {
+        $data['asetneto_tt'] = $data['asetneto_tt'] + $record->nominal;
+      }
+    }
+    for ($i = 0; $i < count($data['contain_KB']); $i++) {
+      foreach ($data['contain_KB'][$i]->result() as $record) {
+        if ($record->kd_akun == 22111 || $record->kd_akun == 22112 || $record->kd_akun == 22113 || $record->kd_akun == 22114 || $record->kd_akun == 22115 || $record->kd_akun == 22116 || $record->kd_akun == 22117 || $record->kd_akun == 22120) {
+          $data['asetneto_tt'] = $data['asetneto_tt'] - $record->nominal;
+        }
+      }
+    }
 
+    //aset neto tidak terikat bulan lalu
+    $data['asetneto_tt_blnlalu'] = 0;
+
+    //aset neto terikat bulan ini
+    $data['asetneto_t'] = 0;
+    for ($i = 0; $i < count($data['contain_DPT']); $i++) {
+      foreach ($data['contain_DPT'][$i]->result() as $record) {
+        $data['asetneto_t'] = $data['asetneto_t'] + $record->nominal;
+      }
+    }
+    for ($i = 0; $i < count($data['contain_KB']); $i++) {
+      foreach ($data['contain_KB'][$i]->result() as $record) {
+        if ($record->kd_akun == 22231 || $record->kd_akun == 22232 || $record->kd_akun == 22233 || $record->kd_akun == 22234 || $record->kd_akun == 22235 || $record->kd_akun == 22241 || $record->kd_akun == 22242 || $record->kd_akun == 22243 || $record->kd_akun == 22251 || $record->kd_akun == 22252 || $record->kd_akun == 22253 || $record->kd_akun == 22254 || $record->kd_akun == 22255 || $record->kd_akun == 22256 || $record->kd_akun == 22257 || $record->kd_akun == 22261 || $record->kd_akun == 22262) {
+          $data['asetneto_t'] = $data['asetneto_t'] - $record->nominal;
+        }
+      }
+    }
+
+    //aset neto bulan lalu
+    $data['asetneto_t_blnlalu'] = 0;
+    $data['asetneto_blnlalu'] = $data['asetneto_t_blnlalu'] - $data['asetneto_tt_blnlalu'];
+
+    //generate total nominal pembelian
+    $data['total_pembelian_perlengkapan'] = 0;
+    $data['total_pembelian_peralatan'] = 0;
+    $data['total_pembelian_kendaraan'] = 0;
+    for ($j = 0; $j < count($contain['K_P']); $j++) {
+      foreach ($contain['K_P'][$j]->result() as $ckp) {
+        if ($ckp->kd_akun == 21100) {
+          $data['total_pembelian_perlengkapan'] = $data['total_pembelian_perlengkapan'] + $ckp->total_harga;
+        } elseif ($ckp->kd_akun == 21200) {
+          $data['total_pembelian_peralatan'] = $data['total_pembelian_peralatan'] + $ckp->total_harga;
+        } elseif ($ckp->kd_akun == 21300) {
+          $data['total_pembelian_kendaraan'] = $data['total_pembelian_kendaraan'] + $ckp->total_harga;
+        }
+      }
+    }
 
     $this->load->view('acc/laporan_arus_kas_v.php', $data);
   }
