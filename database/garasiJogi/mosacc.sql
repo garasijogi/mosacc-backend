@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2019 at 10:38 AM
+-- Generation Time: Oct 21, 2019 at 08:57 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,6 +21,75 @@ SET time_zone = "+00:00";
 --
 -- Database: `mosacc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rules`
+--
+
+DROP TABLE IF EXISTS `rules`;
+CREATE TABLE `rules` (
+  `kd_akun` varchar(5) NOT NULL,
+  `menu` varchar(256) NOT NULL,
+  `nama_sub` varchar(256) NOT NULL,
+  `debit` varchar(256) NOT NULL,
+  `kredit` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rules`
+--
+
+INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
+('11110', 'Pendapatan Sewa', 'Infaq Peminjaman Peralatan', 'Kas', 'Infaq Peminjaman Peralatan'),
+('11120', 'Pendapatan Sewa', 'Infaq Pemakaian Ruangan', 'Kas', 'Infaq Pemakaian Ruangan'),
+('11200', 'Pendapatan Parkir', 'Pendapatan Parkir', 'Kas\r\n', 'Pendapatan Parkir\r\n'),
+('11300', 'Infaq Pengurusan Jenazah', 'Infaq Pengurusan Jenazah', 'Kas\r\n', 'Infaq Pengurusan Jenazah'),
+('11400', 'Pendapatan Non-Halal', 'Pendapatan Non-Halal', 'Kas\r\n', 'Pendapatan Non-Halal'),
+('11500', 'Pendapatan Lainnya', 'Pendapatan Lainnya', 'Kas\r\n', 'Pendapatan Lainnya'),
+('12610', 'Peribadatan', 'Infaq Kotak Jumat', 'Kas', 'Infaq Kotak Jumat'),
+('12620', 'Peribadatan', 'Infaq Perayaan Hari Besar Islam', 'Kas', 'Infaq Perayaan Hari Besar Islam'),
+('12630', 'Peribadatan', 'Infaq Pengajian', 'Kas', 'Infaq Pengajian'),
+('12640', 'Peribadatan', 'Infaq Ramadhan', 'Kas', 'Infaq Ramadhan'),
+('12700', 'Pendidikan', 'Infaq TPA dan Tahfidz', 'Kas', 'Pendidikan'),
+('12810', 'Penyaluran ZISWAF', 'Infaq dari Donatur', 'Kas', 'Infaq dari Donatur'),
+('12820', 'Penyaluran ZISWAF', 'Infaq Kotak Dana Operasional', 'Kas', 'Infaq Kotak Dana Operasional'),
+('12830', 'Penyaluran ZISWAF', 'Infaq Kotak Dana Sosial', 'Kas', 'Infaq Kotak Dana Sosial'),
+('12840', 'Penyaluran ZISWAF', 'Zakat Fitrah', 'Kas', 'Zakat Fitrah'),
+('12850', 'Penyaluran ZISWAF', 'Fidyah', 'Kas', 'Fidyah'),
+('12860', 'Penyaluran ZISWAF', 'Infaq untuk Baksos', 'Kas', 'Infaq untuk Baksos'),
+('12870', 'Penyaluran ZISWAF', 'Waqaf', 'Kas', 'Waqaf'),
+('21100', 'Pembelian Perlengkapan', 'Pembelian Perlengkapan', 'Perlengkapan', 'Kas'),
+('21200', 'Pembelian Peralatan', 'Pembelian Peralatan', 'Peralatan', 'Kas'),
+('21300', 'Pembelian Kendaraan', 'Pembelian Kendaraan', 'Kendaraan', 'Kas'),
+('22111', 'Beban Operasional', 'Beban Listrik, Air, dan Telepon', 'Beban Listrik, Air, dan Telepon', 'Kas'),
+('22112', 'Beban Operasional', 'Beban Pemeliharaan', 'Beban Pemeliharaan', 'Kas'),
+('22113', 'Beban Operasional', 'Beban Administrasi', 'Beban Administrasi', 'Kas'),
+('22114', 'Beban Operasional', 'Beban Perlengkapan', 'Beban Perlengkapan', 'Perlengkapan'),
+('22115', 'Beban Operasional', 'Beban Kerusakan dan Kehilangan Aset', 'Beban Kerusakan dan Kehilangan Aset', 'Peralatan'),
+('22116', 'Beban Operasional', 'Beban Transportasi', 'Beban Transportasi', 'Kas'),
+('22117', 'Beban Operasional', 'Insentif Pengurus Masjid', 'Insentif Pengurus Masjid', 'Kas'),
+('22120', 'Beban Lainnya', 'Beban Lainnya', 'Beban Lainnya', 'Kas'),
+('22231', 'Peribadatan', 'Insentif Penceramah/Khatib', 'Insentif Penceramah/Khatib\r\n', 'Kas'),
+('22232', 'Peribadatan', 'Insentif Marbot', 'Insentif Marbot', 'Kas'),
+('22233', 'Peribadatan', 'Beban Perayaan Hari Besar Islam', 'Beban Perayaan Hari Besar Islam', 'Kas'),
+('22234', 'Peribadatan', 'Beban Buletin Dakwah', 'Beban Buletin Dakwah', 'Kas'),
+('22235', 'Peribadatan', 'Peribadatan Lainnya', 'Peribadatan Lainnya', 'Kas'),
+('22241', 'Ramadhan', 'Shalat Tarawih', 'Shalat Tarawih', 'Kas'),
+('22242', 'Ramadhan', 'Konsumsi Buka Puasa dan Sahur', 'Konsumsi Buka Puasa dan Sahur', 'Kas'),
+('22243', 'Ramadhan', 'Peringatan Nuzulul Quran', 'Peringatan Nuzulul Quran', 'Kas'),
+('22251', 'Penyaluran ZISWAF', 'Penyaluran Zakat Fitrah dan Fidyah', 'Penyaluran Zakat Fitrah dan Fidyah', 'Kas'),
+('22252', 'Penyaluran ZISWAF', 'Penyaluran untuk Beasiswa', 'Penyaluran untuk Beasiswa', 'Kas'),
+('22253', 'Penyaluran ZISWAF', 'Penyaluran untuk Besuk Orang Sakit', 'Penyaluran untuk Besuk Orang Sakit', 'Kas'),
+('22254', 'Penyaluran ZISWAF', 'Penyaluran untuk Aktivitas Kepemudaan', 'Penyaluran untuk Aktivitas Kepemudaan', 'Kas'),
+('22255', 'Penyaluran ZISWAF', 'Sumbangan untuk Anak Yatim', 'Sumbangan untuk Anak Yatim', 'Kas'),
+('22256', 'Penyaluran ZISWAF', 'Sumbangan Ta’ziyah', 'Sumbangan Ta’ziyah', 'Kas'),
+('22257', 'Penyaluran ZISWAF', 'Sumbangan untuk Bencana Alam', 'Sumbangan untuk Bencana Alam', 'Kas'),
+('22261', 'Pendidikan', 'Penyaluran untuk TPA dan Tahfidz', 'Penyaluran untuk TPA dan Tahfidz', 'Kas'),
+('22262', 'Pendidikan', 'Beban Pelatihan', 'Beban Pelatihan', 'Kas'),
+('23100', 'Pembelian Material', 'Pembelian Material', 'Pembelian Material', 'Kas'),
+('23200', 'Upah Tukang', 'Upah Tukang', 'Upah Tukang', 'Kas');
 
 -- --------------------------------------------------------
 
@@ -43,8 +112,8 @@ CREATE TABLE `tr11_penerimaan_tidak_terikat_pending` (
 --
 
 INSERT INTO `tr11_penerimaan_tidak_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019091111200001', '11200', '2019-09-11', 258000, ' ', 'jacks knighto queens knight and kings knighto'),
-('2019091611110001', '11110', '2019-09-16', 250000, 'Jack', 'Peminjaman peralatan sound');
+('2019091611110001', '11110', '2019-09-16', 250000, 'Jack', 'Peminjaman peralatan sound'),
+('2019101511120001', '11120', '2019-10-15', 378000, 'Hideyoshi', 'kampang');
 
 -- --------------------------------------------------------
 
@@ -67,6 +136,8 @@ CREATE TABLE `tr12_penerimaan_terikat_pending` (
 --
 
 INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
+('2019090912610001', '12610', '2019-09-09', 4000000, ' ', 'Jumat minggu 1'),
+('2019091012610001', '12610', '2019-09-10', 213123, ' ', 'qweqweqwe'),
 ('2019091012620001', '12620', '2019-09-10', 2400, '', 'jajajaja'),
 ('2019091212610001', '12610', '2019-09-12', 2100, '', 'apa aja'),
 ('2019091212700001', '12700', '2019-09-12', 25566, 'jajang', 'gasgsg'),
@@ -76,9 +147,10 @@ INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `no
 ('2019091312850002', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
 ('2019091312850003', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
 ('2019091312850004', '12850', '2019-09-13', 2555, 'jajangmantap', 'sdftds'),
+('2019091512630001', '12630', '2019-09-15', 212323, ' ', 'KKKAD'),
 ('2019091912610001', '12610', '2019-09-19', 250, ' ', 'hauuu'),
 ('2019092112850001', '12850', '2019-09-21', 3423, 'jajang', 'ergdsg'),
-('2019091512630001', '12630', '2019-09-15', 212323, ' ', 'KKKAD');
+('2019101612640001', '12640', '2019-10-16', 670000, ' ', 'hiyahiyahiya');
 
 -- --------------------------------------------------------
 
@@ -105,20 +177,8 @@ CREATE TABLE `tr21_pembelian_pending` (
 --
 
 INSERT INTO `tr21_pembelian_pending` (`idtr`, `kd_akun`, `tanggal`, `jenis`, `merek`, `nomor_seri`, `jumlah`, `keterangan`, `harga_satuan`, `total_harga`) VALUES
-('2019091421100001', '21100', '2019-09-18', 'sdsad', 'asdsadsa', 'sadsadsa', 123213, 'wqewqeqw', 213213, 213213),
-('2019091421100002', '21100', '2019-09-18', 'sdsad', 'asdsadsa', 'sadsadsa', 123213, 'wqewqeqw', 213213, 213213),
-('2019091421100003', '21100', '2019-09-18', 'sdsad', 'asdsadsa', 'sadsadsa', 123213, 'wqewqeqw', 213213, 213213),
-('2019091421100004', '21100', '2019-09-18', 'sdsad', 'asdsadsa', 'sadsadsa', 123213, 'wqewqeqw', 213213, 213213),
-('2019091421100005', '21100', '2019-09-18', 'sdsad', 'asdsadsa', 'sadsadsa', 123213, 'wqewqeqw', 213213, 213213),
-('2019091421100006', '21100', '2019-09-02', 'aweqwewqe', 'qwewqewq', 'qwewqewqe', 213213, 'sadsad', 1232132, 213123),
-('2019091421100007', '21100', '2019-09-02', 'aweqwewqe', 'qwewqewq', 'qwewqewqe', 213213, 'sadsad', 1232132, 213123),
-('2019091421100008', '21100', '2019-09-11', 'qwewqe', 'qwewqee', 'wqewqewq', 123213, 'weqewq', 2131231, 1231231),
-('2019091421100009', '21100', '2019-09-04', 'ewrewrew', 'werewfds', 'sdfewefdas', 234121, 'ewfrwdw', 123131, 132131),
-('2019091421100010', '21100', '2019-09-04', 'ewrewrew', 'werewfds', 'sdfewefdas', 234121, 'ewfrwdw', 123131, 132131),
-('2019091421100011', '21100', '2019-09-23', 'wqewqe', 'wqewqe', 'qwewqewq', 12312321, 'sdsadasd', 21321312, 12321312),
-('2019091421200001', '21200', '2019-09-10', 'dsasdsa', 'sadsadas', 'sadsads', 12321, 'wsdasd', 12321312, 123213),
-('2019091521100001', '21100', '2019-09-28', 'sadsad', 'qwewqeq', 'qwewqewqe', 12312321, 'wqewqewqewq\r\nqwewqeqweq', 213213123, 12312312),
-('2019091521100002', '21100', '2019-09-16', 'qweqwe', 'wqewqewq', 'wqewqeqe', 12312412, 'sadsadsad', 12321312, 123123);
+('2019101721100001', '21100', '2019-10-01', 'Mobil', 'Honda', 'Jazz 220', 1, 'Untuk kebutuhan acara studi banding', 400000000, 400000000),
+('2019101721100002', '21100', '2019-10-02', 'Motor', 'Suzuki', 'Korakora', 2, 'mantap lah', 20000000, 40000000);
 
 -- --------------------------------------------------------
 
@@ -134,19 +194,6 @@ CREATE TABLE `tr22_beban_pending` (
   `nominal` int(11) DEFAULT NULL,
   `keterangan` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tr22_beban_pending`
---
-
-INSERT INTO `tr22_beban_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
-('2019091522111001', '22111', '2019-09-10', 12321321, 'sadsadsadsad'),
-('2019091522111002', '22111', '2019-09-10', 12321321, 'sadsadsadsad'),
-('2019091522115001', '22115', '2019-09-08', 2312312, 'efsdfsdf'),
-('2019091722111001', '22111', '2019-09-17', 21313213, 'ewrfesfaegr'),
-('2019091722111002', '22111', '2019-09-25', 213213131, 'asfdcdwsvadc'),
-('2019091722111003', '22111', '2019-09-25', 2147483647, 'dsgvfsbd'),
-('2019091922231001', '22231', '2019-09-16', 32423432, 'dfdsfsd');
 
 -- --------------------------------------------------------
 
@@ -175,9 +222,48 @@ INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`
 ('2019091523100005', '23100', '2019-09-26', 21321300, 'adsadsa'),
 ('2019091523100006', '23100', '2019-09-17', 3424320, 'sdfgsdfsd');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `NIP` varchar(25) NOT NULL,
+  `nama_user` varchar(256) NOT NULL,
+  `jenis_user` enum('akuntan','manager') NOT NULL,
+  `password` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
+('258', 'Bima', 'akuntan', 'bima');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `rules`
+--
+ALTER TABLE `rules`
+  ADD PRIMARY KEY (`kd_akun`);
+
+--
+-- Indexes for table `tr11_penerimaan_tidak_terikat_pending`
+--
+ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
+  ADD PRIMARY KEY (`idtr`);
+
+--
+-- Indexes for table `tr12_penerimaan_terikat_pending`
+--
+ALTER TABLE `tr12_penerimaan_terikat_pending`
+  ADD PRIMARY KEY (`idtr`);
 
 --
 -- Indexes for table `tr21_pembelian_pending`
@@ -190,6 +276,12 @@ ALTER TABLE `tr21_pembelian_pending`
 --
 ALTER TABLE `tr22_beban_pending`
   ADD PRIMARY KEY (`idtr`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`NIP`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

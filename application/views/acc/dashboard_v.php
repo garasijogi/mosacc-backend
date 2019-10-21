@@ -59,7 +59,7 @@
 			<div class="row">
 				<div id="test-swipe-1" class="col s12 dashChart-container">
 					<div class="col s8 dashchart-innerContainer">
-						<canvas class="dashChart" id="dChart"></canvas>
+						<canvas class="dashChart" id="dChart_saldo"></canvas>
 					</div>
 					<div class="dashchart-innerContainer col s4">
 						<div class="row">
@@ -155,7 +155,7 @@
 				<div id="test-swipe-2" class="col s12 dashChart-container">
 					<div class="row">
 						<div class="dashchart-innerContainer col s8">
-							<canvas class="dashChart" id="dChart"></canvas>
+							<canvas class="dashChart" id="dChart_penerimaan"></canvas>
 						</div>
 						<div class="dashchart-innerContainer col s4">
 							<div class="row">
@@ -252,7 +252,7 @@
 				<div id="test-swipe-3" class="col s12 dashChart-container">
 					<div class="row">
 						<div class="dashchart-innerContainer col s8">
-							<canvas class="dashChart" id="dChart"></canvas>
+							<canvas class="dashChart" id="dChart_pengeluaran"></canvas>
 						</div>
 						<div class="dashchart-innerContainer col s4">
 							<div class="row">

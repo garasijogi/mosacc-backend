@@ -37,13 +37,13 @@ $(document).ready(function () {
     });
 });
 
-// Dashboard Chart -------------------------------------
+// ChartJs Saldo -------------------------------------
 // label buat di axis X
 // console.log(bulan);
 // //buat menggambar garis di graphnya
 // console.log(sales_order);
 
-var ctx = $('#dChart');
+var ctx = $('#dChart_saldo');
 var dChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -63,7 +63,59 @@ var dChart = new Chart(ctx, {
     }
 });
 
-//initialization
+// ChartJs Penerimaan -------------------------------------
+// label buat di axis X
+// console.log(bulan);
+// //buat menggambar garis di graphnya
+// console.log(sales_order);
+
+var ctx = $('#dChart_penerimaan');
+var dChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [21, 22],
+        datasets: [
+            {
+                data: [20, 10],
+                label: "Sales Order",
+                borderColor: "#ffff00",
+                backgroundColor: "#9b8400",
+                fill: true
+            }
+        ]
+    },
+    options: {
+        responsive: false
+    }
+});
+
+// ChartJs Pengeluaran -------------------------------------
+// label buat di axis X
+// console.log(bulan);
+// //buat menggambar garis di graphnya
+// console.log(sales_order);
+
+var ctx = $('#dChart_pengeluaran');
+var dChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [21, 22],
+        datasets: [
+            {
+                data: [20, 10],
+                label: "Sales Order",
+                borderColor: "#ffff00",
+                backgroundColor: "#9b8400",
+                fill: true
+            }
+        ]
+    },
+    options: {
+        responsive: false
+    }
+});
+
+//Select option initialization
 $(document).ready(function () {
     $('select').formSelect();
 });
