@@ -18,6 +18,10 @@
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <!-- content -->
     <div class="container">
         <div class="sticky">
@@ -28,7 +32,7 @@
             <?php $this->load->view('acc/_partials/laporan-nav.php'); ?>
             <!-- laporan nav -->
         </div>
-        <div class="row">
+        <div class="row" id="printed">
 
             <h6 class="center"><b>Masjid Al-Ishlah <br> Laporan Perubahan Dana <br> Tanggal 31 Desember 2018 dan 2019</b></h6>
             <table>

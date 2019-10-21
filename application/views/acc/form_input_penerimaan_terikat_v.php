@@ -20,12 +20,16 @@
         <!-- /navbar&&sidebar -->
     </div>
 
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <!-- breadcrumb -->
     <div class="content">
         <div class="col s12 breadcrumb-wrapper valign-wrapper">
             <a href="<?php echo base_url('acc/penerimaan_terikat'); ?>" class="breadcrumb">Penerimaan Terikat</a>
             <a href="<?php echo base_url('acc/penerimaan_terikat'); ?>" class="breadcrumb"><?php echo ucwords($submenu); ?></a>
-            <a href="<?php echo base_url('acc/penerimaan_terikat/'.$controller); ?>" class="breadcrumb"><?php echo ucwords(str_replace("_", " ", $controller)); ?></a>
+            <a href="<?php echo base_url('acc/penerimaan_terikat/' . $controller); ?>" class="breadcrumb"><?php echo ucwords(str_replace("_", " ", $controller)); ?></a>
         </div>
     </div>
     <!-- breadcrumb -->

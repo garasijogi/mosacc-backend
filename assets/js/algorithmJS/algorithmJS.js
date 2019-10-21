@@ -181,3 +181,29 @@ $(document).ready(function () {
 		table.button('.buttons-excel').trigger();
 	});
 });
+
+//printPDFLaporan
+$("#print-button").click(function printLaporan() {
+	var divName = "printed";
+	var printContents = document.getElementById(divName).innerHTML;
+	var originalContents = document.body.innerHTML;
+
+	document.body.innerHTML = printContents;
+
+	window.print();
+
+	document.body.innerHTML = originalContents;
+});
+
+window.onafterprint = function () {
+	window.location.reload(true);
+}
+
+//preloader
+document.addEventListener("DOMContentLoaded", function () {
+	$('.preloader-background').delay(100).fadeOut('slow');
+
+	$('.preloader-wrapper')
+		.delay(100)
+		.fadeOut();
+});

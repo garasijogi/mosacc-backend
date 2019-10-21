@@ -10,9 +10,14 @@
 
     <div>
         <!-- navbar&&sidebar -->
-        <?php $this->load->view("_partials/navbar"); ?>
+        <?php $this->load->view("_partials/navbar.php"); ?>
         <!-- /navbar&&sidebar -->
     </div>
+
+    <!-- preloader -->
+    <?php $this->load->view('_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <div class="container">
         <div class="row">
             <div class="col s12 center teal-text">
@@ -28,7 +33,7 @@
                                 <img class="activator" src="<?php echo base_url('assets/images/icon/accountant-icon.png'); ?>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title activator white-text text-darken-4"> <b> Accountant </b></span>
+                                <span class="card-title activator white-text text-darken-4"> <b> Akuntan </b></span>
                             </div>
                         </a>
                     </div>
@@ -41,7 +46,7 @@
                                 <img class="activator" src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title activator white-text text-darken-4"> <b> Manager </b></span>
+                                <span class="card-title activator white-text text-darken-4"> <b> Manajer </b></span>
                             </div>
                         </a>
                     </div>
