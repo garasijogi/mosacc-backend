@@ -28,11 +28,40 @@ class Laporan_keuangan extends CI_Controller
       $kdd['jml_kdd'][$indicator_d] = $kddebit->kd_akun;
       $indicator_d++;
     }
-
     for ($i = 0; $i < $indicator_d; $i++) {
-      $contain['D_PT'][$i] = $this->rules_model->get_record_where('tr12_penerimaan_terikat_pending', $kdd['jml_kdd'][$i]);
-      $contain['D_PTT'][$i] = $this->rules_model->get_record_where('tr11_penerimaan_tidak_terikat_pending', $kdd['jml_kdd'][$i]);
+      $contain['D_PT_backup'][$i] = $this->rules_model->get_record_where('tr12_penerimaan_terikat_pending', $kdd['jml_kdd'][$i]);
+      $contain['D_PTT_backup'][$i] = $this->rules_model->get_record_where('tr11_penerimaan_tidak_terikat_pending', $kdd['jml_kdd'][$i]);
     }
+
+    //pilih bulan pada debit
+    $bulan = 10;
+    $j = 0;
+    $k = 0;
+    for ($i = 0; $i < $indicator_d; $i++) {
+      foreach ($contain['D_PT_backup'][$i]->result() as $backup) {
+        $bulan_r = intval(substr($backup->tanggal, 5, 2));
+        if ($bulan_r <= $bulan) {
+          $contain['D_PT'][$j] = $contain['D_PT_backup'][$i];
+          $j++;
+        }
+      }
+      foreach ($contain['D_PTT_backup'][$i]->result() as $backup) {
+        $bulan_r = intval(substr($backup->tanggal, 5, 2));
+        if ($bulan_r <= $bulan) {
+          $contain['D_PTT'][$k] = $contain['D_PTT_backup'][$i];
+          $k++;
+        }
+      }
+    }
+    for ($j = 0; $j < $indicator_d; $j++) {
+      if (isset($contain['D_PT'][$j]) == FALSE) {
+        $contain['D_PT'][$j] = $this->rules_model->get_record_where('tr12_penerimaan_terikat_pending', 69);
+      }
+      if (isset($contain['D_PTT'][$j]) == FALSE) {
+        $contain['D_PTT'][$j] = $this->rules_model->get_record_where('tr11_penerimaan_tidak_terikat_pending', 69);
+      }
+    }
+    //end pilih bulan
 
     //kas di kredit
     $data['kd_akun_kredit'] = $this->rules_model->get_rules_where('kas', 'kredit');
@@ -43,9 +72,39 @@ class Laporan_keuangan extends CI_Controller
     }
 
     for ($j = 0; $j < $indicator_k; $j++) {
-      $contain['K_P'][$j] = $this->rules_model->get_record_where('tr21_pembelian_pending', $kdk['jml_kdk'][$j]);
-      $contain['K_B'][$j] = $this->rules_model->get_record_where('tr22_beban_pending', $kdk['jml_kdk'][$j]);
+      $contain['K_P_backup'][$j] = $this->rules_model->get_record_where('tr21_pembelian_pending', $kdk['jml_kdk'][$j]);
+      $contain['K_B_backup'][$j] = $this->rules_model->get_record_where('tr22_beban_pending', $kdk['jml_kdk'][$j]);
     }
+
+    //pilih bulan pada kredit
+    $j = 0;
+    $k = 0;
+    for ($i = 0; $i < $indicator_k; $i++) {
+      foreach ($contain['K_P_backup'][$i]->result() as $backup) {
+        $bulan_r = intval(substr($backup->tanggal, 5, 2));
+        if ($bulan_r <= $bulan) {
+          $contain['K_P'][$j] = $contain['K_P_backup'][$i];
+          $j++;
+        }
+      }
+      foreach ($contain['K_B_backup'][$i]->result() as $backup) {
+        $bulan_r = intval(substr($backup->tanggal, 5, 2));
+        if ($bulan_r <= $bulan) {
+          $contain['K_B'][$k] = $contain['K_B_backup'][$i];
+          $k++;
+        }
+      }
+    }
+    for ($j = 0; $j < $indicator_k; $j++) {
+      if (isset($contain['K_P'][$j]) == FALSE) {
+        $contain['K_P'][$j] = $this->rules_model->get_record_where('tr12_penerimaan_terikat_pending', 69);
+      }
+      if (isset($contain['K_B'][$j]) == FALSE) {
+        $contain['K_B'][$j] = $this->rules_model->get_record_where('tr12_penerimaan_terikat_pending', 69);
+      }
+    }
+
+    // end pilih bulan
 
     //KIRIM
 
@@ -388,6 +447,7 @@ class Laporan_keuangan extends CI_Controller
         }
       }
     }
+
     //nominal kas
     $data['nominal_kas'] = $this->rules_model->letak_kas($data['nama_menu_kp'], $data['nama_sub_kp'], $data['nominal_sub_kp'], $data['nama_menu_kb'], $data['nama_sub_kb'], $data['nominal_sub_kb'], $data['nama_menu'], $data['nama_sub'], $data['nominal_sub'], $data['nama_menu_dptt'], $data['nama_sub_dptt'], $data['nominal_sub_dptt']);
 

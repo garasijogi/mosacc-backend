@@ -102,9 +102,8 @@ class Rules_model extends CI_Model
     return $total_kredit - $total_debit;
   }
 
-  function aset_neto_tidak_terikat(){
-    
-  }
+  function aset_neto_tidak_terikat()
+  { }
 
 
   // ------------------------------------------------------------------------

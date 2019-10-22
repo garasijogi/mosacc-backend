@@ -95,8 +95,8 @@ $this->load->view("acc/_partials/head"); ?>
                         $nama_sub = $r->nama_sub;
                     }
                 }
-                for ($j = 0; $j < count($contain_DPT); $j++) {
-                    foreach ($contain_DPT[$j]->result() as $codpt) :
+                for ($j = 0; $j < count($contain_DPTT); $j++) {
+                    foreach ($contain_DPTT[$j]->result() as $codpt) :
                         if ($codpt->kd_akun == $xkdd) : $isset = 1;
                         endif;
                     endforeach;
@@ -112,7 +112,7 @@ $this->load->view("acc/_partials/head"); ?>
                             <th style="width:20%">Jumlah</th>
                         </tr>
                         <?php for ($i = 0; $i < count($contain_DPTT); $i++) {
-                                    foreach ($contain_DPT[$i]->result() as $cdpt) :
+                                    foreach ($contain_DPTT[$i]->result() as $cdpt) :
                                         if ($cdpt->kd_akun == $xkdd) : ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
