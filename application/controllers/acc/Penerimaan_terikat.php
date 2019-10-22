@@ -3,22 +3,34 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Penerimaan_terikat extends CI_Controller
 {
-
+  
   public function __construct()
   {
     parent::__construct();
     if ($this->session->userdata('status') == NULL) {
       redirect('homepage');
     }
+    
+    //OLD LOADER ------------------------------------------------------
+    // $this->load->model('penerimaan_terikat_pending_model');
+    
+    //NEW LOADER ------------------------------------------------------
+    //ambil tahun dari sistem
+    $dynamic_tahun = date("Y");
+    //load settingan database dynamic ke fungsi di helper db dynamic switcher 
+    $dynamic_db = switch_db_dynamic($dynamic_tahun);
+    //load model yang akan digunakan
     $this->load->model('penerimaan_terikat_pending_model');
+    //taruh settingan database dalam array
+    $this->penerimaan_terikat_pending_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
-
+  
   public function index()
   {
     $this->load->view('acc/penerimaan_terikat_v.php');
   }
-
-
+  
+  
   //peribadatan
   function infaq_kotak_jumat()
   {
@@ -29,7 +41,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function infaq_PHBI()
   {
     $data['controller'] = 'infaq_PHBI';
@@ -39,7 +51,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function infaq_pengajian()
   {
     $data['controller'] = 'infaq_pengajian';
@@ -49,7 +61,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function infaq_ramadhan()
   {
     $data['controller'] = 'infaq_ramadhan';
@@ -59,7 +71,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   //pendidikan
   function infaq_tpa_dan_tahfidz()
   {
@@ -70,7 +82,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   //ZISWAF
   function infaq_dari_donatur()
   {
@@ -81,7 +93,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function infaq_kotak_dana_operasional()
   {
     $data['controller'] = 'infaq_kotak_dana_operasional';
@@ -91,7 +103,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function infaq_kotak_dana_sosial()
   {
     $data['controller'] = 'infaq_kotak_dana_sosial';
@@ -101,7 +113,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function zakat_fitrah()
   {
     $data['controller'] = 'zakat_fitrah';
@@ -111,7 +123,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function fidyah()
   {
     $data['controller'] = 'fidyah';
@@ -121,7 +133,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function infaq_untuk_baksos()
   {
     $data['controller'] = 'infaq_untuk_baksos';
@@ -131,7 +143,7 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
+  
   function waqaf()
   {
     $data['controller'] = 'waqaf';
@@ -141,8 +153,8 @@ class Penerimaan_terikat extends CI_Controller
     $data['PT'] = $this->penerimaan_terikat_pending_model->get($kd_akun);
     $this->load->view('acc/form_input_penerimaan_terikat_v', $data);
   }
-
-
+  
+  
   //input
   function proses_input()
   {
@@ -152,7 +164,7 @@ class Penerimaan_terikat extends CI_Controller
     $nominal = $this->input->post('nominal_PT');
     $keterangan = $this->input->post('keterangan_PT');
     $nama_pemberi = $this->input->post('nama_pemberi_PT');
-
+    
     //generate idtr
     $tanggal = preg_replace('/\D/', '', $tanggal);
     $idtr_bak = $tanggal . $kd_akun;
@@ -163,7 +175,7 @@ class Penerimaan_terikat extends CI_Controller
       $index = '0' . ($result + 1);
     }
     $idtr = $idtr_bak . $index;
-
+    
     $this->penerimaan_terikat_pending_model->input_tr($idtr, $kd_akun, $tanggal, $nominal, $keterangan, $nama_pemberi);
     redirect('acc/penerimaan_terikat/' . $controller);
   }

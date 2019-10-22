@@ -8,6 +8,9 @@ class Dashboard extends CI_Controller {
     {
         parent::__construct();
         //Do your magic here
+        if ($this->session->userdata('status') == NULL) {
+            redirect('homepage');
+        }
         // $this->load->model('dashboard_m');
     }
     

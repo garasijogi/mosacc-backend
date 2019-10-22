@@ -20,6 +20,10 @@
 			<?php $this->load->view("acc/_partials/navbar"); ?>
 		</div>
 		<!-- /navbar -->
+
+		<!-- preloader -->
+		<?php $this->load->view('acc/_partials/preloader.php') ?>
+		<!-- preloader -->
 		
 		<!-- content -->
 		<section class="content">

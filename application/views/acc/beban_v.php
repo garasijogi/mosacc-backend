@@ -9,16 +9,21 @@
 
 	<body>
 
+		<!-- Sidebar -->
 		<div class="wrapper">
 			<?php $this->load->view("acc/_partials/sidebar"); ?>
 		</div>
+		<!-- /Sidebar -->
 
+		<!-- navbar -->
 		<div>
-			<!-- navbar&&sidebar -->
-
 			<?php $this->load->view("acc/_partials/navbar"); ?>
-			<!-- /navbar&&sidebar -->
 		</div>
+		<!-- /navbar -->
+
+		<!-- preloader -->
+		<?php $this->load->view('acc/_partials/preloader.php') ?>
+		<!-- preloader -->
 
 		<section class="content">
 			<div class="row">
