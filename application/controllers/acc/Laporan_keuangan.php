@@ -21,7 +21,7 @@ class Laporan_keuangan extends CI_Controller
     //load model yang akan digunakan
     $this->load->model('rules_model');
     //taruh settingan database dalam array
-    $this->form_input_pengeluaran_m->app_db = $this->load->database($dynamic_db, TRUE);
+    $this->rules_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
 
   public function index()
