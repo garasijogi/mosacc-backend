@@ -4,14 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Penerimaan_terikat_pending_model extends CI_Model {
 
+  //gunakan variabel ini untuk mengakses database ke 2
+  public $app_db;
+
   function count($idtr){
-    $this->db->like('idtr', $idtr);
-    return $this->db->count_all_results('tr12_penerimaan_terikat_pending');
+    $this->app_db->like('idtr', $idtr);
+    return $this->app_db->count_all_results('tr12_penerimaan_terikat_pending');
   }
 
   function get($kode)
   {
-    $result = $this->db->get_where('tr12_penerimaan_terikat_pending', array('kd_akun'=>$kode));
+    $result = $this->app_db->get_where('tr12_penerimaan_terikat_pending', array('kd_akun'=>$kode));
     return $result;
   }
 
@@ -25,7 +28,7 @@ class Penerimaan_terikat_pending_model extends CI_Model {
       'keterangan' => $keterangan,
       'nama_pemberi' => $nama_pemberi
     );
-    $this->db->insert('tr12_penerimaan_terikat_pending', $data);
+    $this->app_db->insert('tr12_penerimaan_terikat_pending', $data);
   }
 
   // function update_tr($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah, $email, $password)
@@ -37,14 +40,14 @@ class Penerimaan_terikat_pending_model extends CI_Model {
   //     'email' => $email,
   //     'password' => $password
   //   );
-  //   $this->db->where('id_pelanggan', $id_pelanggan);
-  //   $this->db->update('customer', $data);
+  //   $this->app_db->where('id_pelanggan', $id_pelanggan);
+  //   $this->app_db->update('customer', $data);
   // }
 
   // function delete_Tr($id_pelanggan)
   // {
-  //   $this->db->where('id_pelanggan', $id_pelanggan);
-  //   $this->db->delete('customer');
+  //   $this->app_db->where('id_pelanggan', $id_pelanggan);
+  //   $this->app_db->delete('customer');
   // }
 
 }

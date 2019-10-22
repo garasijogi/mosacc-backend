@@ -21,6 +21,10 @@
 		</div>
 		<!-- /navbar -->
 
+		<!-- preloader -->
+		<?php $this->load->view('acc/_partials/preloader.php') ?>
+		<!-- preloader -->
+
 		<div class="content">
 			<div class="container">
 

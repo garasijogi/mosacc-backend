@@ -10,7 +10,18 @@ class Laporan_keuangan extends CI_Controller
     if ($this->session->userdata('status') == NULL) {
       redirect('homepage');
     }
+    //OLD LOADER --------------------------------------------------------------
+    // $this->load->model('rules_model');
+
+    //NEW LOADER --------------------------------------------------------------
+    //ambil tahun dari sistem
+    $dynamic_tahun = date("Y");
+    //load settingan database dynamic ke fungsi di helper db dynamic switcher 
+    $dynamic_db = switch_db_dynamic($dynamic_tahun);
+    //load model yang akan digunakan
     $this->load->model('rules_model');
+    //taruh settingan database dalam array
+    $this->rules_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
 
   public function index()
@@ -37,6 +48,7 @@ class Laporan_keuangan extends CI_Controller
     $bulan = 10;
     $j = 0;
     $k = 0;
+
     for ($i = 0; $i < $indicator_d; $i++) {
       foreach ($contain['D_PT_backup'][$i]->result() as $backup) {
         $bulan_r = intval(substr($backup->tanggal, 5, 2));

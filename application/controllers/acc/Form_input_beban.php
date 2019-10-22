@@ -10,8 +10,16 @@ class Form_input_beban extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('status') == NULL) {
             redirect('homepage');
-        } 
+        }
+
+        //ambil tahun dari sistem
+        $dynamic_tahun = date("Y");
+        //load settingan database dynamic ke fungsi di helper db dynamic switcher 
+        $dynamic_db = switch_db_dynamic($dynamic_tahun);
+        //load model yang akan digunakan
         $this->load->model('form_input_pengeluaran_m');
+        //taruh settingan database dalam array
+        $this->form_input_pengeluaran_m->app_db = $this->load->database($dynamic_db, TRUE);
     }
     
     public function index() {
@@ -29,8 +37,11 @@ class Form_input_beban extends CI_Controller {
 
         //buat format tanggal + kd_akun
         $kd_temp = $tanggal.$this->input->post('kd_akun');       
-        //kueri ambil jumlah row yang sama
-        $last_row = $this->db->query("SELECT idtr FROM $this->table WHERE idtr=(SELECT MAX(idtr) FROM $this->table WHERE idtr LIKE '$kd_temp%%%')")->result();
+        /*kueri ambil jumlah row yang sama dari database ke dua yg seharusnya pakai
+            $this->db->query untuk mengakses database 1
+            $this->form_input_pengeluaran_m->app_db->query untuk gunain database ke 2
+        */
+        $cari = $this->form_input_pengeluaran_m->app_db->query("SELECT idtr FROM $this->table WHERE idtr=(SELECT MAX(idtr) FROM $this->table WHERE idtr LIKE '$kd_temp%%%')")->result();
         foreach($last_row as $key => $v){
             $last_row = $v->idtr;
         }

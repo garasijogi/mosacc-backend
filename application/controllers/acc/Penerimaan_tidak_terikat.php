@@ -10,7 +10,19 @@ class Penerimaan_tidak_terikat extends CI_Controller
     if ($this->session->userdata('status') == NULL) {
       redirect('homepage');
     }
+
+    //OLD LOADER ----------------------------------------------------------------
+    // $this->load->model('penerimaan_tidak_terikat_pending_model');
+
+    //NEW LOADER ----------------------------------------------------------------
+    //ambil tahun dari sistem
+    $dynamic_tahun = date("Y");
+    //load settingan database dynamic ke fungsi di helper db dynamic switcher 
+    $dynamic_db = switch_db_dynamic($dynamic_tahun);
+    //load model yang akan digunakan
     $this->load->model('penerimaan_tidak_terikat_pending_model');
+    //taruh settingan database dalam array
+    $this->penerimaan_tidak_terikat_pending_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
 
   public function index()

@@ -63,7 +63,7 @@
 		<div class="row">
 			<div id="test-swipe-1" class="col s12 dashChart-container">
 				<div class="col s8 dashchart-innerContainer">
-					<canvas class="dashChart" id="dChart"></canvas>
+					<canvas class="dashChart" id="dChart_saldo"></canvas>
 				</div>
 				<div class="dashchart-innerContainer col s4">
 					<div class="row">
@@ -352,8 +352,48 @@
 						<div class="dashchart-innerContainer col s8">
 							<canvas class="dashChart" id="dChart_pengeluaran"></canvas>
 						</div>
-						<div class="row">
-							<div class="col s12">
+						<div class="dashchart-innerContainer col s4">
+							<div class="row">
+								<div class="col s6">
+									<div class="input-field">
+										<select>
+											<option value="" disabled selected>Tahun</option>
+											<option value="2019">2019</option>
+											<option value="2018">2018</option>
+											<option value="2017">2017</option>
+											<option value="2016">2016</option>
+											<label>jjjj</label>
+										</select>
+									</div>
+								</div>
+								<div class="col s6">
+									<div class="input-field">
+										<select>
+											<option value="" disabled selected>Tahun</option>
+											<option value="2019">2019</option>
+											<option value="2018">2018</option>
+											<option value="2017">2017</option>
+											<option value="2016">2016</option>
+											<label>jjjj</label>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<div class="input-field">
+										<select>
+											<option value="" disabled selected>Tahun</option>
+											<option value="2019">2019</option>
+											<option value="2018">2018</option>
+											<option value="2017">2017</option>
+											<option value="2016">2016</option>
+											<label>jjjj</label>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="col s6">
 								<div class="input-field">
 									<select>
 										<option value="" disabled selected>Tahun</option>
@@ -365,54 +405,40 @@
 									</select>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col s12">
-								<div class="input-field">
-									<select>
-										<option value="" disabled selected>Tahun</option>
-										<option value="2019">2019</option>
-										<option value="2018">2018</option>
-										<option value="2017">2017</option>
-										<option value="2016">2016</option>
-										<label>jjjj</label>
-									</select>
-								</div>
+							<div class="row">
+								<table class="striped">
+									<tr>
+										<th></th>
+										<th>Transaksi</th>
+										<th>Saldo(Rp .000,-)</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>Sholat Jumat</td>
+										<td>5.0000</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Infaq Jenazah</td>
+										<td>5.0000</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Donatur</td>
+										<td>5.0000</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>Wakaf</td>
+										<td>5.0000</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>Shodaqoh</td>
+										<td>5.0000</td>
+									</tr>
+								</table>
 							</div>
-						</div>
-						<div class="row">
-							<table class="striped">
-								<tr>
-									<th></th>
-									<th>Transaksi</th>
-									<th>Saldo(Rp .000,-)</th>
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Sholat Jumat</td>
-									<td>5.0000</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Infaq Jenazah</td>
-									<td>5.0000</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>Donatur</td>
-									<td>5.0000</td>
-								</tr>
-								<tr>
-									<td>4</td>
-									<td>Wakaf</td>
-									<td>5.0000</td>
-								</tr>
-								<tr>
-									<td>5</td>
-									<td>Shodaqoh</td>
-									<td>5.0000</td>
-								</tr>
-							</table>
 						</div>
 					</div>
 				</div>

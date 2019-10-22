@@ -5,13 +5,20 @@ class Form_input_pembelian extends CI_Controller
 
     public $table = "tr21_pembelian_pending";
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         if ($this->session->userdata('status') == NULL) {
             redirect('homepage');
         }
+        
+        //ambil tahun dari sistem
+        $dynamic_tahun = date("Y");
+        //load settingan database dynamic ke fungsi di helper db dynamic switcher 
+        $dynamic_db = switch_db_dynamic($dynamic_tahun);
+        //load model yang akan digunakan
         $this->load->model('form_input_pengeluaran_m');
+        //taruh settingan database dalam array
+        $this->form_input_pengeluaran_m->app_db = $this->load->database($dynamic_db, TRUE);
     }
 
     public function index()
@@ -27,8 +34,11 @@ class Form_input_pembelian extends CI_Controller
         //membuat id
         //buat format tanggal
         $kd_temp = date("Ymd") . $this->input->post('kd_akun');
-        //kueri ambil jumlah row yang sama
-        $cari = $this->db->query("SELECT * FROM $this->table WHERE idtr LIKE '$kd_temp%%%'");
+        /*kueri ambil jumlah row yang sama dari database ke dua yg seharusnya pakai
+            $this->db->query untuk mengakses database 1
+            $this->form_input_pengeluaran_m->app_db->query untuk gunain database ke 2
+        */
+        $cari = $this->form_input_pengeluaran_m->app_db->query("SELECT * FROM $this->table WHERE idtr LIKE '$kd_temp%%%'");
         //ambil jumlah row
         $hasil = $cari->num_rows();
         //generate id
