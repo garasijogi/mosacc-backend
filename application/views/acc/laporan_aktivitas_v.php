@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Aktivitas <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Aktivitas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table id='table-arus-kas-v' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">
@@ -45,141 +45,144 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                 </thead>
                 <tbody>
-
-                    <?php for ($h = 0; $h < 4; $h++) {
-                        if ($h == 0) {
-                            $nama_menu_simpan = $nama_menu_dptt;
-                            $nama_sub_simpan = $nama_sub_dptt;
-                            $nominal_sub_simpan = $nominal_sub_dptt;
-                            $total_menu = 0;
-
-                            ?>
-                            <tr>
-                                <th colspan="4">Perubahan Aset Tidak Terikat</th>
-                            </tr>
-                            <tr>
-                                <th colspan="4">Penerimaan Tidak Terikat</th>
-                            </tr>
+                    <tr>
+                        <th colspan="4">Perubahan Aset Tidak Terikat</th>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Penerimaan Tidak Terikat</th>
+                    </tr>
+                    <?php
+                    foreach ($menu_ptt as $mpt) :
+                        ?>
+                        <tr>
+                            <td colspan="3"><?php echo $mpt; ?></td>
+                            <td></td>
+                        </tr>
                         <?php
-                            } elseif ($h == 1) {
-                                $jumlah_ptt = $total_menu;
+                            foreach ($submenu_ptt[$mpt] as $subptt) :
                                 ?>
                             <tr>
-                                <th></th>
-                                <th colspan="2">Jumlah Penerimaan Tidak Terikat</th>
-                                <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                                <td></td>
+                                <td><?php echo $subptt; ?></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <?php
-                                    $nama_menu_simpan = $nama_menu_kb;
-                                    $nama_sub_simpan = $nama_sub_kb;
-                                    $nominal_sub_simpan = $nominal_sub_kb;
-                                    $total_menu = 0;
-                                    ?>
-                            <tr>
-                                <th colspan="4">Beban Tidak Terikat</th>
-                            </tr>
+                    <?php
+                        endforeach;
+                    endforeach;
+                    ?>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Jumlah Penerimaan Tidak Terikat</th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Beban Tidak Terikat</th>
+                    </tr>
+                    <?php
+                    foreach ($menu_btt as $mbtt) :
+                        ?>
+                        <tr>
+                            <td colspan="3"><?php echo $mbtt; ?></td>
+                            <td></td>
+                        </tr>
                         <?php
-                            } elseif ($h == 2) {
-                                $jumlah_btt = $total_menu;
+                            foreach ($submenu_btt[$mbtt] as $subbtt) :
                                 ?>
                             <tr>
-                                <th></th>
-                                <th colspan="2">Jumlah Beban Tidak Terikat</th>
-                                <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                                <td></td>
+                                <td><?php echo $subbtt; ?></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <tr>
-                                <th colspan="3">Kenaikan (Penurunan) Aset Neto Tidak Terikat</th>
-                                <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_tt = $jumlah_ptt - $jumlah_btt, 2, ',', '.'); ?></th>
-                            </tr>
-                            <?php
-                                    $nama_menu_simpan = $nama_menu;
-                                    $nama_sub_simpan = $nama_sub;
-                                    $nominal_sub_simpan = $nominal_sub;
-                                    $total_menu = 0;
-                                    ?>
-                            <tr>
-                                <th colspan="4">Penerimaan Terikat</th>
-                            </tr>
+                    <?php
+                        endforeach;
+                    endforeach;
+                    ?>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Jumlah Beban Tidak Terikat</th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Kenaikan (Penurunan) Aset Neto Tidak Terikat</th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_tt = $jumlah_ptt - $jumlah_btt, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Penerimaan Terikat</th>
+                    </tr>
+                    <?php
+                    foreach ($menu_pt as $mpt) :
+                        ?>
+                        <tr>
+                            <td colspan="3"><?php echo $mpt; ?></td>
+                            <td></td>
+                        </tr>
                         <?php
-                            } elseif ($h == 3) {
-                                $jumlah_pt = $total_menu;
+                            foreach ($submenu_pt[$mpt] as $subpt) :
                                 ?>
                             <tr>
-                                <th></th>
-                                <th colspan="2">Jumlah Penerimaan Terikat</th>
-                                <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                                <td></td>
+                                <td><?php echo $subpt; ?></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <?php
-                                    $nama_menu_simpan = $nama_menu_kb;
-                                    $nama_sub_simpan = $nama_sub_kb;
-                                    $nominal_sub_simpan = $nominal_sub_kb;
-                                    $total_menu = 0;
-                                    ?>
-                            <tr>
-                                <th colspan="4">Beban Terikat</th>
-                            </tr>
+                    <?php
+                        endforeach;
+                    endforeach;
+                    ?>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Jumlah Penerimaan Terikat</th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="4">Beban Terikat</th>
+                    </tr>
+                    <?php
+                    foreach ($menu_bt as $mbt) :
+                        ?>
+                        <tr>
+                            <td colspan="3"><?php echo $mbt; ?></td>
+                            <td></td>
+                        </tr>
                         <?php
-                            }
-
-                            //menentukan total nominal setiap sub
-
-                            for ($x = 0; $x < count($nama_menu_simpan); $x++) {
-                                $total[$nama_menu_simpan[$x]] = 0;
-                                for ($y = 0; $y < count($nama_sub_simpan[$x]); $y++) {
-                                    $total[$nama_menu_simpan[$x]] = $total[$nama_menu_simpan[$x]] + $nominal_sub_simpan[$x][$y];
-                                }
-                            }
-
-                            //view
-                            for ($x = 0; $x < count($nama_menu_simpan); $x++) {
+                            foreach ($submenu_bt[$mbt] as $subbt) :
                                 ?>
                             <tr>
-                                <td colspan="3"><?php echo $nama_menu_simpan[$x]; ?></td>
-                                <td><?php echo "Rp " . number_format($total[$nama_menu_simpan[$x]], 2, ',', '.');
-                                            $total_menu = $total_menu + $total[$nama_menu_simpan[$x]]; ?></td>
+                                <td></td>
+                                <td><?php echo $subbt; ?></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <?php
-                                    for ($y = 0; $y < count($nama_sub_simpan[$x]); $y++) {
-                                        ?>
-                                <tr>
-                                    <td></td>
-                                    <td><?php echo $nama_sub_simpan[$x][$y]; ?></td>
-                                    <td><?php echo "Rp " . number_format($nominal_sub_simpan[$x][$y], 2, ',', '.'); ?></td>
-                                    <td></td>
-                                <?php
-                                        }
-                                        ?>
-                            <?php
-                                }
-                                if ($h == 3) :
-                                    $jumlah_bt = $total_menu;
-                                    ?>
-                                <tr>
-                                    <th></th>
-                                    <th colspan="2">Jumlah Beban Terikat</th>
-                                    <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3">Kenaikan (Penurunan) Aset Neto Terikat</th>
-                                    <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_t = $jumlah_pt - $jumlah_bt, 2, ',', '.'); ?></th>
-                                </tr>
-                        <?php endif;
-                        } ?>
-                        <tr>
-                            <td colspan="4"></td>
-                        </tr>
-                        <tr>
-                            <th colspan="3">KENAIKAN (PENURUNAN) ASET NETO</th>
-                            <th><?php echo "Rp " . number_format($aset_neto_t + $aset_neto_tt, 2, ',', '.'); ?></th>
-                        </tr>
-                        <tr>
-                            <th colspan="3">ASET NETO AWAL BULAN</th>
-                            <th><?php echo "Rp " . number_format($asetneto_blnlalu, 2, ',', '.'); ?></th>
-                        </tr>
-                        <tr>
-                            <th colspan="3">ASET NETO AKHIR BULAN</th>
-                            <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt) - $asetneto_blnlalu, 2, ',', '.'); ?></th>
-                        </tr>
+                    <?php
+                        endforeach;
+                    endforeach;
+                    ?>
+                    <tr>
+                        <th></th>
+                        <th colspan="2">Jumlah Beban Terikat</th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Kenaikan (Penurunan) Aset Neto Terikat</th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_t = $jumlah_pt - $jumlah_bt, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">    </td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">KENAIKAN (PENURUNAN) ASET NETO</th>
+                        <th><?php echo "Rp " . number_format($aset_neto_t + $aset_neto_tt, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">ASET NETO AWAL BULAN</th>
+                        <th><?php echo "Rp " . number_format($sa_aset_neto, 2, ',', '.'); ?></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">ASET NETO AKHIR BULAN</th>
+                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt) + $sa_aset_neto, 2, ',', '.'); ?></th>
+                    </tr>
                 </tbody>
             </table>
         </div>

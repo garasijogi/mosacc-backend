@@ -17,18 +17,18 @@
                 <li><a href="">2019</a></li>
             </ul>
             <ul id="bulan_DD" class="dropdown-content">
-                <li><a href="">Januari</a></li>
-                <li><a href="">Februari</a></li>
-                <li><a href="">Maret</a></li>
-                <li><a href="">April</a></li>
-                <li><a href="">Mei</a></li>
-                <li><a href="">Juni</a></li>
-                <li><a href="">Juli</a></li>
-                <li><a href="">Agustus</a></li>
-                <li><a href="">September</a></li>
-                <li><a href="">Oktober</a></li>
-                <li><a href="">November</a></li>
-                <li><a href="">Desember</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=1"); ?>">Januari</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=2"); ?>">Februari</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=3"); ?>">Maret</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=4"); ?>">April</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=5"); ?>">Mei</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=6"); ?>">Juni</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=7"); ?>">Juli</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=8"); ?>">Agustus</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=9"); ?>">September</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=10"); ?>">Oktober</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=11"); ?>">November</a></li>
+                <li><a href="<?php echo base_url('acc/'.$this->router->fetch_class()."/".$this->router->fetch_method()."?bulan=12"); ?>">Desember</a></li>
             </ul>
         </div>
     </nav>

@@ -13,7 +13,6 @@
         <?php $this->load->view("_partials/navbar.php"); ?>
         <!-- /navbar&&sidebar -->
     </div>
-
     <!-- preloader -->
     <?php $this->load->view('_partials/preloader.php') ?>
     <!-- preloader -->

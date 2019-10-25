@@ -34,7 +34,7 @@
         </div>
         <div class="row" id="printed">
 
-            <h6 class="center"><b>Masjid Al-Ishlah <br> Neraca <br> Tanggal 31 Desember 2018 dan 2019</b></h6>
+            <h6 class="center"><b>Masjid Al-Ishlah <br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table>
                 <tr>
                     <th colspan="2">Keterangan</th>
@@ -56,7 +56,8 @@
                 <tr>
                     <td></td>
                     <td>Perlengkapan</td>
-                    <td></td>
+                    <td><?php echo "Rp " . number_format($total_perlengkapan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $total_perlengkapan;  ?></td>
                 </tr>
                 <tr>
                     <td colspan="3">Aset Tidak Lancar</td>
@@ -110,17 +111,17 @@
                 <tr>
                     <td></td>
                     <td>Saldo Awal Aset Neto Tidak Terikat</td>
-                    <td><?php echo "Rp " . number_format($asetneto_tt_blnlalu, 2, ',', '.'); ?></td>
+                    <td><?php echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Kenaikan (Penurunan) Aset Neto Tidak Terikat</td>
-                    <td><?php echo "Rp " . number_format($asetneto_tt, 2, ',', '.'); ?></td>
+                    <td><?php echo "Rp " . number_format($aset_neto_tt_now, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <th></th>
                     <th>Saldo Akhir Aset Neto Tidak Terikat</th>
-                    <th class="tr-border-top"><?php echo "Rp " . number_format($asetneto_tt + $asetneto_tt_blnlalu, 2, ',', '.'); ?></th>
+                    <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_tt_before + $aset_neto_tt_now, 2, ',', '.'); ?></th>
                 </tr>
                 <tr>
                     <td colspan="3">Aset Neto Terikat</td>
@@ -128,21 +129,21 @@
                 <tr>
                     <td></td>
                     <td>Saldo Awal Aset Neto Terikat</td>
-                    <td><?php echo "Rp " . number_format($asetneto_t_blnlalu, 2, ',', '.'); ?></td>
+                    <td><?php echo "Rp " . number_format($aset_neto_t_before, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Kenaikan (Penurunan) Aset Neto Terikat</td>
-                    <td><?php echo "Rp " . number_format($asetneto_t, 2, ',', '.'); ?></td>
+                    <td><?php echo "Rp " . number_format($aset_neto_t_now, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <th></th>
                     <th>Saldo Akhir Aset Neto Terikat</th>
-                    <th class="tr-border-top"><?php echo "Rp " . number_format($asetneto_t + $asetneto_t_blnlalu, 2, ',', '.'); ?></th>
+                    <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_t_before + $aset_neto_t_now, 2, ',', '.'); ?></th>
                 </tr>
                 <tr>
                     <th colspan="2">Jumlah Aset Neto</th>
-                    <th class="tr-border-top"><?php echo "Rp " . number_format(($asetneto_t +  $asetneto_t_blnlalu) + ($asetneto_tt + $asetneto_tt_blnlalu), 2, ',', '.'); ?></th>
+                    <th class="tr-border-top"><?php echo "Rp " . number_format(($aset_neto_t_before +  $aset_neto_t_now) + ($aset_neto_tt_before + $aset_neto_tt_now), 2, ',', '.'); ?></th>
                 </tr>
             </table>
         </div>

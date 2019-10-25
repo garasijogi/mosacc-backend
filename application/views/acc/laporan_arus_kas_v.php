@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Arus Kas <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Arus Kas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table id='table-arus-kas-v' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">
@@ -105,7 +105,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <td>Pembelian Perlengkapan</td>
-                        <td><?php echo "Rp " . number_format($total_pembelian_perlengkapan, 2, ',', '.');
+                        <td><?php echo "Rp -" . number_format($total_pembelian_perlengkapan, 2, ',', '.');
                             $neto_kas = $neto_kas - $total_pembelian_perlengkapan; ?></td>
                     </tr>
                     <tr>
@@ -139,7 +139,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <th>KAS PADA AKHIR BULAN</th>
-                        <th><?php echo "Rp " . number_format($nominal_kas, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format($nominal_kas + $neto_kas + $nominal_kas_awalbln, 2, ',', '.'); ?></th>
                     </tr>
                 </tbody>
             </table>

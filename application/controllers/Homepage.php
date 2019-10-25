@@ -3,21 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Homepage extends CI_Controller
 {
-  
+
   public function __construct()
   {
     parent::__construct();
-    
+
     //ambil tahun dan taruh di session
     $db_dynamic = 'mosacc_tr_'.date('Y');
-    
+
     //load fungsi dforge
     // $this->load->dbforge();
-    
+
     // $this->dbforge->create_database($db_dynamic, TRUE);
-    
+
     //sql kueri untuk membuat database ke 2 kalau database tidak ada di system
-    
+
     $this->db->trans_start();
     $this->db->query("CREATE DATABASE IF NOT EXISTS $db_dynamic;");
     $this->db->query("USE $db_dynamic;");
@@ -28,7 +28,7 @@ class Homepage extends CI_Controller
     $this->db->query("CREATE TABLE IF NOT EXISTS `tr23_renov_bangun_pending` (`idtr` varchar(16) DEFAULT NULL, `kd_akun` varchar(5) DEFAULT NULL, `tanggal` date DEFAULT NULL, `nominal` float DEFAULT NULL, `keterangan` text) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
     $this->db->trans_complete();
   }
-  
+
   public function index()
   {
     if ($this->session->userdata('status') == NULL) {
@@ -40,8 +40,8 @@ class Homepage extends CI_Controller
     elseif($this->session->userdata('jenis_user') == 'akuntan'){
       redirect('acc/dashboard');
     }
-    
-    
+
+
   }
 }
 

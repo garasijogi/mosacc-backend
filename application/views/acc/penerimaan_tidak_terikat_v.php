@@ -102,13 +102,13 @@
                     <div class="card-image">
                         <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-nonhalal.jpg'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Pendapatan Non-Halal</span>
-                        <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
+                        <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin4"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient
                             because I require little markup to use effectively.</p>
 
-                        <div id="rutin3" class="modal">
+                        <div id="rutin4" class="modal">
                             <div class="modal-content">
                                 <h4>Pendapatan Non-Halal</h4>
                                 <ul>
@@ -125,13 +125,13 @@
                     <div class="card-image">
                         <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-lainnya.jpg'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Pendapatan Lainnya</span>
-                        <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
+                        <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin5"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information. I am convenient
                             because I require little markup to use effectively.</p>
 
-                        <div id="rutin3" class="modal">
+                        <div id="rutin5" class="modal">
                             <div class="modal-content">
                                 <h4>Pendapatan Lainnya</h4>
                                 <ul>

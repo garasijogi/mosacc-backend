@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2019 pada 10.02
+-- Waktu pembuatan: 25 Okt 2019 pada 03.54
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 5.6.36
 
@@ -19,8 +19,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mosacc`
+-- Database: `mosacc_master`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `aset`
+--
+
+DROP TABLE IF EXISTS `aset`;
+CREATE TABLE `aset` (
+  `id_aset` varchar(6) DEFAULT NULL,
+  `nama` varchar(32) DEFAULT NULL,
+  `merek` varchar(32) DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_aset`
+--
+
+DROP TABLE IF EXISTS `jenis_aset`;
+CREATE TABLE `jenis_aset` (
+  `id_jenis_aset` varchar(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profil`
+--
+
+DROP TABLE IF EXISTS `profil`;
+CREATE TABLE `profil` (
+  `Nama Masjid` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -94,123 +130,6 @@ INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tr11_penerimaan_tidak_terikat_pending`
---
-
-DROP TABLE IF EXISTS `tr11_penerimaan_tidak_terikat_pending`;
-CREATE TABLE `tr11_penerimaan_tidak_terikat_pending` (
-  `idtr` varchar(16) NOT NULL,
-  `kd_akun` varchar(5) NOT NULL,
-  `tanggal` date NOT NULL,
-  `nominal` double NOT NULL,
-  `nama_pemberi` varchar(256) NOT NULL,
-  `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tr11_penerimaan_tidak_terikat_pending`
---
-
-INSERT INTO `tr11_penerimaan_tidak_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019091611110001', '11110', '2019-09-16', 250000, 'Jack', 'Peminjaman peralatan sound'),
-('2019100211120001', '11120', '2019-10-02', 4000000, 'Hideyoshi', 'test ruangan'),
-('2019100311300001', '11300', '2019-10-03', 2000000, 'Hideyoshi', 'mantap');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tr12_penerimaan_terikat_pending`
---
-
-DROP TABLE IF EXISTS `tr12_penerimaan_terikat_pending`;
-CREATE TABLE `tr12_penerimaan_terikat_pending` (
-  `idtr` varchar(16) NOT NULL,
-  `kd_akun` varchar(5) NOT NULL,
-  `tanggal` date NOT NULL,
-  `nominal` double NOT NULL,
-  `nama_pemberi` varchar(256) NOT NULL,
-  `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tr12_penerimaan_terikat_pending`
---
-
-INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019091012610001', '12610', '2019-09-10', 213123, ' ', 'qweqweqwe');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tr21_pembelian_pending`
---
-
-DROP TABLE IF EXISTS `tr21_pembelian_pending`;
-CREATE TABLE `tr21_pembelian_pending` (
-  `idtr` varchar(16) NOT NULL,
-  `kd_akun` varchar(5) NOT NULL,
-  `tanggal` date NOT NULL,
-  `jenis` varchar(32) NOT NULL,
-  `merek` varchar(112) NOT NULL,
-  `nomor_seri` varchar(112) NOT NULL,
-  `jumlah` int(11) NOT NULL,
-  `keterangan` text NOT NULL,
-  `harga_satuan` int(11) NOT NULL,
-  `total_harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tr21_pembelian_pending`
---
-
-INSERT INTO `tr21_pembelian_pending` (`idtr`, `kd_akun`, `tanggal`, `jenis`, `merek`, `nomor_seri`, `jumlah`, `keterangan`, `harga_satuan`, `total_harga`) VALUES
-('2019101721100001', '21100', '2019-10-01', 'Mobil', 'Honda', 'Jazz 220', 1, 'Untuk kebutuhan acara studi banding', 5000000, 5000000);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tr22_beban_pending`
---
-
-DROP TABLE IF EXISTS `tr22_beban_pending`;
-CREATE TABLE `tr22_beban_pending` (
-  `idtr` varchar(16) NOT NULL,
-  `kd_akun` varchar(5) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL,
-  `nominal` int(11) DEFAULT NULL,
-  `keterangan` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tr23_renov_bangun_pending`
---
-
-DROP TABLE IF EXISTS `tr23_renov_bangun_pending`;
-CREATE TABLE `tr23_renov_bangun_pending` (
-  `idtr` varchar(16) DEFAULT NULL,
-  `kd_akun` varchar(5) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL,
-  `nominal` float DEFAULT NULL,
-  `keterangan` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tr23_renov_bangun_pending`
---
-
-INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
-('2019091523100001', '23100', '2019-09-15', 123214000, 'qwewqdsadfsa'),
-('2019091523100002', '23100', '2019-09-15', 123214000, 'qwewqdsadfsa'),
-('2019091523100003', '23100', '2019-09-23', 21321300000, 'wqewqdsads'),
-('2019091523100004', '23100', '2019-09-27', 2132130, 'asdsacxsac'),
-('2019091523100005', '23100', '2019-09-26', 21321300, 'adsadsa'),
-('2019091523100006', '23100', '2019-09-17', 3424320, 'sdfgsdfsd');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `user`
 --
 
@@ -238,30 +157,6 @@ INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
 --
 ALTER TABLE `rules`
   ADD PRIMARY KEY (`kd_akun`);
-
---
--- Indeks untuk tabel `tr11_penerimaan_tidak_terikat_pending`
---
-ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
-  ADD PRIMARY KEY (`idtr`);
-
---
--- Indeks untuk tabel `tr12_penerimaan_terikat_pending`
---
-ALTER TABLE `tr12_penerimaan_terikat_pending`
-  ADD PRIMARY KEY (`idtr`);
-
---
--- Indeks untuk tabel `tr21_pembelian_pending`
---
-ALTER TABLE `tr21_pembelian_pending`
-  ADD PRIMARY KEY (`idtr`);
-
---
--- Indeks untuk tabel `tr22_beban_pending`
---
-ALTER TABLE `tr22_beban_pending`
-  ADD PRIMARY KEY (`idtr`);
 
 --
 -- Indeks untuk tabel `user`
