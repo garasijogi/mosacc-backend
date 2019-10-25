@@ -1,4 +1,3 @@
-<!-- laporan aktivitas -->
 //kas di debit
     $data['kd_akun_debit'] = $this->rules_model->get_rules_where('kas', 'debit');
     $indicator_d = 0;
