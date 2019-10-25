@@ -1,8 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 if (!function_exists('date_generator')) {
-    function date_generator($date)
-    {
+    function date_generator($date){
         $date_split = explode("-", $date);
         switch ($date_split[1]) {
             case "01":

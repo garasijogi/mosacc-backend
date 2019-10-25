@@ -59,19 +59,19 @@
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">NAMA MASJID</div>
-									<div class="profil-nilai">Masjid Jami Al-Islah</div>
+									<div class="profil-nilai"><?php echo $profil[0]['nama']; ?></div>
 								</div>
 							</div>
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">ALAMAT MASJID</div>
-									<div class="profil-nilai">Jl. Otonom RT/RW 04/01 ds. Talaga Sari</div>
+									<div class="profil-nilai"><?php echo $profil[0]['alamat']; ?></div>
 								</div>
 							</div>
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">TAHUN BERDIRI</div>
-									<div class="profil-nilai">2019</div>
+									<div class="profil-nilai"><?php echo $profil[0]['tahun']; ?></div>
 								</div>
 							</div>
 						</div>
@@ -86,13 +86,13 @@
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">NO. TELEPON SEKRETARIAT</div>
-									<div class="profil-nilai">08999384629</div>
+									<div class="profil-nilai"><?php echo $profil[0]['telepon']; ?></div>
 								</div>
 							</div>
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">REKENING MASJID</div>
-									<div class="profil-nilai">Jl. Otonom RT/RW 04/01 ds. Talaga Sari</div>
+									<div class="profil-nilai"><?php echo $profil[0]['rekening']; ?></div>
 								</div>
 							</div>
 						</div>
@@ -107,19 +107,19 @@
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">LUAS TANAH</div>
-									<div class="profil-nilai">1000m*1000m</div>
+									<div class="profil-nilai"><?php echo $profil[0]['luas_tanah']; ?></div>
 								</div>
 							</div>
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">AD/ART</div>
-									<div class="profil-nilai">*Tambahkan File</div>
+									<div class="profil-nilai"><?php echo $profil[0]['ad_art']; ?></div>
 								</div>
 							</div>
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">BADAN HUKUM</div>
-									<div class="profil-nilai">*Tambahkan File</div>
+									<div class="profil-nilai"><?php echo $profil[0]['badan_hukum']; ?></div>
 								</div>
 							</div>
 						</div>

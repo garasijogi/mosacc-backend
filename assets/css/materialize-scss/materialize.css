@@ -6170,7 +6170,9 @@ input[type=range]::-ms-thumb {
   .tap-target-wrapper.open .tap-target-wave::after {
     visibility: visible;
     animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    transition: opacity .3s, transform .3s, visibility 0s 1s; }
+    transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s; }
 
 .tap-target {
   position: absolute;
@@ -6205,7 +6207,9 @@ input[type=range]::-ms-thumb {
     transition: transform .3s; }
   .tap-target-wave::after {
     visibility: hidden;
-    transition: opacity .3s, transform .3s, visibility 0s;
+    transition: opacity .3s,
+ transform .3s,
+ visibility 0s;
     z-index: -1; }
 
 .tap-target-origin {
@@ -6530,12 +6534,42 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
+.wizard-wrapper {
+  width: 100%;
+  background-color: teal; }
+  .wizard-wrapper .collapsible .wizard-menu-on {
+    background-color: teal !important; }
+  .wizard-wrapper .collapsible .sidenav-item a {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    line-height: 30px;
+    padding-left: 20px !important; }
+    .wizard-wrapper .collapsible .sidenav-item a span {
+      position: relative;
+      margin-top: 10px; }
+      .wizard-wrapper .collapsible .sidenav-item a span .material-icons {
+        margin: 0 16px 0 0px; }
+
 .row {
   margin-bottom: 0px !important; }
 
 .wrapper-sidenav {
   position: fixed !important;
   z-index: 117000000; }
+
+#sidenav-wizard {
+  height: 100vh;
+  background-color: #555;
+  overflow: hidden;
+  width: 220px;
+  position: absolute;
+  transition: 0.5s;
+  z-index: 99;
+  color: #fff;
+  padding-top: 50px; }
+  #sidenav-wizard .active {
+    background-color: teal; }
 
 #sidenav {
   height: 100vh;
@@ -6567,11 +6601,23 @@ input[type=range]::-ms-thumb {
     padding-left: -10px; }
   #sidenav .collapsible-header i {
     padding-left: -10px; }
+  #sidenav .sidenav-item {
+    width: 250px !important; }
 
 .nav-wrapper {
   padding: 0 30px;
   padding-left: 80px;
   z-index: 1; }
+
+.navbar-no-shadow {
+  box-shadow: none; }
+
+.nav-wizard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 60px; }
 
 .content {
   margin: 0;
@@ -6582,6 +6628,70 @@ input[type=range]::-ms-thumb {
   .content .collapsible-body {
     position: absolute; }
 
+.content-wizard {
+  position: relative;
+  margin: 0;
+  padding: 10px 0 50px 0;
+  position: relative;
+  z-index: 3; }
+  .content-wizard .form-wizard {
+    position: relative;
+    width: 700px;
+    background-color: #fff;
+    padding: 40px 30px;
+    margin: 40px 0 0 500px;
+    z-index: 3; }
+    .content-wizard .form-wizard h5,
+    .content-wizard .form-wizard h6 {
+      color: teal;
+      font-weight: 500; }
+  .content-wizard .form-addition {
+    background-color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+    z-index: 1;
+    width: 1100px;
+    height: 400px;
+    top: 0;
+    margin: 200px 0 0 200px;
+    color: #fff; }
+    .content-wizard .form-addition span.wizard-section-name {
+      position: relative;
+      display: inline;
+      font-size: 2.5rem;
+      margin-left: 40px;
+      top: 150px;
+      padding: 7px;
+      border: 3px solid #fff;
+      width: 270px !important;
+      height: auto; }
+    .content-wizard .form-addition h5.logo-sideways {
+      display: block;
+      margin-top: 0px;
+      float: right;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 3rem; }
+    .content-wizard .form-addition .wizard-btn {
+      position: relative;
+      display: block;
+      margin: 120px 0 0 100px;
+      width: 130px;
+      height: 50px;
+      background-color: #555;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 5px;
+      font-weight: bold; }
+    .content-wizard .form-addition .some-rectangle {
+      display: block;
+      width: 200px;
+      height: 200px;
+      background-color: rgba(255, 255, 255, 0.2);
+      position: relative;
+      left: 200px;
+      margin-top: 0px;
+      transform: rotate(45deg); }
+
 .card a p {
   color: #000; }
 
@@ -6591,7 +6701,9 @@ input[type=range]::-ms-thumb {
 .modal .modal-content ul li {
   color: #555 !important;
   height: 35px;
-  transition: 0.1s; }
+  transition: 0.1s;
+  display: flex;
+  justify-items: center; }
   .modal .modal-content ul li:hover {
     color: #fff !important;
     background-color: teal; }
@@ -6620,7 +6732,7 @@ input[type=range]::-ms-thumb {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url("../../background.jpg");
+  background-image: url("../../../assets/images/mosque-vector.png");
   background-size: cover; }
   #landing-page-content .sidenav-trigger i {
     color: #fff; }
@@ -6629,7 +6741,7 @@ input[type=range]::-ms-thumb {
     #landing-page-content .landing-content .landing-header {
       height: 160px;
       position: relative;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 84, 87, 0.76);
       color: #fff; }
       #landing-page-content .landing-content .landing-header .landing-header-components {
         margin: 0;
@@ -6725,6 +6837,8 @@ input[type=range]::-ms-thumb {
       padding: 0 8px;
       width: 48vw;
       border-bottom: 2px solid #aaa; }
+      .profil-wrapper .profil-content .profil-contents-wrapper:last-child {
+        margin-bottom: 10px; }
       .profil-wrapper .profil-content .profil-contents-wrapper .head-content {
         padding-left: 0 !important;
         text-align: center;
@@ -6745,9 +6859,126 @@ input[type=range]::-ms-thumb {
           font-style: italic;
           margin: 10px 10px; }
       .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti {
+        position: relative;
         color: #aaa;
         border-bottom: 1px solid #d9d9d9;
-        margin: 5px 0 10px 0; }
+        margin: 5px 0 10px 0;
+        width: 100%;
+        display: inline-block; }
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-alamat-masjid,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-tahun-berdiri,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-telepon-sekretariat,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-rekening-masjid,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-luas-tanah,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-ad-art,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-badan-hukum,
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .icon-namamasjid {
+          position: absolute;
+          display: none;
+          right: 0;
+          cursor: pointer; }
+        .profil-wrapper .profil-content .profil-contents-wrapper .profil-properti .edit-profil {
+          margin: 30px 0; }
       .profil-wrapper .profil-content .profil-contents-wrapper .profil-nilai {
         font-weight: bold;
         margin-bottom: 35px; }
+      .profil-wrapper .profil-content .profil-contents-wrapper .btn-small {
+        width: 8.8rem; }
+    .profil-wrapper .profil-content .btn-edit-profil {
+      position: relative;
+      margin-top: -40px;
+      right: 0; }
+    .profil-wrapper .profil-content .btn-success {
+      background-color: #5CB85C; }
+    .profil-wrapper .profil-content .btn-danger {
+      background-color: #D9534F; }
+    .profil-wrapper .profil-content .radio-kredit-debit {
+      margin: 5px 0; }
+      .profil-wrapper .profil-content .radio-kredit-debit p {
+        margin: 5px; }
+    .profil-wrapper .profil-content .edit-aset-wrapper {
+      position: relative;
+      margin: 20px 0 60px 0; }
+      .profil-wrapper .profil-content .edit-aset-wrapper .marbot {
+        margin-bottom: 10px; }
+
+.btn-success {
+  background-color: #5CB85C; }
+
+.btn-danger {
+  background-color: #D9534F; }
+
+.card-title-text {
+  text-shadow: 2px 2px 4px #000000; }
+
+/* homepage */
+.card1:hover {
+  -moz-box-shadow: 0 0 50px grey;
+  -webkit-box-shadow: 0 0 50px grey;
+  box-shadow: 0 0 50px grey; }
+
+.card2:hover {
+  -moz-box-shadow: 0 0 50px grey;
+  -webkit-box-shadow: 0 0 50px grey;
+  box-shadow: 0 0 50px grey; }
+
+#rcorners1 {
+  border-radius: 25px; }
+
+.bg-mosque {
+  background: url("assets/images/mosque-vector.png") no-repeat center center fixed !important;
+  object-fit: cover !important;
+  margin: auto !important;
+  height: 600px !important; }
+
+.overflow-hidden {
+  overflow: hidden; }
+
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fafafa;
+  padding: 0;
+  max-height: 70%;
+  width: 40%;
+  margin: auto;
+  overflow-y: auto;
+  border-radius: 20px;
+  will-change: top, opacity;
+  max-height: 900px !important; }
+
+.modal:focus {
+  outline: none; }
+
+.no-shadows {
+  box-shadow: none !important; }
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding-top: 1px;
+  background-color: white; }
+
+.table-borderless {
+  border-bottom: 0px !important;
+  border-collapse: unset !important; }
+
+.font-bold {
+  font-weight: bold !important; }
+
+.tr-border-top {
+  border-top: 1pt solid black; }
+
+.preloader-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }

@@ -11,12 +11,16 @@ class Profil extends CI_Controller {
         if ($this->session->userdata('status') == NULL) {
             redirect('homepage');
         }
+
+        $this->load->model('profil_m');
     }
     
     
     public function index()
     {
-        $this->load->view('acc/profil_v');
+        $data['profil'] = $this->profil_m->getProfil();
+        
+        $this->load->view('acc/profil_v', $data);
     }
 
     public function akun(){
@@ -29,6 +33,13 @@ class Profil extends CI_Controller {
 
     public function dkm(){
         $this->load->view('acc/profil-dkm_v');
+    }
+
+    public function editProfil(){
+        $data['profil'] = $this->profil_m->getProfil();
+
+        $this->load->view('acc/edit_profil_masjid_v', $data);
+        
     }
     
 }

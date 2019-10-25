@@ -12,12 +12,6 @@ class Just_trying extends CI_Controller
       redirect('homepage');
     }
   }
-  
-    
-  public function __construct()
-  {
-    parent::__construct();
-  }
 
   public function index()
   {
