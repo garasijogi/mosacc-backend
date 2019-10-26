@@ -8,6 +8,10 @@
 	</head>
 
 <body style="background-color: teal;">
+    <!-- preloader -->
+    <?php $this->load->view('_partials/preloader.php') ?>
+    <!-- preloader -->
+
     <div class="wizard-wrapper">
 
         <div class="wrapper-sidenav">
@@ -16,7 +20,7 @@
                 <div class="collapsible-boody">
                     <ul class="collapsible">
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard'); ?>"><span><i class="material-icons">assignment</i></span>Selamat
+                            <a href="<?php echo base_url('wizard'); ?>" class="wizard-menu-on"><span><i class="material-icons">assignment</i></span>Selamat
                                 Datang</a>
                         </li>
                         <li class="sidenav-item">
@@ -29,7 +33,7 @@
                             </a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard/aset'); ?>" class="wizard-menu-on"><span><i
+                            <a href="<?php echo base_url('wizard/aset'); ?>" ><span><i
                                         class="material-icons">class</i></span>Aset</a>
                         </li>
                         <!-- <li class="sidenav-item">

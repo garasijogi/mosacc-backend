@@ -8,6 +8,11 @@ class Homepage extends CI_Controller
   {
     parent::__construct();
 
+    //cek data user pada database, apakah tersedia
+    if (empty($this->db->get('user')->result())){
+      redirect('wizard');//arahkan ke modul wizard
+    }
+
     //ambil tahun dan taruh di session
     $db_dynamic = 'mosacc_tr_'.date('Y');
 
