@@ -33,7 +33,7 @@
 					<div class="col s12 m4">
 						<div class="card">
 							<div class="card-image">
-								<img src="./assets/penerimaan Rutin/1.jpg">
+								<img src="<?php echo base_url('assets/images/beban/beban-peribadatan-icon.png') ?>" width="200" height="300">
 								<span class="card-title">Peribadatan</span>
 								<a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#rutin1"><i class="material-icons">add</i></a>
 							</div>
@@ -70,7 +70,7 @@
 					<div class="col s12 m4">
 						<div class="card">
 							<div class="card-image">
-								<img src="./assets/penerimaan Rutin/1.jpg">
+								<img src="<?php echo base_url('assets/images/beban/beban-ramadhan-icon.png') ?>" width="200" height="300">
 								<span class="card-title">Ramadhan</span>
 								<a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin2"><i class="material-icons">add</i></a>
 							</div>
@@ -100,7 +100,7 @@
 					<div class="col s12 m4">
 						<div class="card">
 							<div class="card-image">
-								<img src="./assets/penerimaan Rutin/1.jpg">
+								<img src="<?php echo base_url('assets/images/beban/beban-ziswaf-icon.png') ?>" width="200" height="300">
 								<span class="card-title">Penyaluran Ziswaf</span>
 								<a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
 							</div>
@@ -145,7 +145,7 @@
 					<div class="col s12 m4 ">
 						<div class="card">
 							<div class="card-image">
-								<img src="./assets/penerimaan Rutin/1.jpg">
+								<img src="<?php echo base_url('assets/images/beban/beban-pendidikan-icon.png') ?>" width="200" height="300">
 								<span class="card-title">Pendidikan</span>
 								<a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin4"><i class="material-icons">add</i></a>
 							</div>
@@ -181,7 +181,7 @@
 					<div class="col s12 m4">
 						<div class="card">
 							<div class="card-image">
-								<img src="./assets/penerimaan Rutin/1.jpg">
+								<img src="<?php echo base_url('assets/images/beban/beban-operasional-icon.png') ?>" width="200" height="300">
 								<span class="card-title">Beban Operasional</span>
 								<a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#tdk_rutin1"><i class="material-icons">add</i></a>
 							</div>
@@ -224,7 +224,7 @@
 					<div class="col s12 m4">
 						<div class="card">
 							<div class="card-image">
-								<img src="./assets/penerimaan Rutin/1.jpg">
+								<img src="<?php echo base_url('assets/images/beban/beban-lainnya-icon.png') ?>" width="200" height="300">
 								<span class="card-title">Beban Lainnya</span>
 								<a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#tdk_rutin2"><i class="material-icons">add</i></a>
 							</div>
