@@ -2,12 +2,12 @@
 	<div id="sidenav">
 
 		<div class="logo">
-			<h4>Mosacc</h4>
+			<h4>MosAcc</h4>
 		</div>
 
 		<ul class="collapsible">
 			<li>
-				<div class="collapsible-header"><span><i class="material-icons">assignment</i></span>Penerimaan</div>
+				<div class="collapsible-header"><span><img src="<?php echo base_url('assets/images/icon/sidebar/penerimaan-icon.svg'); ?>" class="mosacc-logo"></span>Penerimaan</div>
 				<div class="collapsible-body">
 					<ul>
 						<li><a href="<?php echo base_url('acc/penerimaan_terikat'); ?>">Penerimaan Terikat</a></li>
@@ -16,7 +16,7 @@
 				</div>
 			</li>
 			<li>
-				<div class="collapsible-header"><span><i class="material-icons">equalizer</i></span>Pengeluaran</div>
+				<div class="collapsible-header"><span><img src="<?php echo base_url('assets/images/icon/sidebar/pengeluaran-icon.svg'); ?>" class="mosacc-logo"></span>Pengeluaran</div>
 				<div class="collapsible-body">
 					<ul>
 						<li><a href="<?php echo base_url('acc/pembelian'); ?>">Pembelian</a></li>
@@ -26,16 +26,7 @@
 				</div>
 			</li>
 			<li>
-				<div class="collapsible-header"><span><i class="material-icons">cached</i></span>Penyesuaian</div>
-				<div class="collapsible-body">
-					<ul>
-						<li><a href="penyesuaian-perlengkapan.html">Penyesuaian Perlengkapan</a></li>
-						<li><a href="renovasi-pembangunan.html">Renovasi Pembangunan</a></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="collapsible-header"><span><i class="material-icons">class</i></span>Laporan</div>
+				<div class="collapsible-header"><span><img src="<?php echo base_url('assets/images/icon/sidebar/laporan-icon.svg'); ?>" class="mosacc-logo"></span>Laporan</div>
 				<div class="collapsible-body">
 					<ul>
 						<li><a href="<?php echo base_url('acc/laporan_keuangan'); ?>">Laporan Keuangan</a></li>

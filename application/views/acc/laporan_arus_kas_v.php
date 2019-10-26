@@ -45,89 +45,39 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- logical process -->
-                    <?php for ($h = 0; $h < 4; $h++) {
-                        if ($h == 0) {
-                            $nama_menu_simpan = $nama_menu_dptt;
-                            $nama_sub_simpan = $nama_sub_dptt;
-                            $nominal_sub_simpan = $nominal_sub_dptt;
-                            $total_menu = 0;
-                        } elseif ($h == 1) {
-                            $jumlah_ptt = $total_menu;
-                            $nama_menu_simpan = $nama_menu_kb;
-                            $nama_sub_simpan = $nama_sub_kb;
-                            $nominal_sub_simpan = $nominal_sub_kb;
-                            $total_menu = 0;
-                        } elseif ($h == 2) {
-                            $jumlah_btt = $total_menu;
-                            $nama_menu_simpan = $nama_menu;
-                            $nama_sub_simpan = $nama_sub;
-                            $nominal_sub_simpan = $nominal_sub;
-                            $total_menu = 0;
-                        } elseif ($h == 3) {
-                            $jumlah_pt = $total_menu;
-                            $nama_menu_simpan = $nama_menu_kb;
-                            $nama_sub_simpan = $nama_sub_kb;
-                            $nominal_sub_simpan = $nominal_sub_kb;
-                            $total_menu = 0;
-                        }
-
-                        //menentukan total nominal setiap sub
-
-                        for ($x = 0; $x < count($nama_menu_simpan); $x++) {
-                            $total[$nama_menu_simpan[$x]] = 0;
-                            for ($y = 0; $y < count($nama_sub_simpan[$x]); $y++) {
-                                $total[$nama_menu_simpan[$x]] = $total[$nama_menu_simpan[$x]] + $nominal_sub_simpan[$x][$y];
-                            }
-                        }
-
-                        //view
-                        for ($x = 0; $x < count($nama_menu_simpan); $x++) {
-                            $total_menu = $total_menu + $total[$nama_menu_simpan[$x]];
-                            for ($y = 0; $y < count($nama_sub_simpan[$x]); $y++) { }
-                        }
-                        if ($h == 3) :
-                            $jumlah_bt = $total_menu;
-                        endif;
-                        $aset_neto_t = $jumlah_pt - $jumlah_bt;
-                        $aset_neto_tt = $jumlah_ptt - $jumlah_btt;
-                        $total_aset_neto = $aset_neto_t + $aset_neto_tt;
-                    } ?>
-                    <!-- end logical process -->
-
                     <tr>
                         <th colspan="2">Aktivitas Operasi</th>
                     </tr>
                     <tr>
                         <td>Kenaikan (Penurunan) Aset Neto</td>
-                        <td><?php echo "Rp " . number_format($total_aset_neto, 2, ',', '.');
-                            $neto_kas = $total_aset_neto; ?> </td>
+                        <td><?php echo "Rp " . number_format($aset_neto_t_now + $aset_neto_tt_now, 2, ',', '.');
+                            $neto_kas = $aset_neto_t_now + $aset_neto_tt_now; ?> </td>
                     </tr>
                     <tr>
                         <td>Pembelian Perlengkapan</td>
-                        <td><?php echo "Rp -" . number_format($total_pembelian_perlengkapan, 2, ',', '.');
-                            $neto_kas = $neto_kas - $total_pembelian_perlengkapan; ?></td>
+                        <td><?php echo "Rp -" . number_format($total_perlengkapan, 2, ',', '.');
+                            $neto_kas = $neto_kas - $total_perlengkapan; ?></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td></td>
+                        <td class="tr-border-top"><?php echo "Rp " . number_format($neto_kas, 2, ',', '.'); ?></td>
                     </tr>
                     <tr>
                         <th colspan="2">Aktivitas Investasi</th>
                     </tr>
                     <tr>
                         <td>Pembelian Peralatan</td>
-                        <td><?php echo "Rp " . number_format($total_pembelian_peralatan, 2, ',', '.');
-                            $neto_kas = $neto_kas - $total_pembelian_peralatan; ?></td>
+                        <td><?php echo "Rp " . number_format($total_peralatan, 2, ',', '.');
+                            $neto_kas = $neto_kas - $total_peralatan; ?></td>
                     </tr>
                     <tr>
                         <td>Pembelian Kendaraan</td>
-                        <td><?php echo "Rp " . number_format($total_pembelian_kendaraan, 2, ',', '.');
-                            $neto_kas = $neto_kas - $total_pembelian_kendaraan; ?></td>
+                        <td><?php echo "Rp " . number_format($total_kendaraan, 2, ',', '.');
+                            $neto_kas = $neto_kas - $total_kendaraan; ?></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td></td>
+                        <td class="tr-border-top"><?php echo "Rp " . number_format(-($total_peralatan + $total_kendaraan), 2, ',', '.'); ?></td>
                     </tr>
                     <tr>
                         <th>KENAIKAN (PENURUNAN) NETO DALAM KAS</th>
@@ -135,11 +85,11 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <th>KAS PADA AWAL BULAN</th>
-                        <th><?php echo "Rp " . number_format($nominal_kas_awalbln, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th>KAS PADA AKHIR BULAN</th>
-                        <th><?php echo "Rp " . number_format($nominal_kas + $neto_kas + $nominal_kas_awalbln, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format($nominal_kas + $nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                 </tbody>
             </table>

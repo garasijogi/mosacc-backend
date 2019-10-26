@@ -2,7 +2,7 @@
 <html lang="en"" class=" overflow-hidden">
 
 <head>
-    <title>Mosacc (Mosque Accounting)</title>
+    <title>MosAcc (Mosque Accounting)</title>
     <?php $this->load->view('_partials/head.php') ?>
 </head>
 
@@ -17,14 +17,17 @@
     <?php $this->load->view('_partials/preloader.php') ?>
     <!-- preloader -->
 
-    <div class="container">
-        <div class="row">
-            <div class="col s12 center teal-text">
-                <h6>Pilih posisi anda :</h6>
-            </div>
+
+    <div class="row">
+        <div class="col s3 offset-s9 teal-text left-align">
+            <h6>Pilih posisi anda :</h6>
         </div>
-        <div class="row center">
-            <div class="col s12 offset-s2">
+
+    </div>
+    <div class="row">
+
+        <!-- BENDAHARA CARD -->
+        <!-- <div class="col s12 offset-s2">
                 <div class="col s3 m3">
                     <div class="card card1 teal darken-2 z-depth-4 card-homepage">
                         <a href="#login-akuntan" class="modal-trigger">
@@ -32,26 +35,62 @@
                                 <img class="activator" src="<?php echo base_url('assets/images/icon/accountant-icon.png'); ?>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title activator white-text text-darken-4"> <b> Akuntan </b></span>
+                                <span class="card-title activator white-text text-darken-4"> <b> Bendahara </b></span>
                             </div>
                         </a>
                     </div>
-                </div>
-                <div class="col s2"></div>
-                <div class="col s3 offset-s2 m3">
-                    <div class="card card2 teal darken-2 z-depth-4 card-homepage">
-                        <a href="#login-manajer" class="modal-trigger">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator white-text text-darken-4"> <b> Manajer </b></span>
-                            </div>
-                        </a>
+                </div> -->
+        <a href="#login-akuntan" class="modal-trigger">
+            <div class="col s3 offset-s9">
+                <div class="card card1 horizontal teal white-text">
+                    <div class="card-image valign-wrapper card-edit" style="margin:auto">
+                        <img src="<?php echo base_url('assets/images/icon/accountant-icon.png'); ?>">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content left-align card-home  valign-wrapper">
+                            <h4>Bendahara</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
+        <!-- END BENDAHARA CARD -->
+
+    </div>
+
+    <!-- KETUA DKM CARD -->
+    <!-- <div class="col s2"></div>
+            <div class="col s3 offset-s2 m3">
+                <div class="card card2 teal darken-2 z-depth-4 card-homepage">
+                    <a href="#login-manajer" class="modal-trigger">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator white-text text-darken-4"> <b> Ketua DKM </b></span>
+                        </div>
+                    </a>
+                </div>
+            </div> -->
+
+    <div class="row">
+        <a href="#login-manajer" class="modal-trigger">
+            <div class="col s3 offset-s9">
+                <div class="card card1 horizontal teal white-text">
+                    <div class="card-image valign-wrapper card-edit" style="margin:auto">
+                        <img src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content left-align card-home  valign-wrapper">
+                            <h4>Ketua DKM</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- END KETUA DKM CARD -->
+
     </div>
 
     <!-- modals -->
@@ -59,8 +98,8 @@
     <div id="login-akuntan" class="modal">
         <div class="modal-content center">
             <img src="<?php echo base_url('assets/images/icon/accountant-icon.png'); ?>" alt="icon-akuntan" width="200px" height="200px">
-            <h4>Akuntan</h4>
-            <form action="<?php echo base_url('login/login_user?jenis_user=akuntan'); ?>" method="post" id="form-login-akuntan">
+            <h4>Bendahara</h4>
+            <form action="<?php echo base_url('login/login_user?jenis_user=akuntan'); ?>" method="post" id="form-login-akuntan" class="left-align">
                 <div class="input-field col s3">
                     <input id="password" type="password" name="password" required autofocus>
                     <label for="password">Masukkan Password</label>
@@ -87,8 +126,8 @@
     <div id="login-manajer" class="modal">
         <div class="modal-content center">
             <img src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>" alt="icon-manajer" width="200px" height="200px">
-            <h4>Manajer</h4>
-            <form action="<?php echo base_url('login/login_user?jenis_user=manajer'); ?>" method="post" id="form-login-manajer">
+            <h4>Ketua DKM</h4>
+            <form action="<?php echo base_url('login/login_user?jenis_user=manajer'); ?>" method="post" id="form-login-manajer" class="left-align">
                 <div class="input-field col s3">
                     <input id="password2" type="password" autofocus required>
                     <label for="password2">Masukkan Password</label>
@@ -127,5 +166,27 @@
         <?php } ?>
     </script>
 </body>
+
+<!-- footer -->
+<footer class="page-footer">
+    <div class="container center">
+        <div class="row">
+            <div class="col s12">
+                <h6>Sponsored by:</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <img src="<?php echo base_url('assets/images/icon/uin-icon2.png'); ?>" alt="icon-manajer" width="70px" height="40px">
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright center">
+        <div class="container">
+            <h6>UIN Syarif Hidayatullah Jakarta © Copyright 2019. All rights reserved.</h6>
+        </div>
+    </div>
+</footer>
+<!-- end footer -->
 
 </html>

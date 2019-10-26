@@ -44,10 +44,11 @@ class Laporan_keuangan extends CI_Controller
     //GET TOTAL NOMINAL PERLENGKAPAN
     $total_perlengkapan = 0;
     $b = $this->rules_model->get_b_now($bulan);
-    for ($x = 0; $x < count($b); $x++) {
-      for ($y = 0; $y < count($b[$x]); $y++) {
-        if ($b[$y]->kd_akun == 22114) {
-          $total_perlengkapan = $total_perlengkapan + $b[$x]->nominal;
+    $p = $this->rules_model->get_p_now($bulan);
+    for ($x = 0; $x < count($p); $x++) {
+      for ($y = 0; $y < count($p[$x]); $y++) {
+        if ($p[$x]->kd_akun == 21100) {
+          $total_perlengkapan = $total_perlengkapan + $p[$x]->total_harga;
         }
       }
     }
@@ -149,10 +150,10 @@ class Laporan_keuangan extends CI_Controller
     //END GET ASET NETO TERIKAT NOW
 
     //MENENTUKAN NOMINAL KAS
-    $pt = $this->rules_model->get_pt($bulan);
-    $ptt = $this->rules_model->get_ptt($bulan);
-    $p = $this->rules_model->get_p($bulan);
-    $b = $this->rules_model->get_b($bulan);
+    $pt = $this->rules_model->get_pt_now($bulan);
+    $ptt = $this->rules_model->get_ptt_now($bulan);
+    $p = $this->rules_model->get_p_now($bulan);
+    $b = $this->rules_model->get_b_now($bulan);
 
     $data['nominal_kas'] = $this->rules_model->nominal_kas($pt, $ptt, $p, $b);
     //END MENENTUKAN NOMINAL KAS
@@ -518,6 +519,106 @@ class Laporan_keuangan extends CI_Controller
     //ERROR REPORTING
     error_reporting(0);
 
+    //MENENTUKAN BULAN
+    $bulan = $this->input->get('bulan');
+    if ($bulan == NULL) {
+      $bulan = intval(date('m'));
+    }
+    $data['bulan'] = $bulan;
+    //END MENENTUKAN BULAN
+
+    //GET ASET NETO TERIKAT NOW
+    $pt = $this->rules_model->get_pt_now($bulan);
+    $bt = $this->rules_model->get_bt_now($bulan);
+    $total_pt = 0;
+    $total_bt = 0;
+    for ($x = 0; $x < count($pt); $x++) {
+      for ($y = 0; $y < count($pt[$x]); $y++) {
+        $total_pt = $total_pt + $pt[$x]->nominal;
+      }
+    }
+    for ($x = 0; $x < count($bt); $x++) {
+      for ($y = 0; $y < count($bt[$x]); $y++) {
+        $total_bt = $total_bt + $bt[$x]->nominal;
+      }
+    }
+    $aset_neto_t = $total_pt - $total_bt;
+    $data['aset_neto_t_now'] = $aset_neto_t;
+    //END GET ASET NETO TERIKAT NOW
+
+    //GET ASET NETO TIDAK TERIKAT NOW
+    $ptt = $this->rules_model->get_ptt_now($bulan);
+    $btt = $this->rules_model->get_btt_now($bulan);
+    $total_ptt = 0;
+    $total_btt = 0;
+    for ($x = 0; $x < count($ptt); $x++) {
+      for ($y = 0; $y < count($ptt[$x]); $y++) {
+        $total_ptt = $total_ptt + $ptt[$x]->nominal;
+      }
+    }
+    for ($x = 0; $x < count($btt); $x++) {
+      for ($y = 0; $y < count($btt[$x]); $y++) {
+        $total_btt = $total_btt + $btt[$x]->nominal;
+      }
+    }
+    $aset_neto_tt = $total_ptt - $total_btt;
+    $data['aset_neto_tt_now'] = $aset_neto_tt;
+    //END GET ASET NETO TERIKAT NOW
+
+    //MENENTUKAN NOMINAL KAS
+    $pt = $this->rules_model->get_pt_now($bulan);
+    $ptt = $this->rules_model->get_ptt_now($bulan);
+    $p = $this->rules_model->get_p_now($bulan);
+    $b = $this->rules_model->get_b_now($bulan);
+
+    $data['nominal_kas'] = $this->rules_model->nominal_kas($pt, $ptt, $p, $b);
+    //END MENENTUKAN NOMINAL KAS
+
+    //MENENTUKAN NOMINAL KAS BEFORE
+    $pt = $this->rules_model->get_pt_before($bulan);
+    $ptt = $this->rules_model->get_ptt_before($bulan);
+    $p = $this->rules_model->get_p_before($bulan);
+    $b = $this->rules_model->get_b_before($bulan);
+
+    $data['nominal_kas_before'] = $this->rules_model->nominal_kas($pt, $ptt, $p, $b);
+    //END MENENTUKAN NOMINAL KAS BEFORE
+
+    //MENENTUKAN PEMBELIAN PERLENGKAPAN
+    $total_perlengkapan = 0;
+    $p = $this->rules_model->get_p_now($bulan);
+    for ($x = 0; $x < count($p); $x++) {
+      for ($y = 0; $y < count($p[$x]); $y++) {
+        if ($p[$x]->kd_akun == 21100) {
+          $total_perlengkapan = $total_perlengkapan + $p[$x]->total_harga;
+        }
+      }
+    }
+    $data['total_perlengkapan'] = $total_perlengkapan;
+    //END MENENTUKAN PEMBELIAN PERLENGKAPAN
+
+    //MENENTUKAN PEMBELIAN PERALATAN
+    $total_peralatan = 0;
+    for ($x = 0; $x < count($p); $x++) {
+      for ($y = 0; $y < count($p[$x]); $y++) {
+        if ($p[$x]->kd_akun == 21200) {
+          $total_peralatan = $total_peralatan + $p[$x]->total_harga;
+        }
+      }
+    }
+    $data['total_peralatan'] = $total_peralatan;
+    //END MENENTUKAN PEMBELIAN PERALATAN
+
+    //MENENTUKAN PEMBELIAN KENDARAAN
+    $total_kendaraan = 0;
+    for ($x = 0; $x < count($p); $x++) {
+      for ($y = 0; $y < count($p[$x]); $y++) {
+        if ($p[$x]->kd_akun == 21300) {
+          $total_kendaraan = $total_kendaraan + $p[$x]->total_harga;
+        }
+      }
+    }
+    $data['total_kendaraan'] = $total_kendaraan;
+    //END MENENTUKAN PEMBELIAN KENDARAAN
     $this->load->view('acc/laporan_arus_kas_v.php', $data);
   }
 }
