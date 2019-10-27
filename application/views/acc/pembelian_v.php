@@ -33,9 +33,7 @@
 							<span class="card-title">Pembelian Perlengkapan</span>
 						</div>
 						<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information. I am
-								convenient
-								because I require little markup to use effectively.</p>
+							<p>Digunakan untuk mencatat pembelian barang-barang yang berkaitan dengan perlengkapan.</p>
 						</div>
 					</a>
 				</div>
@@ -49,9 +47,7 @@
 							<span class="card-title">Pembelian peralatan</span>
 						</div>
 						<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information. I am
-								convenient
-								because I require little markup to use effectively.</p>
+							<p>Digunakan untuk mencatat pembelian barang-barang yang berkaitan dengan peralatan.</p>
 						</div>
 					</a>
 				</div>
@@ -65,9 +61,7 @@
 							<span class="card-title">Pembelian Kendaraan</span>
 						</div>
 						<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information. I am
-								convenient
-								because I require little markup to use effectively.</p>
+							<p>Digunakan untuk mencatat pembelian kendaraan maupun yang berkaitan dengan kendaraan.</p>
 						</div>
 					</a>
 				</div>

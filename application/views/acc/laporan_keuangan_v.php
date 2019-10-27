@@ -35,8 +35,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/laporan_keuangan/laporan_neraca'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Laporan keuangan yang menyediakan informasi mengenai aset, kewajiban (liability), dan modal (equity) perusahaan pada periode tertentu.</p>
 
                         <div id="rutin1" class="modal">
                             <div class="modal-content">
@@ -55,8 +54,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/laporan_keuangan/laporan_aktivitas'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Laporan yang menyediakan informasi pengaruh transaksi perubahan jumlah, sifat aktiva bersih, hubungan antar transaksi, serta penggunaan sumber daya.</p>
                     </div>
                 </div>
             </div>
@@ -69,8 +67,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/laporan_keuangan/laporan_arus_kas'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Laporan yang menyediakan informasi pada suatu periode akuntansi yang menunjukkan aliran masuk dan keluar uang (kas) perusahaan..</p>
                     </div>
                 </div>
             </div>

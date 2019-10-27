@@ -35,8 +35,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/jurnal_umum'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Jurnal untuk melakukan pencatatan bagi segala jenis bukti transaksi keuangan yang muncul akibat terjadinya berbagai transaksi keuangan dalam suatu periode.</p>
                     </div>
                 </div>
             </div>
@@ -49,8 +48,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/buku_besar'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Buku utama pencatatan transaksi keuangan yang mengkonsolidasikan masukan dari semua jurnal akuntansi dan merupakan penggolongan rekening sejenis.</p>
                     </div>
                 </div>
             </div>
@@ -63,8 +61,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('acc/buku_besar_utama/neraca_saldo'); ?>"><i class="material-icons">launch</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Pengelompokan saldo akhir di dalam buku besar atau daftar yang berisi kumpulan seluruh rekening/perkiraan buku besar untuk periode tertentu.</p>
                     </div>
                 </div>
             </div>

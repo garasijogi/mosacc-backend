@@ -35,8 +35,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#rutin1"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat pendapatan yang berasal dari kegiatan sewa.</p>
 
                         <div id="rutin1" class="modal">
                             <div class="modal-content">
@@ -59,8 +58,7 @@
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin2"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat pendapatan yang berasal dari parkir.</p>
 
                         <div id="rutin2" class="modal">
                             <div class="modal-content">
@@ -82,8 +80,7 @@
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat penerimaan infaq atas pengurusan jenazah.</p>
 
                         <div id="rutin3" class="modal">
                             <div class="modal-content">
@@ -97,7 +94,7 @@
                 </div>
             </div>
 
-            <div class="col s12 m4">
+            <!-- <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
                         <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-nonhalal.jpg'); ?>" width="400" height="270">
@@ -118,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="col s12 m4">
                 <div class="card">
@@ -128,8 +125,7 @@
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin5"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat pendapatan tidak terikat yang lainnya.</p>
 
                         <div id="rutin5" class="modal">
                             <div class="modal-content">

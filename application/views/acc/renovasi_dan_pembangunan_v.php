@@ -30,12 +30,10 @@
 					<a href="<?php echo base_url('acc/form_input_renov_bangun'); ?>?kd_akun=23100">
 						<div class="card-image">
 							<img src="<?php echo base_url('assets/images/renovasi_pembangunan/renov-material-icon.png') ?>" width="200" height="300">
-							<span class="card-title">Pemberlian Material</span>
+							<span class="card-title">Pembelian Material</span>
 						</div>
 						<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information. I am
-								convenient
-								because I require little markup to use effectively.</p>
+							<p>Digunakan untuk mencatat pembelian yang berkaitan dengan material-material pembangunan.</p>
 						</div>
 					</a>
 				</div>
@@ -49,9 +47,7 @@
 							<span class="card-title">Upah Tukang</span>
 						</div>
 						<div class="card-content">
-							<p>I am a very simple card. I am good at containing small bits of information. I am
-								convenient
-								because I require little markup to use effectively.</p>
+							<p>Digunakan untuk mencatat pengeluaran-pengeluaran yang berkaitan dengan upah tukang.</p>
 						</div>
 					</a>
 				</div>

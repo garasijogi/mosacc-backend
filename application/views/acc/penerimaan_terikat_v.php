@@ -35,8 +35,7 @@
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#rutin1"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat penerimaan terikat yang berasal dari kegiatan peribadatan.</p>
 
                         <div id="rutin1" class="modal">
                             <div class="modal-content">
@@ -61,8 +60,7 @@
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin2"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat penerimaan terikat yang berasal dari kegiatan pendidikan.</p>
 
                         <div id="rutin2" class="modal">
                             <div class="modal-content">
@@ -84,8 +82,7 @@
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
                     </div>
                     <div class="card-content">
-                        <p>I am a very simple card. I am good at containing small bits of information. I am convenient
-                            because I require little markup to use effectively.</p>
+                        <p>Digunakan untuk mencatat penerimaan terikat yang berasal dari Zakat, Infaq, Shodaqoh dan Wakaf.</p>
 
                         <div id="rutin3" class="modal">
                             <div class="modal-content">

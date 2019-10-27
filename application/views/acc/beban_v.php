@@ -105,11 +105,11 @@
 								<a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
 							</div>
 							<div class="card-content">
-								<p>Digunakan untuk mencatat pengeluaran penyaluran ZISWAF.</p>
+								<p>Digunakan untuk mencatat pengeluaran penyaluran Zakat, Infaq, Shodaqoh, dan Wakaf.</p>
 
 								<div id="rutin3" class="modal">
 									<div class="modal-content">
-										<h4>Penyaluran Ziswaf</h4>
+										<h4>Penyaluran ZISWAF</h4>
 										<ul>
 											<a href="<?php echo base_url('acc/form_input_beban'); ?>?kd_akun=22251">
 												<li>Penyaluran Zakat Fitrah dan Fidyah</li>
