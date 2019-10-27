@@ -35,6 +35,15 @@ $this->load->view("acc/_partials/head"); ?>
         </div>
 
         <!-- view -->
+        <!-- initiaton process -->
+        <?php
+        $j_ptt = 0;
+        $j_btt = 0;
+        $j_pt = 0;
+        $j_bt = 0;
+        $k_aset_neto_t = 0;
+        $k_aset_neto_tt = 0;
+        ?>
         <div class="row" id="printed">
             <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Aktivitas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table id='table-arus-kas-v' class="table-borderless">
@@ -52,19 +61,20 @@ $this->load->view("acc/_partials/head"); ?>
                         <th colspan="4">Penerimaan Tidak Terikat</th>
                     </tr>
                     <?php
-                    foreach ($menu_ptt as $mpt) :
+                    foreach ($menu_ptt as $mptt) :
                         ?>
                         <tr>
-                            <td colspan="3"><?php echo $mpt; ?></td>
-                            <td></td>
+                            <td colspan="3"><?php echo $mptt; ?></td>
+                            <td><?php echo "Rp " . number_format($nominal_menu[$kd_menu[$mptt]][$mptt], 2, ',', '.');
+                                    $j_ptt = $j_ptt + $nominal_menu[$kd_menu[$mptt]][$mptt];  ?></td>
                         </tr>
                         <?php
-                            foreach ($submenu_ptt[$mpt] as $subptt) :
+                            foreach ($submenu_ptt[$mptt] as $subptt) :
                                 ?>
                             <tr>
                                 <td></td>
                                 <td><?php echo $subptt; ?></td>
-                                <td></td>
+                                <td><?php echo "Rp " . number_format($nominal_per_sub[$subptt], 2, ',', '.'); ?></td>
                                 <td></td>
                             </tr>
                     <?php
@@ -74,7 +84,7 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th></th>
                         <th colspan="2">Jumlah Penerimaan Tidak Terikat</th>
-                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($j_ptt, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="4">Beban Tidak Terikat</th>
@@ -84,7 +94,8 @@ $this->load->view("acc/_partials/head"); ?>
                         ?>
                         <tr>
                             <td colspan="3"><?php echo $mbtt; ?></td>
-                            <td></td>
+                            <td><?php echo "-Rp " . number_format($nominal_menu[$kd_menu_b[$mbtt]][$mbtt], 2, ',', '.');
+                                    $j_btt = $j_btt + $nominal_menu[$kd_menu_b[$mbtt]][$mbtt]; ?></td>
                         </tr>
                         <?php
                             foreach ($submenu_btt[$mbtt] as $subbtt) :
@@ -92,7 +103,7 @@ $this->load->view("acc/_partials/head"); ?>
                             <tr>
                                 <td></td>
                                 <td><?php echo $subbtt; ?></td>
-                                <td></td>
+                                <td><?php echo "Rp " . number_format($nominal_per_sub[$subbtt], 2, ',', '.'); ?></td>
                                 <td></td>
                             </tr>
                     <?php
@@ -102,11 +113,11 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th></th>
                         <th colspan="2">Jumlah Beban Tidak Terikat</th>
-                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "-Rp " . number_format($j_btt, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="3">Kenaikan (Penurunan) Aset Neto Tidak Terikat</th>
-                        <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_tt = $jumlah_ptt - $jumlah_btt, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_tt = $j_ptt - $j_btt, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="4">Penerimaan Terikat</th>
@@ -116,7 +127,8 @@ $this->load->view("acc/_partials/head"); ?>
                         ?>
                         <tr>
                             <td colspan="3"><?php echo $mpt; ?></td>
-                            <td></td>
+                            <td><?php echo "Rp " . number_format($nominal_menu[$kd_menu[$mpt]][$mpt], 2, ',', '.');
+                                    $j_pt = $j_pt + $nominal_menu[$kd_menu[$mpt]][$mpt]; ?></td>
                         </tr>
                         <?php
                             foreach ($submenu_pt[$mpt] as $subpt) :
@@ -124,7 +136,7 @@ $this->load->view("acc/_partials/head"); ?>
                             <tr>
                                 <td></td>
                                 <td><?php echo $subpt; ?></td>
-                                <td></td>
+                                <td><?php echo "Rp " . number_format($nominal_per_sub[$subpt], 2, ',', '.'); ?></td>
                                 <td></td>
                             </tr>
                     <?php
@@ -134,7 +146,7 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th></th>
                         <th colspan="2">Jumlah Penerimaan Terikat</th>
-                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($j_pt, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="4">Beban Terikat</th>
@@ -144,7 +156,8 @@ $this->load->view("acc/_partials/head"); ?>
                         ?>
                         <tr>
                             <td colspan="3"><?php echo $mbt; ?></td>
-                            <td></td>
+                            <td><?php echo "-Rp " . number_format($nominal_menu[$kd_menu_b[$mbt]][$mbt], 2, ',', '.');
+                                    $j_bt = $j_bt + $nominal_menu[$kd_menu_b[$mbt]][$mbt];  ?></td>
                         </tr>
                         <?php
                             foreach ($submenu_bt[$mbt] as $subbt) :
@@ -152,7 +165,7 @@ $this->load->view("acc/_partials/head"); ?>
                             <tr>
                                 <td></td>
                                 <td><?php echo $subbt; ?></td>
-                                <td></td>
+                                <td><?php echo "Rp " . number_format($nominal_per_sub[$subbt], 2, ',', '.'); ?></td>
                                 <td></td>
                             </tr>
                     <?php
@@ -162,14 +175,14 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th></th>
                         <th colspan="2">Jumlah Beban Terikat</th>
-                        <th class="tr-border-top"><?php echo "Rp " . number_format($total_menu, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "-Rp " . number_format($j_bt, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="3">Kenaikan (Penurunan) Aset Neto Terikat</th>
-                        <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_t = $jumlah_pt - $jumlah_bt, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "Rp " . number_format($aset_neto_t = $j_pt - $j_bt, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
-                        <td colspan="4">    </td>
+                        <td colspan="4"> </td>
                     </tr>
                     <tr>
                         <th colspan="3">KENAIKAN (PENURUNAN) ASET NETO</th>
@@ -177,7 +190,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <th colspan="3">ASET NETO AWAL BULAN</th>
-                        <th><?php echo "Rp " . number_format($sa_aset_neto, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format($aset_neto_ab, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="3">ASET NETO AKHIR BULAN</th>

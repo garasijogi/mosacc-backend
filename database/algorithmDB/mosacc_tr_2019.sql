@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Okt 2019 pada 03.55
+-- Waktu pembuatan: 26 Okt 2019 pada 17.12
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 5.6.36
 
@@ -21,6 +21,41 @@ SET time_zone = "+00:00";
 --
 -- Database: `mosacc_tr_2019`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sum_kd_akun`
+--
+
+DROP TABLE IF EXISTS `sum_kd_akun`;
+CREATE TABLE `sum_kd_akun` (
+  `kd_sum` varchar(7) NOT NULL,
+  `kd_akun` varchar(5) DEFAULT NULL,
+  `bulan` varchar(2) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `sum_kd_akun`
+--
+
+INSERT INTO `sum_kd_akun` (`kd_sum`, `kd_akun`, `bulan`, `jumlah`) VALUES
+('', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sum_table`
+--
+
+DROP TABLE IF EXISTS `sum_table`;
+CREATE TABLE `sum_table` (
+  `kd_sum` int(11) NOT NULL,
+  `tabel` varchar(128) NOT NULL,
+  `bulan` varchar(2) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -166,6 +201,18 @@ INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`
 --
 
 --
+-- Indeks untuk tabel `sum_kd_akun`
+--
+ALTER TABLE `sum_kd_akun`
+  ADD PRIMARY KEY (`kd_sum`);
+
+--
+-- Indeks untuk tabel `sum_table`
+--
+ALTER TABLE `sum_table`
+  ADD PRIMARY KEY (`kd_sum`);
+
+--
 -- Indeks untuk tabel `tr11_penerimaan_tidak_terikat_pending`
 --
 ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
@@ -188,6 +235,16 @@ ALTER TABLE `tr21_pembelian_pending`
 --
 ALTER TABLE `tr22_beban_pending`
   ADD PRIMARY KEY (`idtr`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `sum_table`
+--
+ALTER TABLE `sum_table`
+  MODIFY `kd_sum` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

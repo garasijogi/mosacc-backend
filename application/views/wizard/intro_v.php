@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<!-- head -->
-		<?php $this->load->view("acc/_partials/head");?>
-		<!-- /head -->
-	</head>
+<head>
+    <!-- head -->
+    <?php $this->load->view("acc/_partials/head"); ?>
+    <!-- /head -->
+</head>
 
 <body style="background-color: teal;">
     <!-- preloader -->
@@ -24,8 +24,7 @@
                                 Datang</a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard/profil'); ?>"><span><i
-                                        class="material-icons">equalizer</i></span>Profil Masjid</a></a>
+                            <a href="<?php echo base_url('wizard/profil'); ?>"><span><i class="material-icons">equalizer</i></span>Profil Masjid</a></a>
                         </li>
                         <li class="sidenav-item">
                             <a href="<?php echo base_url('wizard/dkm'); ?>"><span><i class="material-icons">cached</i></span>Profil
@@ -33,8 +32,7 @@
                             </a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard/aset'); ?>" ><span><i
-                                        class="material-icons">class</i></span>Aset</a>
+                            <a href="<?php echo base_url('wizard/aset'); ?>" class="wizard-menu-on"><span><i class="material-icons">class</i></span>Aset</a>
                         </li>
                         <!-- <li class="sidenav-item">
                             <a href="wizard-akun.html"><span><i class="material-icons">class</i></span>Daftar
@@ -59,14 +57,18 @@
         <div class="content-wizard">
             <div class="form-wizard">
                 <h3>Selamat Datang</h3>
-                <p>this is form content</p>
+                <p class="wizard-introduce">MosAcc (Mosque Accounting) adalah aplikasi perangkat lunak yang dikembangkan
+                    untuk membantu para pengurus
+                    masjid dalam membuat laporan keuangan.</p>
+                <p class="wizard-introduce">Silahkan lengkapi formulir pada halaman selanjutnya untuk mulai menggunakan
+                    aplikasi.</p>
             </div>
         </div>
     </div>
 
     <!-- Javascript -->
-	<?php $this->load->view("acc/_partials/js"); ?>
-	<!-- /Javascript -->
+    <?php $this->load->view("acc/_partials/js"); ?>
+    <!-- /Javascript -->
 
 </body>
 

@@ -7,12 +7,31 @@
 	-moz-box-shadow: 0 0 50px grey;
 	-webkit-box-shadow: 0 0 50px grey;
 	box-shadow: 0 0 50px grey;
+	cursor: pointer;
 }
 
 .card2:hover {
 	-moz-box-shadow: 0 0 50px grey;
 	-webkit-box-shadow: 0 0 50px grey;
 	box-shadow: 0 0 50px grey;
+	cursor: pointer;
+}
+
+.card-home {
+	padding: 13px !important;
+}
+
+.card.horizontal .card-edit {
+	max-width: 30% !important;
+}
+
+.card-home h4 {
+	font-size: 27px !important;
+	margin: 0px !important;
+}
+
+.card-image {
+	padding: 10px !important;
 }
 
 #rcorners1 {
@@ -86,4 +105,21 @@ div.sticky {
 	left: 0;
 	right: 0;
 	bottom: 0;
+}
+
+.page-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding-top: 0px;
+}
+
+.footer-copyright h6 {
+	font-size: 12px;
+}
+
+.mosacc-logo {
+	margin-right: 15px;
+	height: 30px;
+	width: 30px
 }

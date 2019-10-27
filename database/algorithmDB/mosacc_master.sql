@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Okt 2019 pada 03.54
+-- Waktu pembuatan: 26 Okt 2019 pada 17.11
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 5.6.36
 
@@ -57,6 +57,48 @@ DROP TABLE IF EXISTS `profil`;
 CREATE TABLE `profil` (
   `Nama Masjid` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profil_dkm`
+--
+
+DROP TABLE IF EXISTS `profil_dkm`;
+CREATE TABLE `profil_dkm` (
+  `id_pengurus` int(11) NOT NULL,
+  `nama` varchar(256) DEFAULT NULL,
+  `ttl` date DEFAULT NULL,
+  `alamat` varchar(512) DEFAULT NULL,
+  `telepon` varchar(15) DEFAULT NULL,
+  `pendidikan` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profil_masjid`
+--
+
+DROP TABLE IF EXISTS `profil_masjid`;
+CREATE TABLE `profil_masjid` (
+  `id_profil` int(11) NOT NULL,
+  `nama` varchar(256) DEFAULT NULL,
+  `alamat` varchar(512) DEFAULT NULL,
+  `tahun` varchar(4) DEFAULT NULL,
+  `telepon` varchar(15) DEFAULT NULL,
+  `rekening` varchar(32) DEFAULT NULL,
+  `luas_tanah` varchar(16) DEFAULT NULL,
+  `ad_art` varchar(256) DEFAULT NULL,
+  `badan_hukum` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `profil_masjid`
+--
+
+INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`, `ad_art`, `badan_hukum`) VALUES
+(1, 'Masjid Al-Islah', 'Jalan Raya Bogor KM258, Gg Masjid', '2012', '02179187272', '111788543998', '432234', 'ddd.pdf', 'law_body_mustjeed_2342.pdf');
 
 -- --------------------------------------------------------
 
@@ -142,15 +184,20 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
-('258', 'Bima', 'akuntan', 'bima');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `profil_dkm`
+--
+ALTER TABLE `profil_dkm`
+  ADD PRIMARY KEY (`id_pengurus`);
+
+--
+-- Indeks untuk tabel `profil_masjid`
+--
+ALTER TABLE `profil_masjid`
+  ADD PRIMARY KEY (`id_profil`);
 
 --
 -- Indeks untuk tabel `rules`
@@ -163,6 +210,22 @@ ALTER TABLE `rules`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`NIP`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `profil_dkm`
+--
+ALTER TABLE `profil_dkm`
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `profil_masjid`
+--
+ALTER TABLE `profil_masjid`
+  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
