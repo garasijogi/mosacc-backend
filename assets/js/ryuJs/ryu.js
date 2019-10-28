@@ -119,3 +119,52 @@ var dChart = new Chart(ctx, {
 $(document).ready(function () {
     $('select').formSelect();
 });
+
+// modal form check on wizard
+const wizardFormChecker = () => {
+	let forms = document.querySelectorAll('.wizard-form-check');
+	let wizardFormButton = document.getElementsByClassName('btn-wizard-checker')[0];
+	let linkTarget = document.querySelector('.btn-form-wrapper a');
+
+	forms.forEach((item) => {
+		if (item.value === '') {
+			wizardFormButton.classList.add('modal-trigger')
+		} else {
+			wizardFormButton.classList.remove('modal-trigger');
+			if (linkTarget.classList.contains('wizard-struktur-dkm-simpan')) {
+				linkTarget.removeAttribute('href'); //hapus atribut href
+				$("#wizard-form-dkm").submit(); //submit form wizard profil form
+			} else if (linkTarget.classList.contains('wizard-profil-masjid-simpan')) {
+                linkTarget.removeAttribute('href');//hapus atribut href
+				$("#wizard-form-profil").submit();//submit form wizard profil form
+			}
+		}
+	})
+}
+
+//multiform-template initiation
+$(".multiform-template").multiFormTemplate({
+	postAddFunction: function () {
+		$('select').formSelect();
+	}
+});
+
+// //dynamic multiform old
+// $(function() {
+//     var scntDiv = $('#aset-f');
+//     var i = $('#aset-f f').size() + 1;
+
+//     $('#addForm').live('click', function() {
+//         $('<div id="aset-f" class="row"> <div class = "input-field col s4" > <input name = "nama-alat-' + i + '" type="text" class="validate" id="rename-nama-peralatan"> <label for = "rename-nama-peralatan">Masukkan Nama Peralatan</label> </div> <div class="input-field col s4"> <input name = "jumlah-alat-' + i + '" id="rename-jumlah-peralatan" type="number" class="validate"> <label for = "rename-jumlah-peralatan">Masukkan Jumlah</label> </div> <div class="input-field col s4"> <input name = "nilai-alat-' + i + '" id="rename-nilai-peralatan" type="number" class="validate"> <label for ="rename-nilai-peralatan">Masukkan Nilai Peralatan</label> </div> </div>').appendTo(scntDiv);
+//         i++;
+//         return false;
+//     });
+
+//     $('#rmvForm').live('click', function() { 
+//         if (i > 2) {
+//             $(this).parents('p').remove();
+//             i--;
+//         }
+//         return false;
+//     });
+// });

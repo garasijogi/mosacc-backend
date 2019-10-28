@@ -8,6 +8,11 @@
 	</head>
 
 <body style="background-color: teal;">
+
+    <!-- preloader -->
+    <?php $this->load->view('_partials/preloader.php') ?>
+    <!-- preloader -->
+    
     <div class="wizard-wrapper">
 
         <div class="wrapper-sidenav">
@@ -62,31 +67,47 @@
                                         <li class="tab col s3"><a href="#aset-tanah">Tanah</a></li>
                                     </ul>
                                 </div>
-                                <div id="aset-peralatan" class="s12">
+
+                                <!-- Form Aset Peralatan -->
+                                <div id="aset-peralatan" class="s12" style="overflow-y: auto;">
                                     <form class="s12">
                                         <div class="row">
-                                            <div class="input-field col s4">
-                                                <input type="text" class="validate" id="rename-nama-peralatan">
-                                                <label for="rename-nama-peralatan">Masukkan Nama Peralatan</label>
+                                            <div class="col s5">
+                                                <a class="waves-effect waves-light btn green">Tambah Aset
+                                                    <i class="material-icons right">send</i>
+                                                </a>
                                             </div>
-
-                                            <div class="input-field col s4">
-                                                <input id="rename-jumlah-peralatan" type="number" class="validate">
-                                                <label for="rename-jumlah-peralatan">Masukkan Jumlah</label>
-                                            </div>
-
-                                            <div class="input-field col s4">
-                                                <input id="rename-nilai-peralatan" type="number" class="validate">
-                                                <label for="rename-nilai-peralatan">Masukkan Nilai Peralatan</label>
+                                            <div class="col s5">
+                                                <a href="#" id="aset_peralatan-add_button" class="waves-effect waves-light btn"><i class="material-icons">add</i></a>
                                             </div>
                                         </div>
-                                        <div class="col s5">
-                                            <a class="waves-effect waves-light btn">Tambah Aset
-                                                <i class="material-icons right">send</i>
-                                            </a>
+                                        <div class="center">
+                                            <div class="multiform-template row" data-prefix="aset_peralatan">
+                                                <div class="input-field col s4">
+                                                    <input type="text" class="validate" id="rename-nama-peralatan">
+                                                    <label for="rename-nama-peralatan">Masukkan Nama Peralatan</label>
+                                                </div>
+                                            
+                                                <div class="input-field col s3">
+                                                    <input id="rename-jumlah-peralatan" type="number" class="validate">
+                                                    <label for="rename-jumlah-peralatan">Masukkan Jumlah</label>
+                                                </div>
+                                            
+                                                <div class="input-field col s3">
+                                                    <input id="rename-nilai-peralatan" type="number" class="validate">
+                                                    <label for="rename-nilai-peralatan">Nilai Peralatan</label>
+                                                </div>
+                                                <div class="remove-container input-field col s1">
+                                                    <div class="remove-button btn btn-small waves-effect waves-light red">
+                                                        X
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+                                        
                                     </form>
                                 </div>
+                                <!-- /Form Aset Peralatan -->
 
                                 <div id="aset-bangunan" class="s12">
                                     <form class=" s12">

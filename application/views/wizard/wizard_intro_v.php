@@ -8,10 +8,6 @@
 </head>
 
 <body style="background-color: teal;">
-    <!-- preloader -->
-    <?php $this->load->view('_partials/preloader.php') ?>
-    <!-- preloader -->
-
     <div class="wizard-wrapper">
 
         <div class="wrapper-sidenav">
@@ -54,6 +50,10 @@
             </nav>
         </div>
 
+        <!-- preloader -->
+        <?php $this->load->view('_partials/preloader.php') ?>
+        <!-- preloader -->
+
         <div class="content-wizard">
             <div class="form-wizard">
                 <h3>Selamat Datang</h3>
@@ -62,6 +62,10 @@
                     masjid dalam membuat laporan keuangan.</p>
                 <p class="wizard-introduce">Silahkan lengkapi formulir pada halaman selanjutnya untuk mulai menggunakan
                     aplikasi.</p>
+                <p>this is form content</p>
+                
+                <a class="btn waves-effect waves-light teal right" href="<?php echo base_url('wizard/profil'); ?>" >Selanjutnya<i class="material-icons right">send</i>
+                </a>        
             </div>
         </div>
     </div>

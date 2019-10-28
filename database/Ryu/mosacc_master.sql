@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2019 at 06:30 AM
+-- Generation Time: Oct 28, 2019 at 11:56 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -31,9 +31,10 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `aset`;
 CREATE TABLE `aset` (
   `id_aset` varchar(6) DEFAULT NULL,
-  `nama` varchar(32) DEFAULT NULL,
-  `merek` varchar(32) DEFAULT NULL,
-  `harga` int(11) DEFAULT NULL
+  `jenis_aset` varchar(64) DEFAULT NULL,
+  `nama` varchar(128) DEFAULT NULL,
+  `merek` varchar(64) DEFAULT NULL,
+  `harga` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -50,13 +51,43 @@ CREATE TABLE `jenis_aset` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profil`
+-- Table structure for table `profil_dkm`
 --
 
-DROP TABLE IF EXISTS `profil`;
-CREATE TABLE `profil` (
-  `Nama Masjid` varchar(256) DEFAULT NULL
+DROP TABLE IF EXISTS `profil_dkm`;
+CREATE TABLE `profil_dkm` (
+  `id_pengurus` int(11) NOT NULL,
+  `nama` varchar(256) DEFAULT NULL,
+  `alamat` varchar(512) DEFAULT NULL,
+  `telepon` varchar(15) DEFAULT NULL,
+  `pendidikan` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profil_masjid`
+--
+
+DROP TABLE IF EXISTS `profil_masjid`;
+CREATE TABLE `profil_masjid` (
+  `id_profil` int(11) NOT NULL,
+  `nama` varchar(256) DEFAULT NULL,
+  `alamat` varchar(512) DEFAULT NULL,
+  `tahun` varchar(4) DEFAULT NULL,
+  `telepon` varchar(15) DEFAULT NULL,
+  `rekening` varchar(32) DEFAULT NULL,
+  `luas_tanah` varchar(16) DEFAULT NULL,
+  `ad_art` varchar(256) DEFAULT NULL,
+  `badan_hukum` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profil_masjid`
+--
+
+INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`, `ad_art`, `badan_hukum`) VALUES
+(1, 'Masjid Al-Islah', 'Jalan Raya Bogor KM258, Gg Masjid', '2012', '02179187272', '111788543998', '432234', 'ddd.pdf', 'law_body_mustjeed_2342.pdf');
 
 -- --------------------------------------------------------
 
@@ -80,10 +111,10 @@ CREATE TABLE `rules` (
 INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
 ('11110', 'Pendapatan Sewa', 'Infaq Peminjaman Peralatan', 'Kas', 'Infaq Peminjaman Peralatan'),
 ('11120', 'Pendapatan Sewa', 'Infaq Pemakaian Ruangan', 'Kas', 'Infaq Pemakaian Ruangan'),
-('11200', 'Pendapatan Parkir', 'Pendapatan Parkir', 'Kas\r\n', 'Pendapatan Parkir\r\n'),
-('11300', 'Infaq Pengurusan Jenazah', 'Infaq Pengurusan Jenazah', 'Kas\r\n', 'Infaq Pengurusan Jenazah'),
-('11400', 'Pendapatan Non-Halal', 'Pendapatan Non-Halal', 'Kas\r\n', 'Pendapatan Non-Halal'),
-('11500', 'Pendapatan Lainnya', 'Pendapatan Lainnya', 'Kas\r\n', 'Pendapatan Lainnya'),
+('11200', 'Pendapatan Parkir', 'Pendapatan Parkir', 'Kas', 'Pendapatan Parkir'),
+('11300', 'Infaq Pengurusan Jenazah', 'Infaq Pengurusan Jenazah', 'Kas', 'Infaq Pengurusan Jenazah'),
+('11400', 'Pendapatan Non-Halal', 'Pendapatan Non-Halal', 'Kas', 'Pendapatan Non-Halal'),
+('11500', 'Pendapatan Lainnya', 'Pendapatan Lainnya', 'Kas', 'Pendapatan Lainnya'),
 ('12610', 'Peribadatan', 'Infaq Kotak Jumat', 'Kas', 'Infaq Kotak Jumat'),
 ('12620', 'Peribadatan', 'Infaq Perayaan Hari Besar Islam', 'Kas', 'Infaq Perayaan Hari Besar Islam'),
 ('12630', 'Peribadatan', 'Infaq Pengajian', 'Kas', 'Infaq Pengajian'),
@@ -107,7 +138,7 @@ INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
 ('22116', 'Beban Operasional', 'Beban Transportasi', 'Beban Transportasi', 'Kas'),
 ('22117', 'Beban Operasional', 'Insentif Pengurus Masjid', 'Insentif Pengurus Masjid', 'Kas'),
 ('22120', 'Beban Lainnya', 'Beban Lainnya', 'Beban Lainnya', 'Kas'),
-('22231', 'Peribadatan', 'Insentif Penceramah/Khatib', 'Insentif Penceramah/Khatib\r\n', 'Kas'),
+('22231', 'Peribadatan', 'Insentif Penceramah/Khatib', 'Insentif Penceramah/Khatib', 'Kas'),
 ('22232', 'Peribadatan', 'Insentif Marbot', 'Insentif Marbot', 'Kas'),
 ('22233', 'Peribadatan', 'Beban Perayaan Hari Besar Islam', 'Beban Perayaan Hari Besar Islam', 'Kas'),
 ('22234', 'Peribadatan', 'Beban Buletin Dakwah', 'Beban Buletin Dakwah', 'Kas'),
@@ -142,15 +173,20 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
-('258', 'Bima', 'akuntan', 'bima');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `profil_dkm`
+--
+ALTER TABLE `profil_dkm`
+  ADD PRIMARY KEY (`id_pengurus`);
+
+--
+-- Indexes for table `profil_masjid`
+--
+ALTER TABLE `profil_masjid`
+  ADD PRIMARY KEY (`id_profil`);
 
 --
 -- Indexes for table `rules`
@@ -163,6 +199,22 @@ ALTER TABLE `rules`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`NIP`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `profil_dkm`
+--
+ALTER TABLE `profil_dkm`
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `profil_masjid`
+--
+ALTER TABLE `profil_masjid`
+  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
