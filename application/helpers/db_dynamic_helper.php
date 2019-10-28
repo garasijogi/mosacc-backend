@@ -14,4 +14,3 @@ function switch_db_dynamic($tahun){
 }
 
 /* End of file db_dynamic.php */
-
