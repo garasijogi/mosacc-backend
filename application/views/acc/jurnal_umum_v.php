@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo (date('Y-m-d')); ?></b></h6>
             <table id='table-jurnal-umum-v' class="">
                 <thead>
                     <tr class="teal white-text">
@@ -62,7 +62,7 @@ $this->load->view("acc/_partials/head"); ?>
                             foreach ($contain[$i]->result() as $cdpt) :
                                 ?>
                                 <tr>
-                                    <td><?php echo date_generator($cdpt->tanggal)  ?></td>
+                                    <td><?php echo ($cdpt->tanggal)  ?></td>
                                     <?php foreach ($rules->result() as $r) :
                                                     if ($r->kd_akun == $cdpt->kd_akun) :
                                                         ?>
@@ -92,8 +92,8 @@ $this->load->view("acc/_partials/head"); ?>
         <!-- view -->
 
         <!-- print -->
-        <div class="row" style="display: none">
-            <h6 class="center" id="title-print"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
+        <!-- <div class="row" style="display: none">
+            <h6 class="center" id="title-print"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo (date('Y-m-d')); ?></b></h6>
             <table id='table-jurnal-umum' class="table-borderless centered">
                 <thead>
                     <tr>
@@ -145,12 +145,11 @@ $this->load->view("acc/_partials/head"); ?>
 
                 </tbody>
             </table>
-        </div>
+        </div> -->
         <!-- print -->
 
     </div>
     <!-- content -->
-
     <?php $this->load->view("acc/_partials/js"); ?>
 </body>
 
