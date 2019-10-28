@@ -17,6 +17,7 @@ class Beban extends CI_Controller
     {
         $this->load->view('acc/beban_v');
     }
+
 }
 
 /* End of file  beban.php */

@@ -8,10 +8,6 @@
 	</head>
 
 <body style="background-color: teal;">
-    <!-- preloader -->
-    <?php $this->load->view('_partials/preloader.php') ?>
-    <!-- preloader -->
-
     <div class="wizard-wrapper">
 
         <div class="wrapper-sidenav">
@@ -56,10 +52,17 @@
             </nav>
         </div>
 
+        <!-- preloader -->
+        <?php $this->load->view('_partials/preloader.php') ?>
+        <!-- preloader -->
+
         <div class="content-wizard">
             <div class="form-wizard">
                 <h3>Selamat Datang</h3>
                 <p>this is form content</p>
+                
+                <a class="btn waves-effect waves-light teal right" href="<?php echo base_url('wizard/profil'); ?>" type="submit" name="action">Selanjutnya<i class="material-icons right">send</i>
+                </a>        
             </div>
         </div>
     </div>
