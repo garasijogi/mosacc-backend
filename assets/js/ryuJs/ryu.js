@@ -149,6 +149,8 @@ $(".multiform-template").multiFormTemplate({
 	}
 });
 
+
+
 // //dynamic multiform old
 // $(function() {
 //     var scntDiv = $('#aset-f');

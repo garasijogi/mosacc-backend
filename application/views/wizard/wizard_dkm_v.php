@@ -31,11 +31,10 @@
                             <a href="<?php echo base_url('wizard/aset'); ?>" ><span><i
                                         class="material-icons">class</i></span>Aset</a>
                         </li>
-                        <!-- <li class="sidenav-item">
-                            <a href="wizard-akun.html"><span><i class="material-icons">class</i></span>Daftar
-                                Akun
+                        <li class="sidenav-item">
+                            <a href="<?php echo base_url('wizard/akun_baru'); ?>"><span><i class="material-icons">account_box</i></span>Daftar Akun
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </div>

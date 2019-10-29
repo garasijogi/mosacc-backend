@@ -37,11 +37,10 @@
                             <a href="<?php echo base_url('wizard/aset'); ?>" class="wizard-menu-on"><span><i
                                         class="material-icons">class</i></span>Aset</a>
                         </li>
-                        <!-- <li class="sidenav-item">
-                            <a href="wizard-akun.html"><span><i class="material-icons">class</i></span>Daftar
-                                Akun
+                        <li class="sidenav-item">
+                            <a href="<?php echo base_url('wizard/akun_baru'); ?>"><span><i class="material-icons">account_box</i></span>Daftar Akun
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
 
@@ -60,106 +59,164 @@
 
                         <div class="edit-aset-wrapper">
                             <div class="row">
+                                <!-- Wizard Aset Form Tab -->
                                 <div class="col s12 marbot">
                                     <ul class="tabs">
                                         <li class="tab col s3"><a href="#aset-peralatan">Peralatan</a></li>
-                                        <li class="tab col s3"><a href="#aset-bangunan">Bangunan</a></li>
-                                        <li class="tab col s3"><a href="#aset-tanah">Tanah</a></li>
+                                        <li class="tab col s3" style="width: 195px;"><a href="#aset-bangunan_tanah">Bangunan & Tanah</a></li>
+                                        <li class="tab col s3"><a href="#aset-kas_bank">Kas</a></li>
                                     </ul>
                                 </div>
+                                <!-- /Wizard Aset Form Tab -->
 
                                 <!-- Form Aset Peralatan -->
                                 <div id="aset-peralatan" class="s12" style="overflow-y: auto;">
-                                    <form class="s12">
+                                    <form class="s12" action="<?php echo base_url('wizard/asetPeralatan') ?>" method="post">
                                         <div class="row">
-                                            <div class="col s5">
-                                                <a class="waves-effect waves-light btn green">Tambah Aset
+                                            <div class="col s4">
+                                                <button type="submit" class="waves-effect waves-light btn btn-success">Tambah Aset
                                                     <i class="material-icons right">send</i>
-                                                </a>
+                                                </button>
                                             </div>
-                                            <div class="col s5">
-                                                <a href="#" id="aset_peralatan-add_button" class="waves-effect waves-light btn"><i class="material-icons">add</i></a>
+                                            <div class="col s1 offset-s6">
+                                                <a href="#" id="peralatan-add_button" class="waves-effect waves-light btn green"><i class="material-icons">add</i></a>
                                             </div>
                                         </div>
-                                        <div class="center">
-                                            <div class="multiform-template row" data-prefix="aset_peralatan">
-                                                <div class="input-field col s4">
-                                                    <input type="text" class="validate" id="rename-nama-peralatan">
-                                                    <label for="rename-nama-peralatan">Masukkan Nama Peralatan</label>
+                                        <div class="row center">
+                                            <div class="multiform-template row z-depth-1" data-prefix="peralatan">
+                                                <div class="col s11">
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="nama" name="nama">
+                                                            <label for="nama">Nama</label>
+                                                        </div>
+                                                        
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="merek" name="merek">
+                                                            <label for="merek">Merek</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="jenis" type="text" class="validate" name="jenis">
+                                                            <label for="jenis">Jenis</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input type="number" class="validate" id="harga" name="harga">
+                                                            <label for="harga">Harga</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            
-                                                <div class="input-field col s3">
-                                                    <input id="rename-jumlah-peralatan" type="number" class="validate">
-                                                    <label for="rename-jumlah-peralatan">Masukkan Jumlah</label>
-                                                </div>
-                                            
-                                                <div class="input-field col s3">
-                                                    <input id="rename-nilai-peralatan" type="number" class="validate">
-                                                    <label for="rename-nilai-peralatan">Nilai Peralatan</label>
-                                                </div>
-                                                <div class="remove-container input-field col s1">
+                                                <div class="centered remove-container input-field col s1">
                                                     <div class="remove-button btn btn-small waves-effect waves-light red">
                                                         X
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                     </form>
                                 </div>
                                 <!-- /Form Aset Peralatan -->
 
-                                <div id="aset-bangunan" class="s12">
-                                    <form class=" s12">
+                                <!-- Form Aset Bangunan -->
+                                <div id="aset-bangunan_tanah" class="s12" style="overflow-y: auto;">
+                                    <form class="s12" action="<?php echo base_url('wizard/asetBangunanTanah'); ?>" method="post">
                                         <div class="row">
-                                            <div class="input-field col s4">
-                                                <input type="text" class="validate" id="rename-nama-bangunan">
-                                                <label for="rename-nama-bangunan">Masukkan Nama Bangunan</label>
+                                            <div class="col s4">
+                                                <button type="submit" class="waves-effect waves-light btn btn-success">Tambah Aset
+                                                    <i class="material-icons right">send</i>
+                                                </button>
                                             </div>
-
-                                            <div class="input-field col s4">
-                                                <input id="rename-luas-bangunan" type="number" class="validate">
-                                                <label for="rename-luas-bangunan">Masukkan Luas</label>
-                                            </div>
-
-                                            <div class="input-field col s4">
-                                                <input id="rename-nilai-bangunan" type="number" class="validate">
-                                                <label for="rename-nilai-bangunan">Masukkan Nilai Bangunan</label>
+                                            <div class="col s1 offset-s6">
+                                                <a href="#" id="bangunan_tanah-add_button" class="waves-effect waves-light btn green"><i
+                                                        class="material-icons">add</i></a>
                                             </div>
                                         </div>
-                                        <div class="col s5">
-                                            <a class="waves-effect waves-light btn">Tambah Aset
-                                                <i class="material-icons right">send</i>
-                                            </a>
+                                
+                                        <div class="row center">
+                                            <div class="multiform-template row z-depth-1" data-prefix="bangunan_tanah">
+                                                <div class="col s11">
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="nama" name="nama">
+                                                            <label for="nama">Nama</label>
+                                                        </div>
+                                
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="luas" name="luas">
+                                                            <label for="luas">Luas</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="nilai" type="number" class="validate" name="nilai">
+                                                            <label for="nilai">Nilai</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="centered remove-container input-field col s1">
+                                                    <div class="remove-button btn btn-small waves-effect waves-light red">
+                                                        X
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
+                                <!-- /Form Aset Bangunan -->
 
-                                <div id="aset-tanah" class="s12">
-                                    <form class=" s12">
+                                <!-- Form Aset Kas_Bank -->
+                                <div id="aset-kas_bank" class="s12" style="overflow-y: auto;">
+                                    <form class="s12" action="<?php echo base_url('wizard/asetKasBank'); ?>" method="post">
                                         <div class="row">
-                                            <div class="input-field col s4">
-                                                <input type="text" class="validate" id="rename-nama-tanah">
-                                                <label for="rename-nama-tanah">Masukkan Nama</label>
+                                            <div class="col s4">
+                                                <button type="submit" class="waves-effect waves-light btn btn-success">Tambah Aset
+                                                    <i class="material-icons right">send</i>
+                                                </button>
                                             </div>
-
-                                            <div class="input-field col s4">
-                                                <input id="rename-luas-tanah" type="number" class="validate">
-                                                <label for="rename-luas-tanah">Masukkan Luas</label>
-                                            </div>
-
-                                            <div class="input-field col s4">
-                                                <input id="rename-nilai-tanah" type="number" class="validate">
-                                                <label for="rename-nilai-tanah">Masukkan Nilai Bangunan</label>
+                                            <div class="col s1 offset-s6">
+                                                <a href="#" id="kas_bank-add_button"
+                                                class="waves-effect waves-light btn green"><i
+                                                class="material-icons">add</i></a>
                                             </div>
                                         </div>
-                                        <div class="col s5">
-                                            <a class="waves-effect waves-light btn">Tambah Aset
-                                                <i class="material-icons right">send</i>
-                                            </a>
+                                        
+                                        <div class="row center">
+                                            <div class="multiform-template row z-depth-1" data-prefix="kas_bank">
+                                                <div class="col s11">
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="norek" name="norek">
+                                                            <label for="norek">Nomor Rekening</label>
+                                                        </div>
+                                                        
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="nama_bank" name="nama_bank">
+                                                            <label for="nama_bank">Nama Bank</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="nama_pemilik" type="text" class="validate" name="nama_pemilik">
+                                                            <label for="nama_pemilik">Nama Pemilik</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input id="nominal" type="number" class="validate" name="nominal">
+                                                            <label for="nominal">Nominal</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="centered remove-container input-field col s1">
+                                                    <div class="remove-button btn btn-small waves-effect waves-light red">
+                                                        X
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
+                                <!-- /Form Aset Kas_Bank -->
+
                             </div>
                         </div>
                     </div>
@@ -179,44 +236,24 @@
                             <table id="tabel-akun" class="display centered striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>NOMOR</th>
-                                        <th>NAMA PERALATAN</th>
-                                        <th>JUMLAH</th>
-                                        <th>NILAI PERALATAN</th>
+                                        <th>NO.</th>
+                                        <th>NAMA</th>
+                                        <th>MEREK</th>
+                                        <th>JENIS</th>
+                                        <th>HARGA</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>...</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <?php foreach($peralatan as $k => $v): ?>
+                                        <tr>
+                                            <td><?php echo($k+1); ?></td>                                            
+                                            <td><?php echo($v['nama']) ?></td>
+                                            <td><?php echo($v['merek']) ?></td>
+                                            <td><?php echo($v['jenis']) ?></td>
+                                            <td><?php echo($v['harga']) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -234,44 +271,22 @@
                         <table id="tabel-akun" class="display centered striped" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>NOMOR</th>
-                                    <th>NAMA BANGUNAN</th>
+                                    <th>NO.</th>
+                                    <th>NAMA</th>
                                     <th>LUAS</th>
                                     <th>NILAI</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>...</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <?php foreach($bangunan_tanah as $k => $v): ?>
+                                    <tr>
+                                        <td><?php echo($k+1); ?></td>                                        
+                                        <td><?php echo($v['nama']) ?></td>
+                                        <td><?php echo($v['luas']) ?></td>
+                                        <td><?php echo($v['nilai']) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -288,44 +303,24 @@
                         <table id="tabel-akun" class="display centered striped" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>NOMOR</th>
-                                    <th>NAMA</th>
-                                    <th>LUAS</th>
-                                    <th>NILAI</th>
+                                    <th>NO.</th>
+                                    <th>No. REKENING</th>
+                                    <th>NAMA PEMILIK</th>
+                                    <th>NAMA BANK</th>
+                                    <th>NOMINAL</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>...</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                <?php foreach($kas_bank as $k=> $v): ?>
+                                    <tr>
+                                        <td><?php echo($k+1); ?></td>
+                                        <td><?php echo($v['norek']) ?></td>
+                                        <td><?php echo($v['nama_pemilik']) ?></td>
+                                        <td><?php echo($v['nama_bank']) ?></td>
+                                        <td><?php echo($v['nominal']) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
