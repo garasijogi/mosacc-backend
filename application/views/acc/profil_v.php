@@ -31,7 +31,7 @@
 			<div class="profil-wrapper">
 				<header class="profil-header valign-wrapper">
 					<img src="<?php echo base_url('assets/images/background.jpg'); ?>" alt="profil image">
-					<h4>Masjid Jami Al-Islah</h4>
+					<h4><?php echo $profil[0]['nama']; ?></h4>
 				</header>
 				<div class="profil-nav">
 					<ul>
@@ -124,6 +124,11 @@
 							</div>
 						</div>
 					</div>
+
+					<a href="<?php echo base_url('acc/profil/edit_profil_masjid'); ?>" class="waves-effect waves-light btn btn-edit-profil">Edit
+                        Profil</a>
+						
+
 				</div>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ class Login extends CI_Controller
   {
     parent::__construct();
     $this->load->model('user_model');
+    $this->load->model('profil_m');
   }
 
   public function index()
@@ -31,21 +32,24 @@ class Login extends CI_Controller
     foreach ($data['user']->result() as $user) :
       if ($user->password == $password && $user->jenis_user == $jenis_user) {
         $masuk = 1;
+        $this->load->model('profil_m');
+        $profil = $this->profil_m->getProfil();
         $arraydata = array(
           'jenis_user' => $user->jenis_user,
           'nama_user' => $user->nama_user,
-          'status' => $status
+          'status' => $status,
+          'nama_masjid' => $profil[0]['nama']
         );
         $this->session->set_userdata($arraydata);
       }
     endforeach;
-
+   
     if ($masuk == 1 && $jenis_user == 'akuntan') {
       redirect('acc/dashboard');
     }
     if ($masuk == 1 && $jenis_user == 'manajer') {
       redirect('mgr/dashboard');
-    } 
+    }
     if ($masuk == 0 && $jenis_user == 'akuntan') {
       redirect('homepage?masuk=0&&jenis_user=akuntan');
     }

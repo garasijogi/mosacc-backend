@@ -7,14 +7,15 @@ class Homepage extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('profil_m');
 
     //cek data user pada database, apakah tersedia
-    if (empty($this->db->get('user')->result())){
-      redirect('wizard');//arahkan ke modul wizard
+    if (empty($this->db->get('user')->result())) {
+      redirect('wizard'); //arahkan ke modul wizard
     }
 
     //ambil tahun dan taruh di session
-    $db_dynamic = 'mosacc_tr_'.date('Y');
+    $db_dynamic = 'mosacc_tr_' . date('Y');
 
     //load fungsi dforge
     // $this->load->dbforge();
@@ -38,15 +39,11 @@ class Homepage extends CI_Controller
   {
     if ($this->session->userdata('status') == NULL) {
       $this->load->view('homepage_v.php');
-    }
-    elseif($this->session->userdata('jenis_user') == 'manajer'){
+    } elseif ($this->session->userdata('jenis_user') == 'manajer') {
       redirect('mgr/dashboard');
-    }
-    elseif($this->session->userdata('jenis_user') == 'akuntan'){
+    } elseif ($this->session->userdata('jenis_user') == 'akuntan') {
       redirect('acc/dashboard');
     }
-
-
   }
 }
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 26 Okt 2019 pada 17.11
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 5.6.36
+-- Host: localhost
+-- Generation Time: Oct 29, 2019 at 09:11 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,21 +25,32 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `aset`
+-- Table structure for table `aset`
 --
 
 DROP TABLE IF EXISTS `aset`;
 CREATE TABLE `aset` (
-  `id_aset` varchar(6) DEFAULT NULL,
-  `nama` varchar(32) DEFAULT NULL,
-  `merek` varchar(32) DEFAULT NULL,
-  `harga` int(11) DEFAULT NULL
+  `id_aset` varchar(6) NOT NULL,
+  `jenis_aset` varchar(64) DEFAULT NULL,
+  `nama` varchar(128) DEFAULT NULL,
+  `merek_luas` varchar(64) DEFAULT NULL,
+  `harga` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aset`
+--
+
+INSERT INTO `aset` (`id_aset`, `jenis_aset`, `nama`, `merek_luas`, `harga`) VALUES
+('1', 'peralatan', 'Sound System', 'Simbadda', 8500000),
+('2', 'bangunan/tanah', 'Gedung Masjid', '17m^2', 13000000),
+('3', 'bangunan/tanah', 'Kamar Mandi', '200 m^2', 13000000),
+('4', 'peralatan', 'Mic', 'Samsung', 800000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_aset`
+-- Table structure for table `jenis_aset`
 --
 
 DROP TABLE IF EXISTS `jenis_aset`;
@@ -50,7 +61,7 @@ CREATE TABLE `jenis_aset` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profil`
+-- Table structure for table `profil`
 --
 
 DROP TABLE IF EXISTS `profil`;
@@ -61,23 +72,33 @@ CREATE TABLE `profil` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profil_dkm`
+-- Table structure for table `profil_dkm`
 --
 
 DROP TABLE IF EXISTS `profil_dkm`;
 CREATE TABLE `profil_dkm` (
   `id_pengurus` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
-  `ttl` date DEFAULT NULL,
+  `posisi` enum('bendahara','ketua','sekretaris') NOT NULL,
+  `ttl` date NOT NULL,
   `alamat` varchar(512) DEFAULT NULL,
   `telepon` varchar(15) DEFAULT NULL,
   `pendidikan` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `profil_dkm`
+--
+
+INSERT INTO `profil_dkm` (`id_pengurus`, `nama`, `posisi`, `ttl`, `alamat`, `telepon`, `pendidikan`) VALUES
+(100, 'Muhidin', 'ketua', '1980-08-15', 'JL. Rambutan', '08999999999', 'S1 Pendidikan Agama Islam'),
+(101, 'Didi Mulyadi', 'bendahara', '1980-09-15', 'Jl. Kecapi', '0856789000', 'S1 Akuntansi'),
+(102, 'Haryadi', 'sekretaris', '1980-10-15', 'Jl. Apel', '08765433534', 'SMA');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profil_masjid`
+-- Table structure for table `profil_masjid`
 --
 
 DROP TABLE IF EXISTS `profil_masjid`;
@@ -94,16 +115,16 @@ CREATE TABLE `profil_masjid` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `profil_masjid`
+-- Dumping data for table `profil_masjid`
 --
 
 INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`, `ad_art`, `badan_hukum`) VALUES
-(1, 'Masjid Al-Islah', 'Jalan Raya Bogor KM258, Gg Masjid', '2012', '02179187272', '111788543998', '432234', 'ddd.pdf', 'law_body_mustjeed_2342.pdf');
+(1, 'Masjid Jami Al-Ishlah', 'Jalan Raya Bogor KM258, Gg Masjid', '2012', '0895678891', '111788543998', '500 m3', 'Wizard.php', 'Wizard.php');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `rules`
+-- Table structure for table `rules`
 --
 
 DROP TABLE IF EXISTS `rules`;
@@ -116,7 +137,7 @@ CREATE TABLE `rules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `rules`
+-- Dumping data for table `rules`
 --
 
 INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
@@ -172,7 +193,7 @@ INSERT INTO `rules` (`kd_akun`, `menu`, `nama_sub`, `debit`, `kredit`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -184,45 +205,58 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
+('696969', 'BIma', 'akuntan', 'bima');
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `profil_dkm`
+-- Indexes for table `aset`
+--
+ALTER TABLE `aset`
+  ADD PRIMARY KEY (`id_aset`);
+
+--
+-- Indexes for table `profil_dkm`
 --
 ALTER TABLE `profil_dkm`
   ADD PRIMARY KEY (`id_pengurus`);
 
 --
--- Indeks untuk tabel `profil_masjid`
+-- Indexes for table `profil_masjid`
 --
 ALTER TABLE `profil_masjid`
   ADD PRIMARY KEY (`id_profil`);
 
 --
--- Indeks untuk tabel `rules`
+-- Indexes for table `rules`
 --
 ALTER TABLE `rules`
   ADD PRIMARY KEY (`kd_akun`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`NIP`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `profil_dkm`
+-- AUTO_INCREMENT for table `profil_dkm`
 --
 ALTER TABLE `profil_dkm`
-  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
--- AUTO_INCREMENT untuk tabel `profil_masjid`
+-- AUTO_INCREMENT for table `profil_masjid`
 --
 ALTER TABLE `profil_masjid`
   MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

@@ -2,50 +2,49 @@
 <html lang="en">
 
 <head>
-	<!-- head -->
-	<?php $this->load->view("acc/_partials/head"); ?>
-	<!-- /head -->
+    <!-- head -->
+    <?php $this->load->view("acc/_partials/head"); ?>
+    <!-- /head -->
 </head>
 
 <body>
 
-	<!-- sidebar -->
-	<div class="container-fluid">
-		<?php $this->load->view("acc/_partials/sidebar"); ?>
-	</div>
-	<!-- /sidebar -->
+    <!-- sidebar -->
+    <div class="container-fluid">
+        <?php $this->load->view("acc/_partials/sidebar"); ?>
+    </div>
+    <!-- /sidebar -->
 
-	<!-- navbar -->
-	<div>
-		<?php $this->load->view("acc/_partials/navbar"); ?>
-	</div>
-	<!-- /navbar -->
+    <!-- navbar -->
+    <div>
+        <?php $this->load->view("acc/_partials/navbar"); ?>
+    </div>
+    <!-- /navbar -->
 
-	<!-- preloader -->
-	<?php $this->load->view('acc/_partials/preloader.php') ?>
-	<!-- preloader -->
+    <!-- preloader -->
+    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <!-- preloader -->
 
     <div class="content">
         <div class="container">
 
             <div class="profil-wrapper">
                 <header class="profil-header valign-wrapper">
-                    <img src="assets/background.jpg" alt="profil image">
-                    <h4>Masjid Jami Al-Islah</h4>
+                    <img src="<?php echo base_url('assets/images/background.jpg'); ?>" alt="profil image">
+                    <h4><?php echo $profil[0]['nama']; ?></h4>
                 </header>
                 <div class="profil-nav">
-                
                     <ul>
-                        <a href="profil-masjid.html" class="menu-trigger profil-nav-active" id="profil-masjid">
+                        <a href="<?php echo base_url('acc/profil'); ?>" class="menu-trigger profil-nav-active" id="profil-masjid">
                             <li>Profil Masjid</li>
                         </a>
-                        <a href="struktur-dkm.html" class="menu-trigger" id="struktur-dkm">
+                        <a href="<?php echo base_url('acc/profil/dkm'); ?>" class="menu-trigger" id="struktur-dkm">
                             <li>Struktur DKM</li>
                         </a>
-                        <a href="daftar-akun.html" class="menu-trigger" id="daftar-akun">
+                        <a href="<?php echo base_url('acc/profil/akun'); ?>" class="menu-trigger" id="daftar-akun">
                             <li>Daftar Akun</li>
                         </a>
-                        <a href="aset-masjid.html" class="menu-trigger" id="aset-masjid">
+                        <a href="<?php echo base_url('acc/profil/aset'); ?>" class="menu-trigger" id="aset-masjid">
                             <li>Aset Masjid</li>
                         </a>
                     </ul>
@@ -57,27 +56,29 @@
                                 <h5>Profil Masjid</h5>
                                 <h6>Informasi Dasar Masjid</h6>
                             </div>
+
                             <div class="col s12">
                                 <div class="row" id="namamasjid">
-                                    <div class="input-field col s12 edit-profil"> <input name="nama" id="rename-nama-masjid"
-                                            type="text" class="validate" value="<?php echo $profil[0]['nama']; ?>"><label
-                                            for="rename-nama-masjid">Nama Masjid</label>
-                                    </div>
+                                    <form name="form_edit_profil_masjid" id="form_edit_profil_masjid" action="<?php echo base_url('acc/profil/proses_edit_profil_masjid'); ?>" method="post" enctype="multipart/form-data">
+                                        <div class="input-field col s12 edit-profil">
+                                            <input name="nama" id="rename-nama-masjid" type="text" class="validate" value="<?php echo $profil[0]['nama']; ?>">
+                                            <label for="rename-nama-masjid">Nama Masjid</label>
+                                        </div>
                                 </div>
                             </div>
                             <div class="col s12">
                                 <div class="row" id="alamat-masjid">
-                                    <div class="input-field col s12 edit-profil"> <input name="alamat" id="rename-alamat-masjid"
-                                            type="text" class="validate" value="<?php echo $profil[0]['alamat']; ?>"><label
-                                            for="rename-alamat-masjid">Alamat Masjid</label>
+                                    <div class="input-field col s12 edit-profil">
+                                        <input name="alamat" id="rename-alamat-masjid" type="text" class="validate" value="<?php echo $profil[0]['alamat']; ?>">
+                                        <label for="rename-alamat-masjid">Alamat Masjid</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col s12">
                                 <div class="row" id="tahun-berdiri">
-                                    <div class="input-field col s12 edit-profil"> <input name="tahun" id="rename-tahun-berdiri"
-                                            type="text" class="validate" value="<?php echo $profil[0]['tahun']; ?>"><label
-                                            for="rename-tahun-berdiri">Tahun Berdiri</label>
+                                    <div class="input-field col s12 edit-profil">
+                                        <input name="tahun" id="rename-tahun-berdiri" type="text" class="validate" value="<?php echo $profil[0]['tahun']; ?>">
+                                        <label for="rename-tahun-berdiri">Tahun Berdiri</label>
                                     </div>
                                 </div>
                             </div>
@@ -92,17 +93,13 @@
                             </div>
                             <div class="col s12">
                                 <div class="row" id="telepon-sekretariat">
-                                    <div class="input-field col s12 edit-profil"> <input name="telepon" id="rename-telepon-sekretariat"
-                                            type="text" class="validate" value="<?php echo $profil[0]['telepon']; ?>"><label
-                                            for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
+                                    <div class="input-field col s12 edit-profil"> <input name="telepon" id="rename-telepon-sekretariat" type="text" class="validate" value="<?php echo $profil[0]['telepon']; ?>"><label for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col s12">
                                 <div class="row" id="rekening-masjid">
-                                    <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid"
-                                            type="text" class="validate" value="<?php echo $profil[0]['rekening']; ?>"><label
-                                            for="rename-rekening-masjid">Rekening Masjid</label>
+                                    <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid" type="text" class="validate" value="<?php echo $profil[0]['rekening']; ?>"><label for="rename-rekening-masjid">Rekening Masjid</label>
                                     </div>
                                 </div>
                             </div>
@@ -117,9 +114,7 @@
                             </div>
                             <div class="col s12">
                                 <div class="row" id="luas-tanah">
-                                    <div class="input-field col s12 edit-profil"> <input name="luas_tanah" id="rename-luas-tanah"
-                                            type="text" class="validate" value="<?php echo $profil[0]['luas_tanah']; ?>"><label
-                                            for="rename-luas-tanah">Luas Tanah</label>
+                                    <div class="input-field col s12 edit-profil"> <input name="luas_tanah" id="rename-luas-tanah" type="text" class="validate" value="<?php echo $profil[0]['luas_tanah']; ?>"><label for="rename-luas-tanah">Luas Tanah</label>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +126,7 @@
                                             <input type="file">
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" placeholder="Tambahkan File" value="<?php echo $profil[0]['ad_art']; ?>">
+                                            <input name="ad-art" class="file-path validate" type="text" placeholder="Tambahkan File" value="<?php echo $profil[0]['ad_art']; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +139,7 @@
                                             <input type="file">
                                         </div>
                                         <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" placeholder="Tambahkan File" value="<?php echo $profil[0]['badan_hukum']; ?>">
+                                            <input name="badan_hukum" class="file-path validate" type="text" placeholder="Tambahkan File" value="<?php echo $profil[0]['badan_hukum']; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -152,10 +147,13 @@
                         </div>
                     </div>
 
-                    <a href="profil-masjid.html"
-                        class="waves-effect waves-light btn btn-edit-profil btn-success">Simpan</a>
-                    <a href="profil-masjid.html"
-                        class="waves-effect waves-light btn btn-edit-profil btn-danger">Batal</a>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light teal" type="submit" name="action">SImpan
+                        </button>
+                        <a href="<?php echo base_url('acc/profil') ?>" class="btn red">Batal</a>
+                    </div>
+
+                    </form>
                 </div>
             </div>
 
@@ -166,8 +164,8 @@
 
 
     <!-- Javascript -->
-	<?php $this->load->view("acc/_partials/js"); ?>
-	<!-- /Javascript -->
+    <?php $this->load->view("acc/_partials/js"); ?>
+    <!-- /Javascript -->
 
     <!-- <script>
         // $('.masjid').on('mouseover', function () {

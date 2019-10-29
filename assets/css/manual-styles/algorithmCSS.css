@@ -123,3 +123,15 @@ div.sticky {
 	height: 30px;
 	width: 30px
 }
+
+#mosacc-logo {
+	padding-left: 1rem !important;
+}
+
+.logo-homepage{
+	margin-top: 0.2rem;
+}
+
+.more-vert{
+	width: 100px !important;
+}
