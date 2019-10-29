@@ -8,6 +8,11 @@ class Wizard extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        //cek data user pada database, apakah tersedia
+        if (!empty($this->db->get('user')->result())){
+            redirect('homepage');//arahkan ke modul wizard
+        }
+
         $this->load->helper('uploader'); //load helper uploader
         
         $this->load->model('wizard_m');
