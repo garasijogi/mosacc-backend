@@ -98,8 +98,18 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="jenis" type="text" class="validate" name="jenis">
-                                                            <label for="jenis">Jenis</label>
+                                                            <input id="tanggal" type="text" class="datepicker validate" name="tanggal">
+                                                            <label for="tanggal">Tanggal</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input id="kategori" type="text" class="validate" name="kategori">
+                                                            <label for="kategori">Kategori</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="jumlah" type="text" class="validate" name="jumlah">
+                                                            <label for="jumlah">Jumlah</label>
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input type="number" class="validate" id="harga" name="harga">
@@ -143,11 +153,16 @@
                                                         </div>
                                 
                                                         <div class="input-field col s6">
-                                                            <input type="text" class="validate" id="luas" name="luas">
-                                                            <label for="luas">Luas</label>
+                                                            <input type="text" class="datepicker validate" id="tanggal" name="tanggal">
+                                                            <label for="tanggal">Tanggal</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input type="number" class="validate" id="luas" name="luas">
+                                                            <label for="luas">Luas</label>
+                                                        </div>
+
                                                         <div class="input-field col s6">
                                                             <input id="nilai" type="number" class="validate" name="nilai">
                                                             <label for="nilai">Nilai</label>
@@ -205,6 +220,12 @@
                                                             <label for="nominal">Nominal</label>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="tanggal" type="text" class="validate datepicker" name="tanggal">
+                                                            <label for="tanggal">Tanggal</label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="centered remove-container input-field col s1">
                                                     <div class="remove-button btn btn-small waves-effect waves-light red">
@@ -239,7 +260,9 @@
                                         <th>NO.</th>
                                         <th>NAMA</th>
                                         <th>MEREK</th>
-                                        <th>JENIS</th>
+                                        <th>TANGGAL</th>
+                                        <th>KATEGORI</th>
+                                        <th>JUMLAH</th>
                                         <th>HARGA</th>
                                     </tr>
                                 </thead>
@@ -250,7 +273,9 @@
                                             <td><?php echo($k+1); ?></td>                                            
                                             <td><?php echo($v['nama']) ?></td>
                                             <td><?php echo($v['merek']) ?></td>
-                                            <td><?php echo($v['jenis']) ?></td>
+                                            <td><?php echo($v['tanggal']) ?></td>
+                                            <td><?php echo($v['kategori']) ?></td>
+                                            <td><?php echo($v['jumlah']) ?></td>
                                             <td><?php echo($v['harga']) ?></td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -273,6 +298,7 @@
                                 <tr>
                                     <th>NO.</th>
                                     <th>NAMA</th>
+                                    <th>TANGGAL</th>
                                     <th>LUAS</th>
                                     <th>NILAI</th>
                                 </tr>
@@ -283,6 +309,7 @@
                                     <tr>
                                         <td><?php echo($k+1); ?></td>                                        
                                         <td><?php echo($v['nama']) ?></td>
+                                        <td><?php echo($v['tanggal']) ?></td>
                                         <td><?php echo($v['luas']) ?></td>
                                         <td><?php echo($v['nilai']) ?></td>
                                     </tr>
@@ -308,6 +335,7 @@
                                     <th>NAMA PEMILIK</th>
                                     <th>NAMA BANK</th>
                                     <th>NOMINAL</th>
+                                    <th>TANGGAL</th>
                                 </tr>
                             </thead>
 
@@ -319,6 +347,7 @@
                                         <td><?php echo($v['nama_pemilik']) ?></td>
                                         <td><?php echo($v['nama_bank']) ?></td>
                                         <td><?php echo($v['nominal']) ?></td>
+                                        <td><?php echo($v['tanggal']) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

@@ -77,7 +77,7 @@
 				<div class="row center">
 					<div class="col s12 offset-s2">
 						<div class="col s3 m3">
-							<?php if($pw_bendahara == TRUE){
+							<?php if($pw_bendahara == 1){
 								echo '<div class="card card1 teal darken-2 z-depth-4 card-homepage waves-effect waves-block waves-light">';
 							}else{
 								echo '<div class="card card1 red darken-2 z-depth-4 card-homepage waves-effect waves-block waves-light">';
@@ -96,7 +96,7 @@
 						</div>
 						<div class="col s2"></div>
 						<div class="col s3 offset-s2 m3">
-							<?php if($pw_ketua_dkm == TRUE){
+							<?php if($pw_ketua_dkm == 1){
 								echo '<div class="card card1 teal darken-2 z-depth-4 card-homepage waves-effect waves-block waves-light">';
 							}else{
 								echo '<div class="card card1 red darken-2 z-depth-4 card-homepage waves-effect waves-block waves-light">';
@@ -117,9 +117,13 @@
 				</div>
 			</div>
 			<div class="row center">
-				<?php if($pw_bendahara == TRUE && $pw_ketua_dkm == TRUE){ 
-					$url = base_url('wizard/wizardProses');
+				<?php 
+				$url = base_url('wizard/wizardProses');
+				
+				if($pw_bendahara == 1 && $pw_ketua_dkm == 1){ 
 					echo('<div class="row"> <div class="col s6 offset-s3"> <a href=' . $url . ' class="btn teal">SELESAIKAN</a> </div> </div>');
+				}else{
+					echo('<div class="row"></div>');
 				} ?>
 			</div>
 
