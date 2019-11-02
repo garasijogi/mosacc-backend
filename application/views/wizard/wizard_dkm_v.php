@@ -49,7 +49,7 @@
             <div class="form-wizard">
 
                 <div class="profil-content">
-                    <form id="wizard-form-dkm" action="<?php echo base_url('wizard/dkmProses'); ?>" method="post" >
+                    <form id="wizard-form-dkm" action="<?php echo base_url('wizard/dkmProses'); ?>" method="post" enctype="multipart/form-data" >
                         <div class="profil-contents-wrapper">
                             <div class="row">
                                 <div class="col s12 head-content">
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-nama-ketua" name="nama-ketua" value="<?php echo($ketua['nama']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-nama-ketua" name="nama-ketua" value="<?php echo($profil_dkm['ketua']['nama']) ?>"
                                             type="text" class="validate wizard-form-check" required><label
                                             for="rename-nama-ketua">Nama</label>
                                         </div>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-alamat-ketua" name="alamat-ketua" value="<?php echo($ketua['alamat']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-alamat-ketua" name="alamat-ketua" value="<?php echo($profil_dkm['ketua']['alamat']) ?>"
                                             type="text" class="validate wizard-form-check"><label
                                             for="rename-alamat-ketua">Alamat</label>
                                         </div>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-ketua" name="telepon-ketua" value="<?php echo($ketua['telepon']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-ketua" name="telepon-ketua" value="<?php echo($profil_dkm['ketua']['telepon']) ?>"
                                             type="number" class="validate wizard-form-check"><label
                                             for="rename-no-ketua">No. HP</label>
                                         </div>
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-pendidikan-ketua" name="pendidikan-ketua" value="<?php echo($ketua['pendidikan']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-pendidikan-ketua" name="pendidikan-ketua" value="<?php echo($profil_dkm['ketua']['pendidikan']) ?>"
                                             type="text" class="validate wizard-form-check"><label
                                             for="rename-pendidikan-ketua">Pendidikan</label>
                                         </div>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-nama-sekretaris" name="nama-sekre" value="<?php echo($sekre['nama']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-nama-sekretaris" name="nama-sekretaris" value="<?php echo($profil_dkm['sekretaris']['nama']) ?>"
                                             type="text" class="validate wizard-form-check"><label
                                             for="rename-nama-sekretaris">Nama</label>
                                         </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-alamat-sekretaris" name="alamat-sekre" value="<?php echo($sekre['alamat']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-alamat-sekretaris" name="alamat-sekretaris" value="<?php echo($profil_dkm['sekretaris']['alamat']) ?>"
                                             type="text" class="validate wizard-form-check"><label
                                             for="rename-alamat-sekretaris">Alamat</label>
                                         </div>
@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-sekretaris" name="telepon-sekre" value="<?php echo($sekre['telepon']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-sekretaris" name="telepon-sekretaris" value="<?php echo($profil_dkm['sekretaris']['telepon']) ?>"
                                             type="number" class="validate wizard-form-check"><label
                                             for="rename-no-sekretaris">No. HP</label>
                                         </div>
@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-pendidikan-sekretaris" type="text" name="pendidikan-sekre" value="<?php echo($sekre['pendidikan']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-pendidikan-sekretaris" type="text" name="pendidikan-sekretaris" value="<?php echo($profil_dkm['sekretaris']['pendidikan']) ?>"
                                             class="validate wizard-form-check"><label
                                             for="rename-pendidikan-sekretaris">Pendidikan</label>
                                         </div>
@@ -147,7 +147,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-nama-bendahara" name="nama-bendum" value="<?php echo($bendum['nama']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-nama-bendahara" name="nama-bendahara" value="<?php echo($profil_dkm['bendahara']['nama']) ?>"
                                             type="text" class="validate wizard-form-check"><label
                                             for="rename-nama-bendahara">Nama</label>
                                         </div>
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-alamat-bendahara" name="alamat-bendum" value="<?php echo($bendum['alamat']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-alamat-bendahara" name="alamat-bendahara" value="<?php echo($profil_dkm['bendahara']['alamat']) ?>"
                                             type="text" class="validate wizard-form-check"><label
                                             for="rename-alamat-bendahara">Alamat</label>
                                         </div>
@@ -163,7 +163,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-bendahara" name="telepon-bendum" value="<?php echo($bendum['telepon']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-bendahara" name="telepon-bendahara" value="<?php echo($profil_dkm['bendahara']['telepon']) ?>"
                                             type="number" class="validate wizard-form-check"><label
                                             for="rename-no-bendahara">No. HP</label>
                                         </div>
@@ -171,9 +171,33 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-pendidikan-bendahara" type="text" name="pendidikan-bendum" value="<?php echo($bendum['pendidikan']) ?>"
+                                        <div class="input-field col s12 edit-profil"> <input id="rename-pendidikan-bendahara" type="text" name="pendidikan-bendahara" value="<?php echo($profil_dkm['bendahara']['pendidikan']) ?>"
                                             class="validate wizard-form-check"><label
                                             for="rename-pendidikan-bendahara">Pendidikan</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profil-contents-wrapper">
+                            <div class="row">
+                                <div class="col s12">
+                                    <div class="row header">
+                                        <h5>DOKUMEN STRUKTUR DKM</h5>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="row" id="struktur-dkm">
+                                        <div class="file-field input-field">
+                                            <div class="btn btn-small">
+                                                <span>Struktur DKM</span>
+                                                <input name="struktur_dkm" accept=".pdf,.doc,.docx,.ppt,.pptx,.xps,.odt,.xls,.xlsx,.wps" type="file">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['struktur_dkm']['nama']; ?>"
+                                                    placeholder="Tambahkan File">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

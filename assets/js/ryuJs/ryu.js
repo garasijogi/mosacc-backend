@@ -149,6 +149,22 @@ $(".multiform-template").multiFormTemplate({
 	}
 });
 
+//aset peralatan submit button
+$("#btn-submit-peralatan").click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$("#form_aset-peralatan").submit();
+});
+
+//aset peralatan submit button
+$("#btn-submit-bangunan_tanah").click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$("#form_aset-bangunan_tanah").submit();
+});
+
+$("#btn-submit-kas_bank").click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$("#form_aset-kas_bank").submit();
+});
 
 
 // //dynamic multiform old

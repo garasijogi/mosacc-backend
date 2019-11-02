@@ -61,14 +61,14 @@
                                 <div class="col s12">
                                     <div class="row" id="namamasjid">
                                         <div class="input-field col s12 edit-profil">
-                                            <input name="nama" id="rename-nama-masjid" type="text" class="validate wizard-form-check" value="<?php echo $nama; ?>" required>
+                                            <input name="nama" id="rename-nama-masjid" type="text" class="validate wizard-form-check" value="<?php echo $profil_form['nama']; ?>" required>
                                             <label for="rename-nama-masjid">Nama Masjid</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="alamat-masjid">
-                                        <div class="input-field col s12 edit-profil"> <input name="alamat" id="rename-alamat-masjid" value="<?php echo $alamat; ?>"
+                                        <div class="input-field col s12 edit-profil"> <input name="alamat" id="rename-alamat-masjid" value="<?php echo $profil_form['alamat']; ?>"
                                                 type="text" class="wizard-form-check validate"><label
                                                 for="rename-alamat-masjid">Alamat Masjid</label>
                                         </div>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="tahun-berdiri">
-                                        <div class="input-field col s12 edit-profil"> <input name="tahun" id="rename-tahun-berdiri" value="<?php echo $tahun; ?>"
+                                        <div class="input-field col s12 edit-profil"> <input name="tahun" id="rename-tahun-berdiri" value="<?php echo $profil_form['tahun']; ?>"
                                                 type="number" class="validate wizard-form-check"><label
                                                 for="rename-tahun-berdiri">Tahun Berdiri</label>
                                         </div>
@@ -94,7 +94,7 @@
                                 <div class="col s12">
                                     <div class="row" id="telepon-sekretariat">
                                         <div class="input-field col s12 edit-profil">
-                                            <input name="telepon" id="rename-telepon-sekretariat" type="number" value="<?php echo $telepon; ?>"
+                                            <input name="telepon" id="rename-telepon-sekretariat" type="number" value="<?php echo $profil_form['telepon']; ?>"
                                                 class="wizard-form-check validate" required><label
                                                 for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
                                         </div>
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="rekening-masjid">
-                                        <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid" value="<?php echo $rekening; ?>"
+                                        <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid" value="<?php echo $profil_form['rekening']; ?>"
                                                 type="number" class="validate wizard-form-check"><label
                                                 for="rename-rekening-masjid">Rekening
                                                 Masjid</label>
@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="luas-tanah">
-                                        <div class="input-field col s12 edit-profil"> <input name="luas_tanah" id="rename-luas-tanah" value="<?php echo $luas_tanah; ?>"
+                                        <div class="input-field col s12 edit-profil"> <input name="luas_tanah" id="rename-luas-tanah" value="<?php echo $profil_form['luas_tanah']; ?>"
                                                 type="text" class="validate wizard-form-check"><label
                                                 for="rename-luas-tanah">Luas
                                                 Tanah</label>
@@ -135,7 +135,7 @@
                                                 <input name="ad_art" accept=".pdf,.doc,.docx,.ppt,.pptx,.xps,.odt,.xls,.xlsx,.wps" type="file">
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $ad_art; ?>"
+                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['ad_art']['nama']; ?>"
                                                     placeholder="Tambahkan File">
                                             </div>
                                         </div>
@@ -149,7 +149,7 @@
                                                 <input name="badan_hukum" accept=".pdf,.doc,.docx,.ppt,.pptx,.xps,.odt,.xls,.xlsx,.wps" type="file">
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $badan_hukum; ?>"
+                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['badan_hukum']['nama']; ?>"
                                                     placeholder="Tambahkan File">
                                             </div>
                                         </div>

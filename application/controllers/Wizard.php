@@ -21,13 +21,31 @@ class Wizard extends CI_Controller {
     
     public function index()
     {
+        //buat session files kosong  jika tidak ada
+        if(!$this->session->userdata('files')) { //cek jika session files tidak tersedia
+            $files = array('ad_art', 'badan_hukum', 'struktur_dkm');
+            //buat session kosong
+            foreach ($files as $v){
+                $file_wizard['files'][$v] = array(
+                'nama'        => '',
+                'jenis_file'  => $v,
+                'tipe_file'   => '',
+                'ekstensi'    => '',
+                'ukuran'      => '',
+                'tanggal'     => ''
+                );
+            }
+           
+            $this->session->set_userdata($file_wizard);
+        }
+
         $this->load->view('wizard/wizard_intro_v');
     }
     
     public function profil(){
         
         if($this->session->userdata('profil_form')) { //cek jika session profil_form sdh tersedia
-            $data = $this->session->userdata('profil_form'); //retrieve dan masukkan ke $data
+            $data['profil_form'] = $this->session->userdata('profil_form'); //retrieve dan masukkan ke $data
         }else{
             //buat session kosong
             $profil_wizard['profil_form'] = array(
@@ -36,14 +54,16 @@ class Wizard extends CI_Controller {
                 'tahun'      => '',
                 'telepon'    => '',
                 'rekening'   => '',
-                'luas_tanah' => '',
-                'ad_art'     => '',
-                'badan_hukum'=> ''
+                'luas_tanah' => ''
             );
             $this->session->set_userdata($profil_wizard);
             
-            $data = $this->session->userdata('profil_form'); //retrieve dan masukkan ke $data
+            $data['profil_form'] = $this->session->userdata('profil_form'); //retrieve dan masukkan ke $data
         }
+
+        $data['files'] = $this->session->userdata('files'); //retrieve dan masukkan ke $data
+
+        print_r($data);
         
         // print_r($data);
         // exit();
@@ -58,46 +78,59 @@ class Wizard extends CI_Controller {
         //setelah selesai unset semua variabel session
         
         //upload file ke folder temp
-        $ad_art = siapUnggah('ad_art'); //file ad/art
-        $badan_hukum = siapUnggah('badan_hukum'); //file badan_hukum
-        
+        $ad_art = siapUnggah('ad_art', 'files'); //file ad/art (parameter post files, nama session)
+        $badan_hukum = siapUnggah('badan_hukum', 'files'); //file badan_hukum (parameter post files, nama session)
+
+         //ambil session files dan taruh di base
+        $dasar = $this->session->userdata('files');
+        //siapkan yg ingin direplace
+        $pengganti = array(
+            'ad_art'      => $ad_art,
+            'badan_hukum' => $badan_hukum
+        );
+        //replace
+        $files_wizard['files'] = array_replace(
+            $dasar, $pengganti
+        );
+
+
         $profil_wizard['profil_form'] = array(
             'nama'       => $this->input->post('nama'),
             'alamat'     => $this->input->post('alamat'),
             'tahun'      => $this->input->post('tahun'),
             'telepon'    => $this->input->post('telepon'),
             'rekening'   => $this->input->post('rekening'),
-            'luas_tanah' => $this->input->post('luas_tanah'),
-            'ad_art'     => $ad_art,
-            'badan_hukum'=> $badan_hukum
+            'luas_tanah' => $this->input->post('luas_tanah')
         );
         
         $this->session->set_userdata($profil_wizard);// masukkan dalam session profil_wizard
+        $this->session->set_userdata($files_wizard);// masukkan dalam session profil_wizard
         // $this->session->unset_userdata('nama'); // unset variabel session spesifik
         
         redirect('wizard/dkm');
     }
     
     public function dkm(){
-        
         if($this->session->userdata('profil_dkm')) { //cek jika session profil_form sdh tersedia
-            $data = $this->session->userdata('profil_dkm'); //retrieve dan masukkan ke $data
+            $data['profil_dkm'] = $this->session->userdata('profil_dkm'); //retrieve dan masukkan ke $data
         }else{
             //buat session kosong
-            $jabatan = array('ketua', 'sekre', 'bendum');
+            $jabatan = array('ketua', 'sekretaris', 'bendahara');
             //post semua value dan masukkan dalam wizard
-            for($x=0;$x<3; $x++){
-                $profil_wizard['profil_dkm'][$jabatan[$x]] = array(
+            foreach($jabatan as $v){            
+                $profil_wizard['profil_dkm'][$v] = array(
                     'nama'       => '',
+                    'posisi'     => '',
                     'alamat'     => '',
                     'telepon'    => '',
                     'pendidikan' => ''
                 );
             }
-            $this->session->set_userdata($profil_wizard);
             
-            $data = $this->session->userdata('profil_dkm'); //retrieve dan masukkan ke $data
+            $data['profil_dkm'] = $this->session->userdata('profil_dkm'); //retrieve dan masukkan ke $data
         }
+
+         $data['files'] = $this->session->userdata('files'); //retrieve dan masukkan ke $data
 
         // print_r($data);
         // exit;
@@ -106,28 +139,46 @@ class Wizard extends CI_Controller {
     }
     
     public function dkmProses(){
+        //Upload file
+        $struktur_dkm = siapUnggah('struktur_dkm', 'files'); //panggil struktur_dkm dengan mengambil nama file nya
+
+        //ambil session files dan taruh di base
+        $dasar = $this->session->userdata('files');
+        //siapkan yg ingin direplace
+        $pengganti = array(
+            'struktur_dkm' => $struktur_dkm
+        );
+        //replace
+        $files_wizard['files'] = array_replace(
+            $dasar, $pengganti
+        );
+
         //list nama jabatan
-        $jabatan = array('ketua', 'sekre', 'bendum');
+        $jabatan = array('ketua', 'sekretaris', 'bendahara');
         //post semua value dan masukkan dalam wizard
-        for($x=0;$x<3; $x++){
-            $profil_wizard['profil_dkm'][$jabatan[$x]] = array(
-                'nama'       => $this->input->post('nama-'.$jabatan[$x]),
-                'alamat'     => $this->input->post('alamat-'.$jabatan[$x]),
-                'telepon'    => $this->input->post('telepon-'.$jabatan[$x]),
-                'pendidikan' => $this->input->post('pendidikan-'.$jabatan[$x])
+        foreach($jabatan as $v){
+            $profil_wizard['profil_dkm'][$v] = array(
+                'nama'       => $this->input->post('nama-'.$v),
+                'posisi'     => $v,
+                'alamat'     => $this->input->post('alamat-'.$v),
+                'telepon'    => $this->input->post('telepon-'.$v),
+                'pendidikan' => $this->input->post('pendidikan-'.$v)
             );
         }
         
-        // print_r($profil_wizard);
+        // $userfile = $this->session->userdata('profil_dkm')['struktur_dkm']['nama'];//memangggil nama file
+
+        
+
         //masukkan dalam session
         $this->session->set_userdata($profil_wizard);// masukkan dalam session profil_wizard
-        // $this->session->unset_userdata('nama'); // unset variabel session spesifik
+        $this->session->set_userdata($files_wizard);// masukkan dalam session profil_wizard
 
-        // print_r($this->session->userdata());
+        // print_r($this->session->userdata('files'));
         // exit;
-
+        // $this->session->unset_userdata('nama'); // unset variabel session spesifik
+    
         redirect('wizard/aset');
-        
     }
     
     public function aset(){
@@ -234,10 +285,10 @@ class Wizard extends CI_Controller {
         for($x=0; $x<$form_count; $x++){
             //ambil masing2 nilai dari $_POST
             $data['bangunan_tanah'][$x] = array(
-                'nama' => $this->input->post('bangunan_tanah_'.$x.'-nama'),
-                'tanggal' => $this->input->post('bangunan_tanah_'.$x.'-tanggal'),
-                'luas' => $this->input->post('bangunan_tanah_'.$x.'-luas'),
-                'nilai' => $this->input->post('bangunan_tanah_'.$x.'-nilai')
+                'nama'      => $this->input->post('bangunan_tanah_'.$x.'-nama'),
+                'tanggal'   => $this->input->post('bangunan_tanah_'.$x.'-tanggal'),
+                'luas'      => $this->input->post('bangunan_tanah_'.$x.'-luas'),
+                'nilai'     => $this->input->post('bangunan_tanah_'.$x.'-nilai')
             );
         }
 
@@ -351,8 +402,7 @@ class Wizard extends CI_Controller {
         //ambil data user akun
         $user[0] = $this->session->userdata('ketua_dkm');
         $user[1] = $this->session->userdata('bendahara');
-
-        //ambil data profil_dkm
+        
         $profil_dkm = $this->session->userdata('profil_dkm');
 
         //ambil data peralatan
@@ -363,6 +413,9 @@ class Wizard extends CI_Controller {
 
         //ambil data peralatan
         $kas_bank = $this->session->userdata('kas_bank');
+
+        //ambil data files
+        $files = $this->session->userdata('files');
         
         //masukkan data profil ke dalam database
         $this->wizard_m->insertData('profil_masjid', $profil_masjid);
@@ -382,12 +435,15 @@ class Wizard extends CI_Controller {
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('aset-kas_bank', $kas_bank);
 
+        //masukkan data peralatan ke dalam database
+        $this->wizard_m->insertData('files', $files);
+
         //menghapus semua session di browser
-        $semuaSession = array_keys($this->session->all_userdata());
-        foreach($semuaSession as $v){
-            print_r($v);
-            $this->session->unset_userdata($v);
-        }        
+        // $semuaSession = array_keys($this->session->all_userdata());
+        // foreach($semuaSession as $v){
+        //     print_r($v);
+        //     $this->session->unset_userdata($v);
+        // }        
         //ke halaman homepage
         redirect('homepage');
     }

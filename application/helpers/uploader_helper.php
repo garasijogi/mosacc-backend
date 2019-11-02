@@ -1,40 +1,40 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-function siapUnggah($userfile){
+function siapUnggah($userfile, $session){
     $CI =& get_instance(); //codeigniter tidak bisa memanggil library di helper, jadi gunakan ini
     
     if($_FILES[$userfile]['error']==0){ //ada file dipilih
+
+        $data = $CI->session->userdata($session)[$userfile];//panggil isi di dalam session index userfile
         
-        $data = $CI->session->userdata('profil_form');
-        
-        if(!empty($data[$userfile])){
-            unlink('document/temp/' . $data[$userfile]); //isi dengan nama yang sudah ada di session
+        if(!empty($data['nama'])){// cek apakah nama file kosong
+            unlink('document/' . $data['nama']); //hapus file yang ada di server
         }
         
-        $upload_data = unggahTemp($userfile);//unggah file temporary   
+        $upload_data = unggahin($userfile);//unggah file; 
+
+        return $upload_data;
+
+    }elseif($_FILES[$userfile]['error']==4){//tidak ada file dipilih, user tidak ingin mengubah file
         
-    }else if($_FILES[$userfile]['error']==4){//tidak ada file dipilih, user tidak ingin mengubah file
-        
-        if($CI->session->userdata('profil_form')) { //cek jika session profil_form sdh tersedia 
-            $data = $CI->session->userdata('profil_form');
-            $upload_data = $data[$userfile]; //isi dengan nama yang sudah ada di session
+        if(!empty($CI->session->userdata($session)[$userfile])) { //cek jika session $session sdh tersedia 
+            $upload_data = $CI->session->userdata($session)[$userfile];// ambil data dalam session lalu masukkan kembali ke upload_data
         }else{
             $upload_data = ""; //kosongkan nilai
         }
         
     }else{ //error lainnya
-        print_r("ERROR FILE ");
-        exit();
+        die('ERROR 404 NOT FOUND :(');
     }
     
     return $upload_data;
 }
 
-function unggahTemp($userfile){
+function unggahin($userfile){
     $CI =& get_instance(); //codeigniter tidak bisa memanggil library di helper, jadi gunakan ini
     
     //set config upload file
     $config = array(
-        "upload_path"   => "./document/temp",
+        "upload_path"   => "./document",
         "allowed_types" => "pdf|doc|docx|ppt|pptx|xps|odt|xls|xlsx|wps",
         "max_size"      => "32384"
     );
@@ -48,7 +48,16 @@ function unggahTemp($userfile){
         $upload_data = array('error' => $CI->upload->display_errors());
     }
     
-    return $upload_data['upload_data']['file_name']; //balikkan nilai
+    $data = array(
+        'nama'        => $upload_data['upload_data']['file_name'],
+        'jenis_file'  => $userfile,
+        'tipe_file'   => $upload_data['upload_data']['file_type'],
+        'ekstensi'    => $upload_data['upload_data']['file_ext'],
+        'ukuran'      => $upload_data['upload_data']['file_size'],
+        'tanggal'     => date('Y-m-d')
+    );
+
+    return $data ; //balikkan nilai
 }
 
 

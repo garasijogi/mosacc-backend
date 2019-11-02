@@ -6,7 +6,7 @@
 		<?php $this->load->view("acc/_partials/head");?>
 		<!-- /head -->
 	</head>
-
+                                                                                                                                                                                   
 <body style="background-color: teal;">
 
     <!-- preloader -->
@@ -64,27 +64,22 @@
                                     <ul class="tabs">
                                         <li class="tab col s3"><a href="#aset-peralatan">Peralatan</a></li>
                                         <li class="tab col s3" style="width: 195px;"><a href="#aset-bangunan_tanah">Bangunan & Tanah</a></li>
-                                        <li class="tab col s3"><a href="#aset-kas_bank">Kas</a></li>
+                                        <li class="tab col s3"><a href="#aset-kas_bank">Kas Bank</a></li>
                                     </ul>
                                 </div>
                                 <!-- /Wizard Aset Form Tab -->
 
                                 <!-- Form Aset Peralatan -->
                                 <div id="aset-peralatan" class="s12" style="overflow-y: auto;">
-                                    <form class="s12" action="<?php echo base_url('wizard/asetPeralatan') ?>" method="post">
+                                    <form id="form_aset-peralatan" class="s12" action="<?php echo base_url('wizard/asetPeralatan') ?>" method="post">
                                         <div class="row">
-                                            <div class="col s4">
-                                                <button type="submit" class="waves-effect waves-light btn btn-success">Tambah Aset
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
-                                            <div class="col s1 offset-s6">
+                                            <div class="col s1 offset-s10">
                                                 <a href="#" id="peralatan-add_button" class="waves-effect waves-light btn green"><i class="material-icons">add</i></a>
                                             </div>
                                         </div>
                                         <div class="row center">
                                             <div class="multiform-template row z-depth-1" data-prefix="peralatan">
-                                                <div class="col s11">
+                                                <div class="col s10">
                                                     <div class="row">
                                                         <div class="input-field col s6">
                                                             <input type="text" class="validate" id="nama" name="nama">
@@ -119,25 +114,25 @@
                                                 </div>
                                                 <div class="centered remove-container input-field col s1">
                                                     <div class="remove-button btn btn-small waves-effect waves-light red">
-                                                        X
+                                                        <i class="material-icons">clear</i>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="row">
+                                        <div class="col s4 offset-s8">
+                                            <a href="#modal_aset-peralatan" class="modal-trigger waves-effect waves-light btn btn-success">Tambah Aset <i class="material-icons right">send</i></a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /Form Aset Peralatan -->
 
                                 <!-- Form Aset Bangunan -->
                                 <div id="aset-bangunan_tanah" class="s12" style="overflow-y: auto;">
-                                    <form class="s12" action="<?php echo base_url('wizard/asetBangunanTanah'); ?>" method="post">
+                                    <form id="form_aset-bangunan_tanah" class="s12" action="<?php echo base_url('wizard/asetBangunanTanah'); ?>" method="post">
                                         <div class="row">
-                                            <div class="col s4">
-                                                <button type="submit" class="waves-effect waves-light btn btn-success">Tambah Aset
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
-                                            <div class="col s1 offset-s6">
+                                            <div class="col s1 offset-s10">
                                                 <a href="#" id="bangunan_tanah-add_button" class="waves-effect waves-light btn green"><i
                                                         class="material-icons">add</i></a>
                                             </div>
@@ -145,7 +140,7 @@
                                 
                                         <div class="row center">
                                             <div class="multiform-template row z-depth-1" data-prefix="bangunan_tanah">
-                                                <div class="col s11">
+                                                <div class="col s10">
                                                     <div class="row">
                                                         <div class="input-field col s6">
                                                             <input type="text" class="validate" id="nama" name="nama">
@@ -171,25 +166,25 @@
                                                 </div>
                                                 <div class="centered remove-container input-field col s1">
                                                     <div class="remove-button btn btn-small waves-effect waves-light red">
-                                                        X
+                                                        <i class="material-icons">clear</i>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="row">
+                                        <div class="col s4 offset-s8">
+                                            <a href="#modal_aset-bangunan_tanah" class="modal-trigger waves-effect waves-light btn btn-success">Tambah Aset <i class="material-icons right">send</i></a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /Form Aset Bangunan -->
 
                                 <!-- Form Aset Kas_Bank -->
                                 <div id="aset-kas_bank" class="s12" style="overflow-y: auto;">
-                                    <form class="s12" action="<?php echo base_url('wizard/asetKasBank'); ?>" method="post">
+                                    <form id="form_aset-kas_bank" class="s12" action="<?php echo base_url('wizard/asetKasBank'); ?>" method="post">
                                         <div class="row">
-                                            <div class="col s4">
-                                                <button type="submit" class="waves-effect waves-light btn btn-success">Tambah Aset
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
-                                            <div class="col s1 offset-s6">
+                                            <div class="col s1 offset-s10">
                                                 <a href="#" id="kas_bank-add_button"
                                                 class="waves-effect waves-light btn green"><i
                                                 class="material-icons">add</i></a>
@@ -198,7 +193,7 @@
                                         
                                         <div class="row center">
                                             <div class="multiform-template row z-depth-1" data-prefix="kas_bank">
-                                                <div class="col s11">
+                                                <div class="col s10">
                                                     <div class="row">
                                                         <div class="input-field col s6">
                                                             <input type="text" class="validate" id="norek" name="norek">
@@ -229,12 +224,17 @@
                                                 </div>
                                                 <div class="centered remove-container input-field col s1">
                                                     <div class="remove-button btn btn-small waves-effect waves-light red">
-                                                        X
+                                                        <i class="material-icons">clear</i>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="row">
+                                        <div class="col s4 offset-s8">
+                                            <a href="#modal_aset-kas_bank" class="modal-trigger waves-effect waves-light btn btn-success">Tambah Aset <i class="material-icons right">send</i></a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /Form Aset Kas_Bank -->
 
@@ -353,9 +353,69 @@
                             </tbody>
                         </table>
                     </div>
+                    
+                    <a href="#wizard-modal-aset" class="waves-effect waves-light modal-trigger btn btn-edit-profil btn-success">Selesai</a>
 
-                    <a href="#wizard-modal-aset"
-                        class="waves-effect waves-light modal-trigger btn btn-edit-profil btn-success">Selesai</a>
+                    <!-- MODALS -->
+
+                    <!-- Modal aset Peralatan -->
+                    <div id="modal_aset-peralatan" class="modal">
+                        <div class="modal-content">
+                            <h4>PERINGATAN!</h4>
+                            <p>Harap <b>Cek</b> terlebih dahulu daftar aset yang sudah dimasukkan, data yg sudah ditambahkan <strong>TIDAK DAPAT DIUBAH ATAUPUN DIHAPUS</strong>.
+                                <br/>
+                                <br/>
+                                Daftar aset yang kamu masukkan akan diganti dengan daftar aset yang kamu masukkan pada form ini.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn-submit-peralatan" class="waves-effect waves-green btn-flat">Tambah Aset
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <a class="modal-close btn waves-effect waves-green red">KEMBALI</a>
+                        </div>
+                    </div>
+                    <!-- /Modal Aset Peralatan -->
+
+                    <!-- Modal Aset Bangunan_Tanah -->
+                    <div id="modal_aset-bangunan_tanah" class="modal">
+                        <div class="modal-content">
+                            <h4>PERINGATAN!</h4>
+                            <p>Harap <b>Cek</b> terlebih dahulu daftar aset yang sudah dimasukkan, data yg sudah ditambahkan <strong>TIDAK
+                                    DAPAT DIUBAH ATAUPUN DIHAPUS</strong>.
+                                <br />
+                                <br />
+                                Daftar aset yang kamu masukkan akan diganti dengan daftar aset yang kamu masukkan pada form ini.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn-submit-bangunan_tanah" class="waves-effect waves-green btn-flat">Tambah Aset
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <a class="modal-close btn waves-effect waves-green red">KEMBALI</a>
+                        </div>
+                    </div>
+                    <!-- /Modal Aset Bangunan_Tanah -->
+
+                    <!-- Modal Aset Kas_Bank -->
+                    <div id="modal_aset-kas_bank" class="modal">
+                        <div class="modal-content">
+                            <h4>PERINGATAN!</h4>
+                            <p>Harap <b>Cek</b> terlebih dahulu daftar aset yang sudah dimasukkan, data yg sudah ditambahkan <strong>TIDAK
+                                    DAPAT DIUBAH ATAUPUN DIHAPUS</strong>.
+                                <br />
+                                <br />
+                                Daftar aset yang kamu masukkan akan diganti dengan daftar aset yang kamu masukkan pada form ini.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn-submit-kas_bank" class="waves-effect waves-green btn-flat">Tambah Aset
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <a class="modal-close btn waves-effect waves-green red">KEMBALI</a>
+                        </div>
+                    </div>
+                    <!-- /Modal Aset Kas_Bank -->
 
                     <div id="wizard-modal-aset" class="modal">
                         <div class="modal-content">
