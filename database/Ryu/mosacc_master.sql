@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2019 at 09:18 AM
+-- Generation Time: Nov 03, 2019 at 06:35 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -25,31 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `aset`
---
-
-DROP TABLE IF EXISTS `aset`;
-CREATE TABLE `aset` (
-  `id_aset` varchar(6) NOT NULL,
-  `jenis_aset` varchar(64) DEFAULT NULL,
-  `nama` varchar(128) DEFAULT NULL,
-  `merek_luas` varchar(64) DEFAULT NULL,
-  `harga` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset`
---
-
-INSERT INTO `aset` (`id_aset`, `jenis_aset`, `nama`, `merek_luas`, `harga`) VALUES
-('1', 'peralatan', 'Sound System', 'Simbadda', 8500000),
-('2', 'bangunan/tanah', 'Gedung Masjid', '17m^2', 13000000),
-('3', 'bangunan/tanah', 'Kamar Mandi', '200 m^2', 13000000),
-('4', 'peralatan', 'Mic', 'Samsung', 800000);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `aset-bangunan_tanah`
 --
 
@@ -67,7 +42,7 @@ CREATE TABLE `aset-bangunan_tanah` (
 --
 
 INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
-(1, 'qqqqqqqqqq', '2019-11-04', 655555555, 8888888888);
+(1, 'Masjid', '2019-11-11', 2000, 2321321);
 
 -- --------------------------------------------------------
 
@@ -89,7 +64,8 @@ CREATE TABLE `aset-kas_bank` (
 --
 
 INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
-('9999999999999', 'trehuiul,gfv', 'fdgabrereg', 66666666666, '2019-11-30');
+('34123412312', 'Paijo', 'BNI', 213213, '2019-11-11'),
+('132131', 'Sukasari', 'Mandiri', 24213131, '2019-11-11');
 
 -- --------------------------------------------------------
 
@@ -113,7 +89,12 @@ CREATE TABLE `aset-peralatan` (
 --
 
 INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, 'wwwwwwwwwwwww', 'sssssssssss', '2019-11-10', 'hhhhhhhhh', '122', 2525325);
+(1, 'Sound System Ruangan', 'Simbadda', '2019-11-11', 'Operasional', '4', 2000000),
+(2, 'Sound System Menara', 'Dolby Atmos', '2019-11-11', 'Operasional', '2', 4500000),
+(3, 'Permadani', 'Wadimor', '2019-11-11', 'Operasional', '20', 5000000),
+(4, 'Sajadah', 'Mekkah', '2019-11-11', 'Alat Shalat', '12', 500000),
+(5, 'Qur\'an', 'Alquranku', '2019-11-11', 'Alat Shalat', '20', 600000),
+(6, 'Keranda', 'Lokal', '2019-11-11', 'Operasional', '1', 250000);
 
 -- --------------------------------------------------------
 
@@ -137,9 +118,9 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
-(1, '0__Format_Cover_BUSIMARU.docx', 'ad_art', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 158.82, '2019-11-02'),
-(2, '1__Biodata_diri_Busimaru_2016.docx', 'badan_hukum', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 564.46, '2019-11-02'),
-(3, '4__Biodata_Mahasiswa_Baru_Sistem_Informasi_2016.docx', 'struktur_dkm', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 32.39, '2019-11-02');
+(1, '2__Biodata_pengurus_HIMSI.docx', 'ad_art', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 32.11, '2019-11-03'),
+(2, '3__Biodata_Panitia_OPAK_Sistem_Informasi_2016.docx', 'badan_hukum', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 32.77, '2019-11-03'),
+(3, '0__Format_Cover_BUSIMARU.docx', 'struktur_dkm', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 158.82, '2019-11-03');
 
 -- --------------------------------------------------------
 
@@ -150,17 +131,6 @@ INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukura
 DROP TABLE IF EXISTS `jenis_aset`;
 CREATE TABLE `jenis_aset` (
   `id_jenis_aset` varchar(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `profil`
---
-
-DROP TABLE IF EXISTS `profil`;
-CREATE TABLE `profil` (
-  `Nama Masjid` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -184,9 +154,9 @@ CREATE TABLE `profil_dkm` (
 --
 
 INSERT INTO `profil_dkm` (`id_pengurus`, `nama`, `posisi`, `alamat`, `telepon`, `pendidikan`) VALUES
-(1, '4325', 'ketua', '543', '543', '53'),
-(2, '5345', 'sekretaris', '4353', '53', '543'),
-(3, '5435', 'bendahara', '3453', '45335', '3453');
+(1, 'Papa Fadhil', 'ketua', 'Jalan Raya Coral no. 258', '8837432842', 'S2'),
+(2, 'Jajang Sugraha', 'sekretaris', 'Jukaruta Dudun Streets', '328957329479', 'S3'),
+(3, 'Pakiyama Haniya', 'bendahara', 'Guci Street 23', '7845825438', 'S4');
 
 -- --------------------------------------------------------
 
@@ -210,7 +180,7 @@ CREATE TABLE `profil_masjid` (
 --
 
 INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
-(1, '123', '13213213', '23', '13', '1', '312');
+(1, 'Masjid Agung Attin', 'Jalanku Jalanmu', '2258', '8902354302', '94305820', '321');
 
 -- --------------------------------------------------------
 
@@ -300,18 +270,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
-(1, 'ketua_dkm', 'manager', '123'),
-(2, 'bendahara', 'akuntan', '123');
+(1, 'ketua_dkm', 'manager', '1234'),
+(2, 'bendahara', 'akuntan', 'bima');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `aset`
---
-ALTER TABLE `aset`
-  ADD PRIMARY KEY (`id_aset`);
 
 --
 -- Indexes for table `aset-bangunan_tanah`
@@ -369,7 +333,7 @@ ALTER TABLE `aset-bangunan_tanah`
 -- AUTO_INCREMENT for table `aset-peralatan`
 --
 ALTER TABLE `aset-peralatan`
-  MODIFY `id_aset` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_aset` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `files`

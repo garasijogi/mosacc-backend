@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2019 at 05:17 AM
+-- Generation Time: Nov 03, 2019 at 06:35 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -25,31 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `aset`
---
-
-DROP TABLE IF EXISTS `aset`;
-CREATE TABLE `aset` (
-  `id_aset` varchar(6) NOT NULL,
-  `jenis_aset` varchar(64) DEFAULT NULL,
-  `nama` varchar(128) DEFAULT NULL,
-  `merek_luas` varchar(64) DEFAULT NULL,
-  `harga` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset`
---
-
-INSERT INTO `aset` (`id_aset`, `jenis_aset`, `nama`, `merek_luas`, `harga`) VALUES
-('1', 'peralatan', 'Sound System', 'Simbadda', 8500000),
-('2', 'bangunan/tanah', 'Gedung Masjid', '17m^2', 13000000),
-('3', 'bangunan/tanah', 'Kamar Mandi', '200 m^2', 13000000),
-('4', 'peralatan', 'Mic', 'Samsung', 800000);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `aset-bangunan_tanah`
 --
 
@@ -67,7 +42,7 @@ CREATE TABLE `aset-bangunan_tanah` (
 --
 
 INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
-(1, 'qwewqe', '2019-10-15', 0, 2321);
+(1, 'Masjid', '2019-11-11', 2000, 2321321);
 
 -- --------------------------------------------------------
 
@@ -89,7 +64,8 @@ CREATE TABLE `aset-kas_bank` (
 --
 
 INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
-('1321312', 'qwewqewq', 'qwewqe', 213213, '2019-10-29');
+('34123412312', 'Paijo', 'BNI', 213213, '2019-11-11'),
+('132131', 'Sukasari', 'Mandiri', 24213131, '2019-11-11');
 
 -- --------------------------------------------------------
 
@@ -113,7 +89,38 @@ CREATE TABLE `aset-peralatan` (
 --
 
 INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, '3234324', 'ewrewrew', '2019-10-08', 'r3w2erew', '23e', 234324);
+(1, 'Sound System Ruangan', 'Simbadda', '2019-11-11', 'Operasional', '4', 2000000),
+(2, 'Sound System Menara', 'Dolby Atmos', '2019-11-11', 'Operasional', '2', 4500000),
+(3, 'Permadani', 'Wadimor', '2019-11-11', 'Operasional', '20', 5000000),
+(4, 'Sajadah', 'Mekkah', '2019-11-11', 'Alat Shalat', '12', 500000),
+(5, 'Qur\'an', 'Alquranku', '2019-11-11', 'Alat Shalat', '20', 600000),
+(6, 'Keranda', 'Lokal', '2019-11-11', 'Operasional', '1', 250000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+CREATE TABLE `files` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(512) DEFAULT NULL,
+  `jenis_file` varchar(24) DEFAULT NULL,
+  `tipe_file` varchar(256) DEFAULT NULL,
+  `ekstensi` varchar(8) DEFAULT NULL,
+  `ukuran` double DEFAULT NULL,
+  `tanggal` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
+(1, '2__Biodata_pengurus_HIMSI.docx', 'ad_art', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 32.11, '2019-11-03'),
+(2, '3__Biodata_Panitia_OPAK_Sistem_Informasi_2016.docx', 'badan_hukum', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 32.77, '2019-11-03'),
+(3, '0__Format_Cover_BUSIMARU.docx', 'struktur_dkm', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', '.docx', 158.82, '2019-11-03');
 
 -- --------------------------------------------------------
 
@@ -129,17 +136,6 @@ CREATE TABLE `jenis_aset` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profil`
---
-
-DROP TABLE IF EXISTS `profil`;
-CREATE TABLE `profil` (
-  `Nama Masjid` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `profil_dkm`
 --
 
@@ -147,8 +143,7 @@ DROP TABLE IF EXISTS `profil_dkm`;
 CREATE TABLE `profil_dkm` (
   `id_pengurus` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
-  `posisi` enum('bendahara','ketua','sekretaris') NOT NULL,
-  `ttl` date NOT NULL,
+  `posisi` enum('bendahara','ketua','sekretaris','struktur_dkm') NOT NULL,
   `alamat` varchar(512) DEFAULT NULL,
   `telepon` varchar(15) DEFAULT NULL,
   `pendidikan` varchar(32) DEFAULT NULL
@@ -158,10 +153,10 @@ CREATE TABLE `profil_dkm` (
 -- Dumping data for table `profil_dkm`
 --
 
-INSERT INTO `profil_dkm` (`id_pengurus`, `nama`, `posisi`, `ttl`, `alamat`, `telepon`, `pendidikan`) VALUES
-(1, '', 'bendahara', '0000-00-00', '', '', ''),
-(2, '', 'bendahara', '0000-00-00', '', '', ''),
-(3, '', 'bendahara', '0000-00-00', '', '', '');
+INSERT INTO `profil_dkm` (`id_pengurus`, `nama`, `posisi`, `alamat`, `telepon`, `pendidikan`) VALUES
+(1, 'Papa Fadhil', 'ketua', 'Jalan Raya Coral no. 258', '8837432842', 'S2'),
+(2, 'Jajang Sugraha', 'sekretaris', 'Jukaruta Dudun Streets', '328957329479', 'S3'),
+(3, 'Pakiyama Haniya', 'bendahara', 'Guci Street 23', '7845825438', 'S4');
 
 -- --------------------------------------------------------
 
@@ -177,17 +172,15 @@ CREATE TABLE `profil_masjid` (
   `tahun` varchar(4) DEFAULT NULL,
   `telepon` varchar(15) DEFAULT NULL,
   `rekening` varchar(32) DEFAULT NULL,
-  `luas_tanah` varchar(16) DEFAULT NULL,
-  `ad_art` varchar(256) DEFAULT NULL,
-  `badan_hukum` varchar(256) DEFAULT NULL
+  `luas_tanah` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `profil_masjid`
 --
 
-INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`, `ad_art`, `badan_hukum`) VALUES
-(1, '', '', '', '', '', '', '', '');
+INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
+(1, 'Masjid Agung Attin', 'Jalanku Jalanmu', '2258', '8902354302', '94305820', '321');
 
 -- --------------------------------------------------------
 
@@ -278,17 +271,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
 (1, 'ketua_dkm', 'manager', '1234'),
-(2, 'bendahara', 'akuntan', '123');
+(2, 'bendahara', 'akuntan', 'bima');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `aset`
---
-ALTER TABLE `aset`
-  ADD PRIMARY KEY (`id_aset`);
 
 --
 -- Indexes for table `aset-bangunan_tanah`
@@ -301,6 +288,12 @@ ALTER TABLE `aset-bangunan_tanah`
 --
 ALTER TABLE `aset-peralatan`
   ADD KEY `id_aset` (`id_aset`);
+
+--
+-- Indexes for table `files`
+--
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `profil_dkm`
@@ -340,7 +333,13 @@ ALTER TABLE `aset-bangunan_tanah`
 -- AUTO_INCREMENT for table `aset-peralatan`
 --
 ALTER TABLE `aset-peralatan`
-  MODIFY `id_aset` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_aset` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `files`
+--
+ALTER TABLE `files`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `profil_dkm`
