@@ -56,7 +56,7 @@
                                 <h5>Daftar Akun</h5>
                                 <h6>Akun-akun Akuntansi yang Digunakan pada Masjid</h6>
                             </div>
-                            <div class="col s12" style="overflow:auto;height:33rem;" >
+                            <div class="col s12" style="overflow:auto;height:30rem;" >
                                 <table id="tabel-akun" class="display centered striped" style="width:100%">
                                     <thead>
                                         <tr>

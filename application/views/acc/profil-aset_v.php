@@ -22,7 +22,7 @@
     <!-- /navbar -->
 
     <!-- preloader -->
-    <?php $this->load->view('acc/_partials/preloader.php') ?>
+    <?php // $this->load->view('acc/_partials/preloader.php') ?>
     <!-- preloader -->
 
     <div class="content">
@@ -68,6 +68,8 @@
                                         <tr>
                                             <th>NOMOR</th>
                                             <th>NAMA PERALATAN</th>
+                                            <th>MEREK</th>
+                                            <th>KATEGORI</th>
                                             <th>JUMLAH</th>
                                             <th>NILAI PERALATAN</th>
                                         </tr>
@@ -76,11 +78,13 @@
                                     <tbody>
                                         <?php 
                                         $no = 1;
-                                        foreach ($aset_peralatan->result() as $ar) : ?>
+                                        foreach ($aset_peralatan as $ar) : ?>
                                             <tr>
                                                 <td><?php echo $no; ?></td>
                                                 <td><?php echo  $ar->nama; ?></td>
-                                                <td><?php echo $ar->merek_luas ?></td>
+                                                <td><?php echo $ar->merek ?></td>
+                                                <td><?php echo $ar->kategori ?></td>
+                                                <td><?php echo $ar->jumlah ?></td>
                                                 <td><?php echo $ar->harga ?></td>
                                             </tr>
                                         <?php
@@ -112,12 +116,12 @@
                                     <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($aset_bt->result() as $ar) : ?>
+                                    foreach ($aset_bt as $ar) : ?>
                                             <tr>
                                                 <td><?php echo $no; ?></td>
                                                 <td><?php echo  $ar->nama; ?></td>
-                                                <td><?php echo $ar->merek_luas ?></td>
-                                                <td><?php echo $ar->harga ?></td>
+                                                <td><?php echo $ar->luas ?></td>
+                                                <td><?php echo $ar->nilai ?></td>
                                             </tr>
                                         <?php
                                     $no++;

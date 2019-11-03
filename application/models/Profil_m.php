@@ -47,9 +47,8 @@ class Profil_m extends CI_Model
         $this->db->update('profil_dkm', $data);
     }
 
-    public function get_aset($jenis_aset)
-    {
-        return $result = $this->db->get_where('aset', array('jenis_aset' => $jenis_aset));
+    public function get_aset($table){
+        return $this->db->get($table)->result();
     }
     
     public function edit_file($file, $data){

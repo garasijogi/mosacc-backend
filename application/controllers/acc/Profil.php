@@ -44,9 +44,9 @@ class Profil extends CI_Controller {
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
         //get aset peralatan
-        $data['aset_peralatan'] = $this->profil_m->get_aset('peralatan');
+        $data['aset_peralatan'] = $this->profil_m->get_aset('aset-peralatan');
         //get aset bangunan/tanah
-        $data['aset_bt'] = $this->profil_m->get_aset('bangunan/tanah');
+        $data['aset_bt'] = $this->profil_m->get_aset('aset-bangunan_tanah');
         
         $this->load->view('acc/profil-aset_v', $data);
     }
@@ -82,8 +82,6 @@ class Profil extends CI_Controller {
         
         $this->session->set_userdata($file_session);
 
-        print_r($this->session->userdata('files'));
-
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
 
@@ -101,8 +99,6 @@ class Profil extends CI_Controller {
         }
         
         $this->session->set_userdata($file_session);
-
-        print_r($this->session->userdata('files'));
 
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
