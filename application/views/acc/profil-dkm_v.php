@@ -70,12 +70,6 @@
 								</div>
 								<div class="col s12">
 									<div class="row">
-										<div class="profil-properti">TEMPAT TANGGAL LAHIR</div>
-										<div class="profil-nilai"><?php echo $k->ttl; ?></div>
-									</div>
-								</div>
-								<div class="col s12">
-									<div class="row">
 										<div class="profil-properti">ALAMAT</div>
 										<div class="profil-nilai"><?php echo $k->alamat; ?></div>
 									</div>
@@ -108,12 +102,6 @@
 									<div class="profil-properti">NAMA</div>
 									<div class="profil-nilai"><?php echo $s->nama; ?></div>
 								</div>
-						</div>
-						<div class="col s12">
-							<div class="row">
-								<div class="profil-properti">TEMPAT TANGGAL LAHIR</div>
-								<div class="profil-nilai"><?php echo $s->ttl; ?></div>
-							</div>
 						</div>
 						<div class="col s12">
 							<div class="row">
@@ -152,12 +140,6 @@
 					</div>
 					<div class="col s12">
 						<div class="row">
-							<div class="profil-properti">TEMPAT TANGGAL LAHIR</div>
-							<div class="profil-nilai"><?php echo $b->ttl; ?></div>
-						</div>
-					</div>
-					<div class="col s12">
-						<div class="row">
 							<div class="profil-properti">ALAMAT</div>
 							<div class="profil-nilai"><?php echo $b->alamat; ?></div>
 						</div>
@@ -172,6 +154,27 @@
 						<div class="row">
 							<div class="profil-properti">PENDIDIKAN</div>
 							<div class="profil-nilai"><?php echo $b->pendidikan; ?></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="profil-contents-wrapper">
+				<div class="row">
+					<div class="col s12 ">
+						<div class="row header">
+							<h5>Dokumen DKM</h5>
+						</div>
+					</div>
+					<div class="col s12">
+						<div class="row">
+							<div class="profil-properti">Struktur DKM</div>
+							<div class="profil-nilai"><a href="<?php echo base_url('document/').$files['struktur_dkm'][0]['nama']; ?>"><?php echo $files['struktur_dkm'][0]['nama']; ?></a></div>
+						</div>
+						<div class="row">
+							<div class="col s4"><p>Ukuran</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['struktur_dkm'][0]['ukuran'] ?> KB</p></div>
+							<div class="col s4"><p>Ekstensi File</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['struktur_dkm'][0]['ekstensi'] ?></p></div>
+							<div class="col s4"><p>Tanggal Diupload</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['struktur_dkm'][0]['tanggal'] ?></p></div>
 						</div>
 					</div>
 				</div>

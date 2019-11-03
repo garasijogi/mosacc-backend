@@ -32,7 +32,7 @@
                     <div class="card card1 teal darken-2 z-depth-4 card-homepage">
                         <a href="#login-akuntan" class="modal-trigger">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="<?php echo base_url('assets/images/icon/accountant-icon.png'); ?>">
+                                <img class="activator" src="<?php //echo base_url('assets/images/icon/accountant-icon.png'); ?>">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator white-text text-darken-4"> <b> Bendahara </b></span>

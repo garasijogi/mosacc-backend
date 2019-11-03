@@ -62,8 +62,6 @@ class Wizard extends CI_Controller {
         }
 
         $data['files'] = $this->session->userdata('files'); //retrieve dan masukkan ke $data
-
-        print_r($data);
         
         // print_r($data);
         // exit();
@@ -81,7 +79,7 @@ class Wizard extends CI_Controller {
         $ad_art = siapUnggah('ad_art', 'files'); //file ad/art (parameter post files, nama session)
         $badan_hukum = siapUnggah('badan_hukum', 'files'); //file badan_hukum (parameter post files, nama session)
 
-         //ambil session files dan taruh di base
+        //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
         $pengganti = array(

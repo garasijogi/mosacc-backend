@@ -8,7 +8,6 @@
 	</head>
                                                                                                                                                                                    
 <body style="background-color: teal;">
-
     <!-- preloader -->
     <?php $this->load->view('_partials/preloader.php') ?>
     <!-- preloader -->
@@ -322,7 +321,7 @@
                 <div class="profil-contents-wrapper">
                     <div class="col s12">
                         <div class="row header">
-                            <h5>DAFTAR ASET PERALATAN</h5>
+                            <h5>DAFTAR ASET KAS BANK</h5>
                             <h6>Aset yang diperlukan untuk mendukung kegiatan operasional</h6>
                         </div>
                     </div>

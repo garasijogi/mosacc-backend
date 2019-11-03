@@ -113,13 +113,23 @@
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">AD/ART</div>
-									<div class="profil-nilai"><?php echo $profil[0]['ad_art']; ?></div>
+									<div class="profil-nilai"><a href="<?php echo base_url('document/').$files['ad_art'][0]['nama']; ?>"><?php echo $files['ad_art'][0]['nama']; ?></a></div>
+								</div>
+								<div class="row">
+									<div class="col s4"><p>Ukuran</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['ad_art'][0]['ukuran'] ?> KB</p></div>
+									<div class="col s4"><p>Ekstensi File</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['ad_art'][0]['ekstensi'] ?></p></div>
+									<div class="col s4"><p>Tanggal Diupload</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['ad_art'][0]['tanggal'] ?></p></div>
 								</div>
 							</div>
 							<div class="col s12">
 								<div class="row">
 									<div class="profil-properti">BADAN HUKUM</div>
-									<div class="profil-nilai"><?php echo $profil[0]['badan_hukum']; ?></div>
+									<div class="profil-nilai"><a href="<?php echo base_url('document/').$files['badan_hukum'][0]['nama']; ?>"><?php echo $files['badan_hukum'][0]['nama']; ?></a></div>
+								</div>
+								<div class="row">
+									<div class="col s4"><p>Ukuran</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['badan_hukum'][0]['ukuran'] ?> KB</p></div>
+									<div class="col s4"><p>Ekstensi File</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['badan_hukum'][0]['ekstensi'] ?></p></div>
+									<div class="col s4"><p>Tanggal Diupload</p></div> <div class="col s1"><p> : </p></div> <div class="col s7"><p><?php echo $files['badan_hukum'][0]['tanggal'] ?></p></div>
 								</div>
 							</div>
 						</div>
