@@ -56,8 +56,8 @@
 
         <div class="content-wizard">
             <div class="form-wizard">
-                <h3>Selamat Datang</h3>
-                <p class="wizard-introduce">MosAcc (Mosque Accounting) adalah aplikasi perangkat lunak yang dikembangkan
+                <h3>Assalamualaikum Warahmatullahi Wabarakatuh</h3>
+                <p class="wizard-introduce">Selamat datang di aplikasi MosAcc (Mosque Accounting), yaitu sebuah aplikasi perangkat lunak yang dikembangkan
                     untuk membantu para pengurus
                     masjid dalam membuat laporan keuangan.</p>
                 <p class="wizard-introduce">Silahkan lengkapi formulir pada halaman selanjutnya untuk mulai menggunakan

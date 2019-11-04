@@ -3,7 +3,7 @@
 
 		<div class="logo valign-wrapper">
 		<img id="mosacc-logo" src="<?php echo base_url('assets/images/icon/mosacc-logo2.svg'); ?>" width="50px" height="50px" alt="">
-			<h4>MosAcc</h4>
+			<h4>Mosacc</h4>
 		</div>
 
 		<ul class="collapsible">
@@ -31,7 +31,7 @@
 				<div class="collapsible-body">
 					<ul>
 						<li><a href="<?php echo base_url('acc/laporan_keuangan'); ?>">Laporan Keuangan</a></li>
-						<li><a href="<?php echo base_url('acc/buku_besar_utama'); ?>">Buku Besar Utama</a></li>
+						<li><a href="<?php echo base_url('acc/buku_besar_utama'); ?>">Penunjang Laporan Keuangan</a></li>
 					</ul>
 				</div>
 			</li>

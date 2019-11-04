@@ -171,13 +171,9 @@
 <footer class="page-footer">
     <div class="container center">
         <div class="row">
-            <div class="col s12">
-                <h6>Sponsored by:</h6>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <img src="<?php echo base_url('assets/images/icon/uin-icon2.png'); ?>" alt="icon-manajer" width="70px" height="40px">
+            <div class="col s12 valign-wrapper sponsored-icon">
+                <img src="<?php echo base_url('assets/images/icon/uin-icon2.png'); ?>" alt="icon-uin" width="140px" height="80px">
+                <img src="<?php echo base_url('assets/images/icon/scope_logo.jpeg'); ?>" alt="icon-scope" width="140px" height="50px">
             </div>
         </div>
     </div>
