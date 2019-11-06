@@ -38,11 +38,82 @@ $this->load->view("acc/_partials/head"); ?>
         <div class="row center" id="printed">
             <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6> <br>
 
+            <!-- KAS -->
+            <h6 class="font-bold"><?php echo "Kas (101)"; ?></h6>
+            <table>
+                <tr class="teal white-text">
+                    <th style="width:20%">Tanggal</th>
+                    <th style="width:20%">Transaksi</th>
+                    <th style="width:20%">Debit</th>
+                    <th style="width:20%">Kredit</th>
+                    <th style="width:20%">Jumlah</th>
+                </tr>
+                <?php
+                $total_kas = 0;
+                //Penerimaan Terikat (KAS)
+                foreach ($pt as $pt_r) : ?>
+                    <tr>
+                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->keterangan); ?></td>
+                        <td><?php echo "Rp " . number_format($pt_r->nominal, 2, ',', '.');
+                                $total_kas = $total_kas + $pt_r->nominal; ?></td>
+                        <td></td>
+                        <td><?php echo "Rp " . number_format($total_kas, 2, ',', '.'); ?></td>
+                    </tr>
+                <?php endforeach;
+
+                //Penerimaan Tidak Terikat (KAS)
+                foreach ($ptt as $pt_r) : ?>
+                    <tr>
+                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->keterangan); ?></td>
+                        <td><?php echo "Rp " . number_format($pt_r->nominal, 2, ',', '.');
+                                $total_kas = $total_kas + $pt_r->nominal; ?></td>
+                        <td></td>
+                        <td><?php echo "Rp " . number_format($total_kas, 2, ',', '.'); ?></td>
+                    </tr>
+                <?php endforeach;
+
+                //Pembelian
+                foreach ($p as $pt_r) : ?>
+                    <tr>
+                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->keterangan); ?></td>
+                        <td><?php echo "Rp " . number_format($pt_r->total_harga, 2, ',', '.');
+                                $total_kas = $total_kas - $pt_r->total_harga; ?></td>
+                        <td></td>
+                        <td><?php echo "Rp " . number_format($total_kas, 2, ',', '.'); ?></td>
+                    </tr>
+                <?php endforeach;
+
+                //Beban
+                foreach ($b as $pt_r) : ?>
+                    <tr>
+                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->keterangan); ?></td>
+                        <td></td>
+                        <td><?php echo "Rp " . number_format($pt_r->nominal, 2, ',', '.');
+                                $total_kas = $total_kas - $pt_r->nominal; ?></td>
+                        <td><?php echo "Rp " . number_format($total_kas, 2, ',', '.'); ?></td>
+                    </tr>
+                <?php endforeach;
+                ?>
+                <tr>
+                    <td></td>
+                    <td colspan="3" class="center">Total</td>
+                    <td><?php echo "Rp " . number_format($total_kas, 2, ',', '.'); ?></td>
+                </tr>
+            </table>
+            <br>
+
+            <!-- END KAS -->
+
             <!-- DEBIT -->
             <!-- Penerimaan Terikat -->
             <?php
             foreach ($kdd as $xkdd) {
                 $isset = 0;
+                $total_kd = 0;
                 foreach ($rules->result() as $r) {
                     if ($xkdd == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
@@ -70,13 +141,19 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.');
+                                                                $total_kd = $total_kd + $cdpt->nominal; ?></td>
                                         <td></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
                                 } ?>
+                        <tr>
+                            <td></td>
+                            <td colspan="3" class="center">Total</td>
+                            <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
+                        </tr>
                     </table>
                     <br>
                     <br>
@@ -90,6 +167,7 @@ $this->load->view("acc/_partials/head"); ?>
             <?php
             foreach ($kdd as $xkdd) {
                 $isset = 0;
+                $total_kd = 0;
                 foreach ($rules->result() as $r) {
                     if ($xkdd == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
@@ -117,13 +195,19 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.');
+                                                                $total_kd = $total_kd + $cdpt->nominal; ?></td>
                                         <td></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
                                 } ?>
+                        <tr>
+                            <td></td>
+                            <td colspan="3" class="center">Total</td>
+                            <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
+                        </tr>
                     </table>
                     <br>
                     <br>
@@ -137,6 +221,7 @@ $this->load->view("acc/_partials/head"); ?>
             <!-- Pembelian -->
             <?php
             foreach ($kdk as $xkdk) {
+                $total_kd = 0;
                 $isset = 0;
                 foreach ($rules->result() as $r) {
                     if ($xkdk == $r->kd_akun) {
@@ -165,13 +250,19 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->total_harga, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->total_harga, 2, ',', '.');
+                                                                $total_kd = $total_kd + $cdpt->total_harga; ?></td>
                                         <td></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->total_harga, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
                                 } ?>
+                        <tr>
+                            <td></td>
+                            <td colspan="3" class="center">Total</td>
+                            <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
+                        </tr>
                     </table>
                     <br>
                     <br>
@@ -185,6 +276,7 @@ $this->load->view("acc/_partials/head"); ?>
             <?php
             foreach ($kdk as $xkdk) {
                 $isset = 0;
+                $total_kd = 0;
                 foreach ($rules->result() as $r) {
                     if ($xkdk == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
@@ -212,13 +304,19 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.');
+                                                                $total_kd = $total_kd + $cdpt->nominal; ?></td>
                                         <td></td>
-                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                        <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
                                     endforeach;
                                 } ?>
+                        <tr>
+                            <td></td>
+                            <td colspan="3" class="center">Total</td>
+                            <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
+                        </tr>
                     </table>
                     <br>
                     <br>

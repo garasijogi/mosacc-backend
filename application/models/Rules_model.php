@@ -429,6 +429,48 @@ class Rules_model extends CI_Model
     return $aset_neto_tt;
   }
 
+  function get_aset_kas($bulan)
+  {
+    $bulan = sprintf('%02d', $bulan);
+    $givenDate = '2019-' . $bulan . '-31';
+    $result = $this->db
+      ->select_sum('nominal')
+      ->from('aset-kas_bank')
+      ->where('tanggal <= ', $givenDate)
+      ->get()
+      ->result();
+    $result = $result[0]->nominal;
+    return $result;
+  }
+
+  function get_aset_bangunan_tanah($bulan)
+  {
+    $bulan = sprintf('%02d', $bulan);
+    $givenDate = '2019-' . $bulan . '-31';
+    $result = $this->db
+      ->select_sum('nilai')
+      ->from('aset-bangunan_tanah')
+      ->where('tanggal <= ', $givenDate)
+      ->get()
+      ->result();
+    $result = $result[0]->nilai;
+    return $result;
+  }
+
+  function get_aset_peralatan($bulan)
+  {
+    $bulan = sprintf('%02d', $bulan);
+    $givenDate = '2019-' . $bulan . '-31';
+    $result = $this->db
+      ->select_sum('harga')
+      ->from('aset-peralatan')
+      ->where('tanggal <= ', $givenDate)
+      ->get()
+      ->result();
+    $result = $result[0]->harga;
+    return $result;
+  }
+
   // ------------------------------------------------------------------------
 
 }
