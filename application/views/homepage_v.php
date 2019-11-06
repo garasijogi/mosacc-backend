@@ -32,7 +32,8 @@
                     <div class="card card1 teal darken-2 z-depth-4 card-homepage">
                         <a href="#login-akuntan" class="modal-trigger">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="<?php //echo base_url('assets/images/icon/accountant-icon.png'); ?>">
+                                <img class="activator" src="<?php //echo base_url('assets/images/icon/accountant-icon.png'); 
+                                                            ?>">
                             </div>
                             <div class="card-content">
                                 <span class="card-title activator white-text text-darken-4"> <b> Bendahara </b></span>
@@ -172,8 +173,8 @@
     <div class="container center">
         <div class="row">
             <div class="col s12 valign-wrapper sponsored-icon">
-                <img src="<?php echo base_url('assets/images/icon/uin-icon2.png'); ?>" alt="icon-uin" width="140px" height="80px">
-                <img src="<?php echo base_url('assets/images/icon/scope_logo.jpeg'); ?>" alt="icon-scope" width="140px" height="50px">
+                <img src="<?php echo base_url('assets/images/icon/uin-icon3.png'); ?>" alt="icon-uin" width="140px" height="80px">
+                <img src="<?php echo base_url('assets/images/icon/scope_logo.png'); ?>" alt="icon-scope" width="140px" height="50px">
             </div>
         </div>
     </div>
