@@ -56,7 +56,7 @@
                                 <h5>Daftar Akun</h5>
                                 <h6>Akun-akun Akuntansi yang Digunakan pada Masjid</h6>
                             </div>
-                            <div class="col s12" style="overflow:auto;height:30rem;" >
+                            <div class="col s12" style="overflow:auto;height:30rem;">
                                 <table id="tabel-akun" class="display centered striped" style="width:100%">
                                     <thead>
                                         <tr>
@@ -66,12 +66,14 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach ($rules->result() as $r) : ?>
-                                            <tr>
-                                                <td><?php echo $r->kd_akun; ?></td>
-                                                <td><?php echo $r->nama_sub; ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                        <?php foreach ($rules->result() as $r) :
+                                            if ($r->kd_bagan != NULL) : ?>
+                                                <tr>
+                                                    <td><?php echo $r->kd_bagan; ?></td>
+                                                    <td><?php echo $r->nama_sub; ?></td>
+                                                </tr>
+                                        <?php endif;
+                                        endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

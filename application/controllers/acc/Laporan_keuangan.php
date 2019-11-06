@@ -44,7 +44,7 @@ class Laporan_keuangan extends CI_Controller
     //GET TOTAL NOMINAL PERLENGKAPAN
     $total_perlengkapan = 0;
     $b = $this->rules_model->get_b_now($bulan);
-    $p = $this->rules_model->get_p_now($bulan);
+    $p = $this->rules_model->get_p($bulan);
     for ($x = 0; $x < count($p); $x++) {
       for ($y = 0; $y < count($p[$x]); $y++) {
         if ($p[$x]->kd_akun == 21100) {
@@ -58,19 +58,17 @@ class Laporan_keuangan extends CI_Controller
     //GET PERALATAN
     //END GET PERLATAN
 
-    //GET MENARA
-    //END GET MENARA
-
-    //GET BANGUNAN
-    //END GET BANGUNAN
-
-    //GET LAHAN PARKIR
-    //END GET LAHAN PARKIR
-
-    //GET TANAH
-    //END GET TANAH
-
     //GET KENDARAAN
+    $total_kendaraan = 0;
+    $p = $this->rules_model->get_p($bulan);
+    for ($x = 0; $x < count($p); $x++) {
+      for ($y = 0; $y < count($p[$x]); $y++) {
+        if ($p[$x]->kd_akun == 21300) {
+          $total_kendaraan = $total_kendaraan + $p[$x]->total_harga;
+        }
+      }
+    }
+    $data['total_kendaraan'] = $total_kendaraan;
     //END GET KENDARAAN
 
     //GET ASET NETO TERIKAT  BEFORE
@@ -150,11 +148,14 @@ class Laporan_keuangan extends CI_Controller
     //END GET ASET NETO TERIKAT NOW
 
     //MENENTUKAN NOMINAL KAS
-    $pt = $this->rules_model->get_pt_now($bulan);
-    $ptt = $this->rules_model->get_ptt_now($bulan);
-    $p = $this->rules_model->get_p_now($bulan);
-    $b = $this->rules_model->get_b_now($bulan);
+    $pt = $this->rules_model->get_pt($bulan);
+    $ptt = $this->rules_model->get_ptt($bulan);
+    $p = $this->rules_model->get_p($bulan);
+    $b = $this->rules_model->get_b($bulan);
 
+    $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
+    $data['aset_bangunan_tanah'] = $this->rules_model->get_aset_bangunan_tanah($bulan);
+    $data['aset_peralatan'] = $this->rules_model->get_aset_peralatan($bulan);
     $data['nominal_kas'] = $this->rules_model->nominal_kas($pt, $ptt, $p, $b);
     //END MENENTUKAN NOMINAL KAS
 
@@ -510,6 +511,16 @@ class Laporan_keuangan extends CI_Controller
     $data['nominal_menu'] = $nominal_menu;
     $data['kd_menu'] = $kd_menu;
     $data['kd_menu_b'] = $kd_menu_b;
+
+    //GET ASET NETO AWAL BULAN
+    $ptt_before = $this->rules_model->get_ptt_before($bulan);
+    $btt_before = $this->rules_model->get_btt_before($bulan);
+    $pt_before = $this->rules_model->get_pt_before($bulan);
+    $bt_before = $this->rules_model->get_bt_before($bulan);
+    $aset_neto_tt_ab = $this->rules_model->aset_neto_tidak_terikat($ptt_before, $btt_before);
+    $aset_neto_t_ab = $this->rules_model->aset_neto_terikat($pt_before, $bt_before);
+    $data['aset_neto_ab'] = $aset_neto_t_ab + $aset_neto_tt_ab;
+    //END GET ASET NETO AWAL BULAN
 
     $this->load->view('acc/laporan_aktivitas_v.php', $data);
   }

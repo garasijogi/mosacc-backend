@@ -194,7 +194,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <th colspan="3">ASET NETO AKHIR BULAN</th>
-                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt) + $sa_aset_neto, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt) + $aset_neto_ab, 2, ',', '.'); ?></th>
                     </tr>
                 </tbody>
             </table>

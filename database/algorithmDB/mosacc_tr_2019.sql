@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 26 Okt 2019 pada 17.12
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 5.6.36
+-- Host: localhost
+-- Generation Time: Nov 06, 2019 at 06:02 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,28 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sum_kd_akun`
+-- Table structure for table `sum_kd_akun`
 --
 
 DROP TABLE IF EXISTS `sum_kd_akun`;
 CREATE TABLE `sum_kd_akun` (
-  `kd_sum` varchar(7) NOT NULL,
+  `kd_sum` varchar(256) NOT NULL,
   `kd_akun` varchar(5) DEFAULT NULL,
   `bulan` varchar(2) DEFAULT NULL,
   `jumlah` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sum_kd_akun`
+-- Dumping data for table `sum_kd_akun`
 --
 
 INSERT INTO `sum_kd_akun` (`kd_sum`, `kd_akun`, `bulan`, `jumlah`) VALUES
-('', NULL, NULL, NULL);
+('001-09', '123', '09', 887000),
+('11110-10', '11110', '10', 100000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sum_table`
+-- Table structure for table `sum_table`
 --
 
 DROP TABLE IF EXISTS `sum_table`;
@@ -57,10 +58,21 @@ CREATE TABLE `sum_table` (
   `jumlah` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sum_table`
+--
+
+INSERT INTO `sum_table` (`kd_sum`, `tabel`, `bulan`, `jumlah`) VALUES
+(1, 'tr11_penerimaan_tidak_terikat_pending', '10', 100000),
+(2, 'tr12_penerimaan_terikat_pending', '10', 13543000),
+(3, 'tr21_pembelian_pending', '10', 550000),
+(4, 'tr22_beban_pending', '10', 2100000),
+(5, 'tr23_renov_bangun_pending', '09', 21594605718);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tr11_penerimaan_tidak_terikat_pending`
+-- Table structure for table `tr11_penerimaan_tidak_terikat_pending`
 --
 
 DROP TABLE IF EXISTS `tr11_penerimaan_tidak_terikat_pending`;
@@ -74,16 +86,17 @@ CREATE TABLE `tr11_penerimaan_tidak_terikat_pending` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tr11_penerimaan_tidak_terikat_pending`
+-- Dumping data for table `tr11_penerimaan_tidak_terikat_pending`
 --
 
 INSERT INTO `tr11_penerimaan_tidak_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019102811110001', '11110', '2019-10-28', 100000, 'Robby', 'Penerimaan dari pemberian pinjaman alat sound system masjid sebesar Rp 100,000							');
+('2019102811110001', '11110', '2019-10-28', 100000, 'Robby', 'Penerimaan dari pemberian pinjaman alat sound system masjid sebesar Rp 100,000							'),
+('2019110410000001', '10000', '2019-11-04', 500000, 'Kas Bank', 'Kas Bank');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tr12_penerimaan_terikat_pending`
+-- Table structure for table `tr12_penerimaan_terikat_pending`
 --
 
 DROP TABLE IF EXISTS `tr12_penerimaan_terikat_pending`;
@@ -97,7 +110,7 @@ CREATE TABLE `tr12_penerimaan_terikat_pending` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tr12_penerimaan_terikat_pending`
+-- Dumping data for table `tr12_penerimaan_terikat_pending`
 --
 
 INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
@@ -116,7 +129,7 @@ INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `no
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tr21_pembelian_pending`
+-- Table structure for table `tr21_pembelian_pending`
 --
 
 DROP TABLE IF EXISTS `tr21_pembelian_pending`;
@@ -134,7 +147,7 @@ CREATE TABLE `tr21_pembelian_pending` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tr21_pembelian_pending`
+-- Dumping data for table `tr21_pembelian_pending`
 --
 
 INSERT INTO `tr21_pembelian_pending` (`idtr`, `kd_akun`, `tanggal`, `jenis`, `merek`, `nomor_seri`, `jumlah`, `keterangan`, `harga_satuan`, `total_harga`) VALUES
@@ -143,7 +156,7 @@ INSERT INTO `tr21_pembelian_pending` (`idtr`, `kd_akun`, `tanggal`, `jenis`, `me
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tr22_beban_pending`
+-- Table structure for table `tr22_beban_pending`
 --
 
 DROP TABLE IF EXISTS `tr22_beban_pending`;
@@ -152,11 +165,11 @@ CREATE TABLE `tr22_beban_pending` (
   `kd_akun` varchar(5) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nominal` int(11) DEFAULT NULL,
-  `keterangan` text
+  `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tr22_beban_pending`
+-- Dumping data for table `tr22_beban_pending`
 --
 
 INSERT INTO `tr22_beban_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
@@ -172,20 +185,20 @@ INSERT INTO `tr22_beban_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `kete
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tr23_renov_bangun_pending`
+-- Table structure for table `tr23_renov_bangun_pending`
 --
 
 DROP TABLE IF EXISTS `tr23_renov_bangun_pending`;
 CREATE TABLE `tr23_renov_bangun_pending` (
-  `idtr` varchar(16) DEFAULT NULL,
+  `idtr` varchar(16) NOT NULL,
   `kd_akun` varchar(5) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `nominal` float DEFAULT NULL,
-  `keterangan` text
+  `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tr23_renov_bangun_pending`
+-- Dumping data for table `tr23_renov_bangun_pending`
 --
 
 INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
@@ -201,50 +214,56 @@ INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`
 --
 
 --
--- Indeks untuk tabel `sum_kd_akun`
+-- Indexes for table `sum_kd_akun`
 --
 ALTER TABLE `sum_kd_akun`
   ADD PRIMARY KEY (`kd_sum`);
 
 --
--- Indeks untuk tabel `sum_table`
+-- Indexes for table `sum_table`
 --
 ALTER TABLE `sum_table`
   ADD PRIMARY KEY (`kd_sum`);
 
 --
--- Indeks untuk tabel `tr11_penerimaan_tidak_terikat_pending`
+-- Indexes for table `tr11_penerimaan_tidak_terikat_pending`
 --
 ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
   ADD PRIMARY KEY (`idtr`);
 
 --
--- Indeks untuk tabel `tr12_penerimaan_terikat_pending`
+-- Indexes for table `tr12_penerimaan_terikat_pending`
 --
 ALTER TABLE `tr12_penerimaan_terikat_pending`
   ADD PRIMARY KEY (`idtr`);
 
 --
--- Indeks untuk tabel `tr21_pembelian_pending`
+-- Indexes for table `tr21_pembelian_pending`
 --
 ALTER TABLE `tr21_pembelian_pending`
   ADD PRIMARY KEY (`idtr`);
 
 --
--- Indeks untuk tabel `tr22_beban_pending`
+-- Indexes for table `tr22_beban_pending`
 --
 ALTER TABLE `tr22_beban_pending`
   ADD PRIMARY KEY (`idtr`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `tr23_renov_bangun_pending`
+--
+ALTER TABLE `tr23_renov_bangun_pending`
+  ADD PRIMARY KEY (`idtr`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `sum_table`
+-- AUTO_INCREMENT for table `sum_table`
 --
 ALTER TABLE `sum_table`
-  MODIFY `kd_sum` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_sum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

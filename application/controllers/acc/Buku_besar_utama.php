@@ -134,6 +134,15 @@ class Buku_besar_utama extends CI_Controller
     for ($i = 0; $i < $indicator_k; $i++) {
       $data['contain_KB'][$i] = $contain['K_B'][$i];
     }
+
+    //MENENTUKAN TABEL KAS
+    $bulan = 12;
+    $data['pt'] = $this->rules_model->get_pt($bulan);
+    $data['ptt'] = $this->rules_model->get_ptt($bulan);
+    $data['p'] = $this->rules_model->get_p($bulan);
+    $data['b'] = $this->rules_model->get_b($bulan);
+    //END MENENTUKAN TABEL KAS
+
     $this->load->view('acc/buku_besar_v.php', $data);
   }
 

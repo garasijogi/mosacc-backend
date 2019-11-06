@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Kas</td>
+                    <td>Kas dan Bank</td>
                     <td><?php echo "Rp " . number_format($nominal_kas, 2, ',', '.');
                         $jumlah_aset = 0;
                         $jumlah_aset = $jumlah_aset + $nominal_kas; ?></td>
@@ -60,37 +60,25 @@
                         $jumlah_aset = $jumlah_aset + $total_perlengkapan;  ?></td>
                 </tr>
                 <tr>
+                    <td></td>
+                    <td>Kendaraan</td>
+                    <td><?php echo "Rp " . number_format($total_kendaraan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $total_kendaraan;  ?></td>
+                </tr>
+                <tr>
                     <td colspan="3">Aset Tidak Lancar</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Peralatan</td>
-                    <td></td>
+                    <td><?php echo "Rp " . number_format($aset_peralatan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $aset_peralatan;  ?></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>Menara</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Bangunan</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Lahan Parkir</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Tanah</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>Kendaraan</td>
-                    <td></td>
+                    <td>Bangunan, Tanah, dan Lahan Parkir</td>
+                    <td><?php echo "Rp " . number_format($aset_bangunan_tanah, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $aset_bangunan_tanah; ?></td>
                 </tr>
                 <tr>
                     <td>Jumlah Aset</td>
