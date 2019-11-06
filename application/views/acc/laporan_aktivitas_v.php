@@ -113,7 +113,7 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th></th>
                         <th colspan="2">Jumlah Beban Tidak Terikat</th>
-                        <th class="tr-border-top"><?php echo "-Rp " . number_format($j_btt, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "(Rp " . number_format($j_btt, 2, ',', '.') . ')'; ?></th>
                     </tr>
                     <tr>
                         <th colspan="3">Kenaikan (Penurunan) Aset Neto Tidak Terikat</th>
@@ -156,7 +156,7 @@ $this->load->view("acc/_partials/head"); ?>
                         ?>
                         <tr>
                             <td colspan="3"><?php echo $mbt; ?></td>
-                            <td><?php echo "-Rp " . number_format($nominal_menu[$kd_menu_b[$mbt]][$mbt], 2, ',', '.');
+                            <td><?php echo "Rp " . number_format($nominal_menu[$kd_menu_b[$mbt]][$mbt], 2, ',', '.');
                                     $j_bt = $j_bt + $nominal_menu[$kd_menu_b[$mbt]][$mbt];  ?></td>
                         </tr>
                         <?php
@@ -175,7 +175,7 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th></th>
                         <th colspan="2">Jumlah Beban Terikat</th>
-                        <th class="tr-border-top"><?php echo "-Rp " . number_format($j_bt, 2, ',', '.'); ?></th>
+                        <th class="tr-border-top"><?php echo "(Rp " . number_format($j_bt, 2, ',', '.') . ')'; ?></th>
                     </tr>
                     <tr>
                         <th colspan="3">Kenaikan (Penurunan) Aset Neto Terikat</th>

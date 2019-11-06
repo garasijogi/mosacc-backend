@@ -520,6 +520,8 @@ class Laporan_keuangan extends CI_Controller
     $aset_neto_tt_ab = $this->rules_model->aset_neto_tidak_terikat($ptt_before, $btt_before);
     $aset_neto_t_ab = $this->rules_model->aset_neto_terikat($pt_before, $bt_before);
     $data['aset_neto_ab'] = $aset_neto_t_ab + $aset_neto_tt_ab;
+    $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
+    $data['aset_neto_ab'] += $data['aset_kas_bank'];
     //END GET ASET NETO AWAL BULAN
 
     $this->load->view('acc/laporan_aktivitas_v.php', $data);
@@ -629,6 +631,7 @@ class Laporan_keuangan extends CI_Controller
       }
     }
     $data['total_kendaraan'] = $total_kendaraan;
+    $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
     //END MENENTUKAN PEMBELIAN KENDARAAN
     $this->load->view('acc/laporan_arus_kas_v.php', $data);
   }

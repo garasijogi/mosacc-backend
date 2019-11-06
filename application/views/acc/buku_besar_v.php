@@ -39,7 +39,7 @@ $this->load->view("acc/_partials/head"); ?>
             <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6> <br>
 
             <!-- KAS -->
-            <h6 class="font-bold"><?php echo "Kas (101)"; ?></h6>
+            <h6 class="font-bold"><?php echo "Kas dan Bank (112)"; ?></h6>
             <table>
                 <tr class="teal white-text">
                     <th style="width:20%">Tanggal</th>
@@ -74,7 +74,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                 <?php endforeach;
 
-                //Pembelian
+                //Pembelian (KAS)
                 foreach ($p as $pt_r) : ?>
                     <tr>
                         <td><?php echo date_generator($pt_r->tanggal); ?></td>
@@ -86,7 +86,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                 <?php endforeach;
 
-                //Beban
+                //Beban (KAS)
                 foreach ($b as $pt_r) : ?>
                     <tr>
                         <td><?php echo date_generator($pt_r->tanggal); ?></td>
@@ -117,6 +117,7 @@ $this->load->view("acc/_partials/head"); ?>
                 foreach ($rules->result() as $r) {
                     if ($xkdd == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
+                        $kd_bagan = $r->kd_bagan;
                     }
                 }
                 for ($j = 0; $j < count($contain_DPT); $j++) {
@@ -126,7 +127,7 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $kd_bagan . ")"; ?></h6>
                     <table>
                         <tr class="teal white-text">
                             <th style="width:20%">Tanggal</th>
@@ -171,6 +172,7 @@ $this->load->view("acc/_partials/head"); ?>
                 foreach ($rules->result() as $r) {
                     if ($xkdd == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
+                        $kd_bagan = $r->kd_bagan;
                     }
                 }
                 for ($j = 0; $j < count($contain_DPTT); $j++) {
@@ -180,7 +182,7 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $xkdd . ")"; ?></h6>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $kd_bagan . ")"; ?></h6>
                     <table>
                         <tr class="teal white-text">
                             <th style="width:20%">Tanggal</th>
@@ -226,6 +228,7 @@ $this->load->view("acc/_partials/head"); ?>
                 foreach ($rules->result() as $r) {
                     if ($xkdk == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
+                        $kd_bagan = $r->kd_bagan;
                     }
                 }
                 for ($j = 0; $j < count($contain_KP); $j++) {
@@ -235,7 +238,7 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $xkdk . ")"; ?></h6>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $kd_bagan . ")"; ?></h6>
                     <table>
                         <tr class="teal white-text">
                             <th style="width:20%">Tanggal</th>
@@ -280,6 +283,7 @@ $this->load->view("acc/_partials/head"); ?>
                 foreach ($rules->result() as $r) {
                     if ($xkdk == $r->kd_akun) {
                         $nama_sub = $r->nama_sub;
+                        $kd_bagan = $r->kd_bagan;
                     }
                 }
                 for ($j = 0; $j < count($contain_KB); $j++) {
@@ -289,7 +293,7 @@ $this->load->view("acc/_partials/head"); ?>
                     endforeach;
                 }
                 if ($isset != 0) : ?>
-                    <h6 class='font-bold'><?php echo $nama_sub . " (" . $xkdk . ")"; ?></h6>
+                    <h6 class='font-bold'><?php echo $nama_sub . " (" . $kd_bagan . ")"; ?></h6>
                     <table>
                         <tr class="teal white-text">
                             <th style="width:20%">Tanggal</th>

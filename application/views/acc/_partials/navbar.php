@@ -10,8 +10,8 @@
 			<a href="<?php echo base_url('acc/dashboard'); ?>" class="brand-logo">Mosacc</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<li><a class="bold-font" href="<?php echo base_url('acc/profil'); ?>"><?php echo $this->session->userdata('nama_masjid'); ?></a></li>
-				<li><a class="more-vert dropdown-trigger bold-font" href="#" data-target="more_DD"><I class="material-icons">more_vert</I></a></li>
-			</ul>	
+				<li><a class="more-vert dropdown-trigger bold-font center" href="#" data-target="more_DD"><I class="material-icons">more_vert</I></a></li>
+			</ul>
 		</div>
 	</nav>
 </div>

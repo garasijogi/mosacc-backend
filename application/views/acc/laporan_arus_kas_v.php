@@ -55,7 +55,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <td>Pembelian Perlengkapan</td>
-                        <td><?php echo "Rp -" . number_format($total_perlengkapan, 2, ',', '.');
+                        <td><?php echo "(Rp " . number_format($total_perlengkapan, 2, ',', '.') . ')';
                             $neto_kas = $neto_kas - $total_perlengkapan; ?></td>
                     </tr>
                     <tr>
@@ -85,7 +85,9 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <th>KAS PADA AWAL BULAN</th>
-                        <th><?php echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
+                        <th><?php
+                            $nominal_kas_before += $aset_kas_bank;
+                            echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th>KAS PADA AKHIR BULAN</th>

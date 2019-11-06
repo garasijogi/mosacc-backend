@@ -7,7 +7,7 @@
     <!-- /head -->
 </head>
 
-<body style="background-color: teal;">
+<body style='background-color:teal; overflow-y:hidden'>
     <div class="wizard-wrapper">
 
         <div class="wrapper-sidenav">
@@ -28,7 +28,7 @@
                             </a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard/aset'); ?>" ><span><i class="material-icons">class</i></span>Aset</a>
+                            <a href="<?php echo base_url('wizard/aset'); ?>"><span><i class="material-icons">class</i></span>Aset</a>
                         </li>
                         <li class="sidenav-item">
                             <a href="<?php echo base_url('wizard/akun_baru'); ?>"><span><i class="material-icons">account_box</i></span>Daftar
@@ -62,9 +62,16 @@
                     masjid dalam membuat laporan keuangan.</p>
                 <p class="wizard-introduce">Silahkan lengkapi formulir pada halaman selanjutnya untuk mulai menggunakan
                     aplikasi.</p>
-                
-                <a class="btn waves-effect waves-light teal right" href="<?php echo base_url('wizard/profil'); ?>" >Selanjutnya<i class="material-icons right">send</i>
-                </a>        
+
+                <a class="btn waves-effect waves-light teal right" href="<?php echo base_url('wizard/profil'); ?>">Selanjutnya<i class="material-icons right">send</i>
+                </a>
+            </div>
+
+            <div class="form-addition">
+                <span class="wizard-section-name">Selamat Datang</span>
+                <h5 class="logo-sideways">MOSQUE<br>ACCOUNTING</h5>
+                <div class="some-rectangle"></div>
+
             </div>
         </div>
     </div>

@@ -49,9 +49,9 @@
                 <tr>
                     <td></td>
                     <td>Kas dan Bank</td>
-                    <td><?php echo "Rp " . number_format($nominal_kas, 2, ',', '.');
+                    <td><?php echo "Rp " . number_format($nominal_kas + $aset_kas_bank, 2, ',', '.');
                         $jumlah_aset = 0;
-                        $jumlah_aset = $jumlah_aset + $nominal_kas; ?></td>
+                        $jumlah_aset = $jumlah_aset + $nominal_kas + $aset_kas_bank; ?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -99,7 +99,9 @@
                 <tr>
                     <td></td>
                     <td>Saldo Awal Aset Neto Tidak Terikat</td>
-                    <td><?php echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
+                    <td><?php
+                        $aset_neto_tt_before += $aset_kas_bank;
+                        echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td></td>
