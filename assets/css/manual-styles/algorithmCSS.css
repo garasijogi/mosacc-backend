@@ -1,9 +1,9 @@
-@font-face{
-    font-family: Google-Sans;
-    src: url('../../fonts/GoogleSans-Regular.ttf');
+@font-face {
+	font-family: Google-Sans;
+	src: url('../../fonts/GoogleSans-Regular.ttf');
 }
 
-*{
+* {
 	font-family: 'Google-Sans';
 }
 
@@ -137,11 +137,11 @@ div.sticky {
 	padding-left: 1rem !important;
 }
 
-.logo-homepage{
+.logo-homepage {
 	margin-top: 0.2rem;
 }
 
-.more-vert{
+.more-vert {
 	width: 100px !important;
 }
 
@@ -150,6 +150,10 @@ div.sticky {
 }
 
 ul.dropdown-content {
-  width: 110px;
-  height: 604px;
+	width: 110px;
+	height: 604px;
+}
+
+#more_DD {
+	height: 100px !important;
 }
