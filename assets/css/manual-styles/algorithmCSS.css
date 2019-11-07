@@ -148,3 +148,8 @@ div.sticky {
 .sponsored-icon {
 	justify-content: center;
 }
+
+ul.dropdown-content {
+  width: 110px;
+  height: 604px;
+}

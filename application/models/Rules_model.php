@@ -51,12 +51,12 @@ class Rules_model extends CI_Model
     return $result;
   }
 
-  function letak_kas($nama_menu_kp, $nama_sub_kp, $nominal_sub_kp, $nama_menu_kb, $nama_sub_kb, $nominal_sub_kb, $nama_menu, $nama_sub, $nominal_sub, $nama_menu_dptt, $nama_sub_dptt, $nominal_sub_dptt)
+  function letak_kas($nama_menu_kp, $nama_sub_kp, $nominal_sub_kp, $nama_menu_kb, $nama_sub_kb, $nominal_sub_kb, $nama_menu, $nama_sub, $nominal_sub, $nama_menu_dptt, $nama_sub_dptt, $nominal_sub_dptt, $nama_menu_kr, $nama_sub_kr, $nominal_sub_kr)
   {
     // Menentukan letak kas
     $total_kredit = 0;
     $total_debit = 0;
-    for ($h = 0; $h < 4; $h++) {
+    for ($h = 0; $h < 5; $h++) {
       if ($h == 0) {
         $nama_menu_simpan = $nama_menu_kp;
         $nama_sub_simpan = $nama_sub_kp;
@@ -66,10 +66,14 @@ class Rules_model extends CI_Model
         $nama_sub_simpan = $nama_sub_kb;
         $nominal_sub_simpan = $nominal_sub_kb;
       } elseif ($h == 2) {
+        $nama_menu_simpan = $nama_menu_kr;
+        $nama_sub_simpan = $nama_sub_kr;
+        $nominal_sub_simpan = $nominal_sub_kr;
+      } elseif ($h == 3) {
         $nama_menu_simpan = $nama_menu;
         $nama_sub_simpan = $nama_sub;
         $nominal_sub_simpan = $nominal_sub;
-      } elseif ($h == 3) {
+      } elseif ($h == 4) {
         $nama_menu_simpan = $nama_menu_dptt;
         $nama_sub_simpan = $nama_sub_dptt;
         $nominal_sub_simpan = $nominal_sub_dptt;
@@ -77,10 +81,10 @@ class Rules_model extends CI_Model
       for ($x = 0; $x < count($nama_menu_simpan); $x++) {
 
         for ($y = 0; $y < count($nama_sub_simpan[$x]); $y++) {
-          if ($h == 0 || $h == 1) :
+          if ($h == 0 || $h == 1 || $h == 2) :
             $total_debit = $total_debit + $nominal_sub_simpan[$x][$y];
           endif;
-          if ($h == 2 || $h == 3) :
+          if ($h == 3 || $h == 4) :
             $total_kredit = $total_kredit + $nominal_sub_simpan[$x][$y];
           endif;
         }

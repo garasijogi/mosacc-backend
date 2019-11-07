@@ -42,14 +42,6 @@
             </div>
         </div>
 
-        <div class="navbar-fixed">
-            <nav id="navigation" class="navbar-no-shadow">
-                <div class="nav-wizard">
-                    <a href="index.html" class="brand-logo">Mosque Accounting</a>
-                </div>
-            </nav>
-        </div>
-
         <!-- preloader -->
         <?php $this->load->view('_partials/preloader.php') ?>
         <!-- preloader -->
@@ -68,7 +60,7 @@
             </div>
 
             <div class="form-addition">
-                <span class="wizard-section-name">Selamat Datang</span>
+                <span class="wizard-section-name">Halo!</span>
                 <h5 class="logo-sideways">MOSQUE<br>ACCOUNTING</h5>
                 <div class="some-rectangle"></div>
 

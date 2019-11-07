@@ -180,6 +180,7 @@ class Buku_besar_utama extends CI_Controller
     for ($j = 0; $j < $indicator_k; $j++) {
       $contain['K_P'][$j] = $this->rules_model->get_record_where('tr21_pembelian_pending', $kdk['jml_kdk'][$j]);
       $contain['K_B'][$j] = $this->rules_model->get_record_where('tr22_beban_pending', $kdk['jml_kdk'][$j]);
+      $contain['K_R'][$j] = $this->rules_model->get_record_where('tr23_renov_bangun_pending', $kdk['jml_kdk'][$j]);
     }
 
     //KIRIM
@@ -203,6 +204,9 @@ class Buku_besar_utama extends CI_Controller
     }
     for ($i = 0; $i < $indicator_k; $i++) {
       $data['contain_KB'][$i] = $contain['K_B'][$i];
+    }
+    for ($i = 0; $i < $indicator_k; $i++) {
+      $data['contain_KR'][$i] = $contain['K_R'][$i];
     }
 
     //GENERATING LAPORAN
@@ -523,7 +527,88 @@ class Buku_besar_utama extends CI_Controller
         }
       }
     }
-    $data['nominal_kas'] = $this->rules_model->letak_kas($data['nama_menu_kp'], $data['nama_sub_kp'], $data['nominal_sub_kp'], $data['nama_menu_kb'], $data['nama_sub_kb'], $data['nominal_sub_kb'], $data['nama_menu'], $data['nama_sub'], $data['nominal_sub'], $data['nama_menu_dptt'], $data['nama_sub_dptt'], $data['nominal_sub_dptt']);
+
+    // KREDIT PADA RENOVASI DAN PEMBANGUNAN
+    $no = 0;
+    $no2 = 0;
+    $no3 = 0;
+    $kdk_temp = '0';
+    $nama_menu_temp = '0';
+    $jumlah_kdk = count($data['kdk']);
+
+    //generate record KR
+    foreach ($data['kdk'] as $xkdk) {
+      for ($i = 0; $i < $jumlah_kdk; $i++) {
+        foreach ($data['contain_KR'][$i]->result() as $record) {
+          if ($record->kd_akun == $xkdk) {
+            foreach ($data['rules']->result() as $r) {
+              if ($xkdk == $r->kd_akun) {
+                if ($xkdk != $kda_temp) {
+                  if ($nama_menu_temp != $r->menu) {
+                    $data['nama_menu_kr'][$no3] = $r->menu;
+                    $nama_menu_temp = $r->menu;
+                    $no3++;
+                  }
+                }
+                $no2++;
+              }
+            }
+            $no++;
+            $kdk_temp = $xkdk;
+          }
+        }
+      }
+    }
+
+    //generate nama sub
+    $nama_sub_temp = '0';
+    for ($x = 0; $x < count($data['nama_menu_kr']); $x++) {
+      $no = 0;
+      foreach ($data['kdk'] as $xkdk) {
+        for ($i = 0; $i < $jumlah_kdk; $i++) {
+          foreach ($data['contain_KR'][$i]->result() as $record) {
+            if ($record->kd_akun == $xkdk) {
+              foreach ($data['rules']->result() as $r) {
+                if ($xkdk == $r->kd_akun) {
+                  if ($r->nama_sub != $nama_sub_temp && $r->menu == $data['nama_menu_kr'][$x]) {
+                    $data['nama_sub_kr'][$x][$no] = $r->nama_sub;
+                    $nama_sub_temp = $r->nama_sub;
+                    $no++;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //generate nominal per sub KB
+    for ($x = 0; $x < count($data['nama_menu_kr']); $x++) {
+      $z = 0;
+      for ($y = 0; $y < count($data['nama_sub_kr'][$x]); $y++) {
+        $z = 0;
+        for ($i = 0; $i < $jumlah_kdk; $i++) {
+          foreach ($data['contain_KR'][$i]->result() as $record) {
+            foreach ($data['rules']->result() as $r) {
+              if ($record->kd_akun == $r->kd_akun && $r->nama_sub == $data['nama_sub_kr'][$x][$y]) {
+                if ($z == 0) {
+                  $data['nominal_sub_kr'][$x][$y] = $record->nominal;
+                  $nominal_temp = $record->nominal;
+                  $z = 1;
+                } elseif ($z == 1) {
+                  $data['nominal_sub_kr'][$x][$y] = $nominal_temp + $record->nominal;
+                  $nominal_temp = $data['nominal_sub_kr'][$x][$y];
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    $data['nominal_kas'] = $this->rules_model->letak_kas($data['nama_menu_kp'], $data['nama_sub_kp'], $data['nominal_sub_kp'], $data['nama_menu_kb'], $data['nama_sub_kb'], $data['nominal_sub_kb'], $data['nama_menu'], $data['nama_sub'], $data['nominal_sub'], $data['nama_menu_dptt'], $data['nama_sub_dptt'], $data['nominal_sub_dptt'], $data['nama_menu_kr'], $data['nama_sub_kr'], $data['nominal_sub_kr']);
     $this->load->view('acc/neraca_saldo_v.php', $data);
   }
 }

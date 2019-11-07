@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<!-- head -->
-		<?php $this->load->view("acc/_partials/head");?>
-		<!-- /head -->
-	</head>
+<head>
+    <!-- head -->
+    <?php $this->load->view("acc/_partials/head"); ?>
+    <!-- /head -->
+</head>
 
 <body>
     <div class="wizard-wrapper">
@@ -19,8 +19,7 @@
                                 Datang</a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard/profil'); ?>" class="wizard-menu-on"><span><i
-                                        class="material-icons">equalizer</i></span>Profil Masjid</a></a>
+                            <a href="<?php echo base_url('wizard/profil'); ?>" class="wizard-menu-on"><span><i class="material-icons">equalizer</i></span>Profil Masjid</a></a>
                         </li>
                         <li class="sidenav-item">
                             <a href="<?php echo base_url('wizard/dkm'); ?>"><span><i class="material-icons">cached</i></span>Profil
@@ -28,8 +27,7 @@
                             </a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="<?php echo base_url('wizard/aset'); ?>" ><span><i
-                                        class="material-icons">class</i></span>Aset</a>
+                            <a href="<?php echo base_url('wizard/aset'); ?>"><span><i class="material-icons">class</i></span>Aset</a>
                         </li>
                         <li class="sidenav-item">
                             <a href="<?php echo base_url('wizard/akun_baru'); ?>"><span><i class="material-icons">account_box</i></span>Daftar
@@ -68,17 +66,13 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="alamat-masjid">
-                                        <div class="input-field col s12 edit-profil"> <input name="alamat" id="rename-alamat-masjid" value="<?php echo $profil_form['alamat']; ?>"
-                                                type="text" class="wizard-form-check validate"><label
-                                                for="rename-alamat-masjid">Alamat Masjid</label>
+                                        <div class="input-field col s12 edit-profil"> <input name="alamat" id="rename-alamat-masjid" value="<?php echo $profil_form['alamat']; ?>" type="text" class="wizard-form-check validate"><label for="rename-alamat-masjid">Alamat Masjid</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="tahun-berdiri">
-                                        <div class="input-field col s12 edit-profil"> <input name="tahun" id="rename-tahun-berdiri" value="<?php echo $profil_form['tahun']; ?>"
-                                                type="number" class="validate wizard-form-check"><label
-                                                for="rename-tahun-berdiri">Tahun Berdiri</label>
+                                        <div class="input-field col s12 edit-profil"> <input name="tahun" id="rename-tahun-berdiri" value="<?php echo $profil_form['tahun']; ?>" type="number" class="validate wizard-form-check"><label for="rename-tahun-berdiri">Tahun Berdiri</label>
                                         </div>
                                     </div>
                                 </div>
@@ -94,17 +88,13 @@
                                 <div class="col s12">
                                     <div class="row" id="telepon-sekretariat">
                                         <div class="input-field col s12 edit-profil">
-                                            <input name="telepon" id="rename-telepon-sekretariat" type="number" value="<?php echo $profil_form['telepon']; ?>"
-                                                class="wizard-form-check validate" required><label
-                                                for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
+                                            <input name="telepon" id="rename-telepon-sekretariat" type="number" value="<?php echo $profil_form['telepon']; ?>" class="wizard-form-check validate" required><label for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="rekening-masjid">
-                                        <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid" value="<?php echo $profil_form['rekening']; ?>"
-                                                type="number" class="validate wizard-form-check"><label
-                                                for="rename-rekening-masjid">Rekening
+                                        <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid" value="<?php echo $profil_form['rekening']; ?>" type="number" class="validate wizard-form-check"><label for="rename-rekening-masjid">Rekening
                                                 Masjid</label>
                                         </div>
                                     </div>
@@ -120,9 +110,7 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="luas-tanah">
-                                        <div class="input-field col s12 edit-profil"> <input name="luas_tanah" id="rename-luas-tanah" value="<?php echo $profil_form['luas_tanah']; ?>"
-                                                type="text" class="validate wizard-form-check"><label
-                                                for="rename-luas-tanah">Luas
+                                        <div class="input-field col s12 edit-profil"> <input name="luas_tanah" id="rename-luas-tanah" value="<?php echo $profil_form['luas_tanah']; ?>" type="text" class="validate wizard-form-check"><label for="rename-luas-tanah">Luas
                                                 Tanah</label>
                                         </div>
                                     </div>
@@ -135,8 +123,7 @@
                                                 <input name="ad_art" accept=".pdf,.doc,.docx,.ppt,.pptx,.xps,.odt,.xls,.xlsx,.wps" type="file">
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['ad_art']['nama']; ?>"
-                                                    placeholder="Tambahkan File">
+                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['ad_art']['nama']; ?>" placeholder="Tambahkan File">
                                             </div>
                                         </div>
                                     </div>
@@ -149,8 +136,7 @@
                                                 <input name="badan_hukum" accept=".pdf,.doc,.docx,.ppt,.pptx,.xps,.odt,.xls,.xlsx,.wps" type="file">
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['badan_hukum']['nama']; ?>"
-                                                    placeholder="Tambahkan File">
+                                                <input class="file-path validate wizard-form-check" type="text" value="<?php echo $files['badan_hukum']['nama']; ?>" placeholder="Tambahkan File">
                                             </div>
                                         </div>
                                     </div>
@@ -158,9 +144,7 @@
                             </div>
 
                             <div class="btn-form-wrapper">
-                                <a href="#wizard-profil-masjid-simpan"
-                                    class="waves-effect waves-light wizard-profil-masjid-simpan btn btn-edit-profil btn-success btn-wizard-checker"
-                                    onclick="wizardFormChecker()">Simpan</a>
+                                <a href="#wizard-profil-masjid-simpan" class="waves-effect waves-light wizard-profil-masjid-simpan btn btn-edit-profil btn-success btn-wizard-checker" onclick="wizardFormChecker()">Simpan</a>
                             </div>
 
                             <div id="wizard-profil-masjid-simpan" class="modal">
@@ -170,8 +154,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#" class="modal-close waves-effect waves-green btn-flat">Kembali</a>
-                                    <a href="<?php echo base_url('wizard/dkm'); ?>"
-                                    class="modal-close waves-effect waves-green btn-flat">Yakin</a>
+                                    <a href="<?php echo base_url('wizard/dkm'); ?>" class="modal-close waves-effect waves-green btn-flat">Yakin</a>
                                 </div>
                             </div>
 
@@ -186,12 +169,12 @@
                 <div class="some-rectangle"></div>
 
             </div>
-            
+
         </div>
     </div>
 
     <!-- Javascript -->
-	<?php $this->load->view("acc/_partials/js"); ?>
+    <?php $this->load->view("acc/_partials/js"); ?>
     <!-- /Javascript -->
 
 </body>
