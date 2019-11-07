@@ -56,6 +56,7 @@ class Buku_besar_utama extends CI_Controller
     for ($j = 0; $j < $indicator_k; $j++) {
       $contain['K_P'][$j] = $this->rules_model->get_record_where('tr21_pembelian_pending', $kdk['jml_kdk'][$j]);
       $contain['K_B'][$j] = $this->rules_model->get_record_where('tr22_beban_pending', $kdk['jml_kdk'][$j]);
+      $contain['K_R'][$j] = $this->rules_model->get_record_where('tr23_renov_bangun_pending', $kdk['jml_kdk'][$j]);
     }
 
     //KIRIM
@@ -80,10 +81,12 @@ class Buku_besar_utama extends CI_Controller
     for ($i = 0; $i < $indicator_k; $i++) {
       $data['contain_KB'][$i] = $contain['K_B'][$i];
     }
+    for ($i = 0; $i < $indicator_k; $i++) {
+      $data['contain_KR'][$i] = $contain['K_R'][$i];
+    }
 
     $this->load->view('acc/jurnal_umum_v.php', $data);
   }
-
   function buku_besar()
   {
     //kas di debit
@@ -110,6 +113,7 @@ class Buku_besar_utama extends CI_Controller
     for ($j = 0; $j < $indicator_k; $j++) {
       $contain['K_P'][$j] = $this->rules_model->get_record_where('tr21_pembelian_pending', $kdk['jml_kdk'][$j]);
       $contain['K_B'][$j] = $this->rules_model->get_record_where('tr22_beban_pending', $kdk['jml_kdk'][$j]);
+      $contain['K_R'][$j] = $this->rules_model->get_record_where('tr23_renov_bangun_pending', $kdk['jml_kdk'][$j]);
     }
 
     //KIRIM
@@ -133,6 +137,9 @@ class Buku_besar_utama extends CI_Controller
     }
     for ($i = 0; $i < $indicator_k; $i++) {
       $data['contain_KB'][$i] = $contain['K_B'][$i];
+    }
+    for ($i = 0; $i < $indicator_k; $i++) {
+      $data['contain_KR'][$i] = $contain['K_R'][$i];
     }
 
     //MENENTUKAN TABEL KAS

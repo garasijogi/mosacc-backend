@@ -40,7 +40,7 @@ $this->load->view("acc/_partials/head"); ?>
 
             <!-- KAS -->
             <h6 class="font-bold"><?php echo "Kas dan Bank (112)"; ?></h6>
-            <table>
+            <table id='table-jurnal-umum-v'>
                 <tr class="teal white-text">
                     <th style="width:20%">Tanggal</th>
                     <th style="width:20%">Transaksi</th>
@@ -53,7 +53,7 @@ $this->load->view("acc/_partials/head"); ?>
                 //Penerimaan Terikat (KAS)
                 foreach ($pt as $pt_r) : ?>
                     <tr>
-                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->tanggal); ?></td>
                         <td><?php echo ($pt_r->keterangan); ?></td>
                         <td><?php echo "Rp " . number_format($pt_r->nominal, 2, ',', '.');
                                 $total_kas = $total_kas + $pt_r->nominal; ?></td>
@@ -65,7 +65,7 @@ $this->load->view("acc/_partials/head"); ?>
                 //Penerimaan Tidak Terikat (KAS)
                 foreach ($ptt as $pt_r) : ?>
                     <tr>
-                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->tanggal); ?></td>
                         <td><?php echo ($pt_r->keterangan); ?></td>
                         <td><?php echo "Rp " . number_format($pt_r->nominal, 2, ',', '.');
                                 $total_kas = $total_kas + $pt_r->nominal; ?></td>
@@ -77,7 +77,7 @@ $this->load->view("acc/_partials/head"); ?>
                 //Pembelian (KAS)
                 foreach ($p as $pt_r) : ?>
                     <tr>
-                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->tanggal); ?></td>
                         <td><?php echo ($pt_r->keterangan); ?></td>
                         <td><?php echo "Rp " . number_format($pt_r->total_harga, 2, ',', '.');
                                 $total_kas = $total_kas - $pt_r->total_harga; ?></td>
@@ -89,7 +89,7 @@ $this->load->view("acc/_partials/head"); ?>
                 //Beban (KAS)
                 foreach ($b as $pt_r) : ?>
                     <tr>
-                        <td><?php echo date_generator($pt_r->tanggal); ?></td>
+                        <td><?php echo ($pt_r->tanggal); ?></td>
                         <td><?php echo ($pt_r->keterangan); ?></td>
                         <td></td>
                         <td><?php echo "Rp " . number_format($pt_r->nominal, 2, ',', '.');
@@ -142,9 +142,9 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
+                                        <td></td>
                                         <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.');
                                                                 $total_kd = $total_kd + $cdpt->nominal; ?></td>
-                                        <td></td>
                                         <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
@@ -197,9 +197,9 @@ $this->load->view("acc/_partials/head"); ?>
                                     <tr>
                                         <td><?php echo date_generator($cdpt->tanggal); ?></td>
                                         <td><?php echo $cdpt->keterangan; ?></td>
+                                        <td></td>
                                         <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.');
                                                                 $total_kd = $total_kd + $cdpt->nominal; ?></td>
-                                        <td></td>
                                         <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>
                         <?php endif;
@@ -255,6 +255,61 @@ $this->load->view("acc/_partials/head"); ?>
                                         <td><?php echo $cdpt->keterangan; ?></td>
                                         <td><?php echo "Rp " . number_format($cdpt->total_harga, 2, ',', '.');
                                                                 $total_kd = $total_kd + $cdpt->total_harga; ?></td>
+                                        <td></td>
+                                        <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
+                                    </tr>
+                        <?php endif;
+                                    endforeach;
+                                } ?>
+                        <tr>
+                            <td></td>
+                            <td colspan="3" class="center">Total</td>
+                            <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+
+            <?php
+                endif;
+            }
+            ?>
+
+            <!-- Renovasi dan Pembangunan -->
+            <?php
+            foreach ($kdk as $xkdk) {
+                $total_kd = 0;
+                $isset = 0;
+                foreach ($rules->result() as $r) {
+                    if ($xkdk == $r->kd_akun) {
+                        $nama_sub = $r->nama_sub;
+                        $kd_bagan = $r->kd_bagan;
+                    }
+                }
+                for ($j = 0; $j < count($contain_KR); $j++) {
+                    foreach ($contain_KR[$j]->result() as $codpt) :
+                        if ($codpt->kd_akun == $xkdk) : $isset = 1;
+                        endif;
+                    endforeach;
+                }
+                if ($isset != 0) : ?>
+                    <h6 class="font-bold"><?php echo $nama_sub . " (" . $kd_bagan . ")"; ?></h6>
+                    <table>
+                        <tr class="teal white-text">
+                            <th style="width:20%">Tanggal</th>
+                            <th style="width:20%">Transaksi</th>
+                            <th style="width:20%">Debit</th>
+                            <th style="width:20%">Kredit</th>
+                            <th style="width:20%">Jumlah</th>
+                        </tr>
+                        <?php for ($i = 0; $i < count($contain_KR); $i++) {
+                                    foreach ($contain_KR[$i]->result() as $cdpt) :
+                                        if ($cdpt->kd_akun == $xkdk) : ?>
+                                    <tr>
+                                        <td><?php echo date_generator($cdpt->tanggal); ?></td>
+                                        <td><?php echo $cdpt->keterangan; ?></td>
+                                        <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.');
+                                                                $total_kd = $total_kd + $cdpt->nominal; ?></td>
                                         <td></td>
                                         <td><?php echo "Rp " . number_format($total_kd, 2, ',', '.'); ?></td>
                                     </tr>

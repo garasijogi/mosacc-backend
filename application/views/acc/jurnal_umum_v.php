@@ -48,7 +48,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for ($h = 0; $h < 4; $h++) {
+                    <?php for ($h = 0; $h < 5; $h++) {
                         if ($h == 0) {
                             $contain = $contain_DPT;
                         } elseif ($h == 1) {
@@ -57,8 +57,10 @@ $this->load->view("acc/_partials/head"); ?>
                             $contain = $contain_KP;
                         } elseif ($h == 3) {
                             $contain = $contain_KB;
+                        } elseif ($h == 4) {
+                            $contain = $contain_KR;
                         }
-                        for ($i = 0; $i < count($contain_DPT); $i++) {
+                        for ($i = 0; $i < count($contain); $i++) {
                             foreach ($contain[$i]->result() as $cdpt) :
                                 ?>
                                 <tr>
@@ -70,10 +72,11 @@ $this->load->view("acc/_partials/head"); ?>
                                             <td><?php echo $r->debit . "<br><br>"; ?></td>
                                             <td><?php echo "<br><br>" . $r->kredit; ?></td>
                                             <?php if ($h == 2) { ?>
-                                                <td><?php echo "-Rp " . number_format($cdpt->total_harga, 2, ',', '.');  ?></td>
+                                                <td><?php echo "(Rp " . number_format($cdpt->total_harga, 2, ',', '.') . ')';  ?></td>
                                             <?php } elseif ($h == 3) { ?>
-                                                <td><?php echo "-Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
-
+                                                <td><?php echo "(Rp " . number_format($cdpt->nominal, 2, ',', '.') . ')'; ?></td>
+                                            <?php } elseif ($h == 4) { ?>
+                                                <td><?php echo "(Rp " . number_format($cdpt->nominal, 2, ',', '.') . ')'; ?></td>
                                             <?php } else { ?>
                                                 <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                             <?php } ?>
@@ -115,7 +118,7 @@ $this->load->view("acc/_partials/head"); ?>
                         } elseif ($h == 3) {
                             $contain = $contain_KB;
                         }
-                        for ($i = 0; $i < count($contain_DPT); $i++) {
+                        for ($i = 0; $i < count($contain); $i++) {
                             foreach ($contain[$i]->result() as $cdpt) :
                                 ?>
                                 <tr>
@@ -127,9 +130,9 @@ $this->load->view("acc/_partials/head"); ?>
                                             <td><?php echo $r->debit . "<br><br>"; ?></td>
                                             <td><?php echo "<br><br>" . $r->kredit; ?></td>
                                             <?php if ($h == 2) { ?>
-                                                <td><?php echo "-Rp " . number_format($cdpt->total_harga, 2, ',', '.');  ?></td>
+                                                <td><?php echo "(Rp " . number_format($cdpt->total_harga, 2, ',', '.') . ')';  ?></td>
                                             <?php } elseif ($h == 3) { ?>
-                                                <td><?php echo "-Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
+                                                <td><?php echo "(Rp " . number_format($cdpt->nominal, 2, ',', '.'), ')'; ?></td>
 
                                             <?php } else { ?>
                                                 <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
