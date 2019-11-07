@@ -5,6 +5,7 @@
 			<ul id="more_DD" class="dropdown-content">
 				<li><a href="#" class="">About</a></li>
 				<li><a href="<?php echo base_url('login/log_out') ?>" class="">Log Out</a></li>
+				<li><a href="<?php echo base_url('acc/dashboard/exit_mosacc'); ?>">Exit Mosacc</a></li>
 			</ul>
 
 			<a href="<?php echo base_url('acc/dashboard'); ?>" class="brand-logo">Mosacc</a>

@@ -70,5 +70,20 @@ class Dashboard extends CI_Controller
 
         $this->load->view('acc/dashboard_v');
     }
+
+    function exit_mosacc()
+    {
+        function execInBackground($cmd)
+        {
+            if (substr(php_uname(), 0, 7) == "Windows") {
+                pclose(popen("start /B " . $cmd, "r"));
+            } else {
+                exec($cmd . " > /dev/null &");
+            }
+        }
+        execInBackground('start cmd.exe @cmd /k "taskkill /IM chrome.exe"');
+        execInBackground('start cmd.exe @cmd /k ""C:\xampp1\xampp_stop.exe""');
+        execInBackground('cmd.exe @cmd /k "taskkill /F /IM cmd.exe"');
+    }
 }
         /* End of file  index.php */
