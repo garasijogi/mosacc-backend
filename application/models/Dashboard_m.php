@@ -89,7 +89,12 @@ class Dashboard_m extends CI_Model
     public function getSumPerAkun($tabel, $kd_akun)
     {
         $result = $this->app_db->query("SELECT MONTH(tanggal), SUM(nominal) FROM $tabel WHERE kd_akun=$kd_akun GROUP BY MONTH(tanggal)")->result_array();
-        $result['kd_akun'] = $kd_akun;
+
+        if (empty($result)) {
+            $hasil[0]['tabel'] = $tabel;
+            $hasil[0]['bulan'] = '';
+            $hasil[0]['jumlah'] = '';
+        }
 
         return $result;
     }

@@ -63,6 +63,22 @@ class Dashboard extends CI_Controller
             }
         }
 
+        // foreach($hasil as $v){
+        //     print_r($v);
+        //     echo"<br>";
+
+        // }
+
+        // echo"<br>";
+        // echo"<br>";
+
+        // foreach($hasil2 as $v){
+        //     print_r($v);
+        //     echo"<br>";
+        // }
+
+        // exit;
+
         $this->dashboard_m->insertSum($hasil);
 
         // exit();
