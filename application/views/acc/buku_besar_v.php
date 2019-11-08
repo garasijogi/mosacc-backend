@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row center" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6> <br>
+            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6> <br>
 
             <!-- KAS -->
             <h6 class="font-bold"><?php echo "Kas dan Bank (112)"; ?></h6>

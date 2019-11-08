@@ -45,7 +45,7 @@ $this->load->view("acc/_partials/head"); ?>
         $k_aset_neto_tt = 0;
         ?>
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Aktivitas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br>Laporan Aktivitas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table id='table-arus-kas-v' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">

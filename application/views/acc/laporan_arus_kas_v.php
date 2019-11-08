@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Laporan Arus Kas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br>Laporan Arus Kas <br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table id='table-arus-kas-v' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">

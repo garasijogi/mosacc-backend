@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo (date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per <?php echo (date('Y-m-d')); ?></b></h6>
             <table id='table-jurnal-umum-v' class="">
                 <thead>
                     <tr class="teal white-text">

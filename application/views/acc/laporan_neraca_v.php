@@ -34,7 +34,7 @@
         </div>
         <div class="row" id="printed">
 
-            <h6 class="center"><b>Masjid Al-Ishlah <br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <table>
                 <tr>
                     <th colspan="2">Keterangan</th>

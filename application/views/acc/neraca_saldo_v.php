@@ -37,7 +37,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b>Masjid Al-Ishlah <br>Neraca Saldo<br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo<br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
             <table id='table-neraca-saldo-v' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">
