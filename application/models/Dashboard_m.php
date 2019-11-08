@@ -67,6 +67,9 @@ class Dashboard_m extends CI_Model
                 // echo'<br>';
                 // echo'<br>';
                 $increment++;
+                if ($v['jumlah'] == NULL) {
+                    $v['jumlah'] = 0;
+                }
 
                 $this->app_db->insert('sum_table', $v);
             }

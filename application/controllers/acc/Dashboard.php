@@ -27,6 +27,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
+        error_reporting(0);
         //hapus isi tabel
         $this->dashboard_m->truncate();
         //get nama tabel
