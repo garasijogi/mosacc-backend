@@ -104,12 +104,14 @@
                 <table id="view_data" class="display" style="width: 100%" />
                 <thead>
                     <tr>
-                        <th>Tanggal</th>
+                        <th width='20%'>Tanggal</th>
                         <?php if ($kd_akun != 11200 && $kd_akun != 11500) { ?>
                             <th>Nama Pemberi</th>
                         <?php } ?>
-                        <th>Nominal</th>
-                        <th>Keterangan</th>
+                        <th width='20%'>Nominal</th>
+                        <th width='50%'>Keterangan</th>
+                        <th width='5%'></th>
+                        <th width='5%'></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -125,6 +127,22 @@
                             <?php } ?>
                             <td><?php echo $tr->nominal; ?></td>
                             <td><?php echo $tr->keterangan; ?></td>
+                            <td>
+                                <?php if ($kd_akun != 11200 && $kd_akun != 11500) { ?>
+                                    <a href="<?php echo base_url('acc/penerimaan_tidak_terikat/edit_ptt?idtr=' . $tr->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $tr->tanggal . '&&nominal=' . $tr->nominal . '&&keterangan=' . $tr->keterangan . '&&controller=' . $controller . '&&nama_pemberi=' . $tr->nama_pemberi); ?>">
+                                        <img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="<?php echo base_url('acc/penerimaan_tidak_terikat/edit_ptt?idtr=' . $tr->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $tr->tanggal . '&&nominal=' . $tr->nominal . '&&keterangan=' . $tr->keterangan . '&&controller=' . $controller); ?>">
+                                        <img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">
+                                    </a>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <a id='<?php echo $tr->idtr; ?>' href="#modal-delete" class="modal-trigger" data-controller='<?php echo $controller; ?>' onclick='delete_button(this.id)'>
+                                    <img src="<?php echo base_url('assets/images/icon/sidebar/tongsampah-black.svg') ?>" width="20px" height="20px">
+                                </a>
+                            </td>
                         </tr>
                     <?php
                     endforeach;
@@ -138,15 +156,51 @@
                         <?php } ?>
                         <th>Nominal</th>
                         <th>Keterangan</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </tfoot>
                 </table>
             </div>
         </div>
     </div>
+
+    <!-- modal delete -->
+    <div id="modal-delete" class="modal">
+        <div class="modal-content">
+            <h4>Hapus Transaksi</h4>
+            <p>Apakah anda yakin untuk menghapus transaksi ini?</p>
+        </div>
+        <div class="modal-footer">
+            <a id='tombol-delete' class="modal-close waves-effect waves-green btn-small red">Ya</a>
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
+        </div>
+    </div>
+    <!-- end modal delete -->
+
+    <!-- modal edit -->
+    <div id="modal-edit" class="modal">
+        <div class="modal-content">
+            <h4>Edit Berhasil</h4>
+            <p>Data telah berhasil diubah</p>
+        </div>
+        <div class="modal-footer">
+            <a id='tombol-delete' class="modal-close waves-effect waves-green btn-small green">Tutup</a>
+        </div>
+    </div>
+    <!-- end modal edit -->
+
     <!-- content -->
 
+    <!-- js -->
     <?php $this->load->view("acc/_partials/js"); ?>
+    <script>
+        <?php if ($this->input->get('ubah') != NULL) { ?>
+            modalEdit();
+        <?php } ?>
+    </script>
+    <!-- end js -->
+
 </body>
 
 </html>

@@ -210,3 +210,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		.delay(100)
 		.fadeOut();
 });
+
+//modal initiate
+ $(document).ready(function(){
+    $('.modal').modal();
+  });
+
+  //delete button penerimaan terikat
+  function delete_button(id){
+	  var controller = $('#'+id).data('controller');
+	  $("#tombol-delete").attr('href', "proses_delete?idtr="+id+"&&controller="+controller);
+  }
+
+  //modal berhasil edit
+  function modalEdit() {
+	$(document).ready(function () {
+		$('#modal-edit').modal();
+		$('#modal-edit').modal('open');
+	});
+}

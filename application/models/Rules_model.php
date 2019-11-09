@@ -32,6 +32,18 @@ class Rules_model extends CI_Model
     return $result;
   }
 
+  function get_nama_sub($kd_akun)
+  {
+    $result = $this->db->get_where('rules', array('kd_akun' => $kd_akun))->result();
+    return $result[0]->nama_sub;
+  }
+
+  function get_menu($kd_akun)
+  {
+    $result = $this->db->get_where('rules', array('kd_akun' => $kd_akun))->result();
+    return $result[0]->menu;
+  }
+
   function get_all_records()
   {
     $result = $this->app_db->select('*')

@@ -110,6 +110,8 @@
                         <?php } ?>
                         <th>Nominal</th>
                         <th>Keterangan</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -125,6 +127,22 @@
                             <?php } ?>
                             <td><?php echo $tr->nominal; ?></td>
                             <td><?php echo $tr->keterangan; ?></td>
+                            <td>
+                                <?php if ($kd_akun != 12610 && $kd_akun != 12620 && $kd_akun != 12630 && $kd_akun != 12640 && $kd_akun != 12820) { ?>
+                                    <a href="<?php echo base_url('acc/penerimaan_terikat/edit_pt?idtr=' . $tr->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $tr->tanggal . '&&nominal=' . $tr->nominal . '&&keterangan=' . $tr->keterangan . '&&controller=' . $controller . '&&nama_pemberi=' . $tr->nama_pemberi); ?>">
+                                        <img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="<?php echo base_url('acc/penerimaan_terikat/edit_pt?idtr=' . $tr->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $tr->tanggal . '&&nominal=' . $tr->nominal . '&&keterangan=' . $tr->keterangan . '&&controller=' . $controller); ?>">
+                                        <img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">
+                                    </a>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <a id='<?php echo $tr->idtr; ?>' href="#modal-delete" class="modal-trigger" data-controller='<?php echo $controller; ?>' onclick='delete_button(this.id)'>
+                                    <img src="<?php echo base_url('assets/images/icon/sidebar/tongsampah-black.svg') ?>" width="20px" height="20px">
+                                </a>
+                            </td>
                         </tr>
                     <?php
                     endforeach;
@@ -138,6 +156,8 @@
                         <?php } ?>
                         <th>Nominal</th>
                         <th>Keterangan</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </tfoot>
                 </table>
@@ -146,7 +166,39 @@
     </div>
     <!-- content -->
 
+    <!-- modal delete -->
+    <div id="modal-delete" class="modal">
+        <div class="modal-content">
+            <h4>Hapus Transaksi</h4>
+            <p>Apakah anda yakin untuk menghapus transaksi ini?</p>
+        </div>
+        <div class="modal-footer">
+            <a id='tombol-delete' class="modal-close waves-effect waves-green btn-small red">Ya</a>
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
+        </div>
+    </div>
+    <!-- end modal delete -->
+
+    <!-- modal edit -->
+    <div id="modal-edit" class="modal">
+        <div class="modal-content">
+            <h4>Edit Berhasil</h4>
+            <p>Data telah berhasil diubah</p>
+        </div>
+        <div class="modal-footer">
+            <a id='tombol-delete' class="modal-close waves-effect waves-green btn-small green">Tutup</a>
+        </div>
+    </div>
+    <!-- end modal edit -->
+
+    <!-- js -->
     <?php $this->load->view("acc/_partials/js"); ?>
+    <script>
+        <?php if ($this->input->get('ubah') != NULL) { ?>
+            modalEdit();
+        <?php } ?>
+    </script>
+    <!-- end js -->
 </body>
 
 </html>

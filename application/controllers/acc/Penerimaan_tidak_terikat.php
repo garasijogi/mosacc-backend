@@ -21,6 +21,7 @@ class Penerimaan_tidak_terikat extends CI_Controller
     $dynamic_db = switch_db_dynamic($dynamic_tahun);
     //load model yang akan digunakan
     $this->load->model('penerimaan_tidak_terikat_pending_model');
+    $this->load->model('rules_model');
     //taruh settingan database dalam array
     $this->penerimaan_tidak_terikat_pending_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
@@ -116,6 +117,61 @@ class Penerimaan_tidak_terikat extends CI_Controller
     $idtr = $idtr_bak . $index;
 
     $this->penerimaan_tidak_terikat_pending_model->input_tr($idtr, $kd_akun, $tanggal, $nominal, $keterangan, $nama_pemberi);
+    redirect('acc/penerimaan_tidak_terikat/' . $controller);
+  }
+
+  //edit
+  function edit_ptt()
+  {
+    $data['idtr'] = $this->input->get('idtr');
+    $data['kd_akun'] = $this->input->get('kd_akun');
+    $data['tanggal'] = $this->input->get('tanggal');
+    $data['nominal'] = $this->input->get('nominal');
+    $data['keterangan'] = $this->input->get('keterangan');
+    $data['nama_sub'] = $this->rules_model->get_nama_sub($data['kd_akun']);
+    $data['menu'] = $this->rules_model->get_menu($data['kd_akun']);
+    $data['controller'] = $this->input->get('controller');
+    $data['nama_pemberi'] = $this->input->get('nama_pemberi');
+
+    $this->load->view('acc/edit_penerimaan_tidak_terikat_v.php', $data);
+  }
+
+  function proses_edit_ptt()
+  {
+    $idtr = $this->input->post('idtr');
+    $controller = $this->input->post('controller');
+    $kd_akun = $this->input->post('kd_akun_PT');
+    $tanggal_new = $this->input->post('tanggal_PT');
+    $tanggal = $this->input->post('tanggal_old');
+    $nominal = $this->input->post('nominal_PT');
+    $keterangan = $this->input->post('keterangan_PT');
+    $nama_pemberi = $this->input->post('nama_pemberi_PT');
+    if ($tanggal_new != $tanggal) {
+      //generate idtr
+      $tanggalreplace = preg_replace('/\D/', '', $tanggal_new);
+      $idtr_bak = $tanggalreplace . $kd_akun;
+      $result = $this->penerimaan_tidak_terikat_pending_model->count($idtr_bak);
+      $result = $result;
+      if ($result < 10) {
+        $index = '00' . ($result + 1);
+      } else if ($result < 100) {
+        $index = '0' . ($result + 1);
+      }
+      $idtr_new = $idtr_bak . $index;
+    } else {
+      $idtr_new = $idtr;
+    }
+
+    $this->penerimaan_tidak_terikat_pending_model->edit_tr($idtr, $idtr_new, $tanggal_new, $nominal, $keterangan, $nama_pemberi);
+    redirect('acc/penerimaan_tidak_terikat/' . $controller . '?ubah=1');
+  }
+
+  //delete
+  function proses_delete()
+  {
+    $idtr = $this->input->get('idtr');
+    $controller = $this->input->get('controller');
+    $this->penerimaan_tidak_terikat_pending_model->delete_tr($idtr);
     redirect('acc/penerimaan_tidak_terikat/' . $controller);
   }
 }
