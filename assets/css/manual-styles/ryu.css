@@ -7,6 +7,11 @@ body{
     overflow:scroll;
 }
 
+img.wizard-jabatan_photos{
+    height: 20rem;
+    width: 20rem;
+}
+
 .card-container{
     margin-top: 6%;
     padding-left: 10%;
@@ -77,4 +82,16 @@ body{
 
 .tab.col.card-tab {
 	width: 175px;
+}
+
+.tabs {
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 62px;
+}
+
+.wrapper-jabatan_photos{
+    display: flex; /*fleksibel dan ngatur dan membagi dengan jarak yang sama*/
+    justify-content: space-around; /*buat nengahin konten*/
 }

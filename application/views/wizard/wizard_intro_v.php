@@ -47,14 +47,15 @@
         <!-- preloader -->
 
         <div class="content-wizard">
-            <div class="form-wizard">
+            <div class="form-wizard" style="height: 42vw;">
                 <h3>Assalamualaikum Warahmatullahi Wabarakatuh</h3>
                 <p class="wizard-introduce">Selamat datang di aplikasi MosAcc (Mosque Accounting), yaitu sebuah aplikasi perangkat lunak yang dikembangkan
                     untuk membantu para pengurus
                     masjid dalam membuat laporan keuangan.</p>
                 <p class="wizard-introduce">Silahkan lengkapi formulir pada halaman selanjutnya untuk mulai menggunakan
                     aplikasi.</p>
-
+                <br/>
+                <br/>
                 <a class="btn waves-effect waves-light teal right" href="<?php echo base_url('wizard/profil'); ?>">Selanjutnya<i class="material-icons right">send</i>
                 </a>
             </div>
