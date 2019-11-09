@@ -23,6 +23,15 @@ $this->load->view("acc/_partials/head"); ?>
     <?php $this->load->view('acc/_partials/preloader.php') ?>
     <!-- preloader -->
 
+    <!-- breadcrumb -->
+    <div class="content">
+        <div class="col s12 breadcrumb-wrapper valign-wrapper">
+            <a href="<?php echo base_url('acc/laporan_keuangan/'); ?>" class="breadcrumb">Laporan Keuangan</a>
+            <a href="<?php echo base_url('acc/laporan_keuangan/laporan_arus_kas'); ?>" class="breadcrumb">Laporan Arus Kas</a>
+        </div>
+    </div>
+    <!-- breadcrumb -->
+
     <!-- content -->
     <div class="container">
         <div class="sticky">
