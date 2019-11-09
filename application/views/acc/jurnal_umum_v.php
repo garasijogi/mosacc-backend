@@ -36,7 +36,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per <?php echo (date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per <?php echo (date_generator(date('Y-m-d'))); ?></b></h6>
             <table id='table-jurnal-umum-v' class="">
                 <thead>
                     <tr class="teal white-text">
@@ -95,11 +95,11 @@ $this->load->view("acc/_partials/head"); ?>
         <!-- view -->
 
         <!-- print -->
-        <!-- <div class="row" style="display: none">
-            <h6 class="center" id="title-print"><b>Masjid Al-Ishlah <br>Jurnal Umum <br>Per <?php echo (date('Y-m-d')); ?></b></h6>
-            <table id='table-jurnal-umum' class="table-borderless centered">
+        <div style="display:none">
+            <h6 id="title-laporan">Jurnal Umum Per <?php echo (date_generator(date('Y-m-d'))); ?> <?php echo $this->session->userdata('nama_masjid'); ?></h6>
+            <table id='table-excel' class="">
                 <thead>
-                    <tr>
+                    <tr class="teal white-text">
                         <th style="width:20%">Tanggal</th>
                         <th style="width:15%">Transaksi</th>
                         <th style="width:20%">Debit</th>
@@ -108,7 +108,7 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for ($h = 0; $h < 4; $h++) {
+                    <?php for ($h = 0; $h < 5; $h++) {
                         if ($h == 0) {
                             $contain = $contain_DPT;
                         } elseif ($h == 1) {
@@ -117,12 +117,14 @@ $this->load->view("acc/_partials/head"); ?>
                             $contain = $contain_KP;
                         } elseif ($h == 3) {
                             $contain = $contain_KB;
+                        } elseif ($h == 4) {
+                            $contain = $contain_KR;
                         }
                         for ($i = 0; $i < count($contain); $i++) {
                             foreach ($contain[$i]->result() as $cdpt) :
                                 ?>
                                 <tr>
-                                    <td><?php echo date_generator($cdpt->tanggal)  ?></td>
+                                    <td><?php echo ($cdpt->tanggal)  ?></td>
                                     <?php foreach ($rules->result() as $r) :
                                                     if ($r->kd_akun == $cdpt->kd_akun) :
                                                         ?>
@@ -132,8 +134,9 @@ $this->load->view("acc/_partials/head"); ?>
                                             <?php if ($h == 2) { ?>
                                                 <td><?php echo "(Rp " . number_format($cdpt->total_harga, 2, ',', '.') . ')';  ?></td>
                                             <?php } elseif ($h == 3) { ?>
-                                                <td><?php echo "(Rp " . number_format($cdpt->nominal, 2, ',', '.'), ')'; ?></td>
-
+                                                <td><?php echo "(Rp " . number_format($cdpt->nominal, 2, ',', '.') . ')'; ?></td>
+                                            <?php } elseif ($h == 4) { ?>
+                                                <td><?php echo "(Rp " . number_format($cdpt->nominal, 2, ',', '.') . ')'; ?></td>
                                             <?php } else { ?>
                                                 <td><?php echo "Rp " . number_format($cdpt->nominal, 2, ',', '.'); ?></td>
                                             <?php } ?>
@@ -148,7 +151,7 @@ $this->load->view("acc/_partials/head"); ?>
 
                 </tbody>
             </table>
-        </div> -->
+        </div>
         <!-- print -->
 
     </div>

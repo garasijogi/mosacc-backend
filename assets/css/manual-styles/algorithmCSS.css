@@ -157,3 +157,17 @@ ul.dropdown-content {
 #more_DD {
 	height: 180px !important;
 }
+
+#bulan_DD{
+	height: 150px !important;
+}
+
+#tahun_DD{
+	height: 150px !important;
+}
+
+#laporan-nav{
+	display: flex;
+    justify-content: space-around;background-color:white;
+    align-items: center;
+}
