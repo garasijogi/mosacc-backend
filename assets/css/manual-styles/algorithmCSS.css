@@ -158,16 +158,21 @@ ul.dropdown-content {
 	height: 180px !important;
 }
 
-#bulan_DD{
+#more_DD li a:hover {
+	color: black;
+}
+
+#bulan_DD {
 	height: 150px !important;
 }
 
-#tahun_DD{
+#tahun_DD {
 	height: 150px !important;
 }
 
-#laporan-nav{
+#laporan-nav {
 	display: flex;
-    justify-content: space-around;background-color:white;
-    align-items: center;
+	justify-content: space-around;
+	background-color: white;
+	align-items: center;
 }
