@@ -42,7 +42,7 @@ class Form_input_beban extends CI_Controller {
             $this->form_input_pengeluaran_m->app_db->query untuk gunain database ke 2
         */
         $cari = $this->form_input_pengeluaran_m->app_db->query("SELECT idtr FROM $this->table WHERE idtr=(SELECT MAX(idtr) FROM $this->table WHERE idtr LIKE '$kd_temp%%%')")->result();
-        foreach($last_row as $key => $v){
+        foreach($cari as $key => $v){
             $last_row = $v->idtr;
         }
         

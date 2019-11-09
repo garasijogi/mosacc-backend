@@ -62,7 +62,9 @@
                                 <div class="col s12 marbot">
                                     <ul class="tabs">
                                         <li class="tab col s3"><a href="#aset-peralatan">Peralatan</a></li>
-                                        <li class="tab col s3" style="width: 195px;"><a href="#aset-bangunan_tanah">Bangunan & Tanah</a></li>
+                                        <li class="tab col s3"><a href="#aset-perlengkapan">Perlengkapan</a></li>
+                                        <li class="tab col s3"><a href="#aset-kendaraan">Kendaraan</a></li>
+                                        <li class="tab col s4"><a href="#aset-bangunan_tanah">Bangunan & Tanah</a></li>
                                         <li class="tab col s3"><a href="#aset-kas_bank">Kas Bank</a></li>
                                     </ul>
                                 </div>
@@ -127,6 +129,123 @@
                                 </div>
                                 <!-- /Form Aset Peralatan -->
 
+                                <!-- Form Aset Perlengkapan -->
+                                <div id="aset-perlengkapan" class="s12" style="overflow-y: auto;">
+                                    <form id="form_aset-perlengkapan" class="s12" action="<?php echo base_url('wizard/asetPerlengkapan') ?>" method="post">
+                                        <div class="row">
+                                            <div class="col s1 offset-s10">
+                                                <a href="#" id="perlengkapan-add_button" class="waves-effect waves-light btn green"><i class="material-icons">add</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="row center">
+                                            <div class="multiform-template row z-depth-1" data-prefix="perlengkapan">
+                                                <div class="col s10">
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="nama" name="nama">
+                                                            <label for="nama">Nama</label>
+                                                        </div>
+                                                        
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="merek" name="merek">
+                                                            <label for="merek">Merek</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="tanggal" type="text" class="datepicker validate" name="tanggal">
+                                                            <label for="tanggal">Tanggal</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input id="kategori" type="text" class="validate" name="kategori">
+                                                            <label for="kategori">Kategori</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="jumlah" type="text" class="validate" name="jumlah">
+                                                            <label for="jumlah">Jumlah</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input type="number" class="validate" id="harga" name="harga">
+                                                            <label for="harga">Harga</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="centered remove-container input-field col s1">
+                                                    <div class="remove-button btn btn-small waves-effect waves-light red">
+                                                        <i class="material-icons">clear</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col s4 offset-s8">
+                                            <a href="#modal_aset-perlengkapan" class="modal-trigger waves-effect waves-light btn btn-success">Tambah Aset <i class="material-icons right">send</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Form Aset Perlengkapan -->
+
+                                <!-- Form Aset Kendaraan -->
+                                <div id="aset-kendaraan" class="s12" style="overflow-y: auto;">
+                                    <form id="form_aset-kendaraan" class="s12" action="<?php echo base_url('wizard/asetKendaraan') ?>" method="post">
+                                        <div class="row">
+                                            <div class="col s1 offset-s10">
+                                                <a href="#" id="kendaraan-add_button" class="waves-effect waves-light btn green"><i class="material-icons">add</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="row center">
+                                            <div class="multiform-template row z-depth-1" data-prefix="kendaraan">
+                                                <div class="col s10">
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="nama" name="nama">
+                                                            <label for="nama">Nama</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input type="text" class="validate" id="merek" name="merek">
+                                                            <label for="merek">Merek</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="tanggal" type="text" class="datepicker validate" name="tanggal">
+                                                            <label for="tanggal">Tanggal</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input id="tipe" type="text" class="validate" name="tipe">
+                                                            <label for="tipe">Tipe</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s6">
+                                                            <input id="jumlah" type="text" class="validate" name="jumlah">
+                                                            <label for="jumlah">Jumlah</label>
+                                                        </div>
+                                                        <div class="input-field col s6">
+                                                            <input type="number" class="validate" id="harga" name="harga">
+                                                            <label for="harga">Harga</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="centered remove-container input-field col s1">
+                                                    <div class="remove-button btn btn-small waves-effect waves-light red">
+                                                        <i class="material-icons">clear</i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col s4 offset-s8">
+                                            <a href="#modal_aset-kendaraan" class="modal-trigger waves-effect waves-light btn btn-success">Tambah Aset <i class="material-icons right">send</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Form Aset Kendaraan -->
+
                                 <!-- Form Aset Bangunan -->
                                 <div id="aset-bangunan_tanah" class="s12" style="overflow-y: auto;">
                                     <form id="form_aset-bangunan_tanah" class="s12" action="<?php echo base_url('wizard/asetBangunanTanah'); ?>" method="post">
@@ -186,7 +305,7 @@
                                             <div class="col s1 offset-s10">
                                                 <a href="#" id="kas_bank-add_button"
                                                 class="waves-effect waves-light btn green"><i
-                                                class="material-icons">add</i></a>
+                                                class="material-icons">add</i></a></li>
                                             </div>
                                         </div>
                                         
@@ -236,7 +355,6 @@
                                     </div>
                                 </div>
                                 <!-- /Form Aset Kas_Bank -->
-
                             </div>
                         </div>
                     </div>
@@ -244,6 +362,7 @@
             </div>
 
             <div class="form-wizard">
+
                 <div class="profil-content">
                     <div class="profil-contents-wrapper">
                         <div class="col s12">
@@ -274,6 +393,85 @@
                                             <td><?php echo($v['merek']) ?></td>
                                             <td><?php echo($v['tanggal']) ?></td>
                                             <td><?php echo($v['kategori']) ?></td>
+                                            <td><?php echo($v['jumlah']) ?></td>
+                                            <td><?php echo($v['harga']) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profil-content">
+                    <div class="profil-contents-wrapper">
+                        <div class="col s12">
+                            <div class="row header">
+                                <h5>DAFTAR ASET PERLENGKAPAN</h5>
+                                <h6>Aset yang diperlukan untuk mendukung kegiatan operasional</h6>
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <table id="tabel-akun" class="display centered striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>NO.</th>
+                                        <th>NAMA</th>
+                                        <th>MEREK</th>
+                                        <th>TANGGAL</th>
+                                        <th>KATEGORI</th>
+                                        <th>JUMLAH</th>
+                                        <th>HARGA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($perlengkapan as $k => $v): ?>
+                                        <tr>
+                                            <td><?php echo($k+1); ?></td>                                            
+                                            <td><?php echo($v['nama']) ?></td>
+                                            <td><?php echo($v['merek']) ?></td>
+                                            <td><?php echo($v['tanggal']) ?></td>
+                                            <td><?php echo($v['kategori']) ?></td>
+                                            <td><?php echo($v['jumlah']) ?></td>
+                                            <td><?php echo($v['harga']) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profil-content">
+                    <div class="profil-contents-wrapper">
+                        <div class="col s12">
+                            <div class="row header">
+                                <h5>DAFTAR ASET KENDARAAN</h5>
+                                <h6>Aset kendaraan untuk mendukung kegiatan operasional</h6>
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <table id="tabel-akun" class="display centered striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>NO.</th>
+                                        <th>NAMA</th>
+                                        <th>MEREK</th>
+                                        <th>TANGGAL</th>
+                                        <th>TIPE</th>
+                                        <th>JUMLAH</th>
+                                        <th>HARGA</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php foreach($kendaraan as $k => $v): ?>
+                                        <tr>
+                                            <td><?php echo($k+1); ?></td>                                            
+                                            <td><?php echo($v['nama']) ?></td>
+                                            <td><?php echo($v['merek']) ?></td>
+                                            <td><?php echo($v['tanggal']) ?></td>
+                                            <td><?php echo($v['tipe']) ?></td>
                                             <td><?php echo($v['jumlah']) ?></td>
                                             <td><?php echo($v['harga']) ?></td>
                                         </tr>
@@ -375,6 +573,44 @@
                         </div>
                     </div>
                     <!-- /Modal Aset Peralatan -->
+
+                    <!-- Modal aset Perlengkapan -->
+                    <div id="modal_aset-perlengkapan" class="modal">
+                        <div class="modal-content">
+                            <h4>PERINGATAN!</h4>
+                            <p>Harap <b>Cek</b> terlebih dahulu daftar aset yang sudah dimasukkan, data yg sudah ditambahkan <strong>TIDAK DAPAT DIUBAH ATAUPUN DIHAPUS</strong>.
+                                <br/>
+                                <br/>
+                                Daftar aset yang kamu masukkan akan diganti dengan daftar aset yang kamu masukkan pada form ini.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn-submit-perlengkapan" class="waves-effect waves-green btn-flat">Tambah Aset
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <a class="modal-close btn waves-effect waves-green red">KEMBALI</a>
+                        </div>
+                    </div>
+                    <!-- /Modal Aset Perlengkapan -->
+
+                    <!-- Modal aset Kendaraan -->
+                    <div id="modal_aset-kendaraan" class="modal">
+                        <div class="modal-content">
+                            <h4>PERINGATAN!</h4>
+                            <p>Harap <b>Cek</b> terlebih dahulu daftar aset yang sudah dimasukkan, data yg sudah ditambahkan <strong>TIDAK DAPAT DIUBAH ATAUPUN DIHAPUS</strong>.
+                                <br/>
+                                <br/>
+                                Daftar aset yang kamu masukkan akan diganti dengan daftar aset yang kamu masukkan pada form ini.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn-submit-kendaraan" class="waves-effect waves-green btn-flat">Tambah Aset
+                                <i class="material-icons right">send</i>
+                            </button>
+                            <a class="modal-close btn waves-effect waves-green red">KEMBALI</a>
+                        </div>
+                    </div>
+                    <!-- /Modal Aset Kendaraan -->
 
                     <!-- Modal Aset Bangunan_Tanah -->
                     <div id="modal_aset-bangunan_tanah" class="modal">

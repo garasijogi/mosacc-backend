@@ -8,14 +8,30 @@ class Wizard extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        
+        // //sql kueri untuk membuat database master jika tidak ada di sistem
+        // $this->db->trans_start();
+        // $this->db->query("CREATE DATABASE IF NOT EXISTS 'mosacc_master';");
+        // $this->db->query("USE 'mosacc_master';");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `aset-bangunan_tanah` (`id_aset` int(11) NOT NULL, `nama` varchar(256) DEFAULT NULL, `tanggal` date DEFAULT NULL, `luas` double DEFAULT NULL, `nilai` double DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `aset-kas_bank` (`norek` varchar(64) NOT NULL, `nama_pemilik` varchar(128) DEFAULT NULL, `nama_bank` varchar(128) DEFAULT NULL, `nominal` double DEFAULT NULL, `tanggal` date DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `aset-peralatan` (`id_aset` int(6) NOT NULL, `nama` varchar(128) DEFAULT NULL, `merek` varchar(64) DEFAULT NULL, `tanggal` date DEFAULT NULL, `kategori` varchar(64) DEFAULT NULL, `jumlah` varchar(3) DEFAULT NULL, `harga` double DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `files` (`id` int(11) NOT NULL, `nama` varchar(512) DEFAULT NULL, `jenis_file` varchar(24) DEFAULT NULL, `tipe_file` varchar(256) DEFAULT NULL, `ekstensi` varchar(8) DEFAULT NULL, `ukuran` double DEFAULT NULL, `tanggal` date DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `profil_dkm` (`id_pengurus` int(11) NOT NULL, `nama` varchar(256) DEFAULT NULL, `posisi` enum('bendahara','ketua','sekretaris','struktur_dkm') NOT NULL, `alamat` varchar(512) DEFAULT NULL, `telepon` varchar(15) DEFAULT NULL, `pendidikan` varchar(32) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `profil_masjid` (`id_profil` int(11) NOT NULL, `nama` varchar(256) DEFAULT NULL, `alamat` varchar(512) DEFAULT NULL, `tahun` varchar(4) DEFAULT NULL, `telepon` varchar(15) DEFAULT NULL, `rekening` varchar(32) DEFAULT NULL, `luas_tanah` varchar(16) DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `rules` (`kd_akun` varchar(5) NOT NULL, `kd_bagan` varchar(5) NOT NULL, `menu` varchar(256) NOT NULL, `nama_sub` varchar(256) NOT NULL, `debit` varchar(256) NOT NULL, `kredit` varchar(256) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->query("CREATE TABLE IF NOT EXISTS `user` (`NIP` int(25) NOT NULL, `nama_user` varchar(256) NOT NULL, `jenis_user` enum('akuntan','manager') NOT NULL, `password` varchar(256) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        // $this->db->trans_complete();
+
         //cek data user pada database, apakah tersedia
         if (!empty($this->db->get('user')->result())){
             redirect('homepage');//arahkan ke modul wizard
         }
-
+        
         $this->load->helper('uploader'); //load helper uploader
         
         $this->load->model('wizard_m');
+
     }
     
     
@@ -27,18 +43,18 @@ class Wizard extends CI_Controller {
             //buat session kosong
             foreach ($files as $v){
                 $file_wizard['files'][$v] = array(
-                'nama'        => '',
-                'jenis_file'  => $v,
-                'tipe_file'   => '',
-                'ekstensi'    => '',
-                'ukuran'      => '',
-                'tanggal'     => ''
+                    'nama'        => '',
+                    'jenis_file'  => $v,
+                    'tipe_file'   => '',
+                    'ekstensi'    => '',
+                    'ukuran'      => '',
+                    'tanggal'     => ''
                 );
             }
-           
+            
             $this->session->set_userdata($file_wizard);
         }
-
+        
         $this->load->view('wizard/wizard_intro_v');
     }
     
@@ -60,7 +76,7 @@ class Wizard extends CI_Controller {
             
             $data['profil_form'] = $this->session->userdata('profil_form'); //retrieve dan masukkan ke $data
         }
-
+        
         $data['files'] = $this->session->userdata('files'); //retrieve dan masukkan ke $data
         
         // print_r($data);
@@ -78,7 +94,7 @@ class Wizard extends CI_Controller {
         //upload file ke folder temp
         $ad_art = siapUnggah('ad_art', 'files'); //file ad/art (parameter post files, nama session)
         $badan_hukum = siapUnggah('badan_hukum', 'files'); //file badan_hukum (parameter post files, nama session)
-
+        
         //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
@@ -90,8 +106,8 @@ class Wizard extends CI_Controller {
         $files_wizard['files'] = array_replace(
             $dasar, $pengganti
         );
-
-
+        
+        
         $profil_wizard['profil_form'] = array(
             'nama'       => $this->input->post('nama'),
             'alamat'     => $this->input->post('alamat'),
@@ -127,9 +143,9 @@ class Wizard extends CI_Controller {
             
             $data['profil_dkm'] = $this->session->userdata('profil_dkm'); //retrieve dan masukkan ke $data
         }
-
-         $data['files'] = $this->session->userdata('files'); //retrieve dan masukkan ke $data
-
+        
+        $data['files'] = $this->session->userdata('files'); //retrieve dan masukkan ke $data
+        
         // print_r($data);
         // exit;
         
@@ -139,7 +155,7 @@ class Wizard extends CI_Controller {
     public function dkmProses(){
         //Upload file
         $struktur_dkm = siapUnggah('struktur_dkm', 'files'); //panggil struktur_dkm dengan mengambil nama file nya
-
+        
         //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
@@ -150,7 +166,7 @@ class Wizard extends CI_Controller {
         $files_wizard['files'] = array_replace(
             $dasar, $pengganti
         );
-
+        
         //list nama jabatan
         $jabatan = array('ketua', 'sekretaris', 'bendahara');
         //post semua value dan masukkan dalam wizard
@@ -165,17 +181,17 @@ class Wizard extends CI_Controller {
         }
         
         // $userfile = $this->session->userdata('profil_dkm')['struktur_dkm']['nama'];//memangggil nama file
-
         
-
+        
+        
         //masukkan dalam session
         $this->session->set_userdata($profil_wizard);// masukkan dalam session profil_wizard
         $this->session->set_userdata($files_wizard);// masukkan dalam session profil_wizard
-
+        
         // print_r($this->session->userdata('files'));
         // exit;
         // $this->session->unset_userdata('nama'); // unset variabel session spesifik
-    
+        
         redirect('wizard/aset');
     }
     
@@ -186,6 +202,20 @@ class Wizard extends CI_Controller {
         }else{
             $data['peralatan'] = $this->emptyArray('peralatan');
         }
+        
+        //cek session perlengkapan
+        if($this->session->userdata('perlengkapan')) { //cek jika session profil_form sdh tersedia
+            $data['perlengkapan'] = $this->session->userdata('perlengkapan'); //retrieve dan masukkan ke $data
+        }else{
+            $data['perlengkapan'] = $this->emptyArray('perlengkapan');
+        }
+
+        //cek session Kendaraan
+        if($this->session->userdata('kendaraan')) { //cek jika session profil_form sdh tersedia
+            $data['kendaraan'] = $this->session->userdata('kendaraan'); //retrieve dan masukkan ke $data
+        }else{
+            $data['kendaraan'] = $this->emptyArray('kendaraan');
+        }
 
         //cek session bangunan tanah
         if($this->session->userdata('bangunan_tanah')){
@@ -193,18 +223,18 @@ class Wizard extends CI_Controller {
         }else{
             $data['bangunan_tanah'] = $this->emptyArray('bangunan_tanah');
         }
-
+        
         //cek session kas bank
         if($this->session->userdata('kas_bank')){
             $data['kas_bank'] = $this->session->userdata('kas_bank'); //retrieve dan masukkan ke $data
         }else{
             $data['kas_bank'] = $this->emptyArray('kas_bank');
         }
-
-
+        
+        
         $this->load->view('wizard/wizard_aset_v', $data);
     }
-
+    
     //function buat bikin array kosong di session aset
     public function emptyArray($section){
         if($section == 'peralatan'){
@@ -217,11 +247,39 @@ class Wizard extends CI_Controller {
                 'jumlah'   => '',
                 'harga'    => ''
             );
-
+            
             $this->session->set_userdata($data);
             
             return $this->session->userdata('peralatan'); //retrieve dan masukkan ke $data
 
+        }elseif($section == 'perlengkapan'){
+            //buat session kosong
+            $data['perlengkapan'][0] = array(
+                'nama'     => '',
+                'merek'    => '',
+                'tanggal'  => '',
+                'kategori' => '',
+                'jumlah'   => '',
+                'harga'    => ''
+            );
+            
+            $this->session->set_userdata($data);
+            
+            return $this->session->userdata('kendaraan'); //retrieve dan masukkan ke $data
+        }elseif($section == 'kendaraan'){
+            //buat session kosong
+            $data['kendaraan'][0] = array(
+                'nama'     => '',
+                'merek'    => '',
+                'tanggal'  => '',
+                'tipe'     => '',
+                'jumlah'   => '',
+                'harga'    => ''
+            );
+            
+            $this->session->set_userdata($data);
+            
+            return $this->session->userdata('kendaraan'); //retrieve dan masukkan ke $data
         }elseif($section == 'bangunan_tanah'){
             //buat session kosong
             $data['bangunan_tanah'][0] = array(
@@ -231,9 +289,9 @@ class Wizard extends CI_Controller {
                 'nilai'   => ''
             );
             $this->session->set_userdata($data);
-
+            
             return $this->session->userdata('bangunan_tanah');
-
+            
         }elseif($section == 'kas_bank'){
             $data['kas_bank'][0] = array(
                 'norek'        => '',
@@ -243,18 +301,18 @@ class Wizard extends CI_Controller {
                 'tanggal'      => ''
             );
             $this->session->set_userdata($data);
-
+            
             return $this->session->userdata('kas_bank');
         }else{
             echo'ERROR';
             exit;
         }
     }
-
+    
     public function asetPeralatan(){
         //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
         $form_count = count($this->input->post())/6;
-
+        
         //lakukan perulangan untuk mengepos ke dalam variabel
         for($x=0; $x<$form_count; $x++){
             //ambil masing2 nilai dari $_POST
@@ -267,18 +325,66 @@ class Wizard extends CI_Controller {
                 'harga'    => $this->input->post('peralatan_'.$x.'-harga')
             );
         }
-
+        
         //masukkan ke session
         $this->session->set_userdata($data);
-
+        
         //refresh halaman
         redirect('wizard/aset');
     }
 
+    public function asetPerlengkapan(){
+        //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
+        $form_count = count($this->input->post())/6;
+        
+        //lakukan perulangan untuk mengepos ke dalam variabel
+        for($x=0; $x<$form_count; $x++){
+            //ambil masing2 nilai dari $_POST
+            $data['perlengkapan'][$x] = array(
+                'nama'     => $this->input->post('perlengkapan_'.$x.'-nama'),
+                'merek'    => $this->input->post('perlengkapan_'.$x.'-merek'),
+                'tanggal'  => $this->input->post('perlengkapan_'.$x.'-tanggal'),
+                'kategori' => $this->input->post('perlengkapan_'.$x.'-kategori'),
+                'jumlah'   => $this->input->post('perlengkapan_'.$x.'-jumlah'),
+                'harga'    => $this->input->post('perlengkapan_'.$x.'-harga')
+            );
+        }
+        
+        //masukkan ke session
+        $this->session->set_userdata($data);
+        
+        //refresh halaman
+        redirect('wizard/aset');
+    }
+
+    public function asetKendaraan(){
+        //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
+        $form_count = count($this->input->post())/6;
+        
+        //lakukan perulangan untuk mengepos ke dalam variabel
+        for($x=0; $x<$form_count; $x++){
+            //ambil masing2 nilai dari $_POST
+            $data['kendaraan'][$x] = array(
+                'nama'     => $this->input->post('kendaraan_'.$x.'-nama'),
+                'merek'    => $this->input->post('kendaraan_'.$x.'-merek'),
+                'tanggal'  => $this->input->post('kendaraan_'.$x.'-tanggal'),
+                'tipe'     => $this->input->post('kendaraan_'.$x.'-tipe'),
+                'jumlah'   => $this->input->post('kendaraan_'.$x.'-jumlah'),
+                'harga'    => $this->input->post('kendaraan_'.$x.'-harga')
+            );
+        }
+        
+        //masukkan ke session
+        $this->session->set_userdata($data);
+        
+        //refresh halaman
+        redirect('wizard/aset');
+    }
+    
     public function asetBangunanTanah(){
         //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
         $form_count = count($this->input->post())/4;
-
+        
         //lakukan perulangan untuk mengepos ke dalam variabel
         for($x=0; $x<$form_count; $x++){
             //ambil masing2 nilai dari $_POST
@@ -289,18 +395,18 @@ class Wizard extends CI_Controller {
                 'nilai'     => $this->input->post('bangunan_tanah_'.$x.'-nilai')
             );
         }
-
+        
         //masukkan ke session
         $this->session->set_userdata($data);
-
+        
         //refresh halaman
         redirect('wizard/aset');
     }
-
+    
     public function asetKasBank(){
-         //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
+        //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
         $form_count = count($this->input->post())/5;
-
+        
         //lakukan perulangan untuk mengepos ke dalam variabel
         for($x=0; $x<$form_count; $x++){
             //ambil masing2 nilai dari $_POST
@@ -312,10 +418,10 @@ class Wizard extends CI_Controller {
                 'tanggal' => $this->input->post('kas_bank_'.$x.'-tanggal'),
             );
         }
-
+        
         //masukkan ke session
         $this->session->set_userdata($data);
-
+        
         //refresh halaman
         redirect('wizard/aset');
     }
@@ -342,9 +448,9 @@ class Wizard extends CI_Controller {
             //beri flag password
             $data['pw_ketua_dkm'] = 0;
         }
-
+        
         $bendahara = $this->session->userdata('bendahara');
-
+        
         if(!empty($bendahara['nama_user'])){
             //bungkus password
             $data['bendahara'] = $this->session->userdata('bendahara');
@@ -366,19 +472,19 @@ class Wizard extends CI_Controller {
         //kirim ke view
         $this->load->view('wizard/wizard_akun_baru_v', $data);
     }
-
+    
     public function akun_baruProses(){
         //post password dari form
         $pw = $this->input->post('pw');
-
+        
         $jabatan = $this->input->get('jabatan');
-
+        
         if($jabatan == 'ketua_dkm'){
             $jenis_user = 'manager';
         }else{
             $jenis_user = 'akuntan';
         }
-
+        
         //enkrip dengan AES
         //masukkan ke session
         $data[$jabatan] = array(
@@ -386,67 +492,79 @@ class Wizard extends CI_Controller {
             'jenis_user' => $jenis_user,
             'password'   => $pw
         );
-
+        
         $this->session->set_userdata($data);
         
         //balik ke halaman sebelumnya
         redirect('wizard/akun_baru');
     }
-
+    
     public function wizardProses(){
         //ambil data profil masjid
         $profil_masjid[0] = $this->session->userdata('profil_form');
-
+        
         //ambil data user akun
         $user[0] = $this->session->userdata('ketua_dkm');
         $user[1] = $this->session->userdata('bendahara');
         
         $profil_dkm = $this->session->userdata('profil_dkm');
-
+        
         //ambil data peralatan
         $peralatan = $this->session->userdata('peralatan');
 
+        //ambil data perlengkapan
+        $perlengkapan = $this->session->userdata('perlengkapan');
+
+        //ambil data perlengkapan
+        $kendaraan = $this->session->userdata('kendaraan');
+        
         //ambil data peralatan
         $bangunan_tanah = $this->session->userdata('bangunan_tanah');
-
+        
         //ambil data peralatan
         $kas_bank = $this->session->userdata('kas_bank');
-
+        
         //ambil data files
         $files = $this->session->userdata('files');
         
         //masukkan data profil ke dalam database
         $this->wizard_m->insertData('profil_masjid', $profil_masjid);
-
+        
         //masukkan data user ke dalam database
         $this->wizard_m->insertData('user', $user);
-
+        
         //masukkan data profil_dkm ke dalam database
         $this->wizard_m->insertData('profil_dkm', $profil_dkm);
-
+        
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('aset-peralatan', $peralatan);
 
+        //masukkan data perlengkapan ke dalam database
+        $this->wizard_m->insertData('aset-perlengkapan', $perlengkapan);
+
+        //masukkan data peralatan ke dalam database
+        $this->wizard_m->insertData('aset-kendaraan', $kendaraan);
+        
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('aset-bangunan_tanah', $bangunan_tanah);
-
+        
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('aset-kas_bank', $kas_bank);
-
+        
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('files', $files);
-
+        
         //menghapus semua session di browser
         // $semuaSession = array_keys($this->session->all_userdata());
         // foreach($semuaSession as $v){
-        //     print_r($v);
-        //     $this->session->unset_userdata($v);
-        // }        
-        //ke halaman homepage
-        redirect('homepage');
+            //     print_r($v);
+            //     $this->session->unset_userdata($v);
+            // }        
+            //ke halaman homepage
+            redirect('homepage');
+        }
+        
     }
     
-}
-
-/* End of file  wizard.php */
-
+    /* End of file  wizard.php */
+    
