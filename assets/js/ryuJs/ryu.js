@@ -155,6 +155,18 @@ $("#btn-submit-peralatan").click(function () {
 	$("#form_aset-peralatan").submit();
 });
 
+//aset perlengkapan submit button
+$("#btn-submit-perlengkapan").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-perlengkapan").submit();
+});
+
+//aset kendaraan submit button
+$("#btn-submit-kendaraan").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-kendaraan").submit();
+});
+
 //aset peralatan submit button
 $("#btn-submit-bangunan_tanah").click(function () {
 	/* when the submit button in the modal is clicked, submit the form */

@@ -52,30 +52,38 @@ class Dashboard extends CI_Controller
         // print_r($tableList);
         // echo'<br>';
         // echo'<br>';
+        $x = 0;
+        $y = 0;
+
+        $bulan = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
         foreach ($kd_akun as $v) { //setiap perulangan kd_akun
-            foreach ($tableList as $value) { //setiap perulangan table
-                if ($value == 'tr21_pembelian_pending') {
-                    $hasil2[$x] = $this->dashboard_m->getSumPerAkun2($value, $v['kd_akun']); //khusus buat tabel tr21 karena tabel nominal jadi total_harga
-                } else {
-                    $hasil2[$x] = $this->dashboard_m->getSumPerAkun($value, $v['kd_akun']);
+            foreach($bulan as $b){
+                foreach ($tableList as $value) { //setiap perulangan table
+                    if ($value == 'tr21_pembelian_pending') {
+                        $hasil2[$x] = $this->dashboard_m->getSumPerAkun2($value, $v['kd_akun'], $b); //khusus buat tabel tr21 karena tabel nominal jadi total_harga
+                    } else {
+                        $hasil2[$x] = $this->dashboard_m->getSumPerAkun($value, $v['kd_akun'], $b);
+                    }
+                    if(!empty($hasil2[$x])){
+                        $hasil3[$y]=$hasil2[$x];
+                        $y++;
+                    }
+                    $x++;
                 }
-                $x++;
             }
-
         }
 
-        foreach($hasil as $v){
-            print_r($v);
-            echo"<br>";
+        // foreach($hasil as $v){
+        //     print_r($v);
+        //     echo"<br>";
+        // }
 
-        }
+        // echo"<br>";
+        // echo"<br>";
 
-        echo"<br>";
-        echo"<br>";
+        // print_r($hasil3);
 
-        print_r($hasil2);
-
-        exit;
+        // exit;
 
         $this->dashboard_m->insertSum($hasil);
 

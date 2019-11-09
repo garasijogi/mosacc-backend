@@ -203,6 +203,20 @@ class Wizard extends CI_Controller {
             $data['peralatan'] = $this->emptyArray('peralatan');
         }
         
+        //cek session perlengkapan
+        if($this->session->userdata('perlengkapan')) { //cek jika session profil_form sdh tersedia
+            $data['perlengkapan'] = $this->session->userdata('perlengkapan'); //retrieve dan masukkan ke $data
+        }else{
+            $data['perlengkapan'] = $this->emptyArray('perlengkapan');
+        }
+
+        //cek session Kendaraan
+        if($this->session->userdata('kendaraan')) { //cek jika session profil_form sdh tersedia
+            $data['kendaraan'] = $this->session->userdata('kendaraan'); //retrieve dan masukkan ke $data
+        }else{
+            $data['kendaraan'] = $this->emptyArray('kendaraan');
+        }
+
         //cek session bangunan tanah
         if($this->session->userdata('bangunan_tanah')){
             $data['bangunan_tanah'] = $this->session->userdata('bangunan_tanah'); //retrieve dan masukkan ke $data
@@ -237,7 +251,35 @@ class Wizard extends CI_Controller {
             $this->session->set_userdata($data);
             
             return $this->session->userdata('peralatan'); //retrieve dan masukkan ke $data
+
+        }elseif($section == 'perlengkapan'){
+            //buat session kosong
+            $data['perlengkapan'][0] = array(
+                'nama'     => '',
+                'merek'    => '',
+                'tanggal'  => '',
+                'kategori' => '',
+                'jumlah'   => '',
+                'harga'    => ''
+            );
             
+            $this->session->set_userdata($data);
+            
+            return $this->session->userdata('kendaraan'); //retrieve dan masukkan ke $data
+        }elseif($section == 'kendaraan'){
+            //buat session kosong
+            $data['kendaraan'][0] = array(
+                'nama'     => '',
+                'merek'    => '',
+                'tanggal'  => '',
+                'tipe'     => '',
+                'jumlah'   => '',
+                'harga'    => ''
+            );
+            
+            $this->session->set_userdata($data);
+            
+            return $this->session->userdata('kendaraan'); //retrieve dan masukkan ke $data
         }elseif($section == 'bangunan_tanah'){
             //buat session kosong
             $data['bangunan_tanah'][0] = array(
@@ -281,6 +323,54 @@ class Wizard extends CI_Controller {
                 'kategori' => $this->input->post('peralatan_'.$x.'-kategori'),
                 'jumlah'   => $this->input->post('peralatan_'.$x.'-jumlah'),
                 'harga'    => $this->input->post('peralatan_'.$x.'-harga')
+            );
+        }
+        
+        //masukkan ke session
+        $this->session->set_userdata($data);
+        
+        //refresh halaman
+        redirect('wizard/aset');
+    }
+
+    public function asetPerlengkapan(){
+        //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
+        $form_count = count($this->input->post())/6;
+        
+        //lakukan perulangan untuk mengepos ke dalam variabel
+        for($x=0; $x<$form_count; $x++){
+            //ambil masing2 nilai dari $_POST
+            $data['perlengkapan'][$x] = array(
+                'nama'     => $this->input->post('perlengkapan_'.$x.'-nama'),
+                'merek'    => $this->input->post('perlengkapan_'.$x.'-merek'),
+                'tanggal'  => $this->input->post('perlengkapan_'.$x.'-tanggal'),
+                'kategori' => $this->input->post('perlengkapan_'.$x.'-kategori'),
+                'jumlah'   => $this->input->post('perlengkapan_'.$x.'-jumlah'),
+                'harga'    => $this->input->post('perlengkapan_'.$x.'-harga')
+            );
+        }
+        
+        //masukkan ke session
+        $this->session->set_userdata($data);
+        
+        //refresh halaman
+        redirect('wizard/aset');
+    }
+
+    public function asetKendaraan(){
+        //hitung jumlah form input field dengan liat brp banyak yg dimasukkan ke dalam variabel $_POST lalu dibagi dengan jumlah inputnya
+        $form_count = count($this->input->post())/6;
+        
+        //lakukan perulangan untuk mengepos ke dalam variabel
+        for($x=0; $x<$form_count; $x++){
+            //ambil masing2 nilai dari $_POST
+            $data['kendaraan'][$x] = array(
+                'nama'     => $this->input->post('kendaraan_'.$x.'-nama'),
+                'merek'    => $this->input->post('kendaraan_'.$x.'-merek'),
+                'tanggal'  => $this->input->post('kendaraan_'.$x.'-tanggal'),
+                'tipe'     => $this->input->post('kendaraan_'.$x.'-tipe'),
+                'jumlah'   => $this->input->post('kendaraan_'.$x.'-jumlah'),
+                'harga'    => $this->input->post('kendaraan_'.$x.'-harga')
             );
         }
         
@@ -421,6 +511,12 @@ class Wizard extends CI_Controller {
         
         //ambil data peralatan
         $peralatan = $this->session->userdata('peralatan');
+
+        //ambil data perlengkapan
+        $perlengkapan = $this->session->userdata('perlengkapan');
+
+        //ambil data perlengkapan
+        $kendaraan = $this->session->userdata('kendaraan');
         
         //ambil data peralatan
         $bangunan_tanah = $this->session->userdata('bangunan_tanah');
@@ -442,6 +538,12 @@ class Wizard extends CI_Controller {
         
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('aset-peralatan', $peralatan);
+
+        //masukkan data perlengkapan ke dalam database
+        $this->wizard_m->insertData('aset-perlengkapan', $perlengkapan);
+
+        //masukkan data peralatan ke dalam database
+        $this->wizard_m->insertData('aset-kendaraan', $kendaraan);
         
         //masukkan data peralatan ke dalam database
         $this->wizard_m->insertData('aset-bangunan_tanah', $bangunan_tanah);

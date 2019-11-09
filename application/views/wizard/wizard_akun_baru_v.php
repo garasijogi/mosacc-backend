@@ -130,7 +130,9 @@
 				<div id="login-manajer" class="modal">
 					<form action="<?php echo base_url('wizard/akun_baruProses'); ?>?jabatan=ketua_dkm" method="post">
 						<div class="modal-content">
-							<img src="assets/manager icon.png" alt="icon-manajer">
+							<div class="wrapper-jabatan_photos">
+								<img class="wizard-jabatan_photos" src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>" alt="icon-manajer">
+							</div>
 							<h4>Ketua DKM</h4>
 							<div class="input-field col s3">
 								<input id="input-login-manajer" type="password" class="validate" name="pw" value="<?php echo $ketua_dkm['password']; ?>">
@@ -146,7 +148,9 @@
 				<div id="login-akuntan" class="modal">
 					<form action="<?php echo base_url('wizard/akun_baruProses'); ?>?jabatan=bendahara" method="post">
 						<div class="modal-content">
-							<img src="assets/akuntan icon.png" alt="icon-akuntan">
+							<div class="wrapper-jabatan_photos">
+								<img class="wizard-jabatan_photos" src="<?php echo base_url('assets/images/icon/accountant-icon.png'); ?>" alt="icon-manajer">
+							</div>
 							<h4>Bendahara</h4>
 							<div class="input-field col s3">
 								<input id="input-login-akuntan" type="password" class="validate" name="pw" value="<?php echo $bendahara['password']; ?>">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2019 at 06:31 AM
+-- Generation Time: Nov 09, 2019 at 01:12 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,6 +21,41 @@ SET time_zone = "+00:00";
 --
 -- Database: `mosacc_tr_2019`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sum_kd_akun`
+--
+
+DROP TABLE IF EXISTS `sum_kd_akun`;
+CREATE TABLE `sum_kd_akun` (
+  `kd_sum` varchar(7) NOT NULL,
+  `kd_akun` varchar(5) DEFAULT NULL,
+  `bulan` varchar(2) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sum_kd_akun`
+--
+
+INSERT INTO `sum_kd_akun` (`kd_sum`, `kd_akun`, `bulan`, `jumlah`) VALUES
+('', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sum_table`
+--
+
+DROP TABLE IF EXISTS `sum_table`;
+CREATE TABLE `sum_table` (
+  `kd_sum` int(11) NOT NULL,
+  `tabel` varchar(128) NOT NULL,
+  `bulan` varchar(2) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -43,9 +78,7 @@ CREATE TABLE `tr11_penerimaan_tidak_terikat_pending` (
 --
 
 INSERT INTO `tr11_penerimaan_tidak_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019091611110001', '11110', '2019-09-16', 250000, 'Jack', 'Peminjaman peralatan sound'),
-('2019100111200001', '11200', '2019-10-01', 12312, ' ', 'eqwerwqeq'),
-('2019101511120001', '11120', '2019-10-15', 378000, 'Hideyoshi', 'kampang');
+('2019102811110001', '11110', '2019-10-28', 100000, 'Robby', 'Penerimaan dari pemberian pinjaman alat sound system masjid sebesar Rp 100,000							');
 
 -- --------------------------------------------------------
 
@@ -68,25 +101,18 @@ CREATE TABLE `tr12_penerimaan_terikat_pending` (
 --
 
 INSERT INTO `tr12_penerimaan_terikat_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `nama_pemberi`, `keterangan`) VALUES
-('2019090912610001', '12610', '2019-09-09', 4000000, ' ', 'Jumat minggu 1'),
-('2019091012610001', '12610', '2019-09-10', 213123, ' ', 'qweqweqwe'),
-('2019091012620001', '12620', '2019-09-10', 2400, '', 'jajajaja'),
-('2019091212610001', '12610', '2019-09-12', 2100, '', 'apa aja'),
-('2019091212700001', '12700', '2019-09-12', 25566, 'jajang', 'gasgsg'),
-('2019091212700002', '12700', '2019-09-12', 244, 'sher', 'tdsatgsd'),
-('2019091212700003', '12700', '2019-09-12', 344, 'ahah', 'gdsg'),
-('2019091312850001', '12850', '2019-09-13', 3535532, 'jajanghaa', 'gaga'),
-('2019091312850002', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
-('2019091312850003', '12850', '2019-09-13', 211, 'jajangasoy', 'gsdag'),
-('2019091312850004', '12850', '2019-09-13', 2555, 'jajangmantap', 'sdftds'),
-('2019091512630001', '12630', '2019-09-15', 212323, ' ', 'KKKAD'),
-('2019091912610001', '12610', '2019-09-19', 250, ' ', 'hauuu'),
-('2019092112850001', '12850', '2019-09-21', 3423, 'jajang', 'ergdsg'),
-('2019100812610001', '12610', '2019-10-08', 12321312, ' ', 'sadsads'),
-('2019101112700001', '12700', '2019-10-11', 213213, 'weqweqwe', 'asdasdsad'),
-('2019101412700001', '12700', '2019-10-14', 2131313, 'qweqewqe', 'sdadsad'),
-('2019101612640001', '12640', '2019-10-16', 670000, ' ', 'hiyahiyahiya'),
-('2019103112700001', '12700', '2019-10-31', 123213, 'Kuncru', 'whgjndsc');
+('2019100312840001', '12840', '2019-10-03', 900000, 'Robby', 'Penerimaan zakat sebesar Rp 900,000							'),
+('2019100412610001', '12610', '2019-10-04', 735000, ' ', 'Penerimaan infaq Jumat sebesar Rp 735,000							'),
+('2019100712610001', '12610', '2019-10-07', 230000, ' ', 'transfer dari bank a/n robby'),
+('2019100712870001', '12870', '2019-10-07', 1800000, 'Robby', 'Penerimaan wakaf tunai sebesar Rp 1,800,000							'),
+('2019101112610001', '12610', '2019-10-11', 755000, ' ', 'Penerimaan infaq Jumat sebesar Rp 755,000							'),
+('2019101712630001', '12630', '2019-10-17', 700000, ' ', 'Penerimaan infaq pengajian bulanan sebesar Rp 700,000							'),
+('2019101812610001', '12610', '2019-10-18', 705000, ' ', 'Penerimaan infaq Jumat sebesar Rp 705,000							'),
+('2019102012620001', '12620', '2019-10-20', 2000000, ' ', 'Penerimaan infaq dari perayaan hari besar Islam sebesar Rp 2,000,000'),
+('2019102512610001', '12610', '2019-10-25', 835000, ' ', 'Penerimaan infaq Jumat sebesar Rp 835,000							'),
+('2019103112610001', '12820', '2019-10-31', 3103000, ' ', 'Penerimaan tromol subuh sebesar (akumulasi 1 bulan) Rp 3,103,000							'),
+('2019103112610002', '12820', '2019-10-31', 930000, ' ', 'Penerimaan tromol magrib sebesar (akumulasi 1 bulan) Rp 930,000							'),
+('2019103112610003', '12820', '2019-10-31', 850000, ' ', 'Penerimaan tromol kotak besar sebesar Rp 850,000							');
 
 -- --------------------------------------------------------
 
@@ -113,11 +139,7 @@ CREATE TABLE `tr21_pembelian_pending` (
 --
 
 INSERT INTO `tr21_pembelian_pending` (`idtr`, `kd_akun`, `tanggal`, `jenis`, `merek`, `nomor_seri`, `jumlah`, `keterangan`, `harga_satuan`, `total_harga`) VALUES
-('2019101721100001', '21100', '2019-10-01', 'Mobil', 'Honda', 'Jazz 220', 1, 'Untuk kebutuhan acara studi banding', 400000000, 400000000),
-('2019101721100002', '21100', '2019-10-02', 'Motor', 'Suzuki', 'Korakora', 2, 'mantap lah', 20000000, 40000000),
-('2019102221100001', '21100', '2019-10-15', '1', 'sadsad', '1231321', 12312321, 'erwfdewdwsf', 21321312, 43242),
-('2019102221100002', '21100', '2019-10-13', '2', 'wqewqe', '231213', 6435435, 'edasfrsere', 342342, 21312321),
-('2019102221100003', '21100', '2019-10-14', '2', 'wqewqe', '3213213', 12321321, 'qwewqewq', 123213, 213213);
+('2019102421100001', '21100', '2019-10-23', '1', 'Merk Pintu', '001', 1, 'Pembelian pintu kamar mandi laki-laki sebesar Rp 550,000							', 550000, 550000);
 
 -- --------------------------------------------------------
 
@@ -133,6 +155,20 @@ CREATE TABLE `tr22_beban_pending` (
   `nominal` int(11) DEFAULT NULL,
   `keterangan` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tr22_beban_pending`
+--
+
+INSERT INTO `tr22_beban_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`, `keterangan`) VALUES
+('2019100422231001', '22231', '2019-10-04', 250000, 'Pembayaran insentif khatib Jumat sebesar Rp 250,000							'),
+('2019101022232001', '22232', '2019-10-10', 250000, 'membayarkan honor pengurus (marbot sebesar Rp 250,000)							'),
+('2019101122231001', '22231', '2019-10-11', 250000, 'Pembayaran insentif khatib Jumat sebesar Rp 250,000							'),
+('2019101522111001', '22111', '2019-10-15', 300000, 'Membayarkan biaya listrik dan telepon Rp 300,000							'),
+('2019101722231001', '22231', '2019-10-17', 300000, 'Pembayaran pembicara pengajian bulanan sebesar Rp 300,000					'),
+('2019101822231001', '22231', '2019-10-18', 250000, 'Pembayaran insentif khatib Jumat sebesar Rp 250,000							'),
+('2019102222115001', '22112', '2019-10-22', 250000, 'Membayarkan biaya servis mesin air sebesar Rp 250,000							'),
+('2019102522231001', '22231', '2019-10-25', 250000, 'Pembayaran insentif khatib Jumat sebesar Rp 250,000							');
 
 -- --------------------------------------------------------
 
@@ -166,6 +202,18 @@ INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`
 --
 
 --
+-- Indexes for table `sum_kd_akun`
+--
+ALTER TABLE `sum_kd_akun`
+  ADD PRIMARY KEY (`kd_sum`);
+
+--
+-- Indexes for table `sum_table`
+--
+ALTER TABLE `sum_table`
+  ADD PRIMARY KEY (`kd_sum`);
+
+--
 -- Indexes for table `tr11_penerimaan_tidak_terikat_pending`
 --
 ALTER TABLE `tr11_penerimaan_tidak_terikat_pending`
@@ -188,6 +236,16 @@ ALTER TABLE `tr21_pembelian_pending`
 --
 ALTER TABLE `tr22_beban_pending`
   ADD PRIMARY KEY (`idtr`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `sum_table`
+--
+ALTER TABLE `sum_table`
+  MODIFY `kd_sum` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

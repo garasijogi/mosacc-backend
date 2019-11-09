@@ -28,7 +28,7 @@
 	<!-- content -->
 	<div class="content ">
 		<div class="row ">
-			<div class="col s8 offset-s3 ">
+			<div class="col s5 offset-s3 ">
 				<ul id="tabs-swipe-dashchart" class="tabs tabs-cardContainer">
 					<li class="tab col card-tab s3">
 						<a class="active card-status" href="#swipe-saldo">
