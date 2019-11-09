@@ -41,7 +41,7 @@ class Homepage extends CI_Controller
   {
     if ($this->session->userdata('status') == NULL) {
       $this->load->view('homepage_v.php');
-    } elseif ($this->session->userdata('jenis_user') == 'manajer') {
+    } elseif ($this->session->userdata('jenis_user') == 'manager') {
       redirect('mgr/dashboard');
     } elseif ($this->session->userdata('jenis_user') == 'akuntan') {
       redirect('acc/dashboard');

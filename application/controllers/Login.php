@@ -43,18 +43,18 @@ class Login extends CI_Controller
         $this->session->set_userdata($arraydata);
       }
     endforeach;
-   
+
     if ($masuk == 1 && $jenis_user == 'akuntan') {
       redirect('acc/dashboard');
     }
-    if ($masuk == 1 && $jenis_user == 'manajer') {
+    if ($masuk == 1 && $jenis_user == 'manager') {
       redirect('mgr/dashboard');
     }
     if ($masuk == 0 && $jenis_user == 'akuntan') {
       redirect('homepage?masuk=0&&jenis_user=akuntan');
     }
-    if ($masuk == 0 && $jenis_user == 'manajer') {
-      redirect('homepage?masuk=0&&jenis_user=manajer');
+    if ($masuk == 0 && $jenis_user == 'manager') {
+      redirect('homepage?masuk=0&&jenis_user=manager');
     }
   }
 

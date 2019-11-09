@@ -128,9 +128,9 @@
         <div class="modal-content center">
             <img src="<?php echo base_url('assets/images/icon/manager-icon.jpg'); ?>" alt="icon-manajer" width="200px" height="200px">
             <h4>Ketua DKM</h4>
-            <form action="<?php echo base_url('login/login_user?jenis_user=manajer'); ?>" method="post" id="form-login-manajer" class="left-align">
+            <form action="<?php echo base_url('login/login_user?jenis_user=manager'); ?>" method="post" id="form-login-manajer" class="left-align">
                 <div class="input-field col s3">
-                    <input id="password2" type="password" autofocus required>
+                    <input id="password2" type="password" name='password' autofocus required>
                     <label for="password2">Masukkan Password</label>
                 </div>
                 <label>
@@ -139,7 +139,7 @@
                 </label>
                 <?php
                 $masuk = $this->input->get('masuk');
-                if ($masuk != NULL && $jenis_user == 'manajer') :
+                if ($masuk != NULL && $jenis_user == 'manager') :
                     ?>
                     <h6 class="red-text">Invalid password. Please try again.</h6>
                 <?php
@@ -161,7 +161,7 @@
             ?>
             modalSalahPasswordAkuntan();
         <?php }
-        if ($masuk != NULL && $jenis_user == 'manajer') {
+        if ($masuk != NULL && $jenis_user == 'manager') {
             ?>
             modalSalahPasswordManajer();
         <?php } ?>
