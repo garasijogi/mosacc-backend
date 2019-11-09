@@ -163,7 +163,7 @@ ul.dropdown-content {
 }
 
 #bulan_DD {
-	height: 150px !important;
+	height: 350px !important;
 }
 
 #tahun_DD {
@@ -175,4 +175,8 @@ ul.dropdown-content {
 	justify-content: space-around;
 	background-color: white;
 	align-items: center;
+}
+
+.dropdown-content {
+	position: absolute !important;
 }

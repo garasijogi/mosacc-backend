@@ -58,15 +58,15 @@ class Dashboard extends CI_Controller
 
         $bulan = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
         foreach ($kd_akun as $v) { //setiap perulangan kd_akun
-            foreach($bulan as $b){
+            foreach ($bulan as $b) {
                 foreach ($tableList as $value) { //setiap perulangan table
                     if ($value == 'tr21_pembelian_pending') {
                         $hasil2[$x] = $this->dashboard_m->getSumPerAkun2($value, $v['kd_akun'], $b); //khusus buat tabel tr21 karena tabel nominal jadi total_harga
                     } else {
                         $hasil2[$x] = $this->dashboard_m->getSumPerAkun($value, $v['kd_akun'], $b);
                     }
-                    if(!empty($hasil2[$x])){
-                        $hasil3[$y]=$hasil2[$x];
+                    if (!empty($hasil2[$x])) {
+                        $hasil3[$y] = $hasil2[$x];
                         $y++;
                     }
                     $x++;
@@ -107,6 +107,11 @@ class Dashboard extends CI_Controller
         execInBackground('start cmd.exe @cmd /k "taskkill /IM chrome.exe"');
         execInBackground('start cmd.exe @cmd /k ""C:\xampp1\xampp_stop.exe""');
         execInBackground('cmd.exe @cmd /k "taskkill /F /IM cmd.exe"');
+    }
+
+    function about_us()
+    {
+        $this->load->view('acc/about_us_v.php');
     }
 }
         /* End of file  index.php */
