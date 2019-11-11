@@ -180,3 +180,7 @@ ul.dropdown-content {
 .dropdown-content {
 	position: absolute !important;
 }
+
+.flex-display {
+	display: flex;
+}

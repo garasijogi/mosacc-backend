@@ -119,6 +119,7 @@
 							<th>Jumlah</th>
 							<th>Harga</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -131,7 +132,16 @@
 								<td><?php echo $col->merek; ?></td>
 								<td><?php echo $col->jumlah; ?></td>
 								<td><?php echo $col->total_harga; ?></td>
-								<td></td>
+								<td>
+									<a href="<?php echo base_url('acc/form_input_pembelian/edit_p?idtr=' . $col->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $col->tanggal . '&&jenis=' . $col->jenis . '&&keterangan=' . $col->keterangan . '&&merek=' . $col->merek . '&&nomor_seri=' . $col->nomor_seri . '&&jumlah=' . $col->jumlah . '&&harga_satuan=' . $col->harga_satuan . '&total_harga=' . $col->total_harga); ?>">
+										<img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">
+									</a>
+								</td>
+								<td>
+									<a id='<?php echo $col->idtr; ?>' href="#modal-delete" class="modal-trigger" data-page='<?php echo $this->router->fetch_class(); ?>' data-controller='<?php echo $col->kd_akun; ?>' onclick='delete_button_pengeluaran(this.id)'>
+										<img src="<?php echo base_url('assets/images/icon/sidebar/tongsampah-black.svg') ?>" width="20px" height="20px">
+									</a>
+								</td>
 							</tr>
 						<?php
 						endforeach;
@@ -145,6 +155,7 @@
 							<th>Jumlah</th>
 							<th>Harga</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</tfoot>
 				</table>
@@ -154,8 +165,38 @@
 	</section>
 	<!-- /content -->
 
+	<!-- modal delete -->
+	<div id="modal-delete" class="modal">
+		<div class="modal-content">
+			<h4>Hapus Transaksi</h4>
+			<p>Apakah anda yakin untuk menghapus transaksi ini?</p>
+		</div>
+		<div class="modal-footer">
+			<a id='tombol-delete' class="modal-close waves-effect waves-green btn-small red">Ya</a>
+			<a href="#" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
+		</div>
+	</div>
+	<!-- end modal delete -->
+
+	<!-- modal edit -->
+	<div id="modal-edit" class="modal">
+		<div class="modal-content">
+			<h4>Edit Berhasil</h4>
+			<p>Data telah berhasil diubah</p>
+		</div>
+		<div class="modal-footer">
+			<a id='tombol-delete' class="modal-close waves-effect waves-green btn-small green">Tutup</a>
+		</div>
+	</div>
+	<!-- end modal edit -->
+
 	<!-- Javascript -->
 	<?php $this->load->view("acc/_partials/js"); ?>
+	<script>
+		<?php if ($this->input->get('ubah') != NULL) { ?>
+			modalEdit();
+		<?php } ?>
+	</script>
 	<!-- /Javascript -->
 </body>
 

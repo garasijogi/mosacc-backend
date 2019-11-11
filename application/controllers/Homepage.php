@@ -47,6 +47,11 @@ class Homepage extends CI_Controller
       redirect('acc/dashboard');
     }
   }
+
+  public function about_us()
+  {
+    $this->load->view('about_us_v.php');
+  }
 }
 
 

@@ -222,6 +222,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	  $("#tombol-delete").attr('href', "proses_delete?idtr="+id+"&&controller="+controller);
   }
 
+   //delete button pengeluaran
+  function delete_button_pengeluaran(id){
+	  var controller = $('#'+id).data('controller');
+	  var page = $('#'+id).data('page');
+	  $("#tombol-delete").attr('href', page+"/proses_delete?idtr="+id+"&&controller="+controller);
+  }
+
   //modal berhasil edit
   function modalEdit() {
 	$(document).ready(function () {
