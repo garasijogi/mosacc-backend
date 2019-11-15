@@ -5,6 +5,7 @@ class Dashboard_m extends CI_Model
 {
     public $app_db;
 
+    //ambil sum per bulan di tiap tabel
     public function getSumPerMonth($tabel)
     {
         //kueri SUM Table trus di gup dalam bulan
@@ -30,6 +31,7 @@ class Dashboard_m extends CI_Model
         return $hasil;
     }
 
+    //ambil sum per bulan di tabel dengan atribut total harga
     public function getSumPerMonth2($tabel)
     {
         //kueri SUM Table trus di gup dalam bulan
@@ -37,20 +39,22 @@ class Dashboard_m extends CI_Model
 
         $hasil = array();
         //ubah format bulan jadi 2 digit di semua bulan
-        foreach ($result as $k => $v) {
-            if (!empty($result)) {
-                $hasil[$k]['tabel'] = $tabel;
-                $hasil[$k]['bulan'] = str_pad($v['MONTH(tanggal)'], 2, '0', STR_PAD_LEFT);
-                $hasil[$k]['jumlah'] = $v['SUM(total_harga)'];
-            }
-        }
+        // foreach ($result as $k => $v) {
+        //     if (!empty($result)) {
+        //         $hasil[$k]['tabel'] = $tabel;
+        //         $hasil[$k]['bulan'] = str_pad($v['MONTH(tanggal)'], 2, '0', STR_PAD_LEFT);
+        //         $hasil[$k]['jumlah'] = $v['SUM(total_harga)'];
+        //     }
+        // }
 
-        if (empty($result)) {
-            $hasil[0]['tabel'] = $tabel;
-            $hasil[0]['bulan'] = '';
-            $hasil[0]['jumlah'] = '';
-        }
-
+        // if (empty($result)) {
+        //     $hasil[0]['tabel'] = $tabel;
+        //     $hasil[0]['bulan'] = '';
+        //     $hasil[0]['jumlah'] = '';
+        // }
+        
+        // print_r($result);
+        echo('<br>');
         //kembalikan nilai
         return $hasil;
     }
@@ -89,22 +93,30 @@ class Dashboard_m extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function getSumPerAkun($tabel, $kd_akun)
-    {
+    public function getSumPerAkun($tabel, $kd_akun, $b) {
         $result = $this->app_db->query("SELECT MONTH(tanggal), SUM(nominal) FROM $tabel WHERE kd_akun=$kd_akun GROUP BY MONTH(tanggal)")->result_array();
-        array_push($result, array('kd_akun' => $kd_akun));
+        
+        
+        // $result2 = array('kd_akun' => $kd_akun);
 
+        foreach($result as $k => $r){
+                $result2[$k] = $r;
+            }
+        
         if (empty($result)) {
-            $hasil[0]['tabel'] = $tabel;
-            $hasil[0]['bulan'] = '';
-            $hasil[0]['jumlah'] = '';
+            $result2 = array(
+                'MONTH(tanggal)' => $b,
+                'SUM(nominal)'   => 0,
+                'kd_akun'        => $kd_akun
+            );
+        }else{
+            $result2['kd_akun']=$kd_akun;
         }
         
-        return $result;
+        return $result2;
     }
 
-    public function getSumPerAkun2($tabel, $kd_akun)
-    {
+    public function getSumPerAkun2($tabel, $kd_akun, $b) {
         $result = $this->app_db->query("SELECT MONTH(tanggal), SUM(total_harga) FROM $tabel WHERE kd_akun=$kd_akun GROUP BY MONTH(tanggal)")->result_array();
         array_push($result, array('kd_akun' => $kd_akun));
 

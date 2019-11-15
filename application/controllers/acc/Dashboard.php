@@ -35,7 +35,7 @@ class Dashboard extends CI_Controller
         // print_r($tableList);
         // exit();
         //ambil data dan count setiap bulan pada masing-masing table
-        foreach ($tableList as $value) {
+        foreach ($tableList as $value) {// get sum per table
             if ($value == 'tr21_pembelian_pending') {
                 $hasil[$value] =  $this->dashboard_m->getSumPerMonth2($value); //khusus buat tabel tr21 karena tabel nominal jadi total_harga
             } else {
@@ -47,18 +47,11 @@ class Dashboard extends CI_Controller
         $kd_akun = $this->dashboard_m->getKdakun();
         //ambil data sum dari berbagai akun di tabel tertentu
         $x = 0;
-        // print_r($kd_akun);
-        // echo'<br>';
-        // echo'<br>';
-        // print_r($tableList);
-        // echo'<br>';
-        // echo'<br>';
-        $x = 0;
         $y = 0;
 
         $bulan = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
-        foreach ($kd_akun as $v) { //setiap perulangan kd_akun
-            foreach($bulan as $b){
+        foreach ($kd_akun as $v) { // setiap perulangan kd_akun
+            foreach($bulan as $b){ 
                 foreach ($tableList as $value) { //setiap perulangan table
                     if ($value == 'tr21_pembelian_pending') {
                         $hasil2[$x] = $this->dashboard_m->getSumPerAkun2($value, $v['kd_akun'], $b); //khusus buat tabel tr21 karena tabel nominal jadi total_harga
@@ -74,15 +67,21 @@ class Dashboard extends CI_Controller
             }
         }
 
-        // foreach($hasil as $v){
-        //     print_r($v);
-        //     echo"<br>";
-        // }
+        //hasil buat get sum per table
+        foreach($hasil as $v){
+            print_r($v);
+            echo"<br>";
+        }
+        
+        foreach($hasil2 as $v){
+            print_r($v);
+            echo"<br>";
+        }
 
-        // echo"<br>";
-        // echo"<br>";
+        echo"<br>";
+        echo"<br>";
 
-        // print_r($hasil3);
+        // print_r($hasil3)
 
         // exit;
 
@@ -94,19 +93,18 @@ class Dashboard extends CI_Controller
         $this->load->view('acc/dashboard_v');
     }
 
-    function exit_mosacc()
-    {
-        function execInBackground($cmd)
-        {
-            if (substr(php_uname(), 0, 7) == "Windows") {
-                pclose(popen("start /B " . $cmd, "r"));
-            } else {
-                exec($cmd . " > /dev/null &");
-            }
+    function exit_mosacc() {
+        $this->execInBackground('start cmd.exe @cmd /k "taskkill /IM chrome.exe"');
+        $this->execInBackground('start cmd.exe @cmd /k ""C:\xampp1\xampp_stop.exe""');
+        $this->execInBackground('cmd.exe @cmd /k "taskkill /F /IM cmd.exe"');
+    }
+
+    function execInBackground($cmd) {
+        if (substr(php_uname(), 0, 7) == "Windows") {
+            pclose(popen("start /B " . $cmd, "r"));
+        } else {
+            exec($cmd . " > /dev/null &");
         }
-        execInBackground('start cmd.exe @cmd /k "taskkill /IM chrome.exe"');
-        execInBackground('start cmd.exe @cmd /k ""C:\xampp1\xampp_stop.exe""');
-        execInBackground('cmd.exe @cmd /k "taskkill /F /IM cmd.exe"');
     }
 }
         /* End of file  index.php */
