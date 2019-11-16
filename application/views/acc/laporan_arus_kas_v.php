@@ -95,7 +95,7 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th>KAS PADA AWAL BULAN</th>
                         <th><?php
-                            $nominal_kas_before += $aset_kas_bank;
+                            $nominal_kas_before += $aset_kas_bank + $aset_bangunan_tanah + $aset_kendaraan + $aset_peralatan + $aset_perlengkapan;
                             echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
@@ -161,8 +161,8 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th>KAS PADA AWAL BULAN</th>
                         <th><?php
-                            $nominal_kas_before = $nominal_kas_before - $aset_kas_bank;
-                            $nominal_kas_before += $aset_kas_bank;
+                            $nominal_kas_before = $nominal_kas_before - ($aset_kas_bank + $aset_bangunan_tanah + $aset_kendaraan + $aset_peralatan + $aset_perlengkapan);
+                            $nominal_kas_before += $aset_kas_bank + $aset_bangunan_tanah + $aset_kendaraan + $aset_peralatan + $aset_perlengkapan;
                             echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>

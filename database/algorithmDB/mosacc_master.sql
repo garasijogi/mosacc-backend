@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2019 at 06:02 AM
+-- Generation Time: Nov 16, 2019 at 01:25 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `aset`
 --
 
-DROP TABLE IF EXISTS `aset`;
 CREATE TABLE `aset` (
   `id_aset` varchar(6) NOT NULL,
   `jenis_aset` varchar(64) DEFAULT NULL,
@@ -53,7 +52,6 @@ INSERT INTO `aset` (`id_aset`, `jenis_aset`, `nama`, `merek_luas`, `harga`) VALU
 -- Table structure for table `aset-bangunan_tanah`
 --
 
-DROP TABLE IF EXISTS `aset-bangunan_tanah`;
 CREATE TABLE `aset-bangunan_tanah` (
   `id_aset` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
@@ -67,7 +65,7 @@ CREATE TABLE `aset-bangunan_tanah` (
 --
 
 INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
-(1, 'Lahan Parkir', '2019-11-11', 512, 400000000);
+(1, '', '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -75,7 +73,6 @@ INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`
 -- Table structure for table `aset-kas_bank`
 --
 
-DROP TABLE IF EXISTS `aset-kas_bank`;
 CREATE TABLE `aset-kas_bank` (
   `norek` varchar(64) NOT NULL,
   `nama_pemilik` varchar(128) DEFAULT NULL,
@@ -89,7 +86,30 @@ CREATE TABLE `aset-kas_bank` (
 --
 
 INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
-('3464622', 'Fadhil', 'BINI', 500000, '2019-11-04');
+('', '', '', 0, '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aset-kendaraan`
+--
+
+CREATE TABLE `aset-kendaraan` (
+  `id_aset` int(11) NOT NULL,
+  `nama` varchar(128) DEFAULT NULL,
+  `merek` varchar(32) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `tipe` varchar(32) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL,
+  `harga` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aset-kendaraan`
+--
+
+INSERT INTO `aset-kendaraan` (`id_aset`, `nama`, `merek`, `tanggal`, `tipe`, `jumlah`, `harga`) VALUES
+(1, '', '', '0000-00-00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -97,7 +117,6 @@ INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `t
 -- Table structure for table `aset-peralatan`
 --
 
-DROP TABLE IF EXISTS `aset-peralatan`;
 CREATE TABLE `aset-peralatan` (
   `id_aset` int(6) NOT NULL,
   `nama` varchar(128) DEFAULT NULL,
@@ -113,7 +132,30 @@ CREATE TABLE `aset-peralatan` (
 --
 
 INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, 'Smart Watch', 'Samsung Gear', '2019-11-04', 'Loli', '566', 4000000);
+(1, '', '', '0000-00-00', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aset-perlengkapan`
+--
+
+CREATE TABLE `aset-perlengkapan` (
+  `id_aset` int(11) NOT NULL,
+  `nama` varchar(128) DEFAULT NULL,
+  `merek` varchar(32) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `kategori` varchar(32) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL,
+  `harga` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aset-perlengkapan`
+--
+
+INSERT INTO `aset-perlengkapan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
+(1, '', '', '0000-00-00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -121,7 +163,6 @@ INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`,
 -- Table structure for table `files`
 --
 
-DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
   `nama` varchar(512) DEFAULT NULL,
@@ -137,9 +178,9 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
-(1, 'PERANCANGAN_STRATEGI_SISTEM_INFORMASI_-baru.pdf', 'ad_art', 'application/pdf', '.pdf', 225.76, '2019-11-04'),
-(2, 'PERANCANGAN_STRATEGI_SISTEM_INFORMASI_-baru1.pdf', 'badan_hukum', 'application/pdf', '.pdf', 225.76, '2019-11-04'),
-(3, 'PERANCANGAN_STRATEGI_SISTEM_INFORMASI_-baru2.pdf', 'struktur_dkm', 'application/pdf', '.pdf', 225.76, '2019-11-04');
+(1, '', 'ad_art', '', '', 0, '0000-00-00'),
+(2, '', 'badan_hukum', '', '', 0, '0000-00-00'),
+(3, '', 'struktur_dkm', '', '', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -147,7 +188,6 @@ INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukura
 -- Table structure for table `jenis_aset`
 --
 
-DROP TABLE IF EXISTS `jenis_aset`;
 CREATE TABLE `jenis_aset` (
   `id_jenis_aset` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -158,7 +198,6 @@ CREATE TABLE `jenis_aset` (
 -- Table structure for table `profil`
 --
 
-DROP TABLE IF EXISTS `profil`;
 CREATE TABLE `profil` (
   `Nama Masjid` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -169,7 +208,6 @@ CREATE TABLE `profil` (
 -- Table structure for table `profil_dkm`
 --
 
-DROP TABLE IF EXISTS `profil_dkm`;
 CREATE TABLE `profil_dkm` (
   `id_pengurus` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
@@ -179,22 +217,12 @@ CREATE TABLE `profil_dkm` (
   `pendidikan` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `profil_dkm`
---
-
-INSERT INTO `profil_dkm` (`id_pengurus`, `nama`, `posisi`, `alamat`, `telepon`, `pendidikan`) VALUES
-(1, 'Papa Fadhil', 'ketua', 'JL. Beiji', '0895534624', 'S4 Samsung'),
-(2, 'Kaka Fadhil', 'sekretaris', 'JL. jalan', '0897634625332', 'Ssst'),
-(3, 'Fadhil', 'bendahara', 'JL. Beiji', '085693469246829', 'S1 Sistem Informasi');
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `profil_masjid`
 --
 
-DROP TABLE IF EXISTS `profil_masjid`;
 CREATE TABLE `profil_masjid` (
   `id_profil` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
@@ -210,7 +238,7 @@ CREATE TABLE `profil_masjid` (
 --
 
 INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
-(1, 'Masjid Jami Al-Ishlah', 'Jl. Boni', '2012', '08952523', '53235146', '50 m3');
+(1, 'Masjid Al-Ishlah', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -218,7 +246,6 @@ INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, 
 -- Table structure for table `rules`
 --
 
-DROP TABLE IF EXISTS `rules`;
 CREATE TABLE `rules` (
   `kd_akun` varchar(5) NOT NULL,
   `kd_bagan` varchar(5) NOT NULL,
@@ -289,7 +316,6 @@ INSERT INTO `rules` (`kd_akun`, `kd_bagan`, `menu`, `nama_sub`, `debit`, `kredit
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `NIP` int(25) NOT NULL,
   `nama_user` varchar(256) NOT NULL,
@@ -302,8 +328,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
-(1, 'ketua_dkm', 'manager', 'PAPA'),
-(2, 'bendahara', 'akuntan', 'fadil');
+(1, 'ketua_dkm', 'manager', '1234'),
+(2, 'bendahara', 'akuntan', '1234');
 
 --
 -- Indexes for dumped tables
@@ -328,11 +354,23 @@ ALTER TABLE `aset-kas_bank`
   ADD PRIMARY KEY (`norek`);
 
 --
+-- Indexes for table `aset-kendaraan`
+--
+ALTER TABLE `aset-kendaraan`
+  ADD PRIMARY KEY (`id_aset`);
+
+--
 -- Indexes for table `aset-peralatan`
 --
 ALTER TABLE `aset-peralatan`
   ADD PRIMARY KEY (`id_aset`),
   ADD KEY `id_aset` (`id_aset`);
+
+--
+-- Indexes for table `aset-perlengkapan`
+--
+ALTER TABLE `aset-perlengkapan`
+  ADD PRIMARY KEY (`id_aset`);
 
 --
 -- Indexes for table `files`
@@ -375,10 +413,22 @@ ALTER TABLE `aset-bangunan_tanah`
   MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `aset-kendaraan`
+--
+ALTER TABLE `aset-kendaraan`
+  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `aset-peralatan`
 --
 ALTER TABLE `aset-peralatan`
   MODIFY `id_aset` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `aset-perlengkapan`
+--
+ALTER TABLE `aset-perlengkapan`
+  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -390,7 +440,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `profil_dkm`
 --
 ALTER TABLE `profil_dkm`
-  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profil_masjid`

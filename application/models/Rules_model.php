@@ -487,6 +487,34 @@ class Rules_model extends CI_Model
     return $result;
   }
 
+  function get_aset_kendaraan($bulan)
+  {
+    $bulan = sprintf('%02d', $bulan);
+    $givenDate = '2019-' . $bulan . '-31';
+    $result = $this->db
+      ->select_sum('harga')
+      ->from('aset-kendaraan')
+      ->where('tanggal <= ', $givenDate)
+      ->get()
+      ->result();
+    $result = $result[0]->harga;
+    return $result;
+  }
+
+  function get_aset_perlengkapan($bulan)
+  {
+    $bulan = sprintf('%02d', $bulan);
+    $givenDate = '2019-' . $bulan . '-31';
+    $result = $this->db
+      ->select_sum('harga')
+      ->from('aset-perlengkapan')
+      ->where('tanggal <= ', $givenDate)
+      ->get()
+      ->result();
+    $result = $result[0]->harga;
+    return $result;
+  }
+
   // ------------------------------------------------------------------------
 
 }

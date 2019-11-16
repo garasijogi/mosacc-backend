@@ -66,14 +66,14 @@
                 <tr>
                     <td></td>
                     <td>Perlengkapan</td>
-                    <td><?php echo "Rp " . number_format($total_perlengkapan, 2, ',', '.');
-                        $jumlah_aset = $jumlah_aset + $total_perlengkapan;  ?></td>
+                    <td><?php echo "Rp " . number_format($total_perlengkapan + $aset_perlengkapan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $total_perlengkapan + $aset_perlengkapan;  ?></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Kendaraan</td>
-                    <td><?php echo "Rp " . number_format($total_kendaraan, 2, ',', '.');
-                        $jumlah_aset = $jumlah_aset + $total_kendaraan;  ?></td>
+                    <td><?php echo "Rp " . number_format($total_kendaraan + $aset_kendaraan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $total_kendaraan + $aset_kendaraan;  ?></td>
                 </tr>
                 <tr>
                     <td colspan="3">Aset Tidak Lancar</td>
@@ -81,8 +81,8 @@
                 <tr>
                     <td></td>
                     <td>Peralatan</td>
-                    <td><?php echo "Rp " . number_format($aset_peralatan, 2, ',', '.');
-                        $jumlah_aset = $jumlah_aset + $aset_peralatan;  ?></td>
+                    <td><?php echo "Rp " . number_format($aset_peralatan + $total_peralatan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $aset_peralatan + $total_peralatan;  ?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -182,14 +182,14 @@
                     <tr>
                         <td></td>
                         <td>Perlengkapan</td>
-                        <td><?php echo "Rp " . number_format($total_perlengkapan, 2, ',', '.');
-                            $jumlah_aset = $jumlah_aset + $total_perlengkapan;  ?></td>
+                        <td><?php echo "Rp " . number_format($total_perlengkapan + $aset_perlengkapan, 2, ',', '.');
+                            $jumlah_aset = $jumlah_aset + $total_perlengkapan + $aset_perlengkapan;  ?></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>Kendaraan</td>
-                        <td><?php echo "Rp " . number_format($total_kendaraan, 2, ',', '.');
-                            $jumlah_aset = $jumlah_aset + $total_kendaraan;  ?></td>
+                        <td><?php echo "Rp " . number_format($total_kendaraan + $aset_kendaraan, 2, ',', '.');
+                            $jumlah_aset = $jumlah_aset + $total_kendaraan + $aset_kendaraan;  ?></td>
                     </tr>
                     <tr>
                         <td>Aset Tidak Lancar</td>
@@ -199,8 +199,8 @@
                     <tr>
                         <td></td>
                         <td>Peralatan</td>
-                        <td><?php echo "Rp " . number_format($aset_peralatan, 2, ',', '.');
-                            $jumlah_aset = $jumlah_aset + $aset_peralatan;  ?></td>
+                        <td><?php echo "Rp " . number_format($aset_peralatan + $total_peralatan, 2, ',', '.');
+                            $jumlah_aset = $jumlah_aset + $aset_peralatan + $total_peralatan;  ?></td>
                     </tr>
                     <tr>
                         <td></td>
