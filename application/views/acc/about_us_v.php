@@ -42,8 +42,7 @@
 
     <section id="about">
         <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam quod omnis nam consequuntur fuga? Animi
-            quisquam ex laboriosam recusandae exercitationem veniam facilis eligendi? Adipisci illum eaque saepe quo a!
+        <p>Kami adalah mahasiswa UIN Syarif Hidayatullah Jakarta
         </p>
         <div class="about-content">
             <div class="about-content-img">
@@ -75,9 +74,7 @@
                 </div>
                 <div class="about-content-description-body">
                     <p>
-                        <span>SCOPE</span> adalah gua gatau gua gatau gua gatau gua gatau gua gatau gua gatau gua gatau
-                        gua gatau gua gatau gua gatau gua gatau gua gatau gua gatau gua gatau gua gatau gua gatau gua
-                        gatau gua gatau gua gatau gua gatau
+                        <span>SCOPE</span> atau Sharing Community for Optimizing People’s Economy adalah sebuah komunitas yang terbentuk atas kesadaran untuk melakukan pengabdian ditengah masyarakat, khususnya dilingkungan UIN Syarif Hidayatullah Jakarta.
                     </p>
                 </div>
             </div>
@@ -102,7 +99,7 @@
                     <img src="<?php echo base_url('assets/images/logo/whatsapp.svg') ?>" alt="WhatsApp Icon">
                 </div>
                 <div class="contact-card-head">WHATSAPP</div>
-                <div class="contact-card-value">0812 3456 7890</div>
+                <div class="contact-card-value">0895 1729 9064</div>
                 <div class="contact-card-description">Mengalami masalah dengan aplikasi? Kami siap melayani lebih dekat.
                 </div>
             </div>
@@ -111,7 +108,7 @@
                     <img src="<?php echo base_url('assets/images/logo/chat.svg') ?>" alt="Call Icon">
                 </div>
                 <div class="contact-card-head">MESSAGE</div>
-                <div class="contact-card-value">0812 3456 7890</div>
+                <div class="contact-card-value">0895 1729 9064</div>
                 <div class="contact-card-description">Tentu saja cara tradisional juga tersedia untuk memudahkan anda.
                 </div>
             </div>
