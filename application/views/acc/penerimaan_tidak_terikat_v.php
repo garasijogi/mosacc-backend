@@ -30,7 +30,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-sewa.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-sewa.png'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Pendapatan Sewa</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#rutin1"><i class="material-icons">add</i></a>
                     </div>
@@ -53,7 +53,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-parkir.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-parkir.png'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Pendapatan Parkir</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin2"><i class="material-icons">add</i></a>
                     </div>
@@ -75,7 +75,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-infaq-pengurusan-jenazah.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-infaq-pengurusan-jenazah.png'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Infaq Pengurusan Jenazah</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
                     </div>
@@ -97,7 +97,7 @@
             <!-- <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-nonhalal.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-nonhalal.png'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Pendapatan Non-Halal</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin4"><i class="material-icons">add</i></a>
                     </div>
@@ -120,7 +120,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-lainnya.jpg'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan tidak rutin/ilustrasi-pendapatan-lainnya.png'); ?>" width="400" height="270">
                         <span class="card-title card-title-text">Pendapatan Lainnya</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin5"><i class="material-icons">add</i></a>
                     </div>
