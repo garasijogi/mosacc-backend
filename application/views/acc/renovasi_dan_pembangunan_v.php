@@ -29,7 +29,7 @@
 				<div class="card">
 					<a href="<?php echo base_url('acc/form_input_renov_bangun'); ?>?kd_akun=23100">
 						<div class="card-image">
-							<img src="<?php echo base_url('assets/images/renovasi_pembangunan/renov-material-icon.png') ?>" width="200" height="300">
+							<img src="<?php echo base_url('assets/images/renovasi_pembangunan/renov-material-icon.png') ?>" width='300' height='350'>
 							<span class="card-title">Pembelian Material</span>
 						</div>
 						<div class="card-content">
@@ -43,7 +43,7 @@
 				<div class="card">
 					<a href="<?php echo base_url('acc/form_input_renov_bangun'); ?>?kd_akun=23200">
 						<div class="card-image">
-							<img src="<?php echo base_url('assets/images/renovasi_pembangunan/renov-upah-icon.png') ?>" width="200" height="300">
+							<img src="<?php echo base_url('assets/images/renovasi_pembangunan/renov-upah-icon.png') ?>" width='300' height='350'>
 							<span class="card-title">Upah Tukang</span>
 						</div>
 						<div class="card-content">

@@ -29,7 +29,7 @@
 				<div class="card">
 					<a href="<?php echo base_url('acc/form_input_pembelian'); ?>?kd_akun=21100">
 						<div class="card-image">
-							<img src="<?php echo base_url('assets/images/pembelian/pembelian-perlengkapan-icon.png') ?>" width="200" height="300">
+							<img src="<?php echo base_url('assets/images/pembelian/pembelian-perlengkapan-icon.png') ?>" width='300' height='350'>
 							<span class="card-title">Pembelian Perlengkapan</span>
 						</div>
 						<div class="card-content">
@@ -43,7 +43,7 @@
 				<div class="card">
 					<a href="<?php echo base_url('acc/form_input_pembelian'); ?>?kd_akun=21200">
 						<div class="card-image">
-							<img src="<?php echo base_url('assets/images/pembelian/pembelian-peralatan-icon.png') ?>" width="200" height="300">
+							<img src="<?php echo base_url('assets/images/pembelian/pembelian-peralatan-icon.png') ?>" width='300' height='350'>
 							<span class="card-title">Pembelian peralatan</span>
 						</div>
 						<div class="card-content">
@@ -57,7 +57,7 @@
 				<div class="card">
 					<a href="<?php echo base_url('acc/form_input_pembelian'); ?>?kd_akun=21300">
 						<div class="card-image">
-							<img src="<?php echo base_url('assets/images/pembelian/pembelian-kendaraan-icon.png') ?>" width="200" height="300">
+							<img src="<?php echo base_url('assets/images/pembelian/pembelian-kendaraan-icon.png') ?>" width='300' height='350'>
 							<span class="card-title">Pembelian Kendaraan</span>
 						</div>
 						<div class="card-content">

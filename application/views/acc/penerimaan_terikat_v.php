@@ -30,7 +30,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-peribadatan.png'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-peribadatan.png'); ?>" width="300" height="350">
                         <span class="card-title card-title-text">Peribadatan</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="#rutin1"><i class="material-icons">add</i></a>
                     </div>
@@ -55,7 +55,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-pendidikan.png'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-pendidikan.png'); ?>" width="300" height="350">
                         <span class="card-title card-title-text">Pendidikan</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin2"><i class="material-icons">add</i></a>
                     </div>
@@ -77,7 +77,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-zakat.png'); ?>" width="400" height="270">
+                        <img src="<?php echo site_url('assets/images/penerimaan Rutin/ilustrasi-zakat.png'); ?>" width="300" height="350">
                         <span class="card-title card-title-text">Penyaluran Ziswaf</span>
                         <a class="btn-floating halfway-fab waves-effect btn-large waves-light red modal-trigger" href="#rutin3"><i class="material-icons">add</i></a>
                     </div>
