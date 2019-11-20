@@ -109,7 +109,7 @@ class Rules_model extends CI_Model
   function get_ptt($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr11_penerimaan_tidak_terikat_pending')
@@ -122,7 +122,7 @@ class Rules_model extends CI_Model
   function get_pt($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr12_penerimaan_terikat_pending')
@@ -135,7 +135,7 @@ class Rules_model extends CI_Model
   function get_p($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr21_pembelian_pending')
@@ -148,7 +148,7 @@ class Rules_model extends CI_Model
   function get_b($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr22_beban_pending')
@@ -161,7 +161,7 @@ class Rules_model extends CI_Model
   function get_bt($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr22_beban_pending')
@@ -175,7 +175,7 @@ class Rules_model extends CI_Model
   function get_btt($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
 
     $result = $this->app_db
       ->select('*')
@@ -193,7 +193,7 @@ class Rules_model extends CI_Model
   function get_ptt_now($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-';
     $result = $this->app_db
       ->select('*')
       ->from('tr11_penerimaan_tidak_terikat_pending')
@@ -206,7 +206,7 @@ class Rules_model extends CI_Model
   function get_pt_now($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-';
     $result = $this->app_db
       ->select('*')
       ->from('tr12_penerimaan_terikat_pending')
@@ -219,7 +219,7 @@ class Rules_model extends CI_Model
   function get_p_now($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-';
     $result = $this->app_db
       ->select('*')
       ->from('tr21_pembelian_pending')
@@ -232,7 +232,7 @@ class Rules_model extends CI_Model
   function get_b_now($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-';
     $result = $this->app_db
       ->select('*')
       ->from('tr22_beban_pending')
@@ -245,7 +245,7 @@ class Rules_model extends CI_Model
   function get_bt_now($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-';
     $result = $this->app_db
       ->select('*')
       ->from('tr22_beban_pending')
@@ -259,7 +259,7 @@ class Rules_model extends CI_Model
   function get_btt_now($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-';
 
     $result = $this->app_db
       ->select('*')
@@ -277,7 +277,7 @@ class Rules_model extends CI_Model
   function get_ptt_before($bulan)
   {
     $bulan = sprintf('%02d', $bulan - 1);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr11_penerimaan_tidak_terikat_pending')
@@ -290,7 +290,7 @@ class Rules_model extends CI_Model
   function get_pt_before($bulan)
   {
     $bulan = sprintf('%02d', $bulan - 1);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr12_penerimaan_terikat_pending')
@@ -303,7 +303,7 @@ class Rules_model extends CI_Model
   function get_p_before($bulan)
   {
     $bulan = sprintf('%02d', $bulan - 1);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr21_pembelian_pending')
@@ -316,7 +316,7 @@ class Rules_model extends CI_Model
   function get_b_before($bulan)
   {
     $bulan = sprintf('%02d', $bulan - 1);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr22_beban_pending')
@@ -329,7 +329,7 @@ class Rules_model extends CI_Model
   function get_bt_before($bulan)
   {
     $bulan = sprintf('%02d', $bulan - 1);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->app_db
       ->select('*')
       ->from('tr22_beban_pending')
@@ -343,7 +343,7 @@ class Rules_model extends CI_Model
   function get_btt_before($bulan)
   {
     $bulan = sprintf('%02d', $bulan - 1);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
 
     $result = $this->app_db
       ->select('*')
@@ -448,7 +448,7 @@ class Rules_model extends CI_Model
   function get_aset_kas($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->db
       ->select_sum('nominal')
       ->from('aset-kas_bank')
@@ -462,7 +462,7 @@ class Rules_model extends CI_Model
   function get_aset_bangunan_tanah($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->db
       ->select_sum('nilai')
       ->from('aset-bangunan_tanah')
@@ -476,7 +476,7 @@ class Rules_model extends CI_Model
   function get_aset_peralatan($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->db
       ->select_sum('harga')
       ->from('aset-peralatan')
@@ -490,7 +490,7 @@ class Rules_model extends CI_Model
   function get_aset_kendaraan($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->db
       ->select_sum('harga')
       ->from('aset-kendaraan')
@@ -504,7 +504,7 @@ class Rules_model extends CI_Model
   function get_aset_perlengkapan($bulan)
   {
     $bulan = sprintf('%02d', $bulan);
-    $givenDate = '2019-' . $bulan . '-31';
+    $givenDate = $this->session->userdata('tahun') . '-' . $bulan . '-31';
     $result = $this->db
       ->select_sum('harga')
       ->from('aset-perlengkapan')
