@@ -14,11 +14,13 @@ class Laporan_keuangan extends CI_Controller
 
     //NEW LOADER --------------------------------------------------------------
     //ambil tahun dari sistem
-    $dynamic_tahun = date("Y");
+    // $dynamic_tahun = date("Y");
+    $dynamic_tahun = $this->session->userdata('tahun');
     //load settingan database dynamic ke fungsi di helper db dynamic switcher
     $dynamic_db = switch_db_dynamic($dynamic_tahun);
     //load model yang akan digunakan
     $this->load->model('rules_model');
+    $this->load->model('tr_database_model');
     //taruh settingan database dalam array
     $this->rules_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
@@ -28,10 +30,25 @@ class Laporan_keuangan extends CI_Controller
     $this->load->view('acc/laporan_keuangan_v.php');
   }
 
+  function change_year()
+  {
+    $tahun = $this->input->get('tahun');
+    $cu = $this->input->get('cu');
+    $arraydata = array(
+      'tahun' => $tahun
+    );
+    $this->session->set_userdata($arraydata);
+    redirect($cu);
+  }
+
   function laporan_neraca()
   {
     //ERROR REPORTING
     error_reporting(0);
+
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
 
     //MENENTUKAN BULAN
     $bulan = $this->input->get('bulan');
@@ -181,6 +198,11 @@ class Laporan_keuangan extends CI_Controller
   {
     //ERROR REPORTING
     error_reporting(0);
+
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
+
 
     //MENENTUKAN BULAN
     $bulan = $this->input->get('bulan');
@@ -546,6 +568,10 @@ class Laporan_keuangan extends CI_Controller
   {
     //ERROR REPORTING
     error_reporting(0);
+
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
 
     //MENENTUKAN BULAN
     $bulan = $this->input->get('bulan');

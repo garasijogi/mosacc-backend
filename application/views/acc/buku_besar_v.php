@@ -36,7 +36,14 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row center" id="printed">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Buku Besar <br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6> <br>
+            <h6 class="center" id="title-view"><b><?php
+                                                    if (date('Y') == $this->session->userdata('tahun')) {
+                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Buku Besar <br>Per <?php echo (date_generator(date('Y-m-d')));
+                                                                                                                                } else {
+                                                                                                                                    echo $this->session->userdata('nama_masjid'); ?> <br>Buku Besar <br>Per 31 Desember <?php echo $this->session->userdata('tahun');
+                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                        ?></b></h6>
 
             <!-- KAS -->
             <h6 class="font-bold"><?php echo "Kas dan Bank (112)"; ?></h6>

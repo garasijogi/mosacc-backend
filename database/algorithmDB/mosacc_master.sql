@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2019 at 01:25 PM
+-- Generation Time: Nov 20, 2019 at 10:41 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `aset`
 --
 
+DROP TABLE IF EXISTS `aset`;
 CREATE TABLE `aset` (
   `id_aset` varchar(6) NOT NULL,
   `jenis_aset` varchar(64) DEFAULT NULL,
@@ -52,6 +53,7 @@ INSERT INTO `aset` (`id_aset`, `jenis_aset`, `nama`, `merek_luas`, `harga`) VALU
 -- Table structure for table `aset-bangunan_tanah`
 --
 
+DROP TABLE IF EXISTS `aset-bangunan_tanah`;
 CREATE TABLE `aset-bangunan_tanah` (
   `id_aset` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
@@ -73,6 +75,7 @@ INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`
 -- Table structure for table `aset-kas_bank`
 --
 
+DROP TABLE IF EXISTS `aset-kas_bank`;
 CREATE TABLE `aset-kas_bank` (
   `norek` varchar(64) NOT NULL,
   `nama_pemilik` varchar(128) DEFAULT NULL,
@@ -94,6 +97,7 @@ INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `t
 -- Table structure for table `aset-kendaraan`
 --
 
+DROP TABLE IF EXISTS `aset-kendaraan`;
 CREATE TABLE `aset-kendaraan` (
   `id_aset` int(11) NOT NULL,
   `nama` varchar(128) DEFAULT NULL,
@@ -117,6 +121,7 @@ INSERT INTO `aset-kendaraan` (`id_aset`, `nama`, `merek`, `tanggal`, `tipe`, `ju
 -- Table structure for table `aset-peralatan`
 --
 
+DROP TABLE IF EXISTS `aset-peralatan`;
 CREATE TABLE `aset-peralatan` (
   `id_aset` int(6) NOT NULL,
   `nama` varchar(128) DEFAULT NULL,
@@ -140,6 +145,7 @@ INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`,
 -- Table structure for table `aset-perlengkapan`
 --
 
+DROP TABLE IF EXISTS `aset-perlengkapan`;
 CREATE TABLE `aset-perlengkapan` (
   `id_aset` int(11) NOT NULL,
   `nama` varchar(128) DEFAULT NULL,
@@ -163,6 +169,7 @@ INSERT INTO `aset-perlengkapan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategor
 -- Table structure for table `files`
 --
 
+DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
   `id` int(11) NOT NULL,
   `nama` varchar(512) DEFAULT NULL,
@@ -188,6 +195,7 @@ INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukura
 -- Table structure for table `jenis_aset`
 --
 
+DROP TABLE IF EXISTS `jenis_aset`;
 CREATE TABLE `jenis_aset` (
   `id_jenis_aset` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -198,6 +206,7 @@ CREATE TABLE `jenis_aset` (
 -- Table structure for table `profil`
 --
 
+DROP TABLE IF EXISTS `profil`;
 CREATE TABLE `profil` (
   `Nama Masjid` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -208,6 +217,7 @@ CREATE TABLE `profil` (
 -- Table structure for table `profil_dkm`
 --
 
+DROP TABLE IF EXISTS `profil_dkm`;
 CREATE TABLE `profil_dkm` (
   `id_pengurus` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
@@ -223,6 +233,7 @@ CREATE TABLE `profil_dkm` (
 -- Table structure for table `profil_masjid`
 --
 
+DROP TABLE IF EXISTS `profil_masjid`;
 CREATE TABLE `profil_masjid` (
   `id_profil` int(11) NOT NULL,
   `nama` varchar(256) DEFAULT NULL,
@@ -246,6 +257,7 @@ INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, 
 -- Table structure for table `rules`
 --
 
+DROP TABLE IF EXISTS `rules`;
 CREATE TABLE `rules` (
   `kd_akun` varchar(5) NOT NULL,
   `kd_bagan` varchar(5) NOT NULL,
@@ -313,9 +325,31 @@ INSERT INTO `rules` (`kd_akun`, `kd_bagan`, `menu`, `nama_sub`, `debit`, `kredit
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tr_database`
+--
+
+DROP TABLE IF EXISTS `tr_database`;
+CREATE TABLE `tr_database` (
+  `id_db` int(11) NOT NULL,
+  `nama_db` varchar(256) NOT NULL,
+  `tahun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tr_database`
+--
+
+INSERT INTO `tr_database` (`id_db`, `nama_db`, `tahun`) VALUES
+(2018, 'mosacc_tr_2018', 2018),
+(2019, 'mosacc_tr_2019', 2019);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `NIP` int(25) NOT NULL,
   `nama_user` varchar(256) NOT NULL,
@@ -395,6 +429,12 @@ ALTER TABLE `profil_masjid`
 --
 ALTER TABLE `rules`
   ADD PRIMARY KEY (`kd_akun`);
+
+--
+-- Indexes for table `tr_database`
+--
+ALTER TABLE `tr_database`
+  ADD PRIMARY KEY (`id_db`);
 
 --
 -- Indexes for table `user`

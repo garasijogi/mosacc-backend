@@ -36,7 +36,14 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per <?php echo (date_generator(date('Y-m-d'))); ?></b></h6>
+            <h6 class="center" id="title-view"><b><?php
+                                                    if (date('Y') == $this->session->userdata('tahun')) {
+                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per <?php echo (date_generator(date('Y-m-d')));
+                                                                                                                                    } else {
+                                                                                                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per 31 Desember <?php echo $this->session->userdata('tahun');
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                ?></b></h6>
             <table id='table-jurnal-umum-v' class="">
                 <thead>
                     <tr class="teal white-text">
@@ -96,7 +103,14 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- print -->
         <div style="display:none">
-            <h6 id="title-laporan">Jurnal Umum Per <?php echo (date_generator(date('Y-m-d'))); ?> <?php echo $this->session->userdata('nama_masjid'); ?></h6>
+            <h6 class="center" id="title-view"><b><?php
+                                                    if (date('Y') == $this->session->userdata('tahun')) {
+                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per <?php echo (date_generator(date('Y-m-d')));
+                                                                                                                                    } else {
+                                                                                                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Jurnal Umum <br>Per 31 Desember <?php echo $this->session->userdata('tahun');
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                ?></b></h6>
             <table id='table-excel' class="">
                 <thead>
                     <tr class="teal white-text">

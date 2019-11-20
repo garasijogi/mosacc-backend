@@ -44,7 +44,8 @@
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan);
+                                                                                                                echo " " . ($this->session->userdata('tahun')); ?> </b></h6>
             <table>
                 <tr>
                     <th colspan="2">Keterangan</th>
@@ -152,7 +153,8 @@
         <!-- print -->
         <div class="row" style="display:none">
             <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
-            <h6 class="center" id="title-laporan"><b>Laporan Posisi Keuangan (Neraca) <br><?php echo $this->session->userdata('nama_masjid'); ?><br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan);
+                                                                                                                echo " " . ($this->session->userdata('tahun')); ?> </b></h6>
             <table id='table-excel'>
                 <thead>
                     <tr>

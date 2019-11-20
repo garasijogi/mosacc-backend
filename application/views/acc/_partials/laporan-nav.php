@@ -7,15 +7,18 @@
         <div class="nav-wrapper white">
             <ul class="left hide-on-med-and-down">
                 <li><a class="black-text dropdown-trigger" href="#!" data-target="tahun_DD">Tahun<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="black-text dropdown-trigger" href="#!" data-target="bulan_DD">Bulan<i class="material-icons right">arrow_drop_down</i></a></li>
+                <?php if (($this->router->fetch_class()) != 'buku_besar_utama') : ?>
+                    <li><a class="black-text dropdown-trigger" href="#!" data-target="bulan_DD">Bulan<i class="material-icons right">arrow_drop_down</i></a></li>
+                <?php endif; ?>
                 <li><a id="print-button" class="black-text" href="#"><i class="material-icons left">picture_as_pdf</i>Simpan PDF/Print</a></li>
                 <?php if ($this->router->fetch_method() != "buku_besar") : ?>
                     <li><a id="export-excel" class="black-text" href="#!"><i class="material-icons left">insert_drive_file</i>Simpan Excel</a></li>
                 <?php endif; ?>
             </ul>
             <ul id="tahun_DD" class="dropdown-content">
-                <li><a href="">2018</a></li>
-                <li><a href="">2019</a></li>
+                <?php foreach ($year_list->result() as $yl) : ?>
+                    <li><a href="<?php echo base_url('acc/' . $this->router->fetch_class() . '/change_year?cu=' . base_url(uri_string())) . '&&tahun=' . $yl->id_db; ?>"><?php echo $yl->id_db; ?></a></li>
+                <?php endforeach; ?>
             </ul>
             <ul id="bulan_DD" class="dropdown-content">
                 <li><a href="<?php echo base_url('acc/' . $this->router->fetch_class() . "/" . $this->router->fetch_method() . "?bulan=1"); ?>">Januari</a></li>

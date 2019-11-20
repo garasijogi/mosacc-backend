@@ -2,7 +2,7 @@
 	<div id="sidenav">
 
 		<div class="logo valign-wrapper">
-		<img id="mosacc-logo" src="<?php echo base_url('assets/images/icon/mosacc-logo2.svg'); ?>" width="50px" height="50px" alt="">
+			<img id="mosacc-logo" src="<?php echo base_url('assets/images/icon/mosacc-logo2.svg'); ?>" width="50px" height="50px" alt="">
 			<h4>Mosacc</h4>
 		</div>
 

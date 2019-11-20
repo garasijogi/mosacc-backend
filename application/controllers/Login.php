@@ -38,7 +38,8 @@ class Login extends CI_Controller
           'jenis_user' => $user->jenis_user,
           'nama_user' => $user->nama_user,
           'status' => $status,
-          'nama_masjid' => $profil[0]['nama']
+          'nama_masjid' => $profil[0]['nama'],
+          'tahun' => date('Y')
         );
         $this->session->set_userdata($arraydata);
       }

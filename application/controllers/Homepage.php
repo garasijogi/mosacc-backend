@@ -8,6 +8,7 @@ class Homepage extends CI_Controller
   {
     parent::__construct();
     $this->load->model('profil_m');
+    $this->load->model('tr_database_model');
 
     //cek data user pada database, apakah tersedia
     if (empty($this->db->get('user')->result())) {
@@ -26,6 +27,7 @@ class Homepage extends CI_Controller
 
     $this->db->trans_start();
     $this->db->query("CREATE DATABASE IF NOT EXISTS $db_dynamic;");
+    $this->tr_database_model->create_tr_db(date('Y'));
     $this->db->query("USE $db_dynamic;");
     $this->db->query("CREATE TABLE IF NOT EXISTS `sum_kd_akun` (`kd_sum` varchar(7) NOT NULL, `kd_akun` varchar(5) DEFAULT NULL, `bulan` varchar(2) DEFAULT NULL, `jumlah` double DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
     $this->db->query("CREATE TABLE IF NOT EXISTS `sum_table` (`kd_sum` int(11) NOT NULL, `tabel` varchar(128) NOT NULL, `bulan` varchar(2) DEFAULT NULL, `jumlah` double DEFAULT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
