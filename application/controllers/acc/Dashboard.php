@@ -26,10 +26,6 @@ class Dashboard extends CI_Controller
     }
     
     public function index(){
-        //hapus isi tabel
-        $this->dashboard_m->truncate('sum-tabel');
-        $this->dashboard_m->truncate('sum-kd_akun');
-        
         //get nama tabel
         $tableList = tableList();
         // print_r($tableList);
