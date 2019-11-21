@@ -4,7 +4,7 @@ a.card-status {
 }
 
 body{
-    overflow:scroll;
+    overflow-y:scroll;
 }
 
 img.wizard-jabatan_photos{
@@ -43,12 +43,8 @@ img.wizard-jabatan_photos{
     line-height: 175%;
 }
 
-.carousel {
-	height: 600px !important;
-}
-
 .dashChart{
-    height: 100%;
+    height: 100px;
     width: 100%;
 }
 
@@ -73,7 +69,7 @@ img.wizard-jabatan_photos{
 }
 
 .tabs-content.carousel.carousel-item{
-    height:200%;
+    height:100%;
 }
 
 .tabs.tabs-cardContainer{

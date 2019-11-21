@@ -29,8 +29,7 @@ class Wizard extends CI_Controller {
         }
         
         $this->load->helper('uploader'); //load helper uploader
-        
-        $this->load->model('wizard_m');
+        $this->load->model('wizard_m'); //load model wizard
 
     }
     

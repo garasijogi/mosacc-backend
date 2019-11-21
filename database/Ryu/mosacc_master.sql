@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2019 at 01:13 AM
+-- Generation Time: Nov 21, 2019 at 02:46 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -42,7 +42,7 @@ CREATE TABLE `aset-bangunan_tanah` (
 --
 
 INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
-(1, '123123', '2019-11-03', 123213, 12312);
+(1, '', '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `aset-kas_bank` (
 --
 
 INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
-('2131', '12312', '3213', 213, '2019-11-11');
+('', '', '', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `aset-kendaraan` (
 --
 
 INSERT INTO `aset-kendaraan` (`nama`, `merek`, `tanggal`, `tipe`, `jumlah`, `harga`) VALUES
-('3242', '4242', '0000-00-00', '42424', 423424, 143242);
+('', '', '0000-00-00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -111,7 +111,7 @@ CREATE TABLE `aset-peralatan` (
 --
 
 INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, '13213', '21312', '2019-11-04', '213131', '213', 12321);
+(1, '', '', '0000-00-00', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE `aset-perlengkapan` (
 --
 
 INSERT INTO `aset-perlengkapan` (`nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-('21313', '123213', '2019-11-05', '12313', 21321, 321321);
+('', '', '0000-00-00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -158,9 +158,9 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
-(1, '0__Format_Cover_BUSIMARU.pdf', 'ad_art', 'application/pdf', '.pdf', 120.49, '2019-11-09'),
-(2, '1__Biodata_diri_Busimaru_2016.pdf', 'badan_hukum', 'application/pdf', '.pdf', 234.34, '2019-11-09'),
-(3, '2__Biodata_pengurus_HIMSI.pdf', 'struktur_dkm', 'application/pdf', '.pdf', 99.36, '2019-11-09');
+(1, '', 'ad_art', '', '', 0, '0000-00-00'),
+(2, '', 'badan_hukum', '', '', 0, '0000-00-00'),
+(3, '', 'struktur_dkm', '', '', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -177,15 +177,6 @@ CREATE TABLE `profil_dkm` (
   `telepon` varchar(15) DEFAULT NULL,
   `pendidikan` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `profil_dkm`
---
-
-INSERT INTO `profil_dkm` (`id_pengurus`, `nama`, `posisi`, `alamat`, `telepon`, `pendidikan`) VALUES
-(1, 'Sansan', 'ketua', 'Jalanku Jalanmu', '89726491283', 'S1'),
-(2, 'Rui Tachibana', 'sekretaris', 'Jalan Kemanggisan 1 no. 258', '1235264361243', 'SMK'),
-(3, 'Hina Tachibana', 'bendahara', 'Jalan Ir. H Juanda', '26154812786', 'S6');
 
 -- --------------------------------------------------------
 
@@ -209,7 +200,7 @@ CREATE TABLE `profil_masjid` (
 --
 
 INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
-(1, 'Masjid Fathahillah', 'Jalanku Jalanmu', '2342', '23213123', '21321313', '353213');
+(1, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -383,7 +374,7 @@ ALTER TABLE `files`
 -- AUTO_INCREMENT for table `profil_dkm`
 --
 ALTER TABLE `profil_dkm`
-  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profil_masjid`

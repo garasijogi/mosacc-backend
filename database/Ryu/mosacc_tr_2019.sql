@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2019 at 01:12 AM
+-- Generation Time: Nov 21, 2019 at 02:47 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -25,6 +25,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sum-kd_akun`
+--
+
+DROP TABLE IF EXISTS `sum-kd_akun`;
+CREATE TABLE `sum-kd_akun` (
+  `kd_sum` double NOT NULL,
+  `kd_akun` varchar(5) DEFAULT NULL,
+  `bulan` varchar(2) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL,
+  `nama_sub` varchar(64) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sum-tabel`
+--
+
+DROP TABLE IF EXISTS `sum-tabel`;
+CREATE TABLE `sum-tabel` (
+  `kd_sum` double NOT NULL,
+  `tabel` varchar(128) NOT NULL,
+  `bulan` varchar(2) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sum_kd_akun`
 --
 
@@ -35,13 +64,6 @@ CREATE TABLE `sum_kd_akun` (
   `bulan` varchar(2) DEFAULT NULL,
   `jumlah` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sum_kd_akun`
---
-
-INSERT INTO `sum_kd_akun` (`kd_sum`, `kd_akun`, `bulan`, `jumlah`) VALUES
-('', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -56,6 +78,17 @@ CREATE TABLE `sum_table` (
   `bulan` varchar(2) DEFAULT NULL,
   `jumlah` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sum_table`
+--
+
+INSERT INTO `sum_table` (`kd_sum`, `tabel`, `bulan`, `jumlah`) VALUES
+(1, 'tr11_penerimaan_tidak_terikat_pending', '10', 100000),
+(2, 'tr12_penerimaan_terikat_pending', '10', 13543000),
+(3, 'tr21_pembelian_pending', '10', 550000),
+(4, 'tr22_beban_pending', '10', 2100000),
+(5, 'tr23_renov_bangun_pending', '09', 21594605718);
 
 -- --------------------------------------------------------
 
@@ -202,15 +235,15 @@ INSERT INTO `tr23_renov_bangun_pending` (`idtr`, `kd_akun`, `tanggal`, `nominal`
 --
 
 --
--- Indexes for table `sum_kd_akun`
+-- Indexes for table `sum-kd_akun`
 --
-ALTER TABLE `sum_kd_akun`
+ALTER TABLE `sum-kd_akun`
   ADD PRIMARY KEY (`kd_sum`);
 
 --
--- Indexes for table `sum_table`
+-- Indexes for table `sum-tabel`
 --
-ALTER TABLE `sum_table`
+ALTER TABLE `sum-tabel`
   ADD PRIMARY KEY (`kd_sum`);
 
 --
@@ -242,10 +275,16 @@ ALTER TABLE `tr22_beban_pending`
 --
 
 --
--- AUTO_INCREMENT for table `sum_table`
+-- AUTO_INCREMENT for table `sum-kd_akun`
 --
-ALTER TABLE `sum_table`
-  MODIFY `kd_sum` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sum-kd_akun`
+  MODIFY `kd_sum` double NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sum-tabel`
+--
+ALTER TABLE `sum-tabel`
+  MODIFY `kd_sum` double NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
