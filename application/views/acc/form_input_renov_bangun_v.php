@@ -101,7 +101,7 @@
 							<tr>
 								<td><?php echo $col->tanggal; ?></td>
 								<td><?php echo $col->keterangan; ?></td>
-								<td><?php echo $col->nominal; ?></td>
+								<td><?php echo "Rp " . number_format($col->nominal, 2, ',', '.'); ?></td>
 								<td>
 									<a href="<?php echo base_url('acc/form_input_renov_bangun/edit_r?idtr=' . $col->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $col->tanggal . '&&keterangan=' . $col->keterangan . '&&nominal=' . $col->nominal); ?>">
 										<img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">

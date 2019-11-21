@@ -131,7 +131,7 @@
 								<td><?php echo $col->jenis; ?></td>
 								<td><?php echo $col->merek; ?></td>
 								<td><?php echo $col->jumlah; ?></td>
-								<td><?php echo $col->total_harga; ?></td>
+								<td><?php echo "Rp " . number_format($col->total_harga, 2, ',', '.'); ?></td>
 								<td>
 									<a href="<?php echo base_url('acc/form_input_pembelian/edit_p?idtr=' . $col->idtr . '&&kd_akun=' . $kd_akun . '&&tanggal=' . $col->tanggal . '&&jenis=' . $col->jenis . '&&keterangan=' . $col->keterangan . '&&merek=' . $col->merek . '&&nomor_seri=' . $col->nomor_seri . '&&jumlah=' . $col->jumlah . '&&harga_satuan=' . $col->harga_satuan . '&total_harga=' . $col->total_harga); ?>">
 										<img src="<?php echo base_url('assets/images/icon/sidebar/pencilataupenyesuaian-black.svg'); ?>" width="25px" height="25px">

@@ -125,7 +125,7 @@
                             <?php if ($kd_akun != 12610 && $kd_akun != 12620 && $kd_akun != 12630 && $kd_akun != 12640 && $kd_akun != 12820) { ?>
                                 <td><?php echo $tr->nama_pemberi; ?></td>
                             <?php } ?>
-                            <td><?php echo $tr->nominal; ?></td>
+                            <td><?php echo "Rp " . number_format($tr->nominal, 2, ',', '.'); ?></td>
                             <td><?php echo $tr->keterangan; ?></td>
                             <td>
                                 <?php if ($kd_akun != 12610 && $kd_akun != 12620 && $kd_akun != 12630 && $kd_akun != 12640 && $kd_akun != 12820) { ?>
