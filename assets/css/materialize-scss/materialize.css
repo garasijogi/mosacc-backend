@@ -9286,7 +9286,7 @@ input[type=range]::-ms-thumb {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url("../../background.jpg");
+  background-image: url("../../images/mosque-vector.png");
   background-size: cover;
 }
 

@@ -7,11 +7,7 @@
 		<!-- /head -->
 	</head>
 
-	<body>
-
-
-
-
+<body>
 	<div id="landing-page-content">
     	<div class="wizard-wrapper">
 			<!-- <ul id="slide-out" class="sidenav">
