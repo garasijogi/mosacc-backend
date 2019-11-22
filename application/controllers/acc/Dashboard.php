@@ -218,7 +218,7 @@ class Dashboard extends CI_Controller
             } elseif ($v['tabel']=='tr22_beban_pending'){
                 $sum_pengeluaran2[$j]=$v;
                 $j++;
-             }elseif ($v['tabel']=='tr23_renov_bangun_pending'){
+            } elseif ($v['tabel']=='tr23_renov_bangun_pending'){
                 $sum_pengeluaran3[$k]=$v;
                 $k++;
             }
@@ -306,7 +306,6 @@ class Dashboard extends CI_Controller
             $tab_data_pengeluaran['rasio'] = ($tab_data_pengeluaran['bulan_lalu'] / $tab_data_pengeluaran['bulan_ini'])*-100;
         }
         
-
         //ambil data saldo pada bulan ini dan bulan lalu cari solusinya =====================================================================================
         $tab_data_saldo['bulan_ini'] = $tab_data_penerimaan['bulan_ini'] - $tab_data_pengeluaran['bulan_ini'];
         $tab_data_saldo['bulan_lalu']= $tab_data_penerimaan['bulan_lalu'] - $tab_data_pengeluaran['bulan_lalu'];
@@ -342,7 +341,6 @@ class Dashboard extends CI_Controller
         usort($data['tabel_data_saldo'], multiArraySort('jumlah'));
         usort($tabel_data_penerimaan, multiArraySort('jumlah'));
         usort($tabel_data_pengeluaran, multiArraySort('jumlah'));
-        
 
         //bungkus 5 array ke dalam data
         for($x=0;$x<10;$x++){

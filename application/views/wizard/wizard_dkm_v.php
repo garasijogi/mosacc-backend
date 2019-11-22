@@ -205,8 +205,7 @@
                         </div>
                         
                         <div class="btn-form-wrapper">
-                            <a href="#wizard-struktur-dkm-simpan" onclick="wizardFormChecker()"
-                            class="waves-effect btn-wizard-checker waves-light btn btn-edit-profil wizard-struktur-dkm-simpan btn-success">Simpan</a>
+                            <a href="#wizard-struktur-dkm-simpan" class="waves-effect btn-wizard-checker waves-light btn btn-edit-profil wizard-struktur-dkm-simpan btn-success">Simpan</a>
                         </div>
                         
                         <div id="wizard-struktur-dkm-simpan" class="modal">
@@ -216,7 +215,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a href="#" class="modal-close waves-effect waves-green btn-flat">Kembali</a>
-                                <a href="<?php echo base_url('wizard/aset'); ?>" class="modal-close waves-effect waves-green btn-flat">Yakin</a>
+                                <a id="wizard-struktur-dkm-simpan-popup" href="<?php echo base_url('wizard/aset'); ?>" class="modal-close waves-effect waves-green btn-flat">Yakin</a>
                             </div>
                         </div>
                     </form>
