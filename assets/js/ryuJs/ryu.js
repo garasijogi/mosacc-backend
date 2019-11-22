@@ -415,28 +415,6 @@ $(document).ready(function () {
     $('select').formSelect();
 });
 
-// modal form check on wizard
-const wizardFormChecker = () => {
-	let forms = document.querySelectorAll('.wizard-form-check');
-	let wizardFormButton = document.getElementsByClassName('btn-wizard-checker')[0];
-	let linkTarget = document.querySelector('.btn-form-wrapper a');
-
-	forms.forEach((item) => {
-		if (item.value === '') {
-			wizardFormButton.classList.add('modal-trigger')
-		} else {
-			wizardFormButton.classList.remove('modal-trigger');
-			if (linkTarget.classList.contains('wizard-struktur-dkm-simpan')) {
-				linkTarget.removeAttribute('href'); //hapus atribut href
-				$("#wizard-form-dkm").submit(); //submit form wizard profil form
-			} else if (linkTarget.classList.contains('wizard-profil-masjid-simpan')) {
-                linkTarget.removeAttribute('href');//hapus atribut href
-				$("#wizard-form-profil").submit();//submit form wizard profil form
-			}
-		}
-	})
-}
-
 //multiform-template initiation
 $(".multiform-template").multiFormTemplate({
 	postAddFunction: function () {

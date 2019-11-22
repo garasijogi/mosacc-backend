@@ -38,7 +38,7 @@ class Wizard extends CI_Controller {
     {
         //buat session files kosong  jika tidak ada
         if(!$this->session->userdata('files')) { //cek jika session files tidak tersedia
-            $files = array('ad_art', 'badan_hukum', 'struktur_dkm');
+            $files = array('ad_art', 'badan_hukum', 'struktur_dkm', 'foto_profil');
             //buat session kosong
             foreach ($files as $v){
                 $file_wizard['files'][$v] = array(
@@ -89,17 +89,27 @@ class Wizard extends CI_Controller {
         //cek nama file tersedia di session
         
         //setelah selesai unset semua variabel session
-        
+
         //upload file ke folder temp
         $ad_art = siapUnggah('ad_art', 'files'); //file ad/art (parameter post files, nama session)
         $badan_hukum = siapUnggah('badan_hukum', 'files'); //file badan_hukum (parameter post files, nama session)
+        
+        //buat informasi foto profil default masjid
+        $foto_profil = Array ( 
+            'nama'       => 'profil.jpg',
+            'jenis_file' => 'foto_profil',
+            'tipe_file'  => 'Image/JPEG Files',
+            'ekstensi'   => '.jpg',
+            'ukuran'     => '314',
+            'tanggal'    => date('Y-m-d') );
         
         //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
         $pengganti = array(
             'ad_art'      => $ad_art,
-            'badan_hukum' => $badan_hukum
+            'badan_hukum' => $badan_hukum,
+            'foto_profil' => $foto_profil
         );
         //replace
         $files_wizard['files'] = array_replace(

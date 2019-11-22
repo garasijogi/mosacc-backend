@@ -30,7 +30,7 @@
             
             <div class="profil-wrapper">
                 <header class="profil-header valign-wrapper">
-                    <img src="<?php echo base_url('assets/images/background.jpg'); ?>" alt="profil image">
+            		<img src="<?php echo base_url('document/'.$files['foto_profil'][0]['nama']); ?>" alt="profil image">
                     <h4><?php echo $profil[0]['nama']; ?></h4>
                 </header>
                 <div class="profil-nav">
@@ -78,6 +78,20 @@
                                         <div class="input-field col s12 edit-profil">
                                             <input name="tahun" id="rename-tahun-berdiri" type="text" class="validate" value="<?php echo $profil[0]['tahun']; ?>">
                                             <label for="rename-tahun-berdiri">Tahun Berdiri</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="file-field input-field">
+                                        <div class="btn btn-small">
+                                            <span>Foto Masjid</span>
+                                            <input name="foto_profil" type="file">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" value="<?php echo($files['foto_profil'][0]['nama']); ?>" placeholder="Tambahkan File">
+                                        </div>
+                                        <div class="row">
+                                            <p style="text-align: center; font-weight: bold;">Pastikan ukuran foto tidak melebihi ukuran 1MB</p>
                                         </div>
                                     </div>
                                 </div>

@@ -36,8 +36,6 @@
                         </li>
                     </ul>
                 </div>
-
-
             </div>
         </div>
 
@@ -144,7 +142,8 @@
                             </div>
 
                             <div class="btn-form-wrapper">
-                                <a href="#wizard-profil-masjid-simpan" class="waves-effect waves-light wizard-profil-masjid-simpan btn btn-edit-profil btn-success btn-wizard-checker" onclick="wizardFormChecker()">Simpan</a>
+                                <a href="#wizard-profil-masjid-simpan"
+                                    class="waves-effect waves-light wizard-profil-masjid-simpan btn btn-edit-profil btn-success btn-wizard-checker">Simpan</a>
                             </div>
 
                             <div id="wizard-profil-masjid-simpan" class="modal">
@@ -154,7 +153,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a href="#" class="modal-close waves-effect waves-green btn-flat">Kembali</a>
-                                    <a href="<?php echo base_url('wizard/dkm'); ?>" class="modal-close waves-effect waves-green btn-flat">Yakin</a>
+                                    <a id="wizard-profil-masjid-simpan-popup" class=" waves-effect waves-green btn-flat">Yakin</a>
                                 </div>
                             </div>
 

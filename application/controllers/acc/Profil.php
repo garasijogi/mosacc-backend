@@ -21,7 +21,8 @@ class Profil extends CI_Controller {
     
     public function index()
     {
-        $jenis_file = array('ad_art', 'badan_hukum');
+        //ambil data file
+        $jenis_file = array('ad_art', 'badan_hukum', 'foto_profil');
         foreach($jenis_file as $v){
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
@@ -33,6 +34,12 @@ class Profil extends CI_Controller {
     }
     
     public function akun(){
+        //ambil data file
+        $jenis_file = array('foto_profil');
+        foreach($jenis_file as $v){
+            $data['files'][$v] = $this->profil_m->getFiles($v);
+        }
+        
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
         $data['rules'] = $this->rules_model->get_rules();
@@ -41,6 +48,12 @@ class Profil extends CI_Controller {
     }
     
     public function aset(){
+        //ambil data file
+        $jenis_file = array('foto_profil');
+        foreach($jenis_file as $v){
+            $data['files'][$v] = $this->profil_m->getFiles($v);
+        }
+
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
         //get aset peralatan
@@ -52,7 +65,8 @@ class Profil extends CI_Controller {
     }
     
     public function dkm(){
-        $jenis_file = array('struktur_dkm');
+        //ambil data file
+        $jenis_file = array('struktur_dkm', 'foto_profil');
         foreach($jenis_file as $v){
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
@@ -71,7 +85,7 @@ class Profil extends CI_Controller {
     
     public function edit_profil_masjid(){
         //buat session files & masukkan data untuk dibawa ke view
-        $jenis_file = array('ad_art', 'badan_hukum');
+        $jenis_file = array('ad_art', 'badan_hukum', 'foto_profil'); //, 'foto_profil'
         foreach($jenis_file as $v){
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
@@ -89,7 +103,8 @@ class Profil extends CI_Controller {
     }
     
     public function edit_struktur_dkm(){
-         $jenis_file = array('struktur_dkm');
+        //ambil file
+         $jenis_file = array('struktur_dkm', 'foto_profil');
         foreach($jenis_file as $v){
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
@@ -117,13 +132,15 @@ class Profil extends CI_Controller {
         //upload files
         $ad_art      = siapUnggah('ad_art', 'files'); //file ad/art (parameter post files, nama session)
         $badan_hukum = siapUnggah('badan_hukum', 'files'); //file badan_hukum (parameter post files, nama session)
+        $foto_profil = siapUnggah('foto_profil', 'files'); //file badan_hukum (parameter post files, nama session)
         
         //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
         $pengganti = array(
             'ad_art'      => $ad_art,
-            'badan_hukum' => $badan_hukum
+            'badan_hukum' => $badan_hukum,
+            'foto_profil' => $foto_profil
         );
         //replace
         $files = array_replace(
@@ -131,7 +148,7 @@ class Profil extends CI_Controller {
         );
         //hapus session
         $this->session->unset_userdata('files');
-        //masukkan ke database
+        //masukkan files ke database
         foreach($files as $k => $v){
             $this->profil_m->edit_file($k, $v);
         }

@@ -35,7 +35,7 @@ function unggahin($userfile){
     //set config upload file
     $config = array(
         "upload_path"   => "./document",
-        "allowed_types" => "pdf|doc|docx|ppt|pptx|xps|odt|xls|xlsx|wps",
+        "allowed_types" => "pdf|doc|docx|ppt|pptx|xps|odt|xls|xlsx|wps|jpg|jpeg|gif|png|bmp|tiff",
         "max_size"      => "32384"
     );
     $CI->load->library('upload', $config);//load library upload
