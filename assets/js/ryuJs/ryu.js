@@ -2,6 +2,47 @@ $(document).ready(function () {
     $('#view_data').DataTable();
 });
 
+//Select option initialization
+$(document).ready(function () {
+    $('select').formSelect();
+});
+
+//multiform-template initiation
+$(".multiform-template").multiFormTemplate({
+    postAddFunction: function () {
+        $('select').formSelect();
+    }
+});
+
+//aset peralatan submit button
+$("#btn-submit-peralatan").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-peralatan").submit();
+});
+
+//aset perlengkapan submit button
+$("#btn-submit-perlengkapan").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-perlengkapan").submit();
+});
+
+//aset kendaraan submit button
+$("#btn-submit-kendaraan").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-kendaraan").submit();
+});
+
+//aset peralatan submit button
+$("#btn-submit-bangunan_tanah").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-bangunan_tanah").submit();
+});
+
+$("#btn-submit-kas_bank").click(function () {
+    /* when the submit button in the modal is clicked, submit the form */
+    $("#form_aset-kas_bank").submit();
+});
+
 //>>Bayuw
 // Dropdown
 const dropdown = document.querySelectorAll('.dropdown-trigger');
@@ -409,48 +450,6 @@ var dChart = new Chart(ctx, {
         }
     }
 });
-
-//Select option initialization
-$(document).ready(function () {
-    $('select').formSelect();
-});
-
-//multiform-template initiation
-$(".multiform-template").multiFormTemplate({
-	postAddFunction: function () {
-		$('select').formSelect();
-	}
-});
-
-//aset peralatan submit button
-$("#btn-submit-peralatan").click(function () {
-	/* when the submit button in the modal is clicked, submit the form */
-	$("#form_aset-peralatan").submit();
-});
-
-//aset perlengkapan submit button
-$("#btn-submit-perlengkapan").click(function () {
-    /* when the submit button in the modal is clicked, submit the form */
-    $("#form_aset-perlengkapan").submit();
-});
-
-//aset kendaraan submit button
-$("#btn-submit-kendaraan").click(function () {
-    /* when the submit button in the modal is clicked, submit the form */
-    $("#form_aset-kendaraan").submit();
-});
-
-//aset peralatan submit button
-$("#btn-submit-bangunan_tanah").click(function () {
-	/* when the submit button in the modal is clicked, submit the form */
-	$("#form_aset-bangunan_tanah").submit();
-});
-
-$("#btn-submit-kas_bank").click(function () {
-	/* when the submit button in the modal is clicked, submit the form */
-	$("#form_aset-kas_bank").submit();
-});
-
 
 // //dynamic multiform old
 // $(function() {

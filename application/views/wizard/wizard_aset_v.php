@@ -94,8 +94,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="text" class="datepicker validate" name="tanggal">
-                                                            <label for="tanggal">Tanggal</label>
+                                                            <input id="tanggal" type="date" class=" validate" name="tanggal">
+                                                            <!-- <label for="tanggal">Tanggal</label> -->
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="kategori" type="text" class="validate" name="kategori">
@@ -153,8 +153,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="text" class="datepicker validate" name="tanggal">
-                                                            <label for="tanggal">Tanggal</label>
+                                                            <input id="tanggal" type="date" class=" validate" name="tanggal">
+                                                            <!-- <label for="tanggal">Tanggal</label> -->
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="kategori" type="text" class="validate" name="kategori">
@@ -211,8 +211,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="text" class="datepicker validate" name="tanggal">
-                                                            <label for="tanggal">Tanggal</label>
+                                                            <input id="tanggal" type="date" class=" validate" name="tanggal">
+                                                            <!-- <label for="tanggal">Tanggal</label> -->
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="tipe" type="text" class="validate" name="tipe">
@@ -266,8 +266,8 @@
                                                         </div>
                                 
                                                         <div class="input-field col s6">
-                                                            <input type="text" class="datepicker validate" id="tanggal" name="tanggal">
-                                                            <label for="tanggal">Tanggal</label>
+                                                            <input type="date" class=" validate" id="tanggal" name="tanggal">
+                                                            <!-- <label for="tanggal">Tanggal</label> -->
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -335,8 +335,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="text" class="validate datepicker" name="tanggal">
-                                                            <label for="tanggal">Tanggal</label>
+                                                            <input id="tanggal" type="date" class="validate " name="tanggal">
+                                                            <!-- <label for="tanggal">Tanggal</label> -->
                                                         </div>
                                                     </div>
                                                 </div>
