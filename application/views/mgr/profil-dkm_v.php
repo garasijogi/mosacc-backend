@@ -30,7 +30,7 @@
 
 			<div class="profil-wrapper">
 				<header class="profil-header valign-wrapper">
-					<img src="<?php echo base_url('assets/images/background.jpg'); ?>" alt="profil image">
+					<img src="<?php echo base_url('document/' . $files['foto_profil'][0]['nama']); ?>" alt="profil image">
 					<h4><?php echo $profil[0]['nama']; ?></h4>
 				</header>
 				<div class="profil-nav">
@@ -205,8 +205,6 @@
 			</div>
 			<br>
 		<?php endforeach; ?>
-		<a href="<?php echo base_url('mgr/profil/edit_struktur_dkm') ?>" class="waves-effect waves-light btn btn-edit-profil">Edit
-			Struktur</a>
 				</div>
 
 			</div>

@@ -16,22 +16,38 @@ class Buku_besar_utama extends CI_Controller
 
     //NEW LOADER -------------------------------------------------------------------
     //ambil tahun dari sistem
-    $dynamic_tahun = date("Y");
+    $dynamic_tahun = $this->session->userdata('tahun');
     //load settingan database dynamic ke fungsi di helper db dynamic switcher 
     $dynamic_db = switch_db_dynamic($dynamic_tahun);
     //load model yang akan digunakan
     $this->load->model('rules_model');
+    $this->load->model('tr_database_model');
     //taruh settingan database dalam array
     $this->rules_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
 
+  function change_year()
+  {
+    $tahun = $this->input->get('tahun');
+    $cu = $this->input->get('cu');
+    $arraydata = array(
+      'tahun' => $tahun
+    );
+    $this->session->set_userdata($arraydata);
+    redirect($cu);
+  }
+
   public function index()
   {
-    $this->load->view('acc/buku_besar_utama_v.php');
+    $this->load->view('mgr/buku_besar_utama_v.php');
   }
 
   function jurnal_umum()
   {
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
+
     //kas di debit
     $data['kd_akun_debit'] = $this->rules_model->get_rules_where('kas', 'debit');
     $indicator_d = 0;
@@ -89,6 +105,10 @@ class Buku_besar_utama extends CI_Controller
   }
   function buku_besar()
   {
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
+
     //kas di debit
     $data['kd_akun_debit'] = $this->rules_model->get_rules_where('kas', 'debit');
     $indicator_d = 0;
@@ -156,6 +176,11 @@ class Buku_besar_utama extends CI_Controller
   function neraca_saldo()
   {
     error_reporting(0);
+
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
+
     //kas di debit
     $data['kd_akun_debit'] = $this->rules_model->get_rules_where('kas', 'debit');
     $indicator_d = 0;

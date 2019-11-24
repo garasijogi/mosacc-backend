@@ -37,7 +37,14 @@ $this->load->view("mgr/_partials/head"); ?>
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo<br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
+            <h6 class="center" id="title-view"><b><?php
+                                                    if (date('Y') == $this->session->userdata('tahun')) {
+                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo <br>Per <?php echo (date_generator(date('Y-m-d')));
+                                                                                                                                    } else {
+                                                                                                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo <br>Per 31 Desember <?php echo $this->session->userdata('tahun');
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                ?></b></h6>
             <table id='table-neraca-saldo-v' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">
@@ -134,7 +141,14 @@ $this->load->view("mgr/_partials/head"); ?>
         <!-- print -->
         <div class="row" style="display:none">
             <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo<br>Per <?php echo date_generator(date('Y-m-d')); ?></b></h6>
-            <h6 id="title-laporan">Neraca Saldo Per <?php echo (date_generator(date('Y-m-d'))); ?> <?php echo $this->session->userdata('nama_masjid'); ?></h6>
+            <h6 class="center" id="title-view"><b><?php
+                                                    if (date('Y') == $this->session->userdata('tahun')) {
+                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo <br>Per <?php echo (date_generator(date('Y-m-d')));
+                                                                                                                                    } else {
+                                                                                                                                        echo $this->session->userdata('nama_masjid'); ?> <br>Neraca Saldo <br>Per 31 Desember <?php echo $this->session->userdata('tahun');
+                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                ?></b></h6>
             <table id='table-excel' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">

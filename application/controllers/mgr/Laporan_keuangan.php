@@ -14,11 +14,13 @@ class Laporan_keuangan extends CI_Controller
 
     //NEW LOADER --------------------------------------------------------------
     //ambil tahun dari sistem
-    $dynamic_tahun = date("Y");
+    // $dynamic_tahun = date("Y");
+    $dynamic_tahun = $this->session->userdata('tahun');
     //load settingan database dynamic ke fungsi di helper db dynamic switcher
     $dynamic_db = switch_db_dynamic($dynamic_tahun);
     //load model yang akan digunakan
     $this->load->model('rules_model');
+    $this->load->model('tr_database_model');
     //taruh settingan database dalam array
     $this->rules_model->app_db = $this->load->database($dynamic_db, TRUE);
   }
@@ -28,10 +30,25 @@ class Laporan_keuangan extends CI_Controller
     $this->load->view('mgr/laporan_keuangan_v.php');
   }
 
+  function change_year()
+  {
+    $tahun = $this->input->get('tahun');
+    $cu = $this->input->get('cu');
+    $arraydata = array(
+      'tahun' => $tahun
+    );
+    $this->session->set_userdata($arraydata);
+    redirect($cu);
+  }
+
   function laporan_neraca()
   {
     //ERROR REPORTING
     error_reporting(0);
+
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
 
     //MENENTUKAN BULAN
     $bulan = $this->input->get('bulan');
@@ -56,7 +73,18 @@ class Laporan_keuangan extends CI_Controller
     //END GET TOTAL NOMINAL PERLENGKAPAN
 
     //GET PERALATAN
-    //END GET PERLATAN
+    $total_peralatan = 0;
+    $b = $this->rules_model->get_b_now($bulan);
+    $p = $this->rules_model->get_p($bulan);
+    for ($x = 0; $x < count($p); $x++) {
+      for ($y = 0; $y < count($p[$x]); $y++) {
+        if ($p[$x]->kd_akun == 21200) {
+          $total_peralatan = $total_peralatan + $p[$x]->total_harga;
+        }
+      }
+    }
+    $data['total_peralatan'] = $total_peralatan;
+    //END GET PERALATAN
 
     //GET KENDARAAN
     $total_kendaraan = 0;
@@ -153,10 +181,14 @@ class Laporan_keuangan extends CI_Controller
     $p = $this->rules_model->get_p($bulan);
     $b = $this->rules_model->get_b($bulan);
 
+    //GET ASET
     $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
     $data['aset_bangunan_tanah'] = $this->rules_model->get_aset_bangunan_tanah($bulan);
     $data['aset_peralatan'] = $this->rules_model->get_aset_peralatan($bulan);
+    $data['aset_kendaraan'] = $this->rules_model->get_aset_kendaraan($bulan);
+    $data['aset_perlengkapan'] = $this->rules_model->get_aset_perlengkapan($bulan);
     $data['nominal_kas'] = $this->rules_model->nominal_kas($pt, $ptt, $p, $b);
+    //END GET ASET
     //END MENENTUKAN NOMINAL KAS
 
     $this->load->view('mgr/laporan_neraca_v.php', $data);
@@ -166,6 +198,11 @@ class Laporan_keuangan extends CI_Controller
   {
     //ERROR REPORTING
     error_reporting(0);
+
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
+
 
     //MENENTUKAN BULAN
     $bulan = $this->input->get('bulan');
@@ -532,6 +569,10 @@ class Laporan_keuangan extends CI_Controller
     //ERROR REPORTING
     error_reporting(0);
 
+    //YEAR LIST
+    $data['year_list'] = $this->tr_database_model->get_year_list();
+    //END YEAR LIST
+
     //MENENTUKAN BULAN
     $bulan = $this->input->get('bulan');
     if ($bulan == NULL) {
@@ -632,6 +673,10 @@ class Laporan_keuangan extends CI_Controller
     }
     $data['total_kendaraan'] = $total_kendaraan;
     $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
+    $data['aset_bangunan_tanah'] = $this->rules_model->get_aset_bangunan_tanah($bulan);
+    $data['aset_peralatan'] = $this->rules_model->get_aset_peralatan($bulan);
+    $data['aset_kendaraan'] = $this->rules_model->get_aset_kendaraan($bulan);
+    $data['aset_perlengkapan'] = $this->rules_model->get_aset_perlengkapan($bulan);
     //END MENENTUKAN PEMBELIAN KENDARAAN
     $this->load->view('mgr/laporan_arus_kas_v.php', $data);
   }

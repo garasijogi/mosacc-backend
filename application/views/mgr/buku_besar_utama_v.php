@@ -43,7 +43,7 @@
             <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-buku-besar.jpg'); ?>" width="400" height="250">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-buku-besar.png'); ?>" width="400" height="250">
                         <span class="card-title card-title-text">Buku Besar</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('mgr/buku_besar_utama/buku_besar'); ?>"><i class="material-icons">launch</i></a>
                     </div>
@@ -56,7 +56,7 @@
             <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-neraca-saldo.jpg'); ?>" width="400" height="250">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-neraca-saldo.png'); ?>" width="400" height="250">
                         <span class="card-title card-title-text">Neraca Saldo</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('mgr/buku_besar_utama/neraca_saldo'); ?>"><i class="material-icons">launch</i></a>
                     </div>

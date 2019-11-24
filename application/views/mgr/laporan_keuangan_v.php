@@ -30,7 +30,7 @@
             <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-posisi-keuangan.jpg'); ?>" width="200" height="300">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-posisi-keuangan.png'); ?>" width="200" height="300">
                         <span class="card-title card-title-text">Posisi Keuangan (Neraca)</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('mgr/laporan_keuangan/laporan_neraca'); ?>"><i class="material-icons">launch</i></a>
                     </div>
@@ -49,7 +49,7 @@
             <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-aktivitas.jpg'); ?>" width="200" height="300">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-aktivitas.png'); ?>" width="200" height="300">
                         <span class="card-title card-title-text">Laporan Aktivitas</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('mgr/laporan_keuangan/laporan_aktivitas'); ?>"><i class="material-icons">launch</i></a>
                     </div>
@@ -62,7 +62,7 @@
             <div class="col s12 m3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-arus-kas.jpg'); ?>" width="200" height="300">
+                        <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-arus-kas.png'); ?>" width="200" height="300">
                         <span class="card-title card-title-text">Arus Kas</span>
                         <a class="btn-floating halfway-fab btn-large waves-effect waves-light red modal-trigger" href="<?php echo base_url('mgr/laporan_keuangan/laporan_arus_kas'); ?>"><i class="material-icons">launch</i></a>
                     </div>

@@ -54,6 +54,22 @@ class Homepage extends CI_Controller
   {
     $this->load->view('about_us_v.php');
   }
+
+  function exit_mosacc()
+  {
+    $this->execInBackground('start cmd.exe @cmd /k "taskkill /IM chrome.exe"');
+    $this->execInBackground('start cmd.exe @cmd /k ""C:\mosacc\xampp\xampp_stop.exe""');
+    $this->execInBackground('cmd.exe @cmd /k "taskkill /F /IM cmd.exe"');
+  }
+
+  function execInBackground($cmd)
+  {
+    if (substr(php_uname(), 0, 7) == "Windows") {
+      pclose(popen("start /B " . $cmd, "r"));
+    } else {
+      exec($cmd . " > /dev/null &");
+    }
+  }
 }
 
 

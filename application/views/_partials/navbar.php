@@ -9,6 +9,9 @@
 				<a href="<?php echo base_url('homepage/about_us'); ?>">
 					<li>About</li>
 				</a>
+				<a href="<?php echo base_url('homepage/exit_mosacc'); ?>">
+					<li> Exit</li>
+				</a>
 			</ul>
 		</div>
 	</nav>

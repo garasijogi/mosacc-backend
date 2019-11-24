@@ -30,7 +30,7 @@
 
 			<div class="profil-wrapper">
 				<header class="profil-header valign-wrapper">
-					<img src="<?php echo base_url('assets/images/background.jpg'); ?>" alt="profil image">
+					<img src="<?php echo base_url('document/' . $files['foto_profil'][0]['nama']); ?>" alt="profil image">
 					<h4><?php echo $profil[0]['nama']; ?></h4>
 				</header>
 				<div class="profil-nav">
@@ -72,6 +72,12 @@
 								<div class="row">
 									<div class="profil-properti">TAHUN BERDIRI</div>
 									<div class="profil-nilai"><?php echo $profil[0]['tahun']; ?></div>
+								</div>
+							</div>
+							<div class="col s12">
+								<div class="row" id="foto-masjid">
+									<div class="profil-properti">FOTO MASJID</div>
+									<div class="profil-nilai"><?php echo ($files['foto_profil'][0]['nama']); ?></div>
 								</div>
 							</div>
 						</div>
@@ -182,11 +188,6 @@
 							</div>
 						</div>
 					</div>
-
-					<a href="<?php echo base_url('mgr/profil/edit_profil_masjid'); ?>" class="waves-effect waves-light btn btn-edit-profil">Edit
-						Profil</a>
-
-
 				</div>
 			</div>
 		</div>

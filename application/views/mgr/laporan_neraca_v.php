@@ -44,7 +44,8 @@
 
         <!-- view -->
         <div class="row" id="printed">
-            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan);
+                                                                                                                echo " " . ($this->session->userdata('tahun')); ?> </b></h6>
             <table>
                 <tr>
                     <th colspan="2">Keterangan</th>
@@ -66,14 +67,14 @@
                 <tr>
                     <td></td>
                     <td>Perlengkapan</td>
-                    <td><?php echo "Rp " . number_format($total_perlengkapan, 2, ',', '.');
-                        $jumlah_aset = $jumlah_aset + $total_perlengkapan;  ?></td>
+                    <td><?php echo "Rp " . number_format($total_perlengkapan + $aset_perlengkapan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $total_perlengkapan + $aset_perlengkapan;  ?></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>Kendaraan</td>
-                    <td><?php echo "Rp " . number_format($total_kendaraan, 2, ',', '.');
-                        $jumlah_aset = $jumlah_aset + $total_kendaraan;  ?></td>
+                    <td><?php echo "Rp " . number_format($total_kendaraan + $aset_kendaraan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $total_kendaraan + $aset_kendaraan;  ?></td>
                 </tr>
                 <tr>
                     <td colspan="3">Aset Tidak Lancar</td>
@@ -81,8 +82,8 @@
                 <tr>
                     <td></td>
                     <td>Peralatan</td>
-                    <td><?php echo "Rp " . number_format($aset_peralatan, 2, ',', '.');
-                        $jumlah_aset = $jumlah_aset + $aset_peralatan;  ?></td>
+                    <td><?php echo "Rp " . number_format($aset_peralatan + $total_peralatan, 2, ',', '.');
+                        $jumlah_aset = $jumlah_aset + $aset_peralatan + $total_peralatan;  ?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -152,7 +153,8 @@
         <!-- print -->
         <div class="row" style="display:none">
             <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
-            <h6 class="center" id="title-laporan"><b>Laporan Posisi Keuangan (Neraca) <br><?php echo $this->session->userdata('nama_masjid'); ?><br>Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan);
+                                                                                                                echo " " . ($this->session->userdata('tahun')); ?> </b></h6>
             <table id='table-excel'>
                 <thead>
                     <tr>
@@ -182,14 +184,14 @@
                     <tr>
                         <td></td>
                         <td>Perlengkapan</td>
-                        <td><?php echo "Rp " . number_format($total_perlengkapan, 2, ',', '.');
-                            $jumlah_aset = $jumlah_aset + $total_perlengkapan;  ?></td>
+                        <td><?php echo "Rp " . number_format($total_perlengkapan + $aset_perlengkapan, 2, ',', '.');
+                            $jumlah_aset = $jumlah_aset + $total_perlengkapan + $aset_perlengkapan;  ?></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>Kendaraan</td>
-                        <td><?php echo "Rp " . number_format($total_kendaraan, 2, ',', '.');
-                            $jumlah_aset = $jumlah_aset + $total_kendaraan;  ?></td>
+                        <td><?php echo "Rp " . number_format($total_kendaraan + $aset_kendaraan, 2, ',', '.');
+                            $jumlah_aset = $jumlah_aset + $total_kendaraan + $aset_kendaraan;  ?></td>
                     </tr>
                     <tr>
                         <td>Aset Tidak Lancar</td>
@@ -199,8 +201,8 @@
                     <tr>
                         <td></td>
                         <td>Peralatan</td>
-                        <td><?php echo "Rp " . number_format($aset_peralatan, 2, ',', '.');
-                            $jumlah_aset = $jumlah_aset + $aset_peralatan;  ?></td>
+                        <td><?php echo "Rp " . number_format($aset_peralatan + $total_peralatan, 2, ',', '.');
+                            $jumlah_aset = $jumlah_aset + $aset_peralatan + $total_peralatan;  ?></td>
                     </tr>
                     <tr>
                         <td></td>
