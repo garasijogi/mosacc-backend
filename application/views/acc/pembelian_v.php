@@ -44,7 +44,7 @@
 					<a href="<?php echo base_url('acc/form_input_pembelian'); ?>?kd_akun=21200">
 						<div class="card-image">
 							<img src="<?php echo base_url('assets/images/pembelian/pembelian-peralatan-icon.png') ?>" width='300' height='350'>
-							<span class="card-title">Pembelian peralatan</span>
+							<span class="card-title">Pembelian Peralatan</span>
 						</div>
 						<div class="card-content">
 							<p>Digunakan untuk mencatat pembelian barang-barang yang berkaitan dengan peralatan.</p>

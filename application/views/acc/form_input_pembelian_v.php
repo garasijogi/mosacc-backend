@@ -58,12 +58,8 @@
 						<label for="input-tanggal">Masukkan Tanggal</label>
 					</div>
 					<div class="input-field col s5">
-						<select name="jenis">
-							<option value="" selected>Jenis</option>
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-							<option value="3">Option 3</option>
-						</select>
+						<input name="jenis" id="input-jenis" type="text">
+						<label for="input-jenis">Jenis</label>
 					</div>
 				</div>
 				<div class="row">
