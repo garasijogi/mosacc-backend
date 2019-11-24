@@ -66,14 +66,12 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach ($rules->result() as $r) :
-                                            if ($r->kd_bagan != NULL) : ?>
-                                                <tr>
-                                                    <td><?php echo $r->kd_bagan; ?></td>
-                                                    <td><?php echo $r->nama_sub; ?></td>
-                                                </tr>
-                                        <?php endif;
-                                        endforeach; ?>
+                                        <?php foreach ($bagan_akun->result() as $r) : ?>
+                                            <tr>
+                                                <td><?php echo $r->kd_akun; ?></td>
+                                                <td><?php echo $r->nama_akun; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

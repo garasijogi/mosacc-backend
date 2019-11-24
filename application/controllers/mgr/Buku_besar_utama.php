@@ -170,6 +170,14 @@ class Buku_besar_utama extends CI_Controller
     $data['b'] = $this->rules_model->get_b($bulan);
     //END MENENTUKAN TABEL KAS
 
+    //SALDO AWAL ASET NETO TIDAK TERIKAT
+    $data['aset_kas_bank'] = $this->rules_model->get_aset_kas_all();
+    $data['aset_bangunan_tanah'] = $this->rules_model->get_aset_bangunan_tanah_all();
+    $data['aset_peralatan'] = $this->rules_model->get_aset_peralatan_all();
+    $data['aset_kendaraan'] = $this->rules_model->get_aset_kendaraan_all();
+    $data['aset_perlengkapan'] = $this->rules_model->get_aset_perlengkapan_all();
+    //END SALDO AWAL ASET NETO TIDAK TERIKAT
+
     $this->load->view('mgr/buku_besar_v.php', $data);
   }
 

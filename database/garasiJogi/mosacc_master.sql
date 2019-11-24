@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2019 at 08:12 AM
+-- Generation Time: Nov 24, 2019 at 06:00 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -40,6 +40,13 @@ CREATE TABLE IF NOT EXISTS `aset-bangunan_tanah` (
   PRIMARY KEY (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `aset-bangunan_tanah`
+--
+
+INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
+(1, 'Tanah Masjid', '2019-10-25', 600, 250000000);
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +62,13 @@ CREATE TABLE IF NOT EXISTS `aset-kas_bank` (
   `tanggal` date DEFAULT NULL,
   PRIMARY KEY (`norek`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aset-kas_bank`
+--
+
+INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
+('325342', 'fadil', 'BINI', 9000000, '2019-10-18');
 
 -- --------------------------------------------------------
 
@@ -100,6 +114,13 @@ CREATE TABLE IF NOT EXISTS `aset-peralatan` (
   KEY `id_aset` (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `aset-peralatan`
+--
+
+INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
+(1, '', '', '0000-00-00', '', '', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -117,6 +138,108 @@ CREATE TABLE IF NOT EXISTS `aset-perlengkapan` (
   `harga` double DEFAULT NULL,
   PRIMARY KEY (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `aset-perlengkapan`
+--
+
+INSERT INTO `aset-perlengkapan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
+(1, '', '', '0000-00-00', '', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bagan_akun`
+--
+
+DROP TABLE IF EXISTS `bagan_akun`;
+CREATE TABLE IF NOT EXISTS `bagan_akun` (
+  `kd_akun` int(11) NOT NULL,
+  `nama_akun` varchar(256) NOT NULL,
+  PRIMARY KEY (`kd_akun`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bagan_akun`
+--
+
+INSERT INTO `bagan_akun` (`kd_akun`, `nama_akun`) VALUES
+(100, 'ASET'),
+(110, 'Aset Lancar'),
+(112, 'Kas dan Bank'),
+(113, 'Perlengkapan'),
+(120, 'Aset Tidak Lancar'),
+(121, 'Peralatan'),
+(122, 'Menara'),
+(123, 'Bangunan'),
+(124, 'Lahan Parkir'),
+(125, 'Tanah'),
+(126, 'Kendaraan'),
+(300, 'Aset Neto'),
+(310, 'Aset Neto Tidak Terikat'),
+(311, 'Saldo Awal Aset Neto Tidak Terikat'),
+(312, 'Kenaikan (Penurunan) Aset Neto Tidak Terikat'),
+(313, 'Saldo Akhir Aset Neto Tidak Terikat'),
+(320, 'Aset Neto Terikat'),
+(321, 'Saldo Awal Aset Neto Terikat'),
+(322, 'Kenaikan (Penurunan) Aset Neto Terikat'),
+(323, 'Saldo Akhir Aset Neto Terikat'),
+(400, 'Pendapatan'),
+(410, 'Pendapatan Sewa'),
+(411, 'Infaq Peminjaman Peralatan'),
+(412, 'Infaq Pemakaian Ruangan'),
+(420, 'Pendapatan Parkir'),
+(430, 'Infaq Pengurusan Jenazah'),
+(440, 'Pendapatan Peribadatan'),
+(441, 'Infaq Kotak Jumat'),
+(442, 'Infaq Perayaan Hari Besar Islam'),
+(443, 'Infaq Pengajian'),
+(444, 'Infaq Ramadhan'),
+(450, 'Infaq Pendidikan'),
+(451, 'Infaq TPA dan Tahfidz'),
+(452, 'Infaq Beasiswa'),
+(460, 'ZISWAF'),
+(461, 'Infaq dari Donatur'),
+(462, 'Infaq Kotak Dana Operasional'),
+(463, 'Infaq Kotak Dana Sosial'),
+(464, 'Zakat Fitrah'),
+(465, 'Fidyah'),
+(466, 'Infaq untuk Baksos'),
+(467, 'Waqaf'),
+(499, 'Pendapatan Lainnya'),
+(500, 'Beban-Beban'),
+(510, 'Beban Operasional'),
+(511, 'Beban Listrik, Air, dan Telepon'),
+(512, 'Beban Pemeliharaan'),
+(513, 'Beban Administrasi'),
+(514, 'Beban Perlengkapan'),
+(515, 'Beban Transportasi'),
+(516, 'Insentif Pengurus Masjid'),
+(520, 'Beban Renovasi dan Pembangunan'),
+(521, 'Pembelian Material'),
+(522, 'Upah Tukang'),
+(530, 'Beban Peribadatan'),
+(531, 'Insentif pembicara/Khatib'),
+(532, 'Insentif Marbot'),
+(533, 'Beban Perayaan Hari Besar Islam'),
+(534, 'Beban Buletin Dakwah'),
+(535, 'Peribadatan Lainnya'),
+(540, 'Pengeluaran Ramadhan'),
+(541, 'Shalat Tarawih'),
+(542, 'Konsumsi Buka Puasa dan Sahur'),
+(543, 'Peringatan Nuzulul Quran'),
+(550, 'Penyaluran ZISWAF'),
+(551, 'Penyaluran Zakat Fitrah dan Fidyah'),
+(552, 'Penyaluran untuk Beasiswa'),
+(553, 'Penyaluran untuk Besuk Orang Sakit'),
+(554, 'Penyaluran untuk Aktivitas Kepemudaan'),
+(555, 'Sumbangan untuk Anak Yatim'),
+(556, 'Sumbangan Ta’ziyah'),
+(557, 'Sumbangan untuk Bencana Alam'),
+(560, 'Pengeluaran Pendidikan'),
+(561, 'Penyaluran untuk TPA dan Tahfidz'),
+(562, 'Beban Pelatihan'),
+(599, 'Beban Lainnya');
 
 -- --------------------------------------------------------
 
@@ -136,6 +259,16 @@ CREATE TABLE IF NOT EXISTS `files` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
+(1, '', 'ad_art', '', '', 0, '0000-00-00'),
+(2, '', 'badan_hukum', '', '', 0, '0000-00-00'),
+(3, '', 'struktur_dkm', '', '', 0, '0000-00-00'),
+(4, 'profil.jpg', 'foto_profil', 'Image/JPEG Files', '.jpg', 314, '2019-11-24');
+
 -- --------------------------------------------------------
 
 --
@@ -151,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `profil_dkm` (
   `telepon` varchar(15) DEFAULT NULL,
   `pendidikan` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id_pengurus`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -170,6 +303,13 @@ CREATE TABLE IF NOT EXISTS `profil_masjid` (
   `luas_tanah` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`id_profil`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profil_masjid`
+--
+
+INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
+(1, 'Masjid Nurul Huda', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -257,6 +397,14 @@ CREATE TABLE IF NOT EXISTS `tr_database` (
   PRIMARY KEY (`id_db`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tr_database`
+--
+
+INSERT INTO `tr_database` (`id_db`, `nama_db`, `tahun`) VALUES
+(2018, 'mosacc_tr_2018', 2018),
+(2019, 'mosacc_tr_2019', 2019);
+
 -- --------------------------------------------------------
 
 --
@@ -271,6 +419,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(256) NOT NULL,
   PRIMARY KEY (`NIP`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
+(1, 'ketua_dkm', 'manager', 'FADIL'),
+(2, 'bendahara', 'akuntan', 'FADIL');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

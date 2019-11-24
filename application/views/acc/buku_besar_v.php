@@ -115,6 +115,103 @@ $this->load->view("acc/_partials/head"); ?>
 
             <!-- END KAS -->
 
+            <!-- SALDO AWAL ASET NETO TIDAK TERIKAT -->
+            <h6 class="font-bold"><?php echo "Saldo Awal Aset Neto Tidak Terikat (311)"; ?></h6>
+            <table id='table-jurnal-umum-v'>
+                <tr class="teal white-text">
+                    <th style="width:20%">Tanggal</th>
+                    <th style="width:20%">Transaksi</th>
+                    <th style="width:20%">Debit</th>
+                    <th style="width:20%">Kredit</th>
+                    <th style="width:20%">Jumlah</th>
+                </tr>
+                <!-- ASET KAS BANK -->
+                <?php
+                $aset = 0;
+                foreach ($aset_kas_bank->result() as $ak) :
+                    if ($ak->nominal != 0) : ?>
+                        <tr>
+                            <td><?php echo $ak->tanggal; ?></td>
+                            <td><?php echo '(Kas/Bank)' ?></td>
+                            <td><?php echo $ak->nominal;
+                                        $aset += $ak->nominal; ?></td>
+                            <td></td>
+                            <td><?php echo $aset; ?></td>
+                        </tr>
+                <?php
+                    endif;
+                endforeach; ?>
+                <!-- END ASET KAS BANK -->
+
+                <!-- ASET KENDARAAN -->
+                <?php
+                foreach ($aset_kendaraan->result() as $ak) :
+                    if ($ak->harga != 0) : ?>
+                        <tr>
+                            <td><?php echo $ak->tanggal; ?></td>
+                            <td><?php echo  '(Kendaraan) ' . $ak->jumlah . ' ' . $ak->nama . ' ' . $ak->merek . ' ' . $ak->tipe; ?></td>
+                            <td><?php echo $ak->harga;
+                                        $aset += $ak->harga; ?></td>
+                            <td></td>
+                            <td><?php echo $aset; ?></td>
+                        </tr>
+                <?php
+                    endif;
+                endforeach; ?>
+                <!-- END ASET KENDARAAN -->
+
+                <!-- ASET PERALATAN -->
+                <?php
+                foreach ($aset_peralatan->result() as $ak) :
+                    if ($ak->harga != 0) : ?>
+                        <tr>
+                            <td><?php echo $ak->tanggal; ?></td>
+                            <td><?php echo  '(Peralatan) ' . $ak->jumlah . ' ' . $ak->nama . ' ' . $ak->merek; ?></td>
+                            <td><?php echo $ak->harga;
+                                        $aset += $ak->harga; ?></td>
+                            <td></td>
+                            <td><?php echo $aset; ?></td>
+                        </tr>
+                <?php endif;
+                endforeach; ?>
+                <!-- END ASET PERALATAN -->
+
+                <!-- ASET PERLENGKAPAN -->
+                <?php
+                foreach ($aset_perlengkapan->result() as $ak) :
+                    if ($ak->harga != 0) : ?>
+                        <tr>
+                            <td><?php echo $ak->tanggal; ?></td>
+                            <td><?php echo  '(Perlengkapan) ' . $ak->jumlah . ' ' . $ak->nama . ' ' . $ak->merek; ?></td>
+                            <td><?php echo $ak->harga;
+                                        $aset += $ak->harga; ?></td>
+                            <td></td>
+                            <td><?php echo $aset; ?></td>
+                        </tr>
+                <?php endif;
+                endforeach; ?>
+                <!-- END ASET PERLENGKAPAN -->
+
+                <!-- ASET BANGUNAN DAN TANAH -->
+                <?php
+                foreach ($aset_bangunan_tanah->result() as $ak) :
+                    if ($ak->nilai != 0) : ?>
+                        <tr>
+                            <td><?php echo $ak->tanggal; ?></td>
+                            <td><?php echo  '(Bangunan dan Tanah) ' . $ak->jumlah . ' ' . $ak->nama . ' ' . $ak->merek; ?></td>
+                            <td><?php echo $ak->nilai;
+                                        $aset += $ak->nilai; ?></td>
+                            <td></td>
+                            <td><?php echo $aset; ?></td>
+                        </tr>
+                <?php endif;
+                endforeach; ?>
+                <!-- END ASET BANGUNAN DAN TANAH -->
+
+            </table>
+            <br>
+            <!-- END SALDO AWAL ASET NETO TIDAK TERIKAT -->
+
             <!-- DEBIT -->
             <!-- Penerimaan Terikat -->
             <?php

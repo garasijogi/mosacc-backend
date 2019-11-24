@@ -515,6 +515,45 @@ class Rules_model extends CI_Model
     return $result;
   }
 
+  //GET ASET SELURUHNYA
+  function get_aset_kas_all()
+  {
+    $result = $this->db->get('aset-kas_bank');
+    return $result;
+  }
+
+  function get_aset_bangunan_tanah_all()
+  {
+    $result = $this->db->get('aset-bangunan_tanah');
+    return $result;
+  }
+
+  function get_aset_peralatan_all()
+  {
+    $result = $this->db->get('aset-peralatan');
+    return $result;
+  }
+
+  function get_aset_kendaraan_all()
+  {
+    $result = $this->db->get('aset-kendaraan');
+    return $result;
+  }
+
+  function get_aset_perlengkapan_all()
+  {
+    $result = $this->db->get('aset-perlengkapan');
+    return $result;
+  }
+  //END GET ASET SELURUHNYA
+
+  //GET BAGAN AKUN
+  function get_bagan_akun()
+  {
+    $result = $this->db->get('bagan_akun');
+    return $result;
+  }
+  //END GET BAGAN AKUN
   // ------------------------------------------------------------------------
 
 }

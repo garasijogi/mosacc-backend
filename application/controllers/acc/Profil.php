@@ -1,10 +1,11 @@
-<?php 
+<?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profil extends CI_Controller {
-    
-    
+class Profil extends CI_Controller
+{
+
+
     public function __construct()
     {
         parent::__construct();
@@ -13,44 +14,47 @@ class Profil extends CI_Controller {
         }
 
         $this->load->helper('uploader'); //load helper uploader
-        
+
         $this->load->model('profil_m');
         $this->load->model('rules_model');
     }
-    
-    
+
+
     public function index()
     {
         //ambil data file
         $jenis_file = array('ad_art', 'badan_hukum', 'foto_profil');
-        foreach($jenis_file as $v){
+        foreach ($jenis_file as $v) {
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
-        
+
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
-        
+
         $this->load->view('acc/profil_v', $data);
     }
-    
-    public function akun(){
+
+    public function akun()
+    {
         //ambil data file
         $jenis_file = array('foto_profil');
-        foreach($jenis_file as $v){
+        foreach ($jenis_file as $v) {
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
-        
+
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
         $data['rules'] = $this->rules_model->get_rules();
-        
+        $data['bagan_akun'] = $this->rules_model->get_bagan_akun();
+
         $this->load->view('acc/profil-akun_v', $data);
     }
-    
-    public function aset(){
+
+    public function aset()
+    {
         //ambil data file
         $jenis_file = array('foto_profil');
-        foreach($jenis_file as $v){
+        foreach ($jenis_file as $v) {
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
 
@@ -60,14 +64,15 @@ class Profil extends CI_Controller {
         $data['aset_peralatan'] = $this->profil_m->get_aset('aset-peralatan');
         //get aset bangunan/tanah
         $data['aset_bt'] = $this->profil_m->get_aset('aset-bangunan_tanah');
-        
+
         $this->load->view('acc/profil-aset_v', $data);
     }
-    
-    public function dkm(){
+
+    public function dkm()
+    {
         //ambil data file
         $jenis_file = array('struktur_dkm', 'foto_profil');
-        foreach($jenis_file as $v){
+        foreach ($jenis_file as $v) {
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
 
@@ -79,21 +84,22 @@ class Profil extends CI_Controller {
         $data['bendahara'] = $this->profil_m->getPegawai('bendahara');
         //get sekretaris
         $data['sekretaris'] = $this->profil_m->getPegawai('sekretaris');
-        
+
         $this->load->view('acc/profil-dkm_v', $data);
     }
-    
-    public function edit_profil_masjid(){
+
+    public function edit_profil_masjid()
+    {
         //buat session files & masukkan data untuk dibawa ke view
         $jenis_file = array('ad_art', 'badan_hukum', 'foto_profil'); //, 'foto_profil'
-        foreach($jenis_file as $v){
+        foreach ($jenis_file as $v) {
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
 
-        foreach($data['files'] as $k => $v){
+        foreach ($data['files'] as $k => $v) {
             $file_session['files'][$k] = $v[0];
         }
-        
+
         $this->session->set_userdata($file_session);
 
         //data profil masjid
@@ -101,18 +107,19 @@ class Profil extends CI_Controller {
 
         $this->load->view('acc/edit_profil_masjid_v', $data);
     }
-    
-    public function edit_struktur_dkm(){
+
+    public function edit_struktur_dkm()
+    {
         //ambil file
-         $jenis_file = array('struktur_dkm', 'foto_profil');
-        foreach($jenis_file as $v){
+        $jenis_file = array('struktur_dkm', 'foto_profil');
+        foreach ($jenis_file as $v) {
             $data['files'][$v] = $this->profil_m->getFiles($v);
         }
 
-        foreach($data['files'] as $k => $v){
+        foreach ($data['files'] as $k => $v) {
             $file_session['files'][$k] = $v[0];
         }
-        
+
         $this->session->set_userdata($file_session);
 
         //data profil masjid
@@ -123,17 +130,17 @@ class Profil extends CI_Controller {
         $data['bendahara'] = $this->profil_m->getPegawai('bendahara');
         //get sekretaris
         $data['sekretaris'] = $this->profil_m->getPegawai('sekretaris');
-        
+
         $this->load->view('acc/edit_struktur_dkm_v', $data);
     }
-    
+
     public function proses_edit_profil_masjid()
     {
         //upload files
         $ad_art      = siapUnggah('ad_art', 'files'); //file ad/art (parameter post files, nama session)
         $badan_hukum = siapUnggah('badan_hukum', 'files'); //file badan_hukum (parameter post files, nama session)
         $foto_profil = siapUnggah('foto_profil', 'files'); //file badan_hukum (parameter post files, nama session)
-        
+
         //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
@@ -144,12 +151,13 @@ class Profil extends CI_Controller {
         );
         //replace
         $files = array_replace(
-            $dasar, $pengganti
+            $dasar,
+            $pengganti
         );
         //hapus session
         $this->session->unset_userdata('files');
         //masukkan files ke database
-        foreach($files as $k => $v){
+        foreach ($files as $k => $v) {
             $this->profil_m->edit_file($k, $v);
         }
 
@@ -163,22 +171,22 @@ class Profil extends CI_Controller {
 
         $badan_hukum = $this->input->post('badan_hukum');
         $adart = $this->input->post('ad-art');
-        
+
         $arraydata = array(
             'nama_masjid' => $nama_masjid
         );
-        
+
         $this->session->set_userdata($arraydata);
-        
+
         $this->profil_m->edit_profil_masjid($nama_masjid, $alamat, $thn, $telepon, $rekening, $luas_tanah);
         redirect('acc/profil/');
     }
-    
+
     public function proses_edit_struktur_dkm()
     {
         //upload files
         $struktur_dkm = siapUnggah('struktur_dkm', 'files'); //file badan_hukum (parameter post files, nama session)
-        
+
         //ambil session files dan taruh di base
         $dasar = $this->session->userdata('files');
         //siapkan yg ingin direplace
@@ -187,12 +195,13 @@ class Profil extends CI_Controller {
         );
         //replace
         $files = array_replace(
-            $dasar, $pengganti
+            $dasar,
+            $pengganti
         );
         //hapus session
         $this->session->unset_userdata('files');
         //masukkan ke database
-        foreach($files as $k => $v){
+        foreach ($files as $k => $v) {
             $this->profil_m->edit_file($k, $v);
         }
 
@@ -203,7 +212,7 @@ class Profil extends CI_Controller {
         $telepon_ketua = $this->input->post('telepon_ketua');
         $pendidikan_ketua = $this->input->post('pendidikan_ketua');
         $this->profil_m->edit_pegawai($id_ketua, $nama_ketua, $alamat_ketua, $telepon_ketua, $pendidikan_ketua);
-        
+
         //sekretaris
         $id_sekretaris = $this->input->post('id_sekretaris');
         $nama_sekretaris = $this->input->post('nama_sekretaris');
@@ -211,7 +220,7 @@ class Profil extends CI_Controller {
         $telepon_sekretaris = $this->input->post('telepon_sekretaris');
         $pendidikan_sekretaris = $this->input->post('pendidikan_sekretaris');
         $this->profil_m->edit_pegawai($id_sekretaris, $nama_sekretaris, $alamat_sekretaris, $telepon_sekretaris, $pendidikan_sekretaris);
-        
+
         //bendahara
         $id_bendahara = $this->input->post('id_bendahara');
         $nama_bendahara = $this->input->post('nama_bendahara');
@@ -221,8 +230,6 @@ class Profil extends CI_Controller {
         $this->profil_m->edit_pegawai($id_bendahara, $nama_bendahara, $alamat_bendahara, $telepon_bendahara, $pendidikan_bendahara);
         redirect('acc/profil/dkm');
     }
-    
 }
 
 /* End of file  profil.php */
-

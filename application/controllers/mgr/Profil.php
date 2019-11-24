@@ -45,6 +45,7 @@ class Profil extends CI_Controller
         //data profil masjid
         $data['profil'] = $this->profil_m->getProfil();
         $data['rules'] = $this->rules_model->get_rules();
+        $data['bagan_akun'] = $this->rules_model->get_bagan_akun();
 
         $this->load->view('mgr/profil-akun_v', $data);
     }

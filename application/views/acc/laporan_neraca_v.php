@@ -111,7 +111,7 @@
                     <td></td>
                     <td>Saldo Awal Aset Neto Tidak Terikat</td>
                     <td><?php
-                        $aset_neto_tt_before += $aset_kas_bank;
+                        $aset_neto_tt_before += $aset_kas_bank + $aset_perlengkapan + $aset_peralatan + $aset_kendaraan + $aset_peralatan + $aset_bangunan_tanah;
                         echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
@@ -234,7 +234,7 @@
                         <td></td>
                         <td>Saldo Awal Aset Neto Tidak Terikat</td>
                         <td><?php
-                            $aset_neto_tt_before += $aset_kas_bank;
+                            $aset_neto_tt_before += $aset_kas_bank + $aset_perlengkapan + $aset_peralatan + $aset_kendaraan + $aset_peralatan + $aset_bangunan_tanah;
                             echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
                     </tr>
                     <tr>
