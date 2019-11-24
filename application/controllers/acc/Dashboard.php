@@ -282,7 +282,9 @@ class Dashboard extends CI_Controller
             }
         }
         //bandingkan penerimaan bulan ini dan bulan lalu
-        if ($tab_data_penerimaan['bulan_ini'] == 0) {
+        if ($tab_data_penerimaan['bulan_ini'] == 0 && $tab_data_penerimaan ['bulan_lalu'] == 0){
+            $tab_data_penerimaan['rasio'] = 0;
+        } else if ($tab_data_penerimaan['bulan_ini'] == 0) {
             $tab_data_penerimaan['rasio'] = ($tab_data_penerimaan['bulan_ini'] / $tab_data_penerimaan['bulan_lalu']) * 100;
         } else {
             $tab_data_penerimaan['rasio'] = ($tab_data_penerimaan['bulan_lalu'] / $tab_data_penerimaan['bulan_ini']) * -100;
@@ -301,7 +303,9 @@ class Dashboard extends CI_Controller
             }
         }
         //bandingkan penerimaan bulan ini dan bulan lalu
-        if ($tab_data_pengeluaran['bulan_ini'] == 0) {
+        if ($tab_data_pengeluaran['bulan_ini'] == 0 && $tab_data_pengeluaran['bulan_lalu'] == 0){
+            $tab_data_pengeluaran['rasio'] = 0;
+        } else if ($tab_data_pengeluaran['bulan_ini'] == 0) {
             $tab_data_pengeluaran['rasio'] = ($tab_data_pengeluaran['bulan_ini'] / $tab_data_pengeluaran['bulan_lalu']) * 100;
         } else {
             $tab_data_pengeluaran['rasio'] = ($tab_data_pengeluaran['bulan_lalu'] / $tab_data_pengeluaran['bulan_ini']) * -100;
@@ -310,7 +314,9 @@ class Dashboard extends CI_Controller
         //ambil data saldo pada bulan ini dan bulan lalu cari solusinya =====================================================================================
         $tab_data_saldo['bulan_ini'] = $tab_data_penerimaan['bulan_ini'] - $tab_data_pengeluaran['bulan_ini'];
         $tab_data_saldo['bulan_lalu'] = $tab_data_penerimaan['bulan_lalu'] - $tab_data_pengeluaran['bulan_lalu'];
-        if ($tab_data_saldo['bulan_ini'] == 0) {
+        if ($tab_data_saldo['bulan_ini'] == 0 && $tab_data_saldo['bulan_lalu'] == 0){
+            $tab_data_saldo['rasio'] = 0;
+        }else if ($tab_data_saldo['bulan_ini'] == 0) {
             $tab_data_saldo['rasio'] = ($tab_data_saldo['bulan_ini'] / $tab_data_saldo['bulan_lalu']) * 100;
         } else {
             $tab_data_saldo['rasio'] = ($tab_data_saldo['bulan_lalu'] / $tab_data_saldo['bulan_ini']) * -100;
