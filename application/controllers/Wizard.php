@@ -239,7 +239,16 @@ class Wizard extends CI_Controller {
         }else{
             $data['kas_bank'] = $this->emptyArray('kas_bank');
         }
-        
+
+        if(empty($this->session->userdata('aset_refreshFlag'))){
+            $array = array(
+                'aset_refreshFlag' => 1
+            );
+            $this->session->set_userdata( $array );
+            
+            redirect('wizard/aset','refresh');
+            
+        }
         
         $this->load->view('wizard/wizard_aset_v', $data);
     }
@@ -316,6 +325,8 @@ class Wizard extends CI_Controller {
             echo'ERROR';
             exit;
         }
+
+        
     }
     
     public function asetPeralatan(){
