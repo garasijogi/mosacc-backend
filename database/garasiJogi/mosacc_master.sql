@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2019 at 06:00 PM
+-- Generation Time: Nov 25, 2019 at 11:33 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -40,13 +40,6 @@ CREATE TABLE IF NOT EXISTS `aset-bangunan_tanah` (
   PRIMARY KEY (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `aset-bangunan_tanah`
---
-
-INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
-(1, 'Tanah Masjid', '2019-10-25', 600, 250000000);
-
 -- --------------------------------------------------------
 
 --
@@ -62,13 +55,6 @@ CREATE TABLE IF NOT EXISTS `aset-kas_bank` (
   `tanggal` date DEFAULT NULL,
   PRIMARY KEY (`norek`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-kas_bank`
---
-
-INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
-('325342', 'fadil', 'BINI', 9000000, '2019-10-18');
 
 -- --------------------------------------------------------
 
@@ -87,13 +73,6 @@ CREATE TABLE IF NOT EXISTS `aset-kendaraan` (
   `harga` double DEFAULT NULL,
   PRIMARY KEY (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-kendaraan`
---
-
-INSERT INTO `aset-kendaraan` (`id_aset`, `nama`, `merek`, `tanggal`, `tipe`, `jumlah`, `harga`) VALUES
-(1, '', '', '0000-00-00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -114,13 +93,6 @@ CREATE TABLE IF NOT EXISTS `aset-peralatan` (
   KEY `id_aset` (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `aset-peralatan`
---
-
-INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, '', '', '0000-00-00', '', '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -138,13 +110,6 @@ CREATE TABLE IF NOT EXISTS `aset-perlengkapan` (
   `harga` double DEFAULT NULL,
   PRIMARY KEY (`id_aset`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-perlengkapan`
---
-
-INSERT INTO `aset-perlengkapan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, '', '', '0000-00-00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -259,16 +224,6 @@ CREATE TABLE IF NOT EXISTS `files` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
-(1, '', 'ad_art', '', '', 0, '0000-00-00'),
-(2, '', 'badan_hukum', '', '', 0, '0000-00-00'),
-(3, '', 'struktur_dkm', '', '', 0, '0000-00-00'),
-(4, 'profil.jpg', 'foto_profil', 'Image/JPEG Files', '.jpg', 314, '2019-11-24');
-
 -- --------------------------------------------------------
 
 --
@@ -303,13 +258,6 @@ CREATE TABLE IF NOT EXISTS `profil_masjid` (
   `luas_tanah` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`id_profil`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `profil_masjid`
---
-
-INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
-(1, 'Masjid Nurul Huda', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -397,14 +345,6 @@ CREATE TABLE IF NOT EXISTS `tr_database` (
   PRIMARY KEY (`id_db`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `tr_database`
---
-
-INSERT INTO `tr_database` (`id_db`, `nama_db`, `tahun`) VALUES
-(2018, 'mosacc_tr_2018', 2018),
-(2019, 'mosacc_tr_2019', 2019);
-
 -- --------------------------------------------------------
 
 --
@@ -419,14 +359,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(256) NOT NULL,
   PRIMARY KEY (`NIP`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
-(1, 'ketua_dkm', 'manager', 'FADIL'),
-(2, 'bendahara', 'akuntan', 'FADIL');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
