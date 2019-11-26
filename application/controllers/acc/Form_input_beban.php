@@ -141,7 +141,7 @@ class Form_input_beban extends CI_Controller
         $idtr = $this->input->get('idtr');
         $kd_akun = $this->input->get('controller');
         $this->form_input_pengeluaran_m->delete_tr($idtr, 'tr22_beban_pending');
-        redirect('acc/form_input_pembelian?kd_akun=' . $kd_akun);
+        redirect('acc/form_input_beban?kd_akun=' . $kd_akun);
     }
 
     // take last row variable
