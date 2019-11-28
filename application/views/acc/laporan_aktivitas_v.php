@@ -199,11 +199,11 @@ $this->load->view("acc/_partials/head"); ?>
                     </tr>
                     <tr>
                         <th colspan="3">ASET NETO AWAL BULAN</th>
-                        <th><?php echo "Rp " . number_format($aset_neto_ab, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format($aset_neto_ab + $aset_neto_awal, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th colspan="3">ASET NETO AKHIR BULAN</th>
-                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt) + $aset_neto_ab, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt + $aset_neto_awal) + $aset_neto_ab, 2, ',', '.'); ?></th>
                     </tr>
                 </tbody>
             </table>
@@ -221,7 +221,7 @@ $this->load->view("acc/_partials/head"); ?>
         $k_aset_neto_tt = 0;
         ?>
         <div class="row" style="display:none">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br>Laporan Aktivitas <br>Per <?php echo month_generator($bulan) . " " . $this->session->userdata('tahun'); ?></b></h6>
+            <h6 class="center" id="title-laporan"><b><?php echo $this->session->userdata('nama_masjid'); ?><br>Laporan Aktivitas <br>Per <?php echo month_generator($bulan) . " " . $this->session->userdata('tahun'); ?></b></h6>
             <table id='table-excel' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">
@@ -383,12 +383,12 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th>ASET NETO AWAL BULAN</th>
                         <th></th>
-                        <th><?php echo "Rp " . number_format($aset_neto_ab, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format($aset_neto_ab + $aset_neto_awal, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
                         <th>ASET NETO AKHIR BULAN</th>
                         <th></th>
-                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt) + $aset_neto_ab, 2, ',', '.'); ?></th>
+                        <th><?php echo "Rp " . number_format(($aset_neto_t + $aset_neto_tt + $aset_neto_awal) + $aset_neto_ab, 2, ',', '.'); ?></th>
                     </tr>
                 </tbody>
             </table>

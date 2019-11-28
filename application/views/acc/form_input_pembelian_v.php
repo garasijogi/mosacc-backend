@@ -75,7 +75,7 @@
 				<div class="row">
 					<div class="input-field col s5 offset-s1">
 						<input name="jumlah" id="input-jumlah-barang" type="number">
-						<label for="input-jumlah-barang">Masukkan Jumalah Barang</label>
+						<label for="input-jumlah-barang">Masukkan Jumlah Barang</label>
 					</div>
 					<div class="input-field col s5">
 						<input name="keterangan" id="input-keterangan" type="text">

@@ -110,9 +110,8 @@
                 <tr>
                     <td></td>
                     <td>Saldo Awal Aset Neto Tidak Terikat</td>
-                    <td><?php
-                        $aset_neto_tt_before += $aset_kas_bank + $aset_perlengkapan + $aset_peralatan + $aset_kendaraan + $aset_peralatan + $aset_bangunan_tanah;
-                        echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
+                    <td> <?php $aset_neto_tt_before += $aset_kas_bank + $aset_perlengkapan + $aset_peralatan + $aset_kendaraan + $aset_peralatan + $aset_bangunan_tanah;
+                            echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -152,7 +151,7 @@
 
         <!-- print -->
         <div class="row" style="display:none">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
+            <h6 class="center" id="title-laporan"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan); ?> 2019</b></h6>
             <h6 class="center"><b><?php echo $this->session->userdata('nama_masjid'); ?><br> Neraca <br> Per <?php echo month_generator($bulan);
                                                                                                                 echo " " . ($this->session->userdata('tahun')); ?> </b></h6>
             <table id='table-excel'>
@@ -177,9 +176,9 @@
                     <tr>
                         <td></td>
                         <td>Kas dan Bank</td>
-                        <td><?php echo "Rp " . number_format($nominal_kas + $aset_kas_bank, 2, ',', '.');
+                        <td><?php echo "Rp " . number_format($nominal_kas + $aset_kas_bank - $total_perlengkapan - $total_kendaraan - $total_peralatan, 2, ',', '.');
                             $jumlah_aset = 0;
-                            $jumlah_aset = $jumlah_aset + $nominal_kas + $aset_kas_bank; ?></td>
+                            $jumlah_aset = $jumlah_aset + $nominal_kas + $aset_kas_bank - $total_perlengkapan - $total_kendaraan - $total_peralatan; ?></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -234,7 +233,6 @@
                         <td></td>
                         <td>Saldo Awal Aset Neto Tidak Terikat</td>
                         <td><?php
-                            $aset_neto_tt_before += $aset_kas_bank + $aset_perlengkapan + $aset_peralatan + $aset_kendaraan + $aset_peralatan + $aset_bangunan_tanah;
                             echo "Rp " . number_format($aset_neto_tt_before, 2, ',', '.'); ?></td>
                     </tr>
                     <tr>

@@ -95,7 +95,7 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th>KAS PADA AWAL BULAN</th>
                         <th><?php
-                            $nominal_kas_before += $aset_kas_bank + $aset_bangunan_tanah + $aset_kendaraan + $aset_peralatan + $aset_perlengkapan;
+                            $nominal_kas_before += $aset_kas_bank;
                             echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>
@@ -109,7 +109,7 @@ $this->load->view("acc/_partials/head"); ?>
 
         <!-- print -->
         <div class="row" style="display:none">
-            <h6 class="center" id="title-view"><b><?php echo $this->session->userdata('nama_masjid'); ?><br>Laporan Arus Kas <br>Per <?php echo month_generator($bulan) . " " . $this->session->userdata('tahun'); ?></b></h6>
+            <h6 class="center" id="title-laporan"><b><?php echo $this->session->userdata('nama_masjid'); ?><br>Laporan Arus Kas <br>Per <?php echo month_generator($bulan) . " " . $this->session->userdata('tahun'); ?></b></h6>
             <table id='table-excel' class="table-borderless">
                 <thead>
                     <tr class="teal white-text">
@@ -161,8 +161,8 @@ $this->load->view("acc/_partials/head"); ?>
                     <tr>
                         <th>KAS PADA AWAL BULAN</th>
                         <th><?php
-                            $nominal_kas_before = $nominal_kas_before - ($aset_kas_bank + $aset_bangunan_tanah + $aset_kendaraan + $aset_peralatan + $aset_perlengkapan);
-                            $nominal_kas_before += $aset_kas_bank + $aset_bangunan_tanah + $aset_kendaraan + $aset_peralatan + $aset_perlengkapan;
+                            $nominal_kas_before = $nominal_kas_before - ($aset_kas_bank);
+                            $nominal_kas_before += $aset_kas_bank;
                             echo "Rp " . number_format($nominal_kas_before, 2, ',', '.'); ?></th>
                     </tr>
                     <tr>

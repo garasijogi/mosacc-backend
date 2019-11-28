@@ -154,21 +154,17 @@ ul.dropdown-content {
 	height: 604px;
 }
 
-#more_DD {
-	height: 180px !important;
+#more_DD, #tahun_DD, #tampilan_DD  {
+	height: auto;
 }
 
-#more_DD li a:hover {
+#more_DD li a:hover, #tampilan_DD li a:hover, #bulan_DD li a:hover, #tahun_DD li a:hover {
 	color: black;
 }
 
 #bulan_DD {
 	height: 350px !important;
-	width: 125px !important;
-}
-
-#tahun_DD {
-	height: 150px !important;
+	width: auto !important;
 }
 
 #laporan-nav {
