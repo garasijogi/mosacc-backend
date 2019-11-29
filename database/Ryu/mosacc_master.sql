@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2019 at 02:46 AM
+-- Generation Time: Nov 29, 2019 at 01:18 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `mosacc_master`
 --
+CREATE DATABASE IF NOT EXISTS `mosacc_master` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `mosacc_master`;
 
 -- --------------------------------------------------------
 
@@ -29,20 +31,14 @@ SET time_zone = "+00:00";
 --
 
 DROP TABLE IF EXISTS `aset-bangunan_tanah`;
-CREATE TABLE `aset-bangunan_tanah` (
-  `id_aset` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `aset-bangunan_tanah` (
+  `id_aset` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(256) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
-  `luas` double DEFAULT NULL,
-  `nilai` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-bangunan_tanah`
---
-
-INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`) VALUES
-(1, '', '0000-00-00', 0, 0);
+  `luas` varchar(32) DEFAULT NULL,
+  `nilai` double DEFAULT NULL,
+  PRIMARY KEY (`id_aset`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -51,20 +47,14 @@ INSERT INTO `aset-bangunan_tanah` (`id_aset`, `nama`, `tanggal`, `luas`, `nilai`
 --
 
 DROP TABLE IF EXISTS `aset-kas_bank`;
-CREATE TABLE `aset-kas_bank` (
+CREATE TABLE IF NOT EXISTS `aset-kas_bank` (
   `norek` varchar(64) NOT NULL,
   `nama_pemilik` varchar(128) DEFAULT NULL,
   `nama_bank` varchar(128) DEFAULT NULL,
   `nominal` double DEFAULT NULL,
-  `tanggal` date DEFAULT NULL
+  `tanggal` date DEFAULT NULL,
+  PRIMARY KEY (`norek`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-kas_bank`
---
-
-INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `tanggal`) VALUES
-('', '', '', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -73,21 +63,16 @@ INSERT INTO `aset-kas_bank` (`norek`, `nama_pemilik`, `nama_bank`, `nominal`, `t
 --
 
 DROP TABLE IF EXISTS `aset-kendaraan`;
-CREATE TABLE `aset-kendaraan` (
+CREATE TABLE IF NOT EXISTS `aset-kendaraan` (
+  `id_aset` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(128) DEFAULT NULL,
   `merek` varchar(32) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `tipe` varchar(32) DEFAULT NULL,
   `jumlah` double DEFAULT NULL,
-  `harga` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-kendaraan`
---
-
-INSERT INTO `aset-kendaraan` (`nama`, `merek`, `tanggal`, `tipe`, `jumlah`, `harga`) VALUES
-('', '', '0000-00-00', '', 0, 0);
+  `harga` double DEFAULT NULL,
+  PRIMARY KEY (`id_aset`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -96,22 +81,17 @@ INSERT INTO `aset-kendaraan` (`nama`, `merek`, `tanggal`, `tipe`, `jumlah`, `har
 --
 
 DROP TABLE IF EXISTS `aset-peralatan`;
-CREATE TABLE `aset-peralatan` (
-  `id_aset` int(6) NOT NULL,
+CREATE TABLE IF NOT EXISTS `aset-peralatan` (
+  `id_aset` int(6) NOT NULL AUTO_INCREMENT,
   `nama` varchar(128) DEFAULT NULL,
   `merek` varchar(64) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `kategori` varchar(64) DEFAULT NULL,
-  `jumlah` varchar(3) DEFAULT NULL,
-  `harga` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `aset-peralatan`
---
-
-INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-(1, '', '', '0000-00-00', '', '', 0);
+  `jumlah` double DEFAULT NULL,
+  `harga` double DEFAULT NULL,
+  PRIMARY KEY (`id_aset`),
+  KEY `id_aset` (`id_aset`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -120,21 +100,111 @@ INSERT INTO `aset-peralatan` (`id_aset`, `nama`, `merek`, `tanggal`, `kategori`,
 --
 
 DROP TABLE IF EXISTS `aset-perlengkapan`;
-CREATE TABLE `aset-perlengkapan` (
+CREATE TABLE IF NOT EXISTS `aset-perlengkapan` (
+  `id_aset` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(128) DEFAULT NULL,
   `merek` varchar(32) DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `kategori` varchar(32) DEFAULT NULL,
   `jumlah` double DEFAULT NULL,
-  `harga` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `harga` double DEFAULT NULL,
+  PRIMARY KEY (`id_aset`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `aset-perlengkapan`
+-- Table structure for table `bagan_akun`
 --
 
-INSERT INTO `aset-perlengkapan` (`nama`, `merek`, `tanggal`, `kategori`, `jumlah`, `harga`) VALUES
-('', '', '0000-00-00', '', 0, 0);
+DROP TABLE IF EXISTS `bagan_akun`;
+CREATE TABLE IF NOT EXISTS `bagan_akun` (
+  `kd_akun` int(11) NOT NULL,
+  `nama_akun` varchar(256) NOT NULL,
+  PRIMARY KEY (`kd_akun`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bagan_akun`
+--
+
+INSERT INTO `bagan_akun` (`kd_akun`, `nama_akun`) VALUES
+(100, 'ASET'),
+(110, 'Aset Lancar'),
+(112, 'Kas dan Bank'),
+(113, 'Perlengkapan'),
+(120, 'Aset Tidak Lancar'),
+(121, 'Peralatan'),
+(122, 'Menara'),
+(123, 'Bangunan'),
+(124, 'Lahan Parkir'),
+(125, 'Tanah'),
+(126, 'Kendaraan'),
+(300, 'Aset Neto'),
+(310, 'Aset Neto Tidak Terikat'),
+(311, 'Saldo Awal Aset Neto Tidak Terikat'),
+(312, 'Kenaikan (Penurunan) Aset Neto Tidak Terikat'),
+(313, 'Saldo Akhir Aset Neto Tidak Terikat'),
+(320, 'Aset Neto Terikat'),
+(321, 'Saldo Awal Aset Neto Terikat'),
+(322, 'Kenaikan (Penurunan) Aset Neto Terikat'),
+(323, 'Saldo Akhir Aset Neto Terikat'),
+(400, 'Pendapatan'),
+(410, 'Pendapatan Sewa'),
+(411, 'Infaq Peminjaman Peralatan'),
+(412, 'Infaq Pemakaian Ruangan'),
+(420, 'Pendapatan Parkir'),
+(430, 'Infaq Pengurusan Jenazah'),
+(440, 'Pendapatan Peribadatan'),
+(441, 'Infaq Kotak Jumat'),
+(442, 'Infaq Perayaan Hari Besar Islam'),
+(443, 'Infaq Pengajian'),
+(444, 'Infaq Ramadhan'),
+(450, 'Infaq Pendidikan'),
+(451, 'Infaq TPA dan Tahfidz'),
+(452, 'Infaq Beasiswa'),
+(460, 'ZISWAF'),
+(461, 'Infaq dari Donatur'),
+(462, 'Infaq Kotak Dana Operasional'),
+(463, 'Infaq Kotak Dana Sosial'),
+(464, 'Zakat Fitrah'),
+(465, 'Fidyah'),
+(466, 'Infaq untuk Baksos'),
+(467, 'Waqaf'),
+(499, 'Pendapatan Lainnya'),
+(500, 'Beban-Beban'),
+(510, 'Beban Operasional'),
+(511, 'Beban Listrik, Air, dan Telepon'),
+(512, 'Beban Pemeliharaan'),
+(513, 'Beban Administrasi'),
+(514, 'Beban Perlengkapan'),
+(515, 'Beban Transportasi'),
+(516, 'Insentif Pengurus Masjid'),
+(520, 'Beban Renovasi dan Pembangunan'),
+(521, 'Pembelian Material'),
+(522, 'Upah Tukang'),
+(530, 'Beban Peribadatan'),
+(531, 'Insentif pembicara/Khatib'),
+(532, 'Insentif Marbot'),
+(533, 'Beban Perayaan Hari Besar Islam'),
+(534, 'Beban Buletin Dakwah'),
+(535, 'Peribadatan Lainnya'),
+(540, 'Pengeluaran Ramadhan'),
+(541, 'Shalat Tarawih'),
+(542, 'Konsumsi Buka Puasa dan Sahur'),
+(543, 'Peringatan Nuzulul Quran'),
+(550, 'Penyaluran ZISWAF'),
+(551, 'Penyaluran Zakat Fitrah dan Fidyah'),
+(552, 'Penyaluran untuk Beasiswa'),
+(553, 'Penyaluran untuk Besuk Orang Sakit'),
+(554, 'Penyaluran untuk Aktivitas Kepemudaan'),
+(555, 'Sumbangan untuk Anak Yatim'),
+(556, 'Sumbangan Ta’ziyah'),
+(557, 'Sumbangan untuk Bencana Alam'),
+(560, 'Pengeluaran Pendidikan'),
+(561, 'Penyaluran untuk TPA dan Tahfidz'),
+(562, 'Beban Pelatihan'),
+(599, 'Beban Lainnya');
 
 -- --------------------------------------------------------
 
@@ -143,24 +213,16 @@ INSERT INTO `aset-perlengkapan` (`nama`, `merek`, `tanggal`, `kategori`, `jumlah
 --
 
 DROP TABLE IF EXISTS `files`;
-CREATE TABLE `files` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(512) DEFAULT NULL,
   `jenis_file` varchar(24) DEFAULT NULL,
   `tipe_file` varchar(256) DEFAULT NULL,
   `ekstensi` varchar(8) DEFAULT NULL,
   `ukuran` double DEFAULT NULL,
-  `tanggal` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukuran`, `tanggal`) VALUES
-(1, '', 'ad_art', '', '', 0, '0000-00-00'),
-(2, '', 'badan_hukum', '', '', 0, '0000-00-00'),
-(3, '', 'struktur_dkm', '', '', 0, '0000-00-00');
+  `tanggal` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -169,13 +231,14 @@ INSERT INTO `files` (`id`, `nama`, `jenis_file`, `tipe_file`, `ekstensi`, `ukura
 --
 
 DROP TABLE IF EXISTS `profil_dkm`;
-CREATE TABLE `profil_dkm` (
-  `id_pengurus` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `profil_dkm` (
+  `id_pengurus` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(256) DEFAULT NULL,
   `posisi` enum('bendahara','ketua','sekretaris','struktur_dkm') NOT NULL,
-  `alamat` varchar(512) DEFAULT NULL,
+  `alamat` text,
   `telepon` varchar(15) DEFAULT NULL,
-  `pendidikan` varchar(32) DEFAULT NULL
+  `pendidikan` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id_pengurus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,22 +248,16 @@ CREATE TABLE `profil_dkm` (
 --
 
 DROP TABLE IF EXISTS `profil_masjid`;
-CREATE TABLE `profil_masjid` (
-  `id_profil` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `profil_masjid` (
+  `id_profil` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(256) DEFAULT NULL,
-  `alamat` varchar(512) DEFAULT NULL,
+  `alamat` text,
   `tahun` varchar(4) DEFAULT NULL,
   `telepon` varchar(15) DEFAULT NULL,
   `rekening` varchar(32) DEFAULT NULL,
-  `luas_tanah` varchar(16) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `profil_masjid`
---
-
-INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, `rekening`, `luas_tanah`) VALUES
-(1, '', '', '', '', '', '');
+  `luas_tanah` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id_profil`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -209,13 +266,14 @@ INSERT INTO `profil_masjid` (`id_profil`, `nama`, `alamat`, `tahun`, `telepon`, 
 --
 
 DROP TABLE IF EXISTS `rules`;
-CREATE TABLE `rules` (
+CREATE TABLE IF NOT EXISTS `rules` (
   `kd_akun` varchar(5) NOT NULL,
   `kd_bagan` varchar(5) NOT NULL,
   `menu` varchar(256) NOT NULL,
   `nama_sub` varchar(256) NOT NULL,
   `debit` varchar(256) NOT NULL,
-  `kredit` varchar(256) NOT NULL
+  `kredit` varchar(256) NOT NULL,
+  PRIMARY KEY (`kd_akun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -276,117 +334,31 @@ INSERT INTO `rules` (`kd_akun`, `kd_bagan`, `menu`, `nama_sub`, `debit`, `kredit
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tr_database`
+--
+
+DROP TABLE IF EXISTS `tr_database`;
+CREATE TABLE IF NOT EXISTS `tr_database` (
+  `id_db` int(11) NOT NULL,
+  `nama_db` varchar(256) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  PRIMARY KEY (`id_db`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `NIP` int(25) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `NIP` int(25) NOT NULL AUTO_INCREMENT,
   `nama_user` varchar(256) NOT NULL,
   `jenis_user` enum('akuntan','manager') NOT NULL,
-  `password` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`NIP`, `nama_user`, `jenis_user`, `password`) VALUES
-(1, 'ketua_dkm', 'manager', '1234'),
-(2, 'bendahara', 'akuntan', '1234');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `aset-bangunan_tanah`
---
-ALTER TABLE `aset-bangunan_tanah`
-  ADD PRIMARY KEY (`id_aset`);
-
---
--- Indexes for table `aset-kas_bank`
---
-ALTER TABLE `aset-kas_bank`
-  ADD PRIMARY KEY (`norek`);
-
---
--- Indexes for table `aset-peralatan`
---
-ALTER TABLE `aset-peralatan`
-  ADD PRIMARY KEY (`id_aset`),
-  ADD KEY `id_aset` (`id_aset`);
-
---
--- Indexes for table `files`
---
-ALTER TABLE `files`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `profil_dkm`
---
-ALTER TABLE `profil_dkm`
-  ADD PRIMARY KEY (`id_pengurus`);
-
---
--- Indexes for table `profil_masjid`
---
-ALTER TABLE `profil_masjid`
-  ADD PRIMARY KEY (`id_profil`);
-
---
--- Indexes for table `rules`
---
-ALTER TABLE `rules`
-  ADD PRIMARY KEY (`kd_akun`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`NIP`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `aset-bangunan_tanah`
---
-ALTER TABLE `aset-bangunan_tanah`
-  MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `aset-peralatan`
---
-ALTER TABLE `aset-peralatan`
-  MODIFY `id_aset` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `files`
---
-ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `profil_dkm`
---
-ALTER TABLE `profil_dkm`
-  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `profil_masjid`
---
-ALTER TABLE `profil_masjid`
-  MODIFY `id_profil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `NIP` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  `password` varchar(256) NOT NULL,
+  PRIMARY KEY (`NIP`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

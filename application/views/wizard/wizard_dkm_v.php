@@ -79,9 +79,9 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-ketua" name="telepon-ketua" value="<?php echo($profil_dkm['ketua']['telepon']) ?>"
-                                            type="number" class="validate wizard-form-check"><label
-                                            for="rename-no-ketua">No. HP</label>
+                                        <div class="input-field col s12 edit-profil">
+                                            <i class="material-icons prefix">phone</i>
+                                            <input id="rename-no-ketua" name="telepon-ketua" value="<?php echo($profil_dkm['ketua']['telepon']) ?>" type="tel" class="validate wizard-form-check"><label for="rename-no-ketua">No. HP</label>
                                         </div>
                                     </div>
                                 </div>
@@ -121,9 +121,9 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-sekretaris" name="telepon-sekretaris" value="<?php echo($profil_dkm['sekretaris']['telepon']) ?>"
-                                            type="number" class="validate wizard-form-check"><label
-                                            for="rename-no-sekretaris">No. HP</label>
+                                        <div class="input-field col s12 edit-profil"> 
+                                            <i class="material-icons prefix">phone</i>
+                                            <input id="rename-no-sekretaris" name="telepon-sekretaris" value="<?php echo($profil_dkm['sekretaris']['telepon']) ?>" type="tel" class="validate wizard-form-check"><label for="rename-no-sekretaris">No. HP</label>
                                         </div>
                                     </div>
                                 </div>
@@ -163,9 +163,9 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="row">
-                                        <div class="input-field col s12 edit-profil"> <input id="rename-no-bendahara" name="telepon-bendahara" value="<?php echo($profil_dkm['bendahara']['telepon']) ?>"
-                                            type="number" class="validate wizard-form-check"><label
-                                            for="rename-no-bendahara">No. HP</label>
+                                        <div class="input-field col s12 edit-profil">
+                                            <i class="material-icons prefix">phone</i>
+                                            <input id="rename-no-bendahara" name="telepon-bendahara" value="<?php echo($profil_dkm['bendahara']['telepon']) ?>" type="tel" class="validate wizard-form-check"><label for="rename-no-bendahara">No. HP</label>
                                         </div>
                                     </div>
                                 </div>

@@ -112,16 +112,31 @@
 
 				</div>
 			</div>
+			<div id="selesaikan-loading" class="sk-circle" style="display: none">
+				<div class="sk-circle1 sk-child"></div>
+				<div class="sk-circle2 sk-child"></div>
+				<div class="sk-circle3 sk-child"></div>
+				<div class="sk-circle4 sk-child"></div>
+				<div class="sk-circle5 sk-child"></div>
+				<div class="sk-circle6 sk-child"></div>
+				<div class="sk-circle7 sk-child"></div>
+				<div class="sk-circle8 sk-child"></div>
+				<div class="sk-circle9 sk-child"></div>
+				<div class="sk-circle10 sk-child"></div>
+				<div class="sk-circle11 sk-child"></div>
+				<div class="sk-circle12 sk-child"></div>
+			</div>
 			<div class="row center">
 				<?php 
 				$url = base_url('wizard/wizardProses');
 				
 				if($pw_bendahara == 1 && $pw_ketua_dkm == 1){ 
-					echo('<div class="row"> <div class="col s6 offset-s3"> <a href=' . $url . ' class="btn teal">SELESAIKAN</a> </div> </div>');
+					echo('<div class="row"> <div class="col s6 offset-s3"> <a id="selesaikan-button" href=' . $url . ' class="btn teal">SELESAIKAN</a> </div> </div>');
 				}else{
 					echo('<div class="row"></div>');
 				} ?>
 			</div>
+			
 
 				<div id="login-manajer" class="modal">
 					<form action="<?php echo base_url('wizard/akun_baruProses'); ?>?jabatan=ketua_dkm" method="post">
@@ -131,9 +146,13 @@
 							</div>
 							<h4>Ketua DKM</h4>
 							<div class="input-field col s3">
-								<input id="input-login-manajer" type="password" class="validate" name="pw" value="<?php echo $ketua_dkm['password']; ?>">
-								<label for="input-login-manajer">Masukkan Password Baru</label>
+								<input id="password" type="password" name="pw" value="<?php echo $ketua_dkm['password']; ?>" required autofocus>
+								<label for="password">Masukkan Password Baru</label>
 							</div>
+							<label>
+								<input type="checkbox" onclick="showPass()" />
+								<span>Show Password</span>
+							</label>
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="waves-effect waves-green btn-flat">BUAT</button>
@@ -149,9 +168,13 @@
 							</div>
 							<h4>Bendahara</h4>
 							<div class="input-field col s3">
-								<input id="input-login-akuntan" type="password" class="validate" name="pw" value="<?php echo $bendahara['password']; ?>">
-								<label for="input-login-akuntan">Masukkan Password Baru</label>
+								<input id="password2" type="password" class="validate" name="pw" value="<?php echo $bendahara['password']; ?>">
+								<label for="password2">Masukkan Password Baru</label>
 							</div>
+							<label>
+								<input type="checkbox" onclick="showPass()" />
+								<span>Show Password</span>
+							</label>
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="waves-effect waves-green btn-flat">BUAT</button>

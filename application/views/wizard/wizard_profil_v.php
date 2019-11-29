@@ -86,14 +86,16 @@
                                 <div class="col s12">
                                     <div class="row" id="telepon-sekretariat">
                                         <div class="input-field col s12 edit-profil">
-                                            <input name="telepon" id="rename-telepon-sekretariat" type="number" value="<?php echo $profil_form['telepon']; ?>" class="wizard-form-check validate" required><label for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
+                                            <i class="material-icons prefix">phone</i>
+                                            <input name="telepon" id="rename-telepon-sekretariat" type="tel" value="<?php echo $profil_form['telepon']; ?>" class="wizard-form-check validate" required><label for="rename-telepon-sekretariat">No. Telepon Sekretariat</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col s12">
                                     <div class="row" id="rekening-masjid">
-                                        <div class="input-field col s12 edit-profil"> <input name="rekening" id="rename-rekening-masjid" value="<?php echo $profil_form['rekening']; ?>" type="number" class="validate wizard-form-check"><label for="rename-rekening-masjid">Rekening
-                                                Masjid</label>
+                                        <div class="input-field col s12 edit-profil">
+                                            <i class="material-icons prefix">account_balance_wallet</i>
+                                            <input name="rekening" id="rename-rekening-masjid" value="<?php echo $profil_form['rekening']; ?>" type="text" class="validate wizard-form-check"><label for="rename-rekening-masjid">Rekening Masjid</label>
                                         </div>
                                     </div>
                                 </div>

@@ -73,11 +73,11 @@
 						<div class="dashchart-innerContainer col s4">
 							<div class="row">
 								<table class="striped">
-									<caption>Saldo Terbesar pada Setiap Bulan di Tahun <?php echo (date('Y')); ?></caption>
+									<caption>Saldo akhir di tahun <?php echo (date('Y')); ?></caption>
 									<tr>
 										<th></th>
 										<th>Bulan</th>
-										<th>Saldo(Rp .000,-)</th>
+										<th>Saldo</th>
 									</tr>
 									<?php foreach ($tabel_data_saldo as $key => $value) : ?>
 										<tr>
@@ -150,17 +150,17 @@
 							</div> -->
 								<div class="row">
 									<table class="striped">
-										<caption>Penerimaan Terbesar di Tahun <?php echo (date('Y')); ?></caption>
+										<caption>Penerimaan Terbesar di <?php echo date('F'); ?> <?php echo (date('Y')); ?></caption>
 										<tr>
 											<th></th>
 											<th>Bulan</th>
-											<th>Saldo(Rp .000,-)</th>
+											<th>Jumlah</th>
 										</tr>
 										<?php foreach ($tabel_data_penerimaan as $key => $value) : ?>
 											<tr>
 												<td><?php echo ($key + 1); ?></td>
 												<td><?php echo ($value['nama_sub']); ?></td>
-												<td><?php echo ($value['jumlah']); ?></td>
+												<td><?php echo "Rp " . number_format(($value['jumlah']), 2, ',', '.'); ?></td>
 											</tr>
 										<?php endforeach; ?>
 									</table>
@@ -228,17 +228,17 @@
 							</div> -->
 								<div class="row">
 									<table class="striped">
-										<caption>Pengeluaran Terbesar di Tahun <?php echo (date('Y')); ?></caption>
+										<caption>Penerimaan Terbesar di <?php echo date('F'); ?> <?php echo (date('Y')); ?></caption>
 										<tr>
 											<th></th>
 											<th>Transaksi</th>
-											<th>Saldo(Rp .000,-)</th>
+											<th>Jumlah</th>
 										</tr>
 										<?php foreach ($tabel_data_pengeluaran as $key => $value) : ?>
 											<tr>
 												<td><?php echo ($key + 1); ?></td>
 												<td><?php echo ($value['nama_sub']); ?></td>
-												<td><?php echo ($value['jumlah']); ?></td>
+												<td><?php echo "Rp " . number_format(($value['jumlah']), 2, ',', '.'); ?></td>
 											</tr>
 										<?php endforeach; ?>
 									</table>

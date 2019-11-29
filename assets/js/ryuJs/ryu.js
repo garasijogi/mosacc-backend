@@ -43,6 +43,11 @@ $("#btn-submit-kas_bank").click(function () {
     $("#form_aset-kas_bank").submit();
 });
 
+//loader wizard akun
+$('#selesaikan-button').click(function () {
+    $('#selesaikan-loading').show(); //<----here
+});
+
 //>>Bayuw
 // Dropdown
 const dropdown = document.querySelectorAll('.dropdown-trigger');

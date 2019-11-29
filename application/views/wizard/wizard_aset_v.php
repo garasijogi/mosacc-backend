@@ -25,7 +25,7 @@
                         </li>
                         <li class="sidenav-item">
                             <a href="<?php echo base_url('wizard/profil'); ?>"><span><i
-                                        class="material-icons">equalizer</i></span>Profil Masjid</a></a>
+                                        class="material-icons">equalizer</i></span>Profil Masjid</a>
                         </li>
                         <li class="sidenav-item">
                             <a href="<?php echo base_url('wizard/dkm'); ?>"><span><i class="material-icons">cached</i></span>Profil
@@ -94,8 +94,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="date" class=" validate" name="tanggal">
-                                                            <!-- <label for="tanggal">Tanggal</label> -->
+                                                            <input id="tanggal" type="date" class=" validate" name="tanggal" value="<?php echo(date("Y-m-j")) ?>">
+                                                            <label for="tanggal">Tanggal</label>
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="kategori" type="text" class="validate" name="kategori">
@@ -104,7 +104,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="jumlah" type="text" class="validate" name="jumlah">
+                                                            <input id="jumlah" type="number" class="validate" name="jumlah">
                                                             <label for="jumlah">Jumlah</label>
                                                         </div>
                                                         <div class="input-field col s6">
@@ -153,8 +153,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="date" class=" validate" name="tanggal">
-                                                            <!-- <label for="tanggal">Tanggal</label> -->
+                                                            <input id="tanggal" type="date" class=" validate" name="tanggal" value="<?php echo(date("Y-m-j")) ?>">
+                                                            <label for="tanggal">Tanggal</label>
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="kategori" type="text" class="validate" name="kategori">
@@ -163,7 +163,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="jumlah" type="text" class="validate" name="jumlah">
+                                                            <input id="jumlah" type="number" class="validate" name="jumlah">
                                                             <label for="jumlah">Jumlah</label>
                                                         </div>
                                                         <div class="input-field col s6">
@@ -211,8 +211,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="date" class=" validate" name="tanggal">
-                                                            <!-- <label for="tanggal">Tanggal</label> -->
+                                                            <input id="tanggal" type="date" class=" validate" name="tanggal" value="<?php echo(date("Y-m-j")) ?>">
+                                                            <label for="tanggal">Tanggal</label>
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="tipe" type="text" class="validate" name="tipe">
@@ -221,7 +221,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="jumlah" type="text" class="validate" name="jumlah">
+                                                            <input id="jumlah" type="number" class="validate" name="jumlah">
                                                             <label for="jumlah">Jumlah</label>
                                                         </div>
                                                         <div class="input-field col s6">
@@ -266,13 +266,13 @@
                                                         </div>
                                 
                                                         <div class="input-field col s6">
-                                                            <input type="date" class=" validate" id="tanggal" name="tanggal">
-                                                            <!-- <label for="tanggal">Tanggal</label> -->
+                                                            <input type="date" class="validate" id="tanggal" name="tanggal" value="<?php echo(date("Y-m-j")) ?>">
+                                                            <label for="tanggal">Tanggal</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input type="number" class="validate" id="luas" name="luas">
+                                                            <input type="text" class="validate" id="luas" name="luas">
                                                             <label for="luas">Luas</label>
                                                         </div>
 
@@ -335,8 +335,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="tanggal" type="date" class="validate " name="tanggal">
-                                                            <!-- <label for="tanggal">Tanggal</label> -->
+                                                            <input id="tanggal" type="date" class="validate " name="tanggal" value="<?php echo(date("Y-m-j")) ?>">
+                                                            <label for="tanggal">Tanggal</label>
                                                         </div>
                                                     </div>
                                                 </div>

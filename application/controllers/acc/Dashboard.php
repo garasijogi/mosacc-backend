@@ -345,7 +345,7 @@ class Dashboard extends CI_Controller
 
         //UNTUK DATA DI TABLE CHART disort ===============================================================================================
         //sort array dari yg terbesar
-        usort($data['tabel_data_saldo'], multiArraySort('jumlah'));
+        // usort($data['tabel_data_saldo'], multiArraySort('jumlah'));
         usort($tabel_data_penerimaan, multiArraySort('jumlah'));
         usort($tabel_data_pengeluaran, multiArraySort('jumlah'));
 
