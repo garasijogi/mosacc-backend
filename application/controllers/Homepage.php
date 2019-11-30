@@ -35,7 +35,7 @@ class Homepage extends CI_Controller
     $this->db->query("CREATE TABLE IF NOT EXISTS `tr12_penerimaan_terikat_pending` (`idtr` varchar(16) NOT NULL, `kd_akun` varchar(5) NOT NULL, `tanggal` date NOT NULL, `nominal` double NOT NULL, `nama_pemberi` varchar(256) NOT NULL, `keterangan` text NOT NULL, PRIMARY KEY (`idtr`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
     $this->db->query("CREATE TABLE IF NOT EXISTS `tr21_pembelian_pending` (`idtr` varchar(16) NOT NULL, `kd_akun` varchar(5) NOT NULL, `tanggal` date NOT NULL, `jenis` varchar(32) NOT NULL, `merek` varchar(112) NOT NULL, `nomor_seri` varchar(112) NOT NULL, `jumlah` int(11) NOT NULL, `keterangan` text NOT NULL, `harga_satuan` int(11) NOT NULL, `total_harga` int(11) NOT NULL, PRIMARY KEY (`idtr`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
     $this->db->query("CREATE TABLE IF NOT EXISTS `tr22_beban_pending` (`idtr` varchar(16) NOT NULL, `kd_akun` varchar(5) DEFAULT NULL, `tanggal` date DEFAULT NULL, `nominal` int(11) DEFAULT NULL, `keterangan` text, PRIMARY KEY (`idtr`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
-    $this->db->query("CREATE TABLE IF NOT EXISTS `tr23_renov_bangun_pending` (`idtr` varchar(16) DEFAULT NULL, `kd_akun` varchar(5) DEFAULT NULL, `tanggal` date DEFAULT NULL, `nominal` float DEFAULT NULL, `keterangan` text) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+    $this->db->query("CREATE TABLE IF NOT EXISTS `tr23_renov_bangun_pending` (`idtr` varchar(16) DEFAULT NULL, `kd_akun` varchar(5) DEFAULT NULL, `tanggal` date DEFAULT NULL, `nominal` float DEFAULT NULL, `keterangan` text, PRIMARY KEY (`idtr`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
     $this->db->trans_complete();
   }
 
