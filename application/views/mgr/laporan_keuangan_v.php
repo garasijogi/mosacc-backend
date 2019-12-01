@@ -49,7 +49,7 @@
 
             <div class="col s12 m3">
                 <div class="card">
-                    <a href="<?php echo base_url('mgr/laporan_keuangan/laporan_aktivitas'); ?>">
+                    <a href="<?php echo base_url('mgr/laporan_keuangan/laporan_aktivitas?bulan=' . date('m') . '&&tampilan=bulanan'); ?>">
                         <div class="card-image">
                             <img src="<?php echo site_url('assets/images/laporan_keuangan/ilustrasi-laporan-aktivitas.png'); ?>" width="200" height="300">
                             <span class="card-title card-title-text">Laporan Aktivitas</span>

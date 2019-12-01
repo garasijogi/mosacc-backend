@@ -203,363 +203,725 @@ class Laporan_keuangan extends CI_Controller
     $data['year_list'] = $this->tr_database_model->get_year_list();
     //END YEAR LIST
 
+    //GET MODE TAMPILAN
+    //END GET MODE TAMPILAN
+    $tampilan = $this->input->get('tampilan');
 
-    //MENENTUKAN BULAN
-    $bulan = $this->input->get('bulan');
-    if ($bulan == NULL) {
-      $bulan = intval(date('m'));
-    }
-    $data['bulan'] = $bulan;
-    //END MENENTUKAN BULAN
-
-    //GET NAMA MENU
-    //GET MENU PENERIMAAN TIDAK TERIKAT
-    $ptt = $this->rules_model->get_ptt_now($bulan);
-    $rules = $this->rules_model->get_rules();
-    $z = 0;
-    $menu_temp = '0';
-
-    foreach ($rules->result() as $r) {
-      $kd = substr($r->kd_akun, 0, 3);
-      for ($x = 0; $x < count($ptt); $x++) {
-        for ($y = 0; $y < count($ptt[$x]); $y++) {
-          if ($r->kd_akun == $ptt[$x]->kd_akun) {
-            if ($z == 0) {
-              $menu_ptt[$z] = $r->menu;
-              $kd_menu[$r->menu] = $kd;
-              $menu_temp = $r->menu;
-              $z++;
-            } elseif ($z > 0 && $r->menu != $menu_temp) {
-              $menu_ptt[$z] = $r->menu;
-              $kd_menu[$r->menu] = $kd;
-              $menu_temp = $r->menu;
-              $z++;
-            }
-          }
-        }
+    if ($tampilan == 'bulanan') {
+      //MENENTUKAN BULAN
+      $bulan = $this->input->get('bulan');
+      if ($bulan == NULL) {
+        $bulan = intval(date('m'));
       }
-    }
-    $data['menu_ptt'] = $menu_ptt;
-    //END GET MENU PENERIMAAN TIDAK TERIKAT
+      $data['bulan'] = $bulan;
+      //END MENENTUKAN BULAN
 
-    //GET MENU PENERIMAAN TERIKAT
-    $pt = $this->rules_model->get_pt_now($bulan);
-    $z = 0;
-    $menu_temp = '0';
-    foreach ($rules->result() as $r) {
-      $kd = substr($r->kd_akun, 0, 3);
-      for ($x = 0; $x < count($pt); $x++) {
-        for ($y = 0; $y < count($pt[$x]); $y++) {
-          if ($r->kd_akun == $pt[$x]->kd_akun) {
-            if ($z == 0) {
-              $menu_pt[$z] = $r->menu;
-              $menu_temp = $r->menu;
-              $kd_menu[$r->menu] = $kd;
-              $z++;
-            } elseif ($z > 0 && $r->menu != $menu_temp) {
-              $menu_pt[$z] = $r->menu;
-              $menu_temp = $r->menu;
-              $kd_menu[$r->menu] = $kd;
-              $z++;
-            }
-          }
-        }
-      }
-    }
-    $data['menu_pt'] = $menu_pt;
-    //END GET MENU PENERIMAAN TERIKAT
-
-    //GET MENU BEBAN TIDAK TERIKAT
-    $btt = $this->rules_model->get_btt_now($bulan);
-    $z = 0;
-    $menu_temp = '0';
-    foreach ($rules->result() as $r) {
-      $kd = substr($r->kd_akun, 0, 3);
-      for ($x = 0; $x < count($btt); $x++) {
-        for ($y = 0; $y < count($btt[$x]); $y++) {
-          if ($r->kd_akun == $btt[$x]->kd_akun) {
-            if ($z == 0) {
-              $menu_btt[$z] = $r->menu;
-              $menu_temp = $r->menu;
-              $kd_menu_b[$r->menu] = $kd;
-              $z++;
-            } elseif ($z > 0 && $r->menu != $menu_temp) {
-              $menu_btt[$z] = $r->menu;
-              $menu_temp = $r->menu;
-              $kd_menu_b[$r->menu] = $kd;
-              $z++;
-            }
-          }
-        }
-      }
-    }
-    $data['menu_btt'] = $menu_btt;
-    //END GET MENU BEBAN TIDAK TERIKAT
-
-    //GET MENU BEBAN TERIKAT
-    $bt = $this->rules_model->get_bt_now($bulan);
-    $z = 0;
-    $menu_temp = '0';
-    foreach ($rules->result() as $r) {
-      $kd = substr($r->kd_akun, 0, 3);
-      for ($x = 0; $x < count($bt); $x++) {
-        for ($y = 0; $y < count($bt[$x]); $y++) {
-          if ($r->kd_akun == $bt[$x]->kd_akun) {
-            if ($z == 0) {
-              $menu_bt[$z] = $r->menu;
-              $kd_menu_b[$r->menu] = $kd;
-              $menu_temp = $r->menu;
-              $z++;
-            } elseif ($z > 0 && $r->menu != $menu_temp) {
-              $menu_bt[$z] = $r->menu;
-              $kd_menu_b[$r->menu] = $kd;
-              $menu_temp = $r->menu;
-              $z++;
-            }
-          }
-        }
-      }
-    }
-    $data['menu_bt'] = $menu_bt;
-    //END GET MENU BEBAN TERIKAT
-
-    //GET NAMA SUB
-    //GET SUB MENU PENERIMAAN TERIKAT
-    $submenu_temp = '0';
-    foreach ($menu_pt as $mpt) {
+      //GET NAMA MENU
+      //GET MENU PENERIMAAN TIDAK TERIKAT
+      $ptt = $this->rules_model->get_ptt_now($bulan);
+      $rules = $this->rules_model->get_rules();
       $z = 0;
-      foreach ($rules->result() as $r) {
-        for ($x = 0; $x < count($pt); $x++) {
-          for ($y = 0; $y < count($pt[$x]); $y++) {
-            if ($r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt) {
-              if ($z == 0) {
-                $submenu_pt[$mpt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
-                $z++;
-              } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
-                $submenu_pt[$mpt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
-                $z++;
-              }
-            }
-          }
-        }
-      }
-    }
-    $data['submenu_pt'] = $submenu_pt;
-    //END GET SUB MENU PENERIMAAN TERIKAT
+      $menu_temp = '0';
 
-    //GET SUB MENU PENERIMAAN TIDAK TERIKAT
-    $submenu_temp = '0';
-    foreach ($menu_ptt as $mptt) {
-      $z = 0;
       foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
         for ($x = 0; $x < count($ptt); $x++) {
           for ($y = 0; $y < count($ptt[$x]); $y++) {
-            if ($r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt) {
+            if ($r->kd_akun == $ptt[$x]->kd_akun) {
               if ($z == 0) {
-                $submenu_ptt[$mptt][$z] = $r->nama_sub;
-                $submenu_temp = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
+                $menu_ptt[$z] = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $menu_temp = $r->menu;
                 $z++;
-              } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
-                $submenu_ptt[$mptt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_ptt[$z] = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $menu_temp = $r->menu;
                 $z++;
               }
             }
           }
         }
       }
-    }
-    $data['submenu_ptt'] = $submenu_ptt;
+      $data['menu_ptt'] = $menu_ptt;
+      //END GET MENU PENERIMAAN TIDAK TERIKAT
 
-    //GET SUB MENU BEBAN TIDAK TERIKAT
-    $submenu_temp = '0';
-    foreach ($menu_btt as $mbtt) {
+      //GET MENU PENERIMAAN TERIKAT
+      $pt = $this->rules_model->get_pt_now($bulan);
       $z = 0;
+      $menu_temp = '0';
       foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+        for ($x = 0; $x < count($pt); $x++) {
+          for ($y = 0; $y < count($pt[$x]); $y++) {
+            if ($r->kd_akun == $pt[$x]->kd_akun) {
+              if ($z == 0) {
+                $menu_pt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $z++;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_pt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $z++;
+              }
+            }
+          }
+        }
+      }
+      $data['menu_pt'] = $menu_pt;
+      //END GET MENU PENERIMAAN TERIKAT
+
+      //GET MENU BEBAN TIDAK TERIKAT
+      $btt = $this->rules_model->get_btt_now($bulan);
+      $z = 0;
+      $menu_temp = '0';
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
         for ($x = 0; $x < count($btt); $x++) {
           for ($y = 0; $y < count($btt[$x]); $y++) {
-            if ($r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt) {
+            if ($r->kd_akun == $btt[$x]->kd_akun) {
               if ($z == 0) {
-                $submenu_btt[$mbtt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
+                $menu_btt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
                 $z++;
-              } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
-                $submenu_btt[$mbtt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_btt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
                 $z++;
               }
             }
           }
         }
       }
-    }
-    $data['submenu_btt'] = $submenu_btt;
-    //END GET SUB MENU BEBAN TIDAK TERIKAT
+      $data['menu_btt'] = $menu_btt;
+      //END GET MENU BEBAN TIDAK TERIKAT
 
-    //GET SUB MENU BEBAN TERIKAT
-    $submenu_temp = '0';
-    foreach ($menu_bt as $mbt) {
+      //GET MENU BEBAN TERIKAT
+      $bt = $this->rules_model->get_bt_now($bulan);
       $z = 0;
+      $menu_temp = '0';
       foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
         for ($x = 0; $x < count($bt); $x++) {
           for ($y = 0; $y < count($bt[$x]); $y++) {
-            if ($r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt) {
+            if ($r->kd_akun == $bt[$x]->kd_akun) {
               if ($z == 0) {
-                $submenu_bt[$mbt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
+                $menu_bt[$z] = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
+                $menu_temp = $r->menu;
                 $z++;
-              } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
-                $submenu_bt[$mbt][$z] = $r->nama_sub;
-                $kd_akun[$r->nama_sub] = $r->kd_akun;
-                $submenu_temp = $r->nama_sub;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_bt[$z] = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
+                $menu_temp = $r->menu;
                 $z++;
               }
             }
           }
         }
       }
-    }
-    $data['submenu_bt'] = $submenu_bt;
-    //END GET SUB MENU BEBAN TERIKAT
+      $data['menu_bt'] = $menu_bt;
+      //END GET MENU BEBAN TERIKAT
 
-    //GET NOMINAL PER SUB
-    //GET NOMINAL PENERIMAAN TERIKAT
-    foreach ($rules->result() as $r) {
-      $nominal[$r->nama_sub] = 0;
-
-      //GET NOMINAL PER SUB PENERIMAAN TERIKAT
-      for ($x = 0; $x < count($pt); $x++) {
-        for ($y = 0; $y < count($pt[$x]); $y++) {
-          if ($r->kd_akun == $pt[$x]->kd_akun) {
-            $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $pt[$x]->nominal;
-          }
-        }
-      }
-      //END GET NOMINAL PER SUB PENERIMAAN TERIKAT
-
-      //GET NOMINAL PER SUB PENERIMAAN TIDAK TERIKAT
-      for ($x = 0; $x < count($ptt); $x++) {
-        for ($y = 0; $y < count($ptt[$x]); $y++) {
-          if ($r->kd_akun == $ptt[$x]->kd_akun) {
-            $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $ptt[$x]->nominal;
-          }
-        }
-      }
-      //END GET NOMINAL PER SUB PENERIMAAN TIDAK TERIKAT
-
-      //GET NOMINAL PER SUB BEBAN TERIKAT
-      for ($x = 0; $x < count($bt); $x++) {
-        for ($y = 0; $y < count($bt[$x]); $y++) {
-          if ($r->kd_akun == $bt[$x]->kd_akun) {
-            $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $bt[$x]->nominal;
-          }
-        }
-      }
-      //END GET NOMINAL PER SUB BEBAN TERIKAT
-
-      //GET NOMINAL PER SUB BEBAN TIDAK TERIKAT
-      for ($x = 0; $x < count($btt); $x++) {
-        for ($y = 0; $y < count($btt[$x]); $y++) {
-          if ($r->kd_akun == $btt[$x]->kd_akun) {
-            $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $btt[$x]->nominal;
-          }
-        }
-      }
-      //END GET NOMINAL PER SUB BEBAN TIDAK TERIKAT
-    }
-    //END GET NOMINAL PER SUB
-
-    //GET NOMINAL PER MENU
-    //GET NOMINAL PER MENU PENERIMAAN TERIKAT
-    foreach ($rules->result() as $r) {
-      $kd = substr($r->kd_akun, 0, 3);
-
+      //GET NAMA SUB
+      //GET SUB MENU PENERIMAAN TERIKAT
+      $submenu_temp = '0';
       foreach ($menu_pt as $mpt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($pt); $x++) {
+            for ($y = 0; $y < count($pt[$x]); $y++) {
+              if ($r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt) {
+                if ($z == 0) {
+                  $submenu_pt[$mpt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_pt[$mpt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_pt'] = $submenu_pt;
+      //END GET SUB MENU PENERIMAAN TERIKAT
+
+      //GET SUB MENU PENERIMAAN TIDAK TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_ptt as $mptt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($ptt); $x++) {
+            for ($y = 0; $y < count($ptt[$x]); $y++) {
+              if ($r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt) {
+                if ($z == 0) {
+                  $submenu_ptt[$mptt][$z] = $r->nama_sub;
+                  $submenu_temp = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_ptt[$mptt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_ptt'] = $submenu_ptt;
+
+      //GET SUB MENU BEBAN TIDAK TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_btt as $mbtt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($btt); $x++) {
+            for ($y = 0; $y < count($btt[$x]); $y++) {
+              if ($r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt) {
+                if ($z == 0) {
+                  $submenu_btt[$mbtt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_btt[$mbtt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_btt'] = $submenu_btt;
+      //END GET SUB MENU BEBAN TIDAK TERIKAT
+
+      //GET SUB MENU BEBAN TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_bt as $mbt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($bt); $x++) {
+            for ($y = 0; $y < count($bt[$x]); $y++) {
+              if ($r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt) {
+                if ($z == 0) {
+                  $submenu_bt[$mbt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_bt[$mbt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_bt'] = $submenu_bt;
+      //END GET SUB MENU BEBAN TERIKAT
+
+      //GET NOMINAL PER SUB
+      //GET NOMINAL PENERIMAAN TERIKAT
+      foreach ($rules->result() as $r) {
+        $nominal[$r->nama_sub] = 0;
+
+        //GET NOMINAL PER SUB PENERIMAAN TERIKAT
         for ($x = 0; $x < count($pt); $x++) {
           for ($y = 0; $y < count($pt[$x]); $y++) {
-            if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt) {
-              $nominal_menu[$kd][$mpt] = 0 + $pt[$x]->nominal;
-              $tanda[$kd] = 1;
-            } elseif ($r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt && $tanda[$kd] == 1) {
-              $nominal_menu[$kd][$mpt] = $nominal_menu[$kd][$mpt] + $pt[$x]->nominal;
+            if ($r->kd_akun == $pt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $pt[$x]->nominal;
             }
           }
         }
-      }
-      //END GET NOMINAL PER MENU PENERIMAAN  TERIKAT
+        //END GET NOMINAL PER SUB PENERIMAAN TERIKAT
 
-      //GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
-      foreach ($menu_ptt as $mptt) {
+        //GET NOMINAL PER SUB PENERIMAAN TIDAK TERIKAT
         for ($x = 0; $x < count($ptt); $x++) {
           for ($y = 0; $y < count($ptt[$x]); $y++) {
-            if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt) {
-              $nominal_menu[$kd][$mptt] = 0 + $ptt[$x]->nominal;
-              $tanda[$kd] = 1;
-            } elseif ($r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt && $tanda[$kd] == 1) {
-              $nominal_menu[$kd][$mptt] = $nominal_menu[$kd][$mptt] + $ptt[$x]->nominal;
+            if ($r->kd_akun == $ptt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $ptt[$x]->nominal;
             }
           }
         }
-      }
-      //END GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+        //END GET NOMINAL PER SUB PENERIMAAN TIDAK TERIKAT
 
-      //GET NOMINAL PER MENU BEBAN  TERIKAT
-      foreach ($menu_bt as $mbt) {
+        //GET NOMINAL PER SUB BEBAN TERIKAT
         for ($x = 0; $x < count($bt); $x++) {
           for ($y = 0; $y < count($bt[$x]); $y++) {
-            if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt) {
-              $nominal_menu[$kd][$mbt] = 0 + $bt[$x]->nominal;
-              $tanda[$kd] = 1;
-            } elseif ($r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt && $tanda[$kd] == 1) {
-              $nominal_menu[$kd][$mbt] = $nominal_menu[$kd][$mbt] + $bt[$x]->nominal;
+            if ($r->kd_akun == $bt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $bt[$x]->nominal;
             }
           }
         }
-      }
-      //END GET NOMINAL PER MENU BEBEN TERIKAT
+        //END GET NOMINAL PER SUB BEBAN TERIKAT
 
-      //GET NOMINAL PER MENU BEBAN TIDAK TERIKAT
-      foreach ($menu_btt as $mbtt) {
+        //GET NOMINAL PER SUB BEBAN TIDAK TERIKAT
         for ($x = 0; $x < count($btt); $x++) {
           for ($y = 0; $y < count($btt[$x]); $y++) {
-            if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt) {
-              $nominal_menu[$kd][$mbtt] = 0 + $btt[$x]->nominal;
-              $tanda[$kd] = 1;
-            } elseif ($r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt && $tanda[$kd] == 1) {
-              $nominal_menu[$kd][$mbtt] = $nominal_menu[$kd][$mbtt] + $btt[$x]->nominal;
+            if ($r->kd_akun == $btt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $btt[$x]->nominal;
+            }
+          }
+        }
+        //END GET NOMINAL PER SUB BEBAN TIDAK TERIKAT
+      }
+      //END GET NOMINAL PER SUB
+
+      //GET NOMINAL PER MENU
+      //GET NOMINAL PER MENU PENERIMAAN TERIKAT
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+
+        foreach ($menu_pt as $mpt) {
+          for ($x = 0; $x < count($pt); $x++) {
+            for ($y = 0; $y < count($pt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt) {
+                $nominal_menu[$kd][$mpt] = 0 + $pt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mpt] = $nominal_menu[$kd][$mpt] + $pt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU PENERIMAAN  TERIKAT
+
+        //GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+        foreach ($menu_ptt as $mptt) {
+          for ($x = 0; $x < count($ptt); $x++) {
+            for ($y = 0; $y < count($ptt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt) {
+                $nominal_menu[$kd][$mptt] = 0 + $ptt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mptt] = $nominal_menu[$kd][$mptt] + $ptt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+
+        //GET NOMINAL PER MENU BEBAN  TERIKAT
+        foreach ($menu_bt as $mbt) {
+          for ($x = 0; $x < count($bt); $x++) {
+            for ($y = 0; $y < count($bt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt) {
+                $nominal_menu[$kd][$mbt] = 0 + $bt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mbt] = $nominal_menu[$kd][$mbt] + $bt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU BEBEN TERIKAT
+
+        //GET NOMINAL PER MENU BEBAN TIDAK TERIKAT
+        foreach ($menu_btt as $mbtt) {
+          for ($x = 0; $x < count($btt); $x++) {
+            for ($y = 0; $y < count($btt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt) {
+                $nominal_menu[$kd][$mbtt] = 0 + $btt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mbtt] = $nominal_menu[$kd][$mbtt] + $btt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+      }
+
+      //END GET NOMINAL PER MENU
+      $data['nominal_per_sub'] = $nominal;
+      $data['nominal_menu'] = $nominal_menu;
+      $data['kd_menu'] = $kd_menu;
+      $data['kd_menu_b'] = $kd_menu_b;
+
+      //GET ASET NETO AWAL BULAN
+      $ptt_before = $this->rules_model->get_ptt_before($bulan);
+      $btt_before = $this->rules_model->get_btt_before($bulan);
+      $pt_before = $this->rules_model->get_pt_before($bulan);
+      $bt_before = $this->rules_model->get_bt_before($bulan);
+      $aset_neto_tt_ab = $this->rules_model->aset_neto_tidak_terikat($ptt_before, $btt_before);
+      $aset_neto_t_ab = $this->rules_model->aset_neto_terikat($pt_before, $bt_before);
+      $data['aset_neto_awal'] = $this->rules_model->get_aset_kas($bulan) + $this->rules_model->get_aset_bangunan_tanah($bulan) + $this->rules_model->get_aset_peralatan($bulan) + $this->rules_model->get_aset_kendaraan($bulan) + $this->rules_model->get_aset_perlengkapan($bulan);
+      $data['aset_neto_ab'] = $aset_neto_t_ab + $aset_neto_tt_ab;
+      $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
+      //END GET ASET NETO AWAL BULAN
+    } elseif ($tampilan == 'tahunan') {
+      //MENENTUKAN BULAN
+      $bulan = 12;
+      if ($bulan == NULL) {
+        $bulan = 12;
+      }
+      $data['bulan'] = 12;
+      //END MENENTUKAN BULAN
+
+      //GET NAMA MENU
+      //GET MENU PENERIMAAN TIDAK TERIKAT
+      $ptt = $this->rules_model->get_ptt_before($bulan + 1);
+      $rules = $this->rules_model->get_rules();
+      $z = 0;
+      $menu_temp = '0';
+
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+        for ($x = 0; $x < count($ptt); $x++) {
+          for ($y = 0; $y < count($ptt[$x]); $y++) {
+            if ($r->kd_akun == $ptt[$x]->kd_akun) {
+              if ($z == 0) {
+                $menu_ptt[$z] = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $menu_temp = $r->menu;
+                $z++;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_ptt[$z] = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $menu_temp = $r->menu;
+                $z++;
+              }
             }
           }
         }
       }
-      //END GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+      $data['menu_ptt'] = $menu_ptt;
+      //END GET MENU PENERIMAAN TIDAK TERIKAT
+
+      //GET MENU PENERIMAAN TERIKAT
+      $pt = $this->rules_model->get_pt_before($bulan + 1);
+      $z = 0;
+      $menu_temp = '0';
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+        for ($x = 0; $x < count($pt); $x++) {
+          for ($y = 0; $y < count($pt[$x]); $y++) {
+            if ($r->kd_akun == $pt[$x]->kd_akun) {
+              if ($z == 0) {
+                $menu_pt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $z++;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_pt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu[$r->menu] = $kd;
+                $z++;
+              }
+            }
+          }
+        }
+      }
+      $data['menu_pt'] = $menu_pt;
+      //END GET MENU PENERIMAAN TERIKAT
+
+      //GET MENU BEBAN TIDAK TERIKAT
+      $btt = $this->rules_model->get_btt_before($bulan + 1);
+      $z = 0;
+      $menu_temp = '0';
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+        for ($x = 0; $x < count($btt); $x++) {
+          for ($y = 0; $y < count($btt[$x]); $y++) {
+            if ($r->kd_akun == $btt[$x]->kd_akun) {
+              if ($z == 0) {
+                $menu_btt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
+                $z++;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_btt[$z] = $r->menu;
+                $menu_temp = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
+                $z++;
+              }
+            }
+          }
+        }
+      }
+      $data['menu_btt'] = $menu_btt;
+      //END GET MENU BEBAN TIDAK TERIKAT
+
+      //GET MENU BEBAN TERIKAT
+      $bt = $this->rules_model->get_bt_before($bulan + 1);
+      $z = 0;
+      $menu_temp = '0';
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+        for ($x = 0; $x < count($bt); $x++) {
+          for ($y = 0; $y < count($bt[$x]); $y++) {
+            if ($r->kd_akun == $bt[$x]->kd_akun) {
+              if ($z == 0) {
+                $menu_bt[$z] = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
+                $menu_temp = $r->menu;
+                $z++;
+              } elseif ($z > 0 && $r->menu != $menu_temp) {
+                $menu_bt[$z] = $r->menu;
+                $kd_menu_b[$r->menu] = $kd;
+                $menu_temp = $r->menu;
+                $z++;
+              }
+            }
+          }
+        }
+      }
+      $data['menu_bt'] = $menu_bt;
+      //END GET MENU BEBAN TERIKAT
+
+      //GET NAMA SUB
+      //GET SUB MENU PENERIMAAN TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_pt as $mpt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($pt); $x++) {
+            for ($y = 0; $y < count($pt[$x]); $y++) {
+              if ($r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt) {
+                if ($z == 0) {
+                  $submenu_pt[$mpt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_pt[$mpt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_pt'] = $submenu_pt;
+      //END GET SUB MENU PENERIMAAN TERIKAT
+
+      //GET SUB MENU PENERIMAAN TIDAK TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_ptt as $mptt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($ptt); $x++) {
+            for ($y = 0; $y < count($ptt[$x]); $y++) {
+              if ($r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt) {
+                if ($z == 0) {
+                  $submenu_ptt[$mptt][$z] = $r->nama_sub;
+                  $submenu_temp = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_ptt[$mptt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_ptt'] = $submenu_ptt;
+
+      //GET SUB MENU BEBAN TIDAK TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_btt as $mbtt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($btt); $x++) {
+            for ($y = 0; $y < count($btt[$x]); $y++) {
+              if ($r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt) {
+                if ($z == 0) {
+                  $submenu_btt[$mbtt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_btt[$mbtt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_btt'] = $submenu_btt;
+      //END GET SUB MENU BEBAN TIDAK TERIKAT
+
+      //GET SUB MENU BEBAN TERIKAT
+      $submenu_temp = '0';
+      foreach ($menu_bt as $mbt) {
+        $z = 0;
+        foreach ($rules->result() as $r) {
+          for ($x = 0; $x < count($bt); $x++) {
+            for ($y = 0; $y < count($bt[$x]); $y++) {
+              if ($r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt) {
+                if ($z == 0) {
+                  $submenu_bt[$mbt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                } elseif ($z > 0 && $r->nama_sub != $submenu_temp) {
+                  $submenu_bt[$mbt][$z] = $r->nama_sub;
+                  $kd_akun[$r->nama_sub] = $r->kd_akun;
+                  $submenu_temp = $r->nama_sub;
+                  $z++;
+                }
+              }
+            }
+          }
+        }
+      }
+      $data['submenu_bt'] = $submenu_bt;
+      //END GET SUB MENU BEBAN TERIKAT
+
+      //GET NOMINAL PER SUB
+      //GET NOMINAL PENERIMAAN TERIKAT
+      foreach ($rules->result() as $r) {
+        $nominal[$r->nama_sub] = 0;
+
+        //GET NOMINAL PER SUB PENERIMAAN TERIKAT
+        for ($x = 0; $x < count($pt); $x++) {
+          for ($y = 0; $y < count($pt[$x]); $y++) {
+            if ($r->kd_akun == $pt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $pt[$x]->nominal;
+            }
+          }
+        }
+        //END GET NOMINAL PER SUB PENERIMAAN TERIKAT
+
+        //GET NOMINAL PER SUB PENERIMAAN TIDAK TERIKAT
+        for ($x = 0; $x < count($ptt); $x++) {
+          for ($y = 0; $y < count($ptt[$x]); $y++) {
+            if ($r->kd_akun == $ptt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $ptt[$x]->nominal;
+            }
+          }
+        }
+        //END GET NOMINAL PER SUB PENERIMAAN TIDAK TERIKAT
+
+        //GET NOMINAL PER SUB BEBAN TERIKAT
+        for ($x = 0; $x < count($bt); $x++) {
+          for ($y = 0; $y < count($bt[$x]); $y++) {
+            if ($r->kd_akun == $bt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $bt[$x]->nominal;
+            }
+          }
+        }
+        //END GET NOMINAL PER SUB BEBAN TERIKAT
+
+        //GET NOMINAL PER SUB BEBAN TIDAK TERIKAT
+        for ($x = 0; $x < count($btt); $x++) {
+          for ($y = 0; $y < count($btt[$x]); $y++) {
+            if ($r->kd_akun == $btt[$x]->kd_akun) {
+              $nominal[$r->nama_sub] = $nominal[$r->nama_sub] + $btt[$x]->nominal;
+            }
+          }
+        }
+        //END GET NOMINAL PER SUB BEBAN TIDAK TERIKAT
+      }
+      //END GET NOMINAL PER SUB
+
+      //GET NOMINAL PER MENU
+      //GET NOMINAL PER MENU PENERIMAAN TERIKAT
+      foreach ($rules->result() as $r) {
+        $kd = substr($r->kd_akun, 0, 3);
+
+        foreach ($menu_pt as $mpt) {
+          for ($x = 0; $x < count($pt); $x++) {
+            for ($y = 0; $y < count($pt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt) {
+                $nominal_menu[$kd][$mpt] = 0 + $pt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $pt[$x]->kd_akun && $r->menu == $mpt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mpt] = $nominal_menu[$kd][$mpt] + $pt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU PENERIMAAN  TERIKAT
+
+        //GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+        foreach ($menu_ptt as $mptt) {
+          for ($x = 0; $x < count($ptt); $x++) {
+            for ($y = 0; $y < count($ptt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt) {
+                $nominal_menu[$kd][$mptt] = 0 + $ptt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $ptt[$x]->kd_akun && $r->menu == $mptt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mptt] = $nominal_menu[$kd][$mptt] + $ptt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+
+        //GET NOMINAL PER MENU BEBAN  TERIKAT
+        foreach ($menu_bt as $mbt) {
+          for ($x = 0; $x < count($bt); $x++) {
+            for ($y = 0; $y < count($bt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt) {
+                $nominal_menu[$kd][$mbt] = 0 + $bt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $bt[$x]->kd_akun && $r->menu == $mbt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mbt] = $nominal_menu[$kd][$mbt] + $bt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU BEBEN TERIKAT
+
+        //GET NOMINAL PER MENU BEBAN TIDAK TERIKAT
+        foreach ($menu_btt as $mbtt) {
+          for ($x = 0; $x < count($btt); $x++) {
+            for ($y = 0; $y < count($btt[$x]); $y++) {
+              if (isset($tanda[$kd]) == FALSE && $r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt) {
+                $nominal_menu[$kd][$mbtt] = 0 + $btt[$x]->nominal;
+                $tanda[$kd] = 1;
+              } elseif ($r->kd_akun == $btt[$x]->kd_akun && $r->menu == $mbtt && $tanda[$kd] == 1) {
+                $nominal_menu[$kd][$mbtt] = $nominal_menu[$kd][$mbtt] + $btt[$x]->nominal;
+              }
+            }
+          }
+        }
+        //END GET NOMINAL PER MENU PENERIMAAN TIDAK TERIKAT
+      }
+
+      //END GET NOMINAL PER MENU
+      $data['nominal_per_sub'] = $nominal;
+      $data['nominal_menu'] = $nominal_menu;
+      $data['kd_menu'] = $kd_menu;
+      $data['kd_menu_b'] = $kd_menu_b;
+
+      //GET ASET NETO AWAL BULAN
+      $ptt_before = 0;
+      $btt_before = 0;
+      $pt_before = 0;
+      $bt_before = 0;
+      $aset_neto_tt_ab = $this->rules_model->aset_neto_tidak_terikat($ptt_before, $btt_before);
+      $aset_neto_t_ab = $this->rules_model->aset_neto_terikat($pt_before, $bt_before);
+      $data['aset_neto_awal'] = $this->rules_model->get_aset_kas($bulan) + $this->rules_model->get_aset_bangunan_tanah($bulan) + $this->rules_model->get_aset_peralatan($bulan) + $this->rules_model->get_aset_kendaraan($bulan) + $this->rules_model->get_aset_perlengkapan($bulan);
+      $data['aset_neto_ab'] = $aset_neto_t_ab + $aset_neto_tt_ab;
+      $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
+      //END GET ASET NETO AWAL BULAN
     }
-
-    //END GET NOMINAL PER MENU
-    $data['nominal_per_sub'] = $nominal;
-    $data['nominal_menu'] = $nominal_menu;
-    $data['kd_menu'] = $kd_menu;
-    $data['kd_menu_b'] = $kd_menu_b;
-
-    //GET ASET NETO AWAL BULAN
-    $ptt_before = $this->rules_model->get_ptt_before($bulan);
-    $btt_before = $this->rules_model->get_btt_before($bulan);
-    $pt_before = $this->rules_model->get_pt_before($bulan);
-    $bt_before = $this->rules_model->get_bt_before($bulan);
-    $aset_neto_tt_ab = $this->rules_model->aset_neto_tidak_terikat($ptt_before, $btt_before);
-    $aset_neto_t_ab = $this->rules_model->aset_neto_terikat($pt_before, $bt_before);
-    $data['aset_neto_ab'] = $aset_neto_t_ab + $aset_neto_tt_ab;
-    $data['aset_kas_bank'] = $this->rules_model->get_aset_kas($bulan);
-    $data['aset_neto_ab'] += $data['aset_kas_bank'];
-    //END GET ASET NETO AWAL BULAN
 
     $this->load->view('mgr/laporan_aktivitas_v.php', $data);
   }

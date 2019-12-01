@@ -11,8 +11,8 @@
 				<div class="collapsible-header"><span><img src="<?php echo base_url('assets/images/icon/sidebar/laporan-icon.svg'); ?>" class="mosacc-logo"></span>Laporan</div>
 				<div class="collapsible-body">
 					<ul>
-						<li><a href="<?php echo base_url('acc/laporan_keuangan'); ?>">Laporan Keuangan</a></li>
-						<li><a href="<?php echo base_url('acc/buku_besar_utama'); ?>">Penunjang Laporan Keuangan</a></li>
+						<li><a href="<?php echo base_url('mgr/laporan_keuangan'); ?>">Laporan Keuangan</a></li>
+						<li><a href="<?php echo base_url('mgr/buku_besar_utama'); ?>">Penunjang Laporan Keuangan</a></li>
 					</ul>
 				</div>
 			</li>

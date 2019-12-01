@@ -47,7 +47,7 @@ $this->load->view("mgr/_partials/head"); ?>
 
             <!-- KAS -->
             <h6 class="font-bold"><?php echo "Kas dan Bank (112)"; ?></h6>
-            <table id='table-jurnal-umum-v'>
+            <table>
                 <tr class="teal white-text">
                     <th style="width:20%">Tanggal</th>
                     <th style="width:20%">Transaksi</th>
@@ -57,8 +57,22 @@ $this->load->view("mgr/_partials/head"); ?>
                 </tr>
                 <?php
                 $total_kas = 0;
-                //Penerimaan Terikat (KAS)
-                foreach ($pt as $pt_r) : ?>
+                //KAS AWAL
+                foreach ($aset_kas_bank->result() as $ak) :
+                    if ($ak->nominal != 0) : ?>
+                        <tr>
+                            <td><?php echo $ak->tanggal; ?></td>
+                            <td><?php echo 'Saldo Awal (Kas/Bank)' ?></td>
+                            <td><?php echo "Rp " . number_format($ak->nominal, 2, ',', '.');
+                                        $total_kas += $ak->nominal; ?></td>
+                            <td></td>
+                            <td><?php echo "Rp " . number_format($total_kas, 2, ',', '.'); ?></td>
+                        </tr>
+                    <?php endif;
+                    endforeach;
+                    //END KAS AWAL
+                    //Penerimaan Terikat (KAS)
+                    foreach ($pt as $pt_r) : ?>
                     <tr>
                         <td><?php echo ($pt_r->tanggal); ?></td>
                         <td><?php echo ($pt_r->keterangan); ?></td>
@@ -117,7 +131,7 @@ $this->load->view("mgr/_partials/head"); ?>
 
             <!-- SALDO AWAL ASET NETO TIDAK TERIKAT -->
             <h6 class="font-bold"><?php echo "Saldo Awal Aset Neto Tidak Terikat (311)"; ?></h6>
-            <table id='table-jurnal-umum-v'>
+            <table>
                 <tr class="teal white-text">
                     <th style="width:20%">Tanggal</th>
                     <th style="width:20%">Transaksi</th>
